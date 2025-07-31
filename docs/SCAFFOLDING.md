@@ -676,3 +676,109 @@ Browser testing provides several advantages:
 - **Multiple browser support**: Can test across Chromium, Firefox, and WebKit
 
 Both unit tests (jsdom) and browser tests run together, providing comprehensive test coverage for different scenarios.
+
+### **Phase 5: Enable Hot Module Replacement (HMR)**
+
+#### **5.1: Install Concurrently**
+
+1. Install concurrently as a root-level development dependency to run multiple commands simultaneously:
+    
+    ```
+    pnpm add -D concurrently -w
+    ```
+
+#### **5.2: Add Watch Script to Lit Package**
+
+1. Navigate to the Lit package:
+    
+    ```
+    cd packages/cyan-lit
+    ```
+    
+2. Add a `dev` script to its `package.json` to compile TypeScript in watch mode:
+    
+    ```json
+    "scripts": {
+      "build": "tsc",
+      "dev": "tsc --watch",
+      "test": "vitest"
+    }
+    ```
+
+### **Phase 6: Final Steps**
+
+#### **6.1: Root-Level Scripts**
+
+1. Navigate to the root of the project:
+    
+    ```
+    cd ../..
+    ```
+    
+2. Update the scripts in the root `package.json` to run commands across all workspaces, including the new concurrent dev command:
+    
+    ```json
+    "scripts": {
+      "postinstall": "lefthook install",
+      "dev": "concurrently \"pnpm --filter cyan-lit dev\" \"pnpm --filter cyan-docs dev\"",
+      "build": "pnpm --filter cyan-lit build && pnpm --filter cyan-docs build",
+      "test": "pnpm --recursive test",
+      "lint": "biome lint .",
+      "format": "biome format --write .",
+      "check": "biome check --write ."
+    }
+    ```
+    
+    This configuration provides:
+    - **`dev`**: Runs both component compilation in watch mode and documentation site simultaneously
+    - **`build`**: Builds components first, then documentation (ensuring proper dependency order)
+    - **`test`**: Runs tests across all packages recursively
+    - **`lint`**: Lints all files in the workspace
+    - **`format`**: Formats all files in the workspace
+    - **`check`**: Applies Biome formatting and linting fixes automatically
+
+## **Project Setup Complete! 🎉**
+
+The Cyan Design System v4.0.0 is now fully configured with:
+
+### **✅ Core Infrastructure**
+- **Monorepo**: pnpm workspace with packages and apps structure
+- **TypeScript**: Strict configuration with shared base config
+- **Biome**: Fast linting and formatting
+- **Git Hooks**: Lefthook with pre-commit formatting and commit message validation
+- **Commitlint**: Conventional commit enforcement
+
+### **✅ Component Development**
+- **Lit**: Modern web components with TypeScript decorators
+- **Hot Module Replacement**: Watch mode compilation for rapid development
+- **Testing**: Comprehensive unit and browser testing with Vitest
+- **Type Safety**: Full TypeScript support with declaration files
+
+### **✅ Documentation**
+- **Astro**: Fast, modern documentation site
+- **Component Integration**: Live component demos in documentation
+- **Development Server**: Hot reloading for documentation changes
+
+### **✅ Developer Experience**
+- **Concurrent Development**: Run components and docs simultaneously with `pnpm dev`
+- **One-Command Build**: Sequential building with `pnpm build`
+- **Comprehensive Testing**: Browser and unit tests with `pnpm test`
+- **Code Quality**: Automated formatting and linting
+
+### **🚀 Getting Started**
+
+```bash
+# Development (runs both component watch and docs server)
+pnpm dev
+
+# Build everything
+pnpm build
+
+# Run all tests
+pnpm test
+
+# Format and lint
+pnpm check
+```
+
+The development server will be available at `http://localhost:4321/` with live component demos and documentation.
