@@ -62,3 +62,35 @@ This plan outlines the steps to create the foundational structure for the Cyan D
     
     ```
     mkdir packages apps
+
+### 1.3: Configure TypeScriptt
+
+1. Add TypeScript as a root dependency:
+    
+    ```
+    pnpm add -D typescript@latest
+    ```
+    
+2. Create a root `tsconfig.json` file:
+    
+    ```
+    touch tsconfig.json
+    ```
+    
+3. Add a base TypeScript configuration to `tsconfig.json`. This will be extended by the sub-projects.
+    
+    ```
+    {
+      "compilerOptions": {
+        "target": "ES2022",
+        "module": "ES2022",
+        "moduleResolution": "node",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true
+      }
+    }
+    ```
