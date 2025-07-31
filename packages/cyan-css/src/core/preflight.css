@@ -1,0 +1,33 @@
+/* Inspired by https://github.com/sindresorhus/modern-normalize/blob/main/modern-normalize.css */
+
+/* Use a better box model (opinionated). */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+*/
+body {
+  margin: 0; /* 1 */
+}
+
+*[popover] {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}

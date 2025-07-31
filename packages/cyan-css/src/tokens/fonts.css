@@ -1,0 +1,11 @@
+:root {
+  --cn-font-family:
+    "Open Sans", "Lato", /* Tailwind CSS "Sans" font spell for fallback */
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
+  --cn-font-family-headings:
+    "Lato", /* Tailwind CSS "Sans" font stack for fallback */ ui-sans-serif,
+    system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+}

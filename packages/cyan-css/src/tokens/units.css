@@ -1,0 +1,11 @@
+/*
+ * Base units, used for spacing and sizing.
+ *
+ * Prefixed with `cn-` to avoid conflicts with other libraries.
+ */
+:root {
+  /* root units */
+  --cn-grid: 0.5rem;
+  --cn-gap: calc(var(--cn-grid) * 2);
+  --cn-line: calc(var(--cn-grid) * 3);
+}

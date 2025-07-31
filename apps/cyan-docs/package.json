@@ -9,7 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/open-sans": "^5.2.6",
     "astro": "^5.12.6",
-    "cyan-lit": "workspace:^"
+    "cyan-css": "workspace:^",
+    "cyan-lit": "workspace:^",
+    "lato-font": "^3.0.0"
   }
 }
