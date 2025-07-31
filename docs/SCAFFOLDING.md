@@ -34,3 +34,31 @@ This plan outlines the steps to create the foundational structure for the Cyan D
     *.log
     .env
     ```
+
+
+#### **1.2: Set Up pnpm Monorepo Structure**
+
+1. Initialize a `package.json` file at the root:
+    
+    ```
+    pnpm init
+    ```
+    
+2. Create the `pnpm-workspace.yaml` file to define the monorepo structure:
+    
+    ```
+    touch pnpm-workspace.yaml
+    ```
+    
+3. Add the following content to `pnpm-workspace.yaml`:
+    
+    ```
+    packages:
+      - 'packages/*'
+      - 'apps/*'
+    ```
+    
+4. Create the directories for packages and applications:
+    
+    ```
+    mkdir packages apps
