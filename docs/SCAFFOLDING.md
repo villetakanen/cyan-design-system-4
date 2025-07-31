@@ -164,3 +164,124 @@ This plan outlines the steps to create the foundational structure for the Cyan D
       "format": "biome format --write ."
     }
     ```
+
+### **Phase 2: Lit Component Library**
+
+#### **2.1: Create the Lit Package**
+
+1. Create a directory for the Lit components package:
+    
+    ```
+    mkdir packages/cyan-lit
+    cd packages/cyan-lit
+    ```
+    
+2. Initialize a `package.json` file for the Lit package:
+    
+    ```
+    pnpm init
+    ```
+    
+3. Add Lit as a dependency:
+    
+    ```
+    pnpm add lit
+    ```
+    
+4. Add TypeScript and Vitest as development dependencies:
+    
+    ```
+    pnpm add -D typescript vitest
+    ```
+    
+5. Create a `tsconfig.json` that extends the root configuration:
+    
+    ```json
+    {
+      "extends": "../../tsconfig.json",
+      "compilerOptions": {
+        "outDir": "dist",
+        "declaration": true,
+        "declarationMap": true,
+        "experimentalDecorators": true,
+        "useDefineForClassFields": false
+      },
+      "include": ["src/**/*.ts"],
+      "exclude": ["node_modules", "dist"]
+    }
+    ```
+
+#### **2.2: Create a Sample Component**
+
+1. Create the source directory:
+    
+    ```
+    mkdir src
+    ```
+    
+2. Create a sample button component file: `src/cyan-button.ts`
+    
+    ```typescript
+    import { LitElement, html, css } from 'lit';
+    import { customElement, property } from 'lit/decorators.js';
+
+    @customElement('cyan-button')
+    export class CyanButton extends LitElement {
+      @property({ type: String })
+      label = 'Button';
+
+      static styles = css`
+        :host {
+          display: inline-block;
+        }
+        button {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+      `;
+
+      render() {
+        return html`<button>${this.label}</button>`;
+      }
+    }
+    ```
+    
+3. Create an index file to export components: `src/index.ts`
+    
+    ```typescript
+    export { CyanButton } from './cyan-button.js';
+    ```
+    
+4. Update `package.json` with proper build configuration:
+    
+    ```json
+    {
+      "name": "cyan-lit",
+      "version": "1.0.0",
+      "description": "Cyan Design System Lit Components",
+      "type": "module",
+      "main": "dist/index.js",
+      "types": "dist/index.d.ts",
+      "exports": {
+        ".": {
+          "import": "./dist/index.js",
+          "types": "./dist/index.d.ts"
+        }
+      },
+      "scripts": {
+        "build": "tsc",
+        "test": "vitest"
+      },
+      "keywords": ["lit", "web-components", "design-system"],
+      "author": "",
+      "license": "ISC"
+    }
+    ```
