@@ -285,3 +285,147 @@ This plan outlines the steps to create the foundational structure for the Cyan D
       "license": "ISC"
     }
     ```
+
+### **Phase 3: Astro Documentation Site**
+
+#### **3.1: Create the Astro App**
+
+1. Navigate to the apps directory:
+    
+    ```
+    cd ../../apps
+    ```
+    
+2. Create a new Astro project:
+    
+    ```
+    pnpm create astro@latest cyan-docs -- --template minimal
+    ```
+    
+3. Navigate into the new Astro project directory:
+    
+    ```
+    cd cyan-docs
+    ```
+    
+4. Add the design system as a dependency using the workspace protocol:
+    
+    ```
+    pnpm add "cyan-lit@workspace:*"
+    ```
+
+#### **3.2: Configure Astro for Web Components**
+
+1. Update the `astro.config.mjs` file to support Lit components:
+    
+    ```javascript
+    import { defineConfig } from 'astro/config';
+    import lit from '@astrojs/lit';
+
+    export default defineConfig({
+      integrations: [lit()],
+    });
+    ```
+    
+2. Add the Lit integration dependency:
+    
+    ```
+    pnpm add @astrojs/lit
+    ```
+
+#### **3.3: Create Documentation Pages**
+
+1. Update the main page to showcase the design system components in `src/pages/index.astro`:
+    
+    ```astro
+    ---
+    import Layout from '../layouts/Layout.astro';
+    import '../../../packages/cyan-lit/dist/index.js';
+    ---
+
+    <Layout title="Cyan Design System">
+      <main>
+        <h1>Cyan Design System</h1>
+        <p>Welcome to the Cyan Design System documentation.</p>
+        
+        <section>
+          <h2>Components</h2>
+          
+          <h3>Button Component</h3>
+          <cyan-button label="Default Button"></cyan-button>
+          <cyan-button label="Custom Label"></cyan-button>
+        </section>
+      </main>
+    </Layout>
+    ```
+    
+3. Create a basic layout file `src/layouts/Layout.astro`:
+    
+    ```astro
+    ---
+    export interface Props {
+      title: string;
+    }
+
+    const { title } = Astro.props;
+    ---
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Cyan Design System Documentation" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+      </head>
+      <body>
+        <slot />
+      </body>
+    </html>
+
+    <style>
+      html {
+        font-family: system-ui, sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 2rem;
+        background: #f9f9f9;
+      }
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h1 {
+        color: #333;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 0.5rem;
+      }
+      section {
+        margin: 2rem 0;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+    </style>
+    ```
+
+#### **3.4: Update Package Scripts**
+
+1. Update the root `package.json` to include documentation scripts:
+    
+    ```json
+    {
+      "scripts": {
+        "postinstall": "lefthook install",
+        "lint": "biome lint .",
+        "format": "biome format --write .",
+        "dev:docs": "pnpm --filter cyan-docs dev",
+        "build:docs": "pnpm --filter cyan-docs build",
+        "build:components": "pnpm --filter cyan-lit build",
+        "build": "pnpm build:components && pnpm build:docs"
+      }
+    }
+    ```
