@@ -4,9 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "pnpm --filter cyan-lit test",
+    "test:components": "pnpm --filter cyan-lit test",
     "check": "biome check --write",
-    "postinstall": "lefthook install"
+    "postinstall": "lefthook install",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "dev:docs": "pnpm --filter cyan-docs dev",
+    "build:docs": "pnpm --filter cyan-docs build",
+    "build:components": "pnpm --filter cyan-lit build",
+    "build": "pnpm build:components && pnpm build:docs"
   },
   "keywords": [],
   "author": "",

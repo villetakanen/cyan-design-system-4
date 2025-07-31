@@ -429,3 +429,250 @@ This plan outlines the steps to create the foundational structure for the Cyan D
       }
     }
     ```
+
+### **Phase 4: Testing with Vitest**
+
+#### **4.1: Configure Vitest for Lit**
+
+1. Navigate to the Lit package directory:
+    
+    ```
+    cd ../../packages/cyan-lit
+    ```
+    
+2. Create a `vitest.config.ts` file:
+    
+    ```typescript
+    import { defineConfig } from 'vitest/config';
+
+    export default defineConfig({
+      test: {
+        environment: 'jsdom', // or 'happy-dom'
+      },
+    });
+    ```
+    
+3. Add jsdom as a development dependency for the test environment:
+    
+    ```
+    pnpm add -D jsdom
+    ```
+    
+4. The test script is already configured in the `package.json` of the Lit package:
+    
+    ```json
+    "scripts": {
+      "test": "vitest"
+    }
+    ```
+
+#### **4.2: Create Sample Tests**
+
+1. Create a test file for the button component: `src/cyan-button.test.ts`
+    
+    ```typescript
+    import { describe, it, expect } from 'vitest';
+    import { CyanButton } from '../src/cyan-button.js';
+
+    describe('CyanButton', () => {
+      it('should create an instance', () => {
+        const element = new CyanButton();
+        expect(element).toBeInstanceOf(CyanButton);
+      });
+
+      it('should have default label', () => {
+        const element = new CyanButton();
+        expect(element.label).toBe('Button');
+      });
+
+      it('should accept custom label', () => {
+        const element = new CyanButton();
+        element.label = 'Custom Button';
+        expect(element.label).toBe('Custom Button');
+      });
+    });
+    ```
+    
+2. Run the tests to verify the configuration:
+    
+    ```
+    pnpm test
+    ```
+    
+    Or run tests in CI mode (single run without watch):
+    
+    ```
+    pnpm test --run
+    ```
+
+#### **4.3: Update Root Package Scripts**
+
+1. Add test scripts to the root `package.json`:
+    
+    ```json
+    {
+      "scripts": {
+        "postinstall": "lefthook install",
+        "lint": "biome lint .",
+        "format": "biome format --write .",
+        "dev:docs": "pnpm --filter cyan-docs dev",
+        "build:docs": "pnpm --filter cyan-docs build",
+        "build:components": "pnpm --filter cyan-lit build",
+        "build": "pnpm build:components && pnpm build:docs",
+        "test": "pnpm --filter cyan-lit test",
+        "test:components": "pnpm --filter cyan-lit test"
+      }
+    }
+    ```
+
+### **Phase 5: Headless UI Testing**
+
+#### **5.1: Configure Headless UI Testing**
+
+1. Add the necessary Vitest browser testing packages:
+    
+    ```
+    pnpm add -D @vitest/browser vitest-browser-lit playwright
+    ```
+    
+2. Install Playwright browsers:
+    
+    ```
+    npx playwright install
+    ```
+    
+3. Update `vitest.config.ts` to enable browser testing:
+    
+    ```typescript
+    import { defineConfig } from 'vitest/config';
+
+    export default defineConfig({
+      test: {
+        browser: {
+          enabled: true,
+          name: 'chromium',
+          provider: 'playwright',
+          headless: true,
+        },
+      },
+    });
+    ```
+    
+    Note: The configuration above uses the legacy format for simplicity. For Vitest 3+, you can use the newer `instances` format for more advanced configurations:
+    
+    ```typescript
+    export default defineConfig({
+      test: {
+        browser: {
+          enabled: true,
+          instances: [
+            {
+              browser: 'chromium',
+              provider: 'playwright',
+              headless: true,
+            }
+          ],
+        },
+      },
+    });
+    ```
+
+#### **5.2: Create Browser Tests**
+
+1. Create a browser-specific test file: `src/cyan-button.browser.test.ts`
+    
+    ```typescript
+    import { describe, it, expect, beforeEach } from 'vitest';
+    import './cyan-button.js';
+
+    describe('CyanButton - Browser Tests', () => {
+      beforeEach(() => {
+        document.body.innerHTML = '';
+      });
+
+      it('should render with default label in browser', async () => {
+        const element = document.createElement('cyan-button');
+        document.body.appendChild(element);
+        
+        // Wait for the element to be defined and rendered
+        await customElements.whenDefined('cyan-button');
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        const button = element.shadowRoot?.querySelector('button');
+        expect(button).toBeTruthy();
+        expect(button?.textContent).toBe('Button');
+      });
+
+      it('should render with custom label in browser', async () => {
+        const element = document.createElement('cyan-button');
+        element.setAttribute('label', 'Click Me');
+        document.body.appendChild(element);
+        
+        await customElements.whenDefined('cyan-button');
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        const button = element.shadowRoot?.querySelector('button');
+        expect(button).toBeTruthy();
+        expect(button?.textContent).toBe('Click Me');
+      });
+
+      it('should handle click events', async () => {
+        const element = document.createElement('cyan-button');
+        element.setAttribute('label', 'Test Button');
+        document.body.appendChild(element);
+        
+        await customElements.whenDefined('cyan-button');
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        const button = element.shadowRoot?.querySelector('button');
+        expect(button).toBeTruthy();
+        
+        // Test that the button is clickable
+        let clicked = false;
+        button?.addEventListener('click', () => {
+          clicked = true;
+        });
+        
+        button?.click();
+        expect(clicked).toBe(true);
+      });
+
+      it('should have proper styling', async () => {
+        const element = document.createElement('cyan-button');
+        document.body.appendChild(element);
+        
+        await customElements.whenDefined('cyan-button');
+        await new Promise(resolve => setTimeout(resolve, 0));
+        
+        const button = element.shadowRoot?.querySelector('button');
+        expect(button).toBeTruthy();
+        
+        if (button) {
+          const styles = getComputedStyle(button);
+          expect(styles.backgroundColor).toBe('rgb(0, 123, 255)'); // #007bff
+          expect(styles.color).toBe('rgb(255, 255, 255)'); // white
+          // Browser may apply default padding, so let's check it's not empty
+          expect(styles.padding).toBeTruthy();
+        }
+      });
+    });
+    ```
+    
+2. Run the tests to verify browser testing works:
+    
+    ```
+    pnpm test --run
+    ```
+
+#### **5.3: Benefits of Browser Testing**
+
+Browser testing provides several advantages:
+
+- **Real DOM environment**: Tests run in an actual browser environment with full DOM support
+- **Accurate styling**: Computed styles are tested as they would appear to users
+- **Shadow DOM support**: Web components' shadow DOM is properly tested
+- **Event handling**: Real browser event system for testing interactions
+- **Visual debugging**: Screenshots are automatically captured on test failures
+- **Multiple browser support**: Can test across Chromium, Firefox, and WebKit
+
+Both unit tests (jsdom) and browser tests run together, providing comprehensive test coverage for different scenarios.
