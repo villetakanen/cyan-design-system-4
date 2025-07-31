@@ -33,18 +33,22 @@ git clone https://github.com/villetakanen/cyan-design-system-4.git
 
 ## Fonts
 
-The Design System expects to use Lato (headings) and Open Sans (body) from Google fonts.
+The Design System uses Lato for headings and Open Sans for body text. These fonts are included as `peerDependencies` of `cyan-css` and should be installed in your project.
 
-A fallback to Tailwind CSS's default font stack is provided for both, and the font stack
-suggested by the Tailwind CSS is used for the monospace font.
+You will need to add them to your project's `package.json`. For example, using pnpm:
 
-```html
-<!-- Google fonts for Cyan-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-<!-- end Google fonts for Cyan -->
+```bash
+pnpm add @fontsource/open-sans lato-font
 ```
+
+Then, import the fonts in your main application entry point (e.g., a global CSS file or a layout component). For example, in a CSS or Astro style block:
+
+```css
+@import '@fontsource/open-sans';
+@import 'lato-font/css/lato-font.css';
+```
+
+The `cyan-css` package itself does not bundle the fonts, but it defines the `font-family` rules and expects the fonts to be available.
 
 ## Migration from 3.x
 
