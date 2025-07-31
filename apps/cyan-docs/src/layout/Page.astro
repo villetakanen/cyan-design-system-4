@@ -1,0 +1,44 @@
+---
+//import AppBar from "@components/base/AppBar.astro";
+//import Rail from "src/components/base/Rail.astro";
+//import BaseHead from "../components/base/BaseHead.astro";
+
+interface Props {
+  title?: string;
+  tray?: boolean | undefined;
+}
+
+const { title: propTitle, tray } = Astro.props;
+const title = propTitle || 'Cyan Design System, Book 3';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  
+  <!--AppBar title={title} />
+  <BaseHead title={title} /-->
+  
+  <body>
+    {tray && (
+      <>
+        <cn-tray-button aria-controls=".cn-tray"></cn-tray-button>
+        <nav class="cn-tray">
+          <slot name="tray" />
+        </nav>
+      </>
+    )}
+    <!--Rail /-->
+    <main>
+      <!-- Main content area, all other content is slotted to named slots, if any  -->
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  @import 'cyan-css';
+</style>

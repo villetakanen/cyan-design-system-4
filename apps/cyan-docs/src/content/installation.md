@@ -1,0 +1,56 @@
+# Installation
+
+## Breaking Changes in 4.0.0
+
+**BREAKING CHANGE**: As of version 4.0.0, Cyan Design System is no longer distributed via npm. Instead, we recommend using git submodules to include the design system in your project.
+
+## Installation via Git Submodule
+
+The recommended method of installation is to add this repository as a git submodule to your project:
+
+```zsh
+# Add the Cyan Design System as a submodule
+git submodule add https://github.com/villetakanen/cyan-design-system-4.git cyan-design-system
+
+# Initialize and update the submodule
+git submodule update --init --recursive
+```
+
+After adding the submodule, you can import the components directly from the submodule path:
+
+```javascript
+// Import Lit components
+import './cyan-design-system/packages/cyan-lit/src/index.js';
+```
+
+## Alternative: Clone Repository
+
+Alternatively, you can clone the repository directly into your project:
+
+```zsh
+git clone https://github.com/villetakanen/cyan-design-system-4.git
+```
+
+## Fonts
+
+The Design System expects to use Lato (headings) and Open Sans (body) from Google fonts.
+
+A fallback to Tailwind CSS's default font stack is provided for both, and the font stack
+suggested by the Tailwind CSS is used for the monospace font.
+
+```html
+<!-- Google fonts for Cyan-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- end Google fonts for Cyan -->
+```
+
+## Migration from 3.x
+
+If you're upgrading from a previous version that used npm, you'll need to:
+
+1. Remove the old npm package: `npm uninstall @11thdeg/cyan-next`
+2. Add the git submodule as described above
+3. Update your import statements to reference the submodule path
+4. Ensure your build process can handle the new file structure

@@ -1,0 +1,21 @@
+{
+  "name": "cyan-css",
+  "version": "0.0.1",
+  "description": "Cyan Design System CSS Styles",
+  "type": "module",
+  "main": "src/index.css",
+  "style": "src/index.css",
+  "exports": {
+    ".": "./src/index.css"
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "css",
+    "design-system",
+    "styles"
+  ],
+  "author": "",
+  "license": "ISC"
+}

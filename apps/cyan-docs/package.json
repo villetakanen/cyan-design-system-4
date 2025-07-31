@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.12.6",
+    "cyan-css": "workspace:^",
     "cyan-lit": "workspace:^"
   }
 }
