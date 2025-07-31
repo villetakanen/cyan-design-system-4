@@ -94,3 +94,34 @@ This plan outlines the steps to create the foundational structure for the Cyan D
       }
     }
     ```
+
+#### **1.4: Set Up Biome**
+
+1. Add Biome as a development dependency:
+    
+    ```
+    pnpm add -D -w -E @biomejs/biome
+    pnpm exec biome init
+    ```
+
+2. Update the `biome.json` file to enable formatting and linting:
+    
+    ```json
+    {
+     ...
+      "formatter": {
+        "enabled": true,
+        "indentStyle": "space"
+      },
+     ...
+    }
+    ```
+3. Add a script to `package.json` for Biome checks:
+    
+    ```json
+    {
+        "scripts": {
+            "check": "biome check --write"
+        }
+    }
+    ```
