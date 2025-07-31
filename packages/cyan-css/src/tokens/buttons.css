@@ -1,0 +1,7 @@
+:root {
+  /* Button sizing */
+  --cn-button-physical-size: calc(56 / 16 * 1rem);
+  --cn-button-size-physical: var(--cn-button-physical-size);
+  --cn-button-size: calc(38 / 16 * 1rem);
+  --cn-navigation-button-size: calc(48 / 16 * 1rem);
+}

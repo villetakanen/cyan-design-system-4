@@ -1,0 +1,4 @@
+/* Text styling */
+body {
+  font-family: var(--cn-font-family);
+}
