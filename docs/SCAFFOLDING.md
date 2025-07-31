@@ -125,3 +125,42 @@ This plan outlines the steps to create the foundational structure for the Cyan D
         }
     }
     ```
+#### **1.5: Configure Lefthook and Commitlint**
+
+1. Add `lefthook` and `commitlint` dependencies:
+    
+    ```
+    pnpm add -D lefthook @commitlint/cli @commitlint/config-conventional
+    ```
+    
+2. Create a `lefthook.yml` configuration file in the project root:
+    
+    ```
+    pre-commit:
+      commands:
+        lint-and-format:
+          run: pnpm biome check --apply .
+    
+    commit-msg:
+      commands:
+        commitlint:
+          run: pnpm commitlint --edit {1}
+    ```
+    
+3. Create a `commitlint.config.js` file in the project root:
+    
+    ```
+    module.exports = {
+      extends: ['@commitlint/config-conventional'],
+    };
+    ```
+    
+4. Add a `postinstall` script to the root `package.json` to install Git hooks:
+    
+    ```
+    "scripts": {
+      "postinstall": "lefthook install",
+      "lint": "biome lint .",
+      "format": "biome format --write ."
+    }
+    ```
