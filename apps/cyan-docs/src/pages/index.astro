@@ -6,8 +6,33 @@ import Page from '@layouts/Page.astro';
 import { version } from '../../../../package.json';
 ---
 <Page>
-  <cyan-button>A</cyan-button>
-  <Installation />
+  <section>
+    <h2>App Bar Examples</h2>
+    
+    <h3>Default App Bar</h3>
+    <cn-app-bar title="Default App Bar">
+      <cyan-button>Action</cyan-button>
+    </cn-app-bar>
+    
+    <h3>App Bar with Icon</h3>
+    <cn-app-bar noun="home" title="App with Icon">
+      <cyan-button>Menu</cyan-button>
+    </cn-app-bar>
+    
+    <h3>Sticky App Bar</h3>
+    <cn-app-bar mode="sticky" title="Sticky App Bar" short-title="Sticky">
+      <cyan-button>Options</cyan-button>
+    </cn-app-bar>
+    
+    <h3>Modal App Bar</h3>
+    <cn-app-bar mode="modal" title="Modal App Bar"></cn-app-bar>
+  </section>
+  
+  <section>
+    <h2>Installation</h2>
+    <Installation />
+  </section>
+  
   <section slot="app-footer">
     <p>Version: {version}</p>
   </section>
