@@ -1,5 +1,8 @@
-@import "./core/preflight.css";
-@import "./tokens/units.css";
-@import "./tokens/buttons.css";
+/* The tokens are variavbles uses across the design system.
+ * They are used to define colors, fonts, sizes, and other design-related values.
+ */
 @import "./tokens/index.css";
+
+@import "./core/preflight.css";
+
 @import "./typography/index.css";
