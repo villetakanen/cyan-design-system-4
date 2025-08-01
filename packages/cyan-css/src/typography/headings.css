@@ -31,9 +31,7 @@ h4 {
   line-height: var(--cn-heading-4-line-height);
 }
 
-.text-h5
-/* Note: we are omitting non-atomic h5 intentionally */
-{
+.text-h5 /* Note: we are omitting non-atomic h5 intentionally */ {
   font-family: var(--cn-font-family-headings);
   font-size: var(--cn-heading-5-font-size);
   font-weight: var(--cn-heading-5-font-weight);
