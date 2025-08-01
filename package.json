@@ -1,12 +1,12 @@
 {
   "name": "cyan-design-system-4",
-  "version": "4.0.0-a1",
+  "version": "4.0.0-a2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "postinstall": "lefthook install",
-    "dev": "concurrently \"pnpm --filter cyan-lit dev\" \"pnpm --filter cyan-docs dev\"",
-    "build": "pnpm --filter cyan-lit build && pnpm --filter cyan-docs build",
+    "dev": "concurrently \"pnpm --filter cyan-lit dev\" \"pnpm --filter cyan-css dev\" \"pnpm --filter cyan-docs dev\"",
+    "build": "pnpm --filter cyan-lit build && pnpm --filter cyan-css build && pnpm --filter cyan-docs build",
     "test": "pnpm --recursive test",
     "lint": "biome lint .",
     "format": "biome format --write .",

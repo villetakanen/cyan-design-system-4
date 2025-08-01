@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "packages/cyan-css"
+    },
+    {
+      "path": "packages/cyan-lit"
+    },
+    {
+      "path": "apps/cyan-docs"
+    }
+  ],
+  "settings": {}
+}

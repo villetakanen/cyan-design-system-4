@@ -58,14 +58,16 @@ cyan-design-system-4/
    ```bash
    pnpm dev
    ```
-   This runs both component compilation in watch mode and the documentation server at `http://localhost:4321/`
+   This runs all packages in development mode concurrently:
+   - Component compilation in watch mode
+   - CSS file copying in watch mode  
+   - Documentation server at `http://localhost:4321/`
 
 ### Available Scripts
 
-- **`pnpm dev`** - Start development mode (components + docs)
-- **`pnpm build`** - Build all packages and documentation
+- **`pnpm dev`** - Start development mode for all packages (components + CSS + docs)
+- **`pnpm build`** - Build all packages in sequence (components → CSS → docs)
 - **`pnpm test`** - Run all tests across packages
-- **`pnpm test --run`** - Run tests in CI mode (single run)
 - **`pnpm check`** - Format and lint all files
 - **`pnpm lint`** - Lint all files
 - **`pnpm format`** - Format all files
@@ -99,6 +101,28 @@ export class CyanButton extends LitElement {
 }
 ```
 
+### CSS Development
+
+CSS files are located in `packages/cyan-css/src/` with the following structure:
+
+```
+src/
+├── index.css          # Main entry point
+├── core/              # Core styles (reset, base)
+├── tokens/            # Design tokens (colors, fonts, spacing)
+└── typography/        # Typography styles
+```
+
+The CSS package uses cpx2 to copy files from `src/` to `dist/` during build:
+
+```bash
+# Work on CSS in watch mode
+pnpm --filter cyan-css dev
+
+# Build CSS for distribution
+pnpm --filter cyan-css build
+```
+
 ### Testing
 
 The project includes both unit tests and browser tests:
@@ -113,10 +137,10 @@ Run tests with:
 pnpm test
 
 # Component tests only
-pnpm test:components
-
-# Watch mode
 pnpm --filter cyan-lit test
+
+# Watch mode for components
+pnpm --filter cyan-lit test --watch
 ```
 
 ### Documentation
@@ -130,11 +154,11 @@ The documentation site is built with Astro and includes:
 
 To work on documentation:
 ```bash
-# Start docs development server
-pnpm dev:docs
+# Start docs development server only
+pnpm --filter cyan-docs dev
 
-# Build documentation
-pnpm build:docs
+# Build documentation only
+pnpm --filter cyan-docs build
 ```
 
 ## 📦 Packages
@@ -146,7 +170,11 @@ Provides:
 - Design tokens for colors, typography, spacing
 - Utility classes for layout and styling
 - Responsive design utilities
-- Select override Atomic CSS classes for custom styling
+- CSS build pipeline with watch mode for development
+
+**Available Scripts:**
+- `pnpm build` - Copy CSS files from src to dist
+- `pnpm dev` - Copy CSS files with watch mode for development
 
 ### `cyan-lit`
 

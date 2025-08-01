@@ -1,15 +1,23 @@
 ---
-//import AppBar from "@components/base/AppBar.astro";
 //import Rail from "src/components/base/Rail.astro";
 //import BaseHead from "../components/base/BaseHead.astro";
+import AppBar from '@components/base/AppBar.astro';
 
 interface Props {
   title?: string;
+  shortTitle?: string;
+  noun?: string;
+  modal?: boolean;
   tray?: boolean | undefined;
 }
 
-const { title: propTitle, tray } = Astro.props;
-const title = propTitle || 'Cyan Design System, Book 3';
+const { title, shortTitle, noun, modal, tray } = Astro.props as Props;
+
+const mode = modal ? 'modal' : undefined;
+
+const resolvedTitle = title || '';
+const resolvedShortTitle = shortTitle || '';
+const resolvedNoun = noun || '';
 ---
 <!doctype html>
 <html lang="en">
@@ -17,12 +25,22 @@ const title = propTitle || 'Cyan Design System, Book 3';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <!-- Google fonts for Cyan-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- end Google fonts for Cyan -->
+    <script>
+      import 'cyan-lit';
+    </script>
   </head>
-  
-  <!--AppBar title={title} />
-  <BaseHead title={title} /-->
-  
   <body>
+    <AppBar
+      mode={mode}
+      title={resolvedTitle}
+      shortTitle={resolvedShortTitle}
+      noun={resolvedNoun}
+    />
     {tray && (
       <>
         <cn-tray-button aria-controls=".cn-tray"></cn-tray-button>
@@ -36,11 +54,12 @@ const title = propTitle || 'Cyan Design System, Book 3';
       <!-- Main content area, all other content is slotted to named slots, if any  -->
       <slot />
     </main>
+    <footer>
+      <slot name="app-footer" />
+    </footer>
   </body>
 </html>
 
 <style>
-  @import '@fontsource/open-sans';
-  @import 'lato-font/css/lato-font.css';
   @import 'cyan-css';
 </style>

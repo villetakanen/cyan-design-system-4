@@ -11,6 +11,10 @@
   "files": [
     "src"
   ],
+  "scripts": {
+    "build": "cpx 'src/**/*.css' dist",
+    "dev": "cpx 'src/**/*.css' dist --watch"
+  },
   "keywords": [
     "css",
     "design-system",
@@ -21,5 +25,8 @@
   "peerDependencies": {
     "@fontsource/open-sans": "*",
     "lato-font": "*"
+  },
+  "devDependencies": {
+    "cpx2": "^8.0.0"
   }
 }
