@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('customElements');
+---
+<h1>My posts</h1>
+<ul>
+  {posts.map(post => (
+    <li><a href={`/custom-elements/${post.id}`}>{post.data.title}</a></li>
+  ))}
+</ul>
