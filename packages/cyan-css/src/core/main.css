@@ -5,6 +5,7 @@
  */
 main {
   padding: var(--cn-grid);
+  container: main-app-content / inline-size;
 }
 @media (min-width: 621px) {
   main {

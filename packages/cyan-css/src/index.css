@@ -6,4 +6,6 @@
 @import "./core/preflight.css";
 @import "./core/index.css";
 
+@import "./utilities/index.css";
+
 @import "./typography/index.css";

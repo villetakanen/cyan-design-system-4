@@ -6,6 +6,8 @@ import Page from '@layouts/Page.astro';
 import { version } from '../../../../package.json';
 ---
 <Page>
+  <div class="content-columns">
+    
   <section>
     <h2>Icon examples</h2>
     <cn-icon></cn-icon>
@@ -41,4 +43,9 @@ import { version } from '../../../../package.json';
   <section slot="app-footer">
     <p>Version: {version}</p>
   </section>
+  </div>  
 </Page>
+
+<style>
+  /* Remove all test styles to see the imported ones */
+</style>

@@ -1,0 +1,72 @@
+/**
+ * Now With CSS container queries!
+ *
+ * We expect the content-columns to be used inside a main element, but
+ * it coulf be used as a wrapper for any vertically scrolling content block.
+ */
+
+.content-columns {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: var(--cn-gap);
+  margin: 0;
+  gap: var(--cn-gap);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.content-columns > * {
+  width: 100%;
+}
+
+@container main-app-content (width > 760px) {
+  .content-columns {
+    flex-direction: row;
+  }
+
+  .content-columns > :not(.full-width):not(.column-l):not(.column-s) {
+    width: calc(55 * var(--cn-grid));
+    flex-grow: 0;
+  }
+
+  .content-columns > .column-s {
+    width: calc(34 * var(--cn-grid));
+    flex-grow: 0;
+  }
+
+  .content-columns > .column-l {
+    width: calc(88 * var(--cn-grid));
+    flex-grow: 0;
+  }
+
+  .content-columns > .full-width {
+    width: 100%;
+    flex-grow: 1;
+  }
+}
+@container main-app-footer (width > 760px) {
+  .content-columns {
+    flex-direction: row;
+  }
+
+  .content-columns > :not(.full-width):not(.column-l):not(.column-s) {
+    width: calc(55 * var(--cn-grid));
+    flex-grow: 0;
+  }
+
+  .content-columns > .column-s {
+    width: calc(34 * var(--cn-grid));
+    flex-grow: 0;
+  }
+
+  .content-columns > .column-l {
+    width: calc(88 * var(--cn-grid));
+    flex-grow: 0;
+  }
+
+  .content-columns > .full-width {
+    width: 100%;
+    flex-grow: 1;
+  }
+}
