@@ -24,7 +24,7 @@ A wrapper Lit component for lazy loading of SVG icons with different size option
 
 The component supports different size variants through boolean attributes:
 
-- **Default**: 128px (`--cn-icon-size`)
+- **Default**: 36px (`--cn-icon-size`)
 - **XSmall**: 16px (`--cn-icon-size-xsmall`)
 - **Small**: 24px (`--cn-icon-size-small`)  
 - **Large**: 48px (`--cn-icon-size-large`)

@@ -50,7 +50,7 @@ Then, import the fonts in your main application entry point (e.g., a global CSS 
 
 The `cyan-css` package itself does not bundle the fonts, but it defines the `font-family` rules and expects the fonts to be available.
 
-### ALternative Font Sources
+### Alternative Font Sources
 
 You can also use other font sources like Google Fonts or Adobe Fonts. If you choose to use Google Fonts, you can include the following link in your HTML head:
 

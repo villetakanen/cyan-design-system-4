@@ -1,8 +1,8 @@
 /**
- * Now With CSS container queries!
+ * Now with CSS container queries!
  *
  * We expect the content-columns to be used inside a main element, but
- * it coulf be used as a wrapper for any vertically scrolling content block.
+ * it could be used as a wrapper for any vertically scrolling content block.
  */
 
 .content-columns {
