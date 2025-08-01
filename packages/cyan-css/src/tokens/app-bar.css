@@ -12,12 +12,9 @@
 
   /* App Bar colors */
   --cn-app-bar-background: transparent;
-  --cn-app-bar-color: var(--cn-color-primary, #1976d2);
-  --cn-app-bar-background-sticky: var(--cn-color-surface, #ffffff);
-  --cn-app-bar-background-modal: var(
-    --cn-color-surface-variant,
-    rgba(0, 0, 0, 0.2)
-  );
+  --cn-app-bar-color: var(--color-text);
+  --cn-app-bar-background-sticky: var(--color-surface);
+  --cn-app-bar-background-modal: var(--color-surface-2);
 
   /* App Bar border radius */
   --cn-app-bar-border-radius: 0 0 0
@@ -28,13 +25,4 @@
 
   /* Navigation icons */
   --cn-navigation-icon-size: calc(var(--cn-grid) * 10.5); /* 42px = 10.5 * 4px */
-}
-
-/* Default color tokens if not defined elsewhere */
-:root {
-  --cn-color-primary: #1976d2;
-  --cn-color-surface: #ffffff;
-  --cn-color-surface-variant: rgba(0, 0, 0, 0.05);
-  --cn-color-on-surface: #1c1b1f;
-  --cn-border-radius-large: calc(var(--cn-grid) * 4); /* 16px = 4 * 4px */
 }

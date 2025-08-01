@@ -1,0 +1,20 @@
+---
+interface Props {
+  title: string;
+  shortTitle: string;
+  noun: string;
+  mode?: string;
+}
+
+const { title, shortTitle, noun, mode } = Astro.props as Props;
+
+const barTitle = title || 'Cyan Design System Book 4';
+const barShortTitle = shortTitle || 'CDS Book 4';
+const barNoun = noun || 'design';
+---
+<cn-app-bar
+  mode={mode}
+  title={barTitle}
+  short-title={barShortTitle}
+  noun={barNoun}
+></cn-app-bar>

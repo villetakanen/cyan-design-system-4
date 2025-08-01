@@ -1,0 +1,129 @@
+/* 
+ * Semantic color mappings using the chroma palette
+ * Uses light-dark() for automatic theme switching
+ * Based on Material Design 3 principles
+ */
+:root {
+  /* Surfaces, levels [0] to 4 */
+  --color-surface: light-dark(
+    var(--chroma-surface-10),
+    var(--chroma-surface-90)
+  );
+  --color-surface-1: light-dark(
+    white,
+    color-mix(in hsl, var(--chroma-surface-90), var(--chroma-surface-80) 50%)
+  );
+  --color-surface-2: light-dark(white, var(--chroma-surface-80));
+  --color-surface-3: light-dark(
+    white,
+    color-mix(in hsl, var(--chroma-surface-80), var(--chroma-surface-70) 50%)
+  );
+  --color-surface-4: light-dark(
+    var(--chroma-surface-50),
+    var(--chroma-surface-70)
+  );
+  --color-on-surface: light-dark(
+    var(--chroma-surface-90),
+    var(--chroma-surface-10)
+  );
+  --color-secondary: light-dark(
+    var(--chroma-primary-80),
+    var(--chroma-primary-90)
+  );
+  --color-secondary-1: light-dark(
+    var(--chroma-primary-70),
+    var(--chroma-primary-80)
+  );
+
+  /* Default text, headings, links, etc. */
+  --color-text: light-dark(var(--chroma-surface-90), var(--chroma-surface-20));
+  --color-text-high: light-dark(black, white);
+  --color-text-low: light-dark(
+    var(--chroma-surface-80),
+    var(--chroma-surface-40)
+  );
+
+  --color-heading-1: light-dark(
+    var(--chroma-surface-70),
+    var(--chroma-surface-30)
+  );
+
+  --color-heading-2: light-dark(
+    var(--chroma-surface-80),
+    var(--chroma-surface-20)
+  );
+
+  /* Links */
+  --color-link: light-dark(var(--chroma-surface-60), var(--chroma-surface-60));
+  --color-link-hover: light-dark(
+    var(--chroma-surface-50),
+    var(--chroma-surface-30)
+  );
+  --color-link-active: light-dark(
+    var(--chroma-surface-70),
+    var(--chroma-surface-70)
+  );
+
+  --color-alert: light-dark(var(--chroma-A), var(--chroma-A));
+
+  /* Notifications (updated from existing) */
+  --color-notify: light-dark(var(--chroma-primary-95), var(--chroma-N));
+  --color-on-notify: light-dark(
+    var(--chroma-primary-20),
+    var(--chroma-surface-10)
+  );
+
+  --color-on-focus: light-dark(
+    var(--chroma-surface-99),
+    var(--chroma-primary-10)
+  );
+
+  /* Reaction colors */
+  --color-reaction-red: #e03c31;
+
+  --color-hover: light-dark(
+    color-mix(in hsl, var(--chroma-surface-50), transparent 90%),
+    color-mix(in hsl, var(--chroma-surface-50), transparent 80%)
+  );
+
+  /* Borders */
+  --color-border: light-dark(var(--chroma-surface-40), var(--chroma-surface-70));
+
+  /* Legacy semantic mappings for backward compatibility */
+  --cn-color-primary: var(--chroma-primary-70);
+  --cn-color-primary-variant: var(--chroma-primary-80);
+  --cn-color-on-primary: var(--chroma-surface-10);
+
+  --cn-color-secondary: var(--color-secondary);
+  --cn-color-secondary-variant: var(--color-secondary-1);
+  --cn-color-on-secondary: var(--color-on-surface);
+
+  --cn-color-surface: var(--color-surface);
+  --cn-color-surface-variant: var(--color-surface-1);
+  --cn-color-on-surface: var(--color-on-surface);
+  --cn-color-on-surface-variant: var(--color-text-low);
+
+  --cn-color-background: var(--color-surface);
+  --cn-color-on-background: var(--color-on-surface);
+
+  --cn-color-accent: var(--chroma-A);
+  --cn-color-on-accent: var(--color-surface);
+
+  /* Functional colors */
+  --cn-color-success: var(--chroma-primary-60);
+  --cn-color-warning: var(--chroma-N);
+  --cn-color-error: var(--chroma-A);
+  --cn-color-info: var(--chroma-C);
+
+  /* Interactive states */
+  --cn-color-hover: var(--color-hover);
+  --cn-color-focus: var(--color-on-focus);
+  --cn-color-active: var(--chroma-primary-80);
+  --cn-color-disabled: var(--chroma-surface-40);
+
+  /* Elevation/Shadow colors */
+  --cn-color-shadow: var(--chroma-surface-90);
+  --cn-color-elevation-1: var(--color-surface-1);
+  --cn-color-elevation-2: var(--color-surface-2);
+  --cn-color-elevation-3: var(--color-surface-3);
+}

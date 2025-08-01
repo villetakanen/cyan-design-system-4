@@ -1,15 +1,23 @@
 ---
-//import AppBar from "@components/base/AppBar.astro";
 //import Rail from "src/components/base/Rail.astro";
 //import BaseHead from "../components/base/BaseHead.astro";
+import AppBar from '@components/base/AppBar.astro';
 
 interface Props {
   title?: string;
+  shortTitle?: string;
+  noun?: string;
+  modal?: boolean;
   tray?: boolean | undefined;
 }
 
-const { title: propTitle, tray } = Astro.props;
-const title = propTitle || 'Cyan Design System, Book 3';
+const { title, shortTitle, noun, modal, tray } = Astro.props as Props;
+
+const mode = modal ? 'modal' : undefined;
+
+const resolvedTitle = title || '';
+const resolvedShortTitle = shortTitle || '';
+const resolvedNoun = noun || '';
 ---
 <!doctype html>
 <html lang="en">
@@ -21,15 +29,13 @@ const title = propTitle || 'Cyan Design System, Book 3';
       import 'cyan-lit';
     </script>
   </head>
-  
-  <cn-app-bar>
-    aaa!
-  </cn-app-bar>
-
-  <!--AppBar title={title} />
-  <BaseHead title={title} /-->
-  
   <body>
+    <AppBar
+      mode={mode}
+      title={resolvedTitle}
+      shortTitle={resolvedShortTitle}
+      noun={resolvedNoun}
+    />
     {tray && (
       <>
         <cn-tray-button aria-controls=".cn-tray"></cn-tray-button>
