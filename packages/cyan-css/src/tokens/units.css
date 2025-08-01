@@ -14,4 +14,11 @@
   --cn-border-radius-medium: calc(var(--cn-grid) * 2); /* 8px */
   --cn-border-radius-large: calc(var(--cn-grid) * 4); /* 16px */
   --cn-border-radius-xl: calc(var(--cn-grid) * 6); /* 24px */
+
+  /* Icon size tokens */
+  --cn-icon-size-xsmall: 1rem; /* 16px */
+  --cn-icon-size-small: calc(24 / 16 * 1rem); /* 24px */
+  --cn-icon-size: calc(36 / 16 * 1rem); /* 36px */
+  --cn-icon-size-large: calc(72 / 16 * 1rem); /* 72px */
+  --cn-icon-size-xlarge: calc(128 / 16 * 1rem); /* 128px */
 }
