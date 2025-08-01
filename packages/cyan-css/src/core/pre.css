@@ -1,0 +1,7 @@
+pre {
+  padding: var(--cn-grid);
+  overflow: hidden;
+  overflow-x: scroll;
+  display: block;
+  width: 100%;
+}

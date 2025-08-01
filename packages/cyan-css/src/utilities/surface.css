@@ -1,0 +1,10 @@
+.surface {
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  padding: var(--cn-gap);
+}
+@media screen and (max-width: 620px) {
+  .surface {
+    padding: var(--cn-grid);
+  }
+}

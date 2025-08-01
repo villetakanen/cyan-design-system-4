@@ -9,20 +9,22 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: var(--cn-gap);
   margin: 0;
+  padding: 0;
   gap: var(--cn-gap);
   justify-content: center;
   align-items: flex-start;
+  width: calc(100dvw - var(--cn-grid) * 2);
 }
 
 .content-columns > * {
-  width: 100%;
+  width: 100cqw;
 }
 
 @container main-app-content (width > 760px) {
   .content-columns {
     flex-direction: row;
+    width: 100%;
   }
 
   .content-columns > :not(.full-width):not(.column-l):not(.column-s) {

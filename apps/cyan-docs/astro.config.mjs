@@ -2,6 +2,7 @@
 
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import mdx from '@astrojs/mdx';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
@@ -26,4 +27,6 @@ export default defineConfig({
       ],
     },
   },
+
+  integrations: [mdx()],
 });
