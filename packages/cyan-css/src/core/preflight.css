@@ -31,3 +31,6 @@ ul {
 body::-webkit-scrollbar {
   display: none;
 }
+:root {
+  color-scheme: dark light;
+}
