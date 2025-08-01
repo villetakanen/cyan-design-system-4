@@ -11,7 +11,7 @@ export class CyanButton extends LitElement {
       display: inline-block;
     }
     button {
-      background-color: #007bff;
+      background-color: red;
       color: white;
       border: none;
       padding: 12px 24px;
