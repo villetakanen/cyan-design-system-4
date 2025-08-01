@@ -102,7 +102,7 @@ describe('CnAppBar - Browser Tests', () => {
     expect(element.scrolled).toBe(false);
 
     // Simulate scroll
-    Object.defineProperty(window, 'pageYOffset', {
+    Object.defineProperty(window, 'scrollY', {
       value: 100,
       writable: true,
     });

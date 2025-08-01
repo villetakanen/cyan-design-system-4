@@ -15,8 +15,16 @@ export class CnAppBar extends LitElement {
   @property({ type: String, reflect: true }) mode: BarMode = '';
   @property({ type: Boolean, reflect: true }) scrolled = false;
 
+  private scrollTimeout: number | undefined;
+
   private handleScroll = () => {
-    this.scrolled = window.pageYOffset > 0;
+    if (this.scrollTimeout !== undefined) {
+      return;
+    }
+    this.scrollTimeout = window.setTimeout(() => {
+      this.scrolled = window.scrollY > 0;
+      this.scrollTimeout = undefined;
+    }, 100); // Throttle to every 100ms
   };
 
   connectedCallback() {
@@ -30,7 +38,12 @@ export class CnAppBar extends LitElement {
   }
 
   private handleBackClick() {
-    history.back();
+    if (window.history.length > 1) {
+      history.back();
+    } else {
+      // Optionally, navigate to a default page or do nothing
+      window.location.href = '/';
+    }
   }
 
   render() {
