@@ -165,9 +165,116 @@ This plan outlines the steps to create the foundational structure for the Cyan D
     }
     ```
 
-### **Phase 2: Lit Component Library**
+### **Phase 2: CSS Package**
 
-#### **2.1: Create the Lit Package**
+#### **2.1: Create the CSS Package**
+
+1. Create a directory for the CSS package:
+    
+    ```
+    mkdir packages/cyan-css
+    cd packages/cyan-css
+    ```
+    
+2. Initialize a `package.json` file for the CSS package:
+    
+    ```
+    pnpm init
+    ```
+    
+3. Add cpx2 as a development dependency for file copying:
+    
+    ```
+    pnpm add -D cpx2
+    ```
+    
+4. Update `package.json` with proper build configuration:
+    
+    ```json
+    {
+      "name": "cyan-css",
+      "version": "1.0.0-alpha.2",
+      "description": "Cyan Design System CSS Styles",
+      "type": "module",
+      "main": "src/index.css",
+      "style": "src/index.css",
+      "exports": {
+        ".": "./src/index.css"
+      },
+      "files": [
+        "src"
+      ],
+      "scripts": {
+        "build": "cpx 'src/**/*.css' dist",
+        "dev": "cpx 'src/**/*.css' dist --watch"
+      },
+      "keywords": [
+        "css",
+        "design-system",
+        "styles"
+      ],
+      "author": "",
+      "license": "MIT",
+      "peerDependencies": {
+        "@fontsource/open-sans": "*",
+        "lato-font": "*"
+      },
+      "devDependencies": {
+        "cpx2": "^8.0.0"
+      }
+    }
+    ```
+
+5. Create the CSS source structure:
+    
+    ```
+    mkdir src
+    mkdir src/core
+    mkdir src/tokens
+    mkdir src/typography
+    ```
+
+6. Create base CSS files:
+    
+    ```
+    touch src/index.css
+    touch src/core/preflight.css
+    touch src/tokens/index.css
+    touch src/tokens/units.css
+    touch src/tokens/fonts.css
+    touch src/tokens/buttons.css
+    touch src/typography/index.css
+    touch src/typography/text.css
+    ```
+
+7. Set up the main CSS entry point in `src/index.css`:
+    
+    ```css
+    @import "./core/preflight.css";
+    @import "./tokens/index.css";
+    @import "./typography/index.css";
+    ```
+
+8. Set up the tokens index in `src/tokens/index.css`:
+    
+    ```css
+    @import "./units.css";
+    @import "./fonts.css";
+    @import "./buttons.css";
+    ```
+
+#### **2.2: CSS Package Scripts**
+
+The CSS package includes two main scripts:
+
+- **`build`**: Copies all CSS files from `src/` to `dist/` using cpx
+- **`dev`**: Same as build but runs in watch mode for development
+
+These scripts ensure that the CSS files are properly distributed and can be imported by other packages or applications.
+
+### **Phase 3: Lit Component Library**
+
+#### **3.1: Create the Lit Package**
 
 1. Create a directory for the Lit components package:
     
@@ -286,7 +393,7 @@ This plan outlines the steps to create the foundational structure for the Cyan D
     }
     ```
 
-### **Phase 3: Astro Documentation Site**
+### **Phase 4: Astro Documentation Site**
 
 #### **3.1: Create the Astro App**
 
@@ -412,25 +519,30 @@ This plan outlines the steps to create the foundational structure for the Cyan D
     </style>
     ```
 
-#### **3.4: Update Package Scripts**
+#### **4.4: Update Package Scripts**
 
-1. Update the root `package.json` to include documentation scripts:
+1. Update the root `package.json` to include all package scripts:
     
     ```json
     {
       "scripts": {
         "postinstall": "lefthook install",
+        "dev": "concurrently \"pnpm --filter cyan-lit dev\" \"pnpm --filter cyan-css dev\" \"pnpm --filter cyan-docs dev\"",
+        "build": "pnpm --filter cyan-lit build && pnpm --filter cyan-css build && pnpm --filter cyan-docs build",
+        "test": "pnpm --recursive test",
         "lint": "biome lint .",
         "format": "biome format --write .",
-        "dev:docs": "pnpm --filter cyan-docs dev",
-        "build:docs": "pnpm --filter cyan-docs build",
-        "build:components": "pnpm --filter cyan-lit build",
-        "build": "pnpm build:components && pnpm build:docs"
+        "check": "biome check --write ."
       }
     }
     ```
 
-### **Phase 4: Testing with Vitest**
+The updated scripts provide:
+- **`dev`**: Runs all packages in development mode concurrently (Lit components, CSS, and docs)
+- **`build`**: Builds all packages in sequence (components → CSS → docs)
+- **`test`**: Runs tests across all packages recursively
+
+### **Phase 5: Testing with Vitest**
 
 #### **4.1: Configure Vitest for Lit**
 
@@ -525,7 +637,7 @@ This plan outlines the steps to create the foundational structure for the Cyan D
     }
     ```
 
-### **Phase 5: Headless UI Testing**
+### **Phase 6: Headless UI Testing**
 
 #### **5.1: Configure Headless UI Testing**
 
@@ -677,7 +789,7 @@ Browser testing provides several advantages:
 
 Both unit tests (jsdom) and browser tests run together, providing comprehensive test coverage for different scenarios.
 
-### **Phase 5: Enable Hot Module Replacement (HMR)**
+### **Phase 7: Enable Hot Module Replacement (HMR)**
 
 #### **5.1: Install Concurrently**
 
@@ -705,7 +817,7 @@ Both unit tests (jsdom) and browser tests run together, providing comprehensive 
     }
     ```
 
-### **Phase 6: Final Steps**
+### **Phase 8: Final Steps**
 
 #### **6.1: Root-Level Scripts**
 
