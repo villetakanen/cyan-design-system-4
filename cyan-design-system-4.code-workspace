@@ -8,6 +8,9 @@
     },
     {
       "path": "packages/cyan-lit"
+    },
+    {
+      "path": "apps/cyan-docs"
     }
   ],
   "settings": {}
