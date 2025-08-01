@@ -4,5 +4,6 @@
 @import "./tokens/index.css";
 
 @import "./core/preflight.css";
+@import "./core/index.css";
 
 @import "./typography/index.css";

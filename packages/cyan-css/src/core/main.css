@@ -1,0 +1,13 @@
+/**
+ * The <main> area of the application. Contains the primary content,
+ * excluding App-level headers, footers, and sidebars. (might still contain
+ * article headers, footers, and sidebars)
+ */
+main {
+  padding: var(--cn-grid);
+}
+@media (min-width: 621px) {
+  main {
+    padding: calc(var(--cn-grid) * 2);
+  }
+}

@@ -1,7 +1,13 @@
 ---
 import Installation from '@content/installation.md';
 import Page from '@layouts/Page.astro';
+
+// Import only the version field from package.json
+import { version } from '../../../../package.json';
 ---
 <Page>
   <Installation />
+  <section slot="app-footer">
+    <p>Version: {version}</p>
+  </section>
 </Page>
