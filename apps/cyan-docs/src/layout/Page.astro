@@ -2,6 +2,8 @@
 //import Rail from "src/components/base/Rail.astro";
 //import BaseHead from "../components/base/BaseHead.astro";
 import AppBar from '@components/base/AppBar.astro';
+import 'cyan-css';
+import '../overrides.css';
 
 interface Props {
   title?: string;
@@ -59,7 +61,3 @@ const resolvedNoun = noun || '';
     </footer>
   </body>
 </html>
-
-<style>
-  @import 'cyan-css';
-</style>

@@ -50,6 +50,18 @@ Then, import the fonts in your main application entry point (e.g., a global CSS 
 
 The `cyan-css` package itself does not bundle the fonts, but it defines the `font-family` rules and expects the fonts to be available.
 
+### Alternative Font Sources
+
+You can also use other font sources like Google Fonts or Adobe Fonts. If you choose to use Google Fonts, you can include the following link in your HTML head:
+
+```html
+<!-- Google fonts for Cyan-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- end Google fonts for Cyan -->
+```
+
 ## Migration from 3.x
 
 If you're upgrading from a previous version that used npm, you'll need to:

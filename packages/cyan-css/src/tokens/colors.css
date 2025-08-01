@@ -35,6 +35,16 @@
     var(--chroma-primary-80)
   );
 
+  /* Background of the application, below surfaces */
+  --color-background: light-dark(
+    color-mix(in hsl, var(--color-surface), var(--chroma-surface-20) 22%),
+    var(--chroma-surface-90)
+  );
+  --color-on-background: light-dark(
+    var(--chroma-surface-90),
+    var(--chroma-surface-30)
+  );
+
   /* Default text, headings, links, etc. */
   --color-text: light-dark(var(--chroma-surface-90), var(--chroma-surface-20));
   --color-text-high: light-dark(black, white);

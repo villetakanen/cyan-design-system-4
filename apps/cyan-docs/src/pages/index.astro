@@ -1,11 +1,26 @@
 ---
 import Installation from '@content/installation.md';
+import Intro from '@content/intro.mdx';
 import Page from '@layouts/Page.astro';
 
 // Import only the version field from package.json
 import { version } from '../../../../package.json';
 ---
 <Page>
+  <div class="content-columns">
+    <article class="intro column-l surface">
+      <Intro />
+    </article>
+    <article class="surface">
+      <Installation />
+    </article>
+  
+    
+  <section>
+    <h2>Icon examples</h2>
+    <cn-icon></cn-icon>
+    <cn-icon noun="fox"></cn-icon>
+  </section>
   <section>
     <h2>App Bar Examples</h2>
     
@@ -28,12 +43,13 @@ import { version } from '../../../../package.json';
     <cn-app-bar mode="modal" title="Modal App Bar"></cn-app-bar>
   </section>
   
-  <section>
-    <h2>Installation</h2>
-    <Installation />
-  </section>
   
   <section slot="app-footer">
     <p>Version: {version}</p>
   </section>
+  </div>  
 </Page>
+
+<style>
+  /* Remove all test styles to see the imported ones */
+</style>
