@@ -5,6 +5,9 @@
     },
     {
       "path": "packages/cyan-css"
+    },
+    {
+      "path": "packages/cyan-lit"
     }
   ],
   "settings": {}
