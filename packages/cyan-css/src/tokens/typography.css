@@ -1,0 +1,24 @@
+:root {
+  --cn-heading-1-font-size: calc(4.21 * var(--cn-grid) * 2);
+  --cn-heading-2-font-size: calc(3.157 * var(--cn-grid) * 2);
+  --cn-heading-3-font-size: calc(4.5 * var(--cn-grid)); /* 2.25rem, 36px, approx. 24pt or 37.5px */
+  --cn-heading-4-font-size: calc(1.777 * var(--cn-grid) * 2);
+  --cn-heading-5-font-size: calc(1.333 * var(--cn-grid) * 2);
+
+  --cn-text-small-font-size: calc(var(--cn-grid) / 8 * 14);
+  --cn-caption-font-size: calc(var(--cn-grid) / 8 * 11);
+
+  --cn-heading-1-font-weight: 400;
+  --cn-heading-2-font-weight: 400;
+  --cn-heading-3-font-weight: 400;
+  --cn-heading-4-font-weight: 500;
+  --cn-heading-5-font-weight: 700;
+
+  --cn-heading-1-line-height: calc(5 * var(--cn-grid) * 2);
+  --cn-heading-2-line-height: calc(4 * var(--cn-grid) * 2);
+  --cn-heading-3-line-height: calc(3 * var(--cn-grid) * 2);
+  --cn-heading-4-line-height: calc(2 * var(--cn-grid) * 2);
+  --cn-heading-5-line-height: calc(2 * var(--cn-grid) * 2);
+
+  --cn-heading-3-letter-spacing: calc(var(--cn-grid) / 32);
+}
