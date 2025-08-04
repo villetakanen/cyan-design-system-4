@@ -82,6 +82,7 @@ export class CnToggleButton extends LitElement {
       height: calc(var(--cn-grid) * 6);
       border-radius: 0;
       user-select: none;
+      padding-right: calc(var(--cn-grid) * 8);
     }
     :host button::before {
       content: '';

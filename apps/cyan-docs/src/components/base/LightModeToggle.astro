@@ -1,0 +1,88 @@
+<cn-toggle-button
+  id="theme-toggle"
+  class="flex-none" 
+  label="Light / Dark" 
+  />
+
+<script is:inline>
+  // Function to get cookie value
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
+  // Function to set cookie
+  function setCookie(name, value, days = 365) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  }
+
+  // Function to apply theme
+  function applyTheme(isDark) {
+    const body = document.body;
+    if (isDark) {
+      body.style.colorScheme = 'dark';
+    } else {
+      body.style.colorScheme = 'light';
+    }
+  }
+
+  // Initialize theme on page load
+  function initializeTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = getCookie('lightmode');
+    
+    // Default to system preference if no cookie is set
+    let isDark;
+    if (savedTheme === null) {
+      isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } else {
+      isDark = savedTheme === 'dark';
+    }
+    
+    // Apply the theme
+    applyTheme(isDark);
+    
+    // Set toggle button state (pressed = dark mode)
+    if (themeToggle) {
+      themeToggle.pressed = isDark;
+      themeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    }
+    
+    // Save initial preference if not already saved
+    if (savedTheme === null) {
+      setCookie('lightmode', isDark ? 'dark' : 'light');
+    }
+  }
+
+  // Handle toggle button changes
+  function handleThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    if (themeToggle) {
+      themeToggle.addEventListener('change', (event) => {
+        const isDark = event.target.pressed;
+        
+        // Apply theme
+        applyTheme(isDark);
+        
+        // Save preference to cookie
+        setCookie('lightmode', isDark ? 'dark' : 'light');
+      });
+    }
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeTheme();
+      handleThemeToggle();
+    });
+  } else {
+    initializeTheme();
+    handleThemeToggle();
+  }
+</script>
