@@ -36,6 +36,10 @@ nav#tray h4 {
     transform: translateX(0);
   }
   body:has(cn-tray-button[aria-expanded="true"]) main {
-    padding-left: calc(var(--cn-width-tray) + var(--cn-gap) + var(--cn-width-rail));
+    padding-left: calc(
+      var(--cn-width-tray) +
+      var(--cn-gap) +
+      var(--cn-width-rail)
+    );
   }
 }
