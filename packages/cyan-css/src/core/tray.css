@@ -35,7 +35,7 @@ nav#tray h4 {
   body:has(cn-tray-button[aria-expanded="false"]) nav#tray {
     transform: translateX(0);
   }
-  body:has(cn-tray-button[aria-expanded="false"]) main {
-    padding-right: calc(var(--cn-width-tray) + var(--cn-gap));
+  body:has(cn-tray-button[aria-expanded="true"]) main {
+    padding-left: calc(var(--cn-width-tray) + var(--cn-gap) + var(--cn-width-rail));
   }
 }
