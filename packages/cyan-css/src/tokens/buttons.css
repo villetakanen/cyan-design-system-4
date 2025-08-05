@@ -4,6 +4,18 @@
   --cn-button-size: calc(38 / 16 * 1rem);
   --cn-navigation-button-size: calc(48 / 16 * 1rem);
 
+  /* Button background colors for hover and active states */
+  --background-button-text-hover: light-dark(
+    color-mix(in hsl, var(--chroma-surface-50), transparent 90%),
+    color-mix(in hsl, var(--chroma-surface-50), transparent 80%)
+  );
+  
+  /* Navigation icon backdrop color */
+  --cn-navigation-icon-backdrop-color: light-dark(
+    color-mix(in hsl, var(--chroma-primary-70), transparent 85%),
+    color-mix(in hsl, var(--chroma-primary-70), transparent 75%)
+  );
+
   /* Toggle button colors */
   --background-toggle-button: light-dark(
     var(--chroma-primary-40),
