@@ -1,5 +1,5 @@
-import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { css, html, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 
 /**
  * A navigation icon is a clickable icon that is used to navigate to a different page or
@@ -74,19 +74,19 @@ export class CnNavigationIcon extends LitElement {
       padding-top: calc(var(--cn-grid));
       color: var(--color-text);
     }
-  `
+  `;
 
   @property({ type: String, reflect: true })
-  public noun = ''
+  public noun = '';
 
   @property({ type: String, reflect: true })
-  public label = ''
+  public label = '';
 
   @property({ type: Boolean, reflect: true })
-  public active = false
+  public active = false;
 
   public render() {
-    const hasLabel = this.label !== ''
+    const hasLabel = this.label !== '';
 
     return html`<cn-icon noun="${this.noun}" ?small=${hasLabel}></cn-icon> 
     ${
@@ -94,6 +94,6 @@ export class CnNavigationIcon extends LitElement {
         ? html`
       <div class="navigation-icon-label">${this.label}</div>`
         : ''
-    }`
+    }`;
   }
 }
