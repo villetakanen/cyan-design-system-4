@@ -7,7 +7,12 @@ const books = await getCollection('customElements');
   <h2>Custom Elements</h2>
   <ul>
     {books.map(book => (
-      <li><a href={`/custom-elements/${book.id}`}>{book.data.title}</a></li>
+      <li>
+        <a href={`/custom-elements/${book.id}`}>
+          <cn-icon noun={book.data.noun} small/>
+          <span>{book.data.title}</span>
+        </a>
+      </li>
     ))}
   </ul>
 </section>
