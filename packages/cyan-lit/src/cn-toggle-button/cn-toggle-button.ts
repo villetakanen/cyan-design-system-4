@@ -116,7 +116,7 @@ export class CnToggleButton extends LitElement {
       background-color: var(--color-on-toggle-button);
       transform: translateX(calc(3.5 * var(--cn-grid)));
     }
-    :host([disabled]) button{
+    :host([disabled]) button {
       pointer-events: none;
       opacity: 0.33;
     }
