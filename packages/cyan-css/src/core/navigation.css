@@ -7,7 +7,6 @@ a:has(cn-navigation-icon) {
 }
 
 cn-navigation-icon {
-  --cn-navigation-icon-size: calc(var(--cn-grid) * 7);
   --cn-navigation-icon-backdrop-color: transparent;
 }
 
@@ -18,4 +17,12 @@ cn-navigation-icon[active] {
 
 cn-navigation-icon:hover {
   --cn-navigation-icon-backdrop-color: var(--color-elevation-2);
+}
+
+/* Tray button styles */
+cn-tray-button {
+  position: fixed;
+  top: calc(var(--cn-grid));
+  left: calc(var(--cn-grid) * 1.5);
+  z-index: var(--z-index-tray-button, 3000);
 }

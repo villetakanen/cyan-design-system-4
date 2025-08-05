@@ -64,13 +64,13 @@
   );
 
   /* Links */
-  --color-link: light-dark(var(--chroma-surface-60), var(--chroma-surface-60));
+  --color-link: light-dark(var(--chroma-surface-60), var(--chroma-surface-40));
   --color-link-hover: light-dark(
     var(--chroma-surface-50),
-    var(--chroma-surface-30)
+    var(--chroma-surface-20)
   );
   --color-link-active: light-dark(
-    var(--chroma-surface-70),
+    var(--chroma-surface-40),
     var(--chroma-surface-70)
   );
 

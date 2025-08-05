@@ -23,7 +23,6 @@
   --cn-icon-size-xlarge: calc(128 / 16 * 1rem); /* 128px */
 
   /* Navigation icon tokens */
-  --cn-navigation-icon-size: calc(var(--cn-grid) * 7); /* 56px */
   --cn-navigation-icon-label-height: calc(var(--cn-grid) * 2); /* 16px */
 
   --cn-width-rail: calc(var(--cn-grid) * 10); /* 80px */

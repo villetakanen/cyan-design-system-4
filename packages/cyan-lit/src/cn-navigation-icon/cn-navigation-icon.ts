@@ -15,8 +15,8 @@ export class CnNavigationIcon extends LitElement {
     :host {
       display: flex;
       position: relative;
-      height: var(--cn-navigation-icon-size, calc(var(--cn-grid, 0.5rem) * 7));
-      width: var(--cn-navigation-icon-size, calc(var(--cn-grid, 0.5rem) * 7));
+      height: var(--cn-navigation-button-size);
+      width: var(--cn-navigation-button-size);
       box-sizing: border-box;
       padding: 0;
       margin: 0;
@@ -41,11 +41,11 @@ export class CnNavigationIcon extends LitElement {
       content: '';
       display: block;
       position: absolute;
-      height: calc(100% + var(--cn-grid) * 2);
-      width: calc(100% + var(--cn-grid) * 2);
+      height: var(--cn-navigation-icon-size);
+      width: var(--cn-navigation-icon-size);
       z-index: -1;
-      top: calc(-1 * var(--cn-grid) / 1);
-      left: calc(-1 * var(--cn-grid) / 1);
+      top: calc(-1.5 * var(--cn-grid));
+      left: calc(-1.5 * var(--cn-grid));
       transition: background 0.2s ease;
     }
     :host([label]) cn-icon {
