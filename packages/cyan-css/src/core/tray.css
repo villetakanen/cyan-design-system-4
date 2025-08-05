@@ -36,6 +36,7 @@ nav#tray h4 {
     box-shadow: none;
     transform: translateX(100%);
     background: var(--color-elevation-1);
+    border-radius: 0 var(--cn-border-radius-medium) 0 0;
   }
   body:has(cn-tray-button[aria-expanded="false"]) nav#tray {
     transform: translateX(0);
