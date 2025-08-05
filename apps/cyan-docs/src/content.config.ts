@@ -11,4 +11,12 @@ const customElements = defineCollection({
   }),
 });
 
-export const collections = { customElements };
+const application = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/books/application' }),
+  schema: z.object({
+    title: z.string(),
+    noun: z.string().optional(),
+  }),
+});
+
+export const collections = { customElements, application };

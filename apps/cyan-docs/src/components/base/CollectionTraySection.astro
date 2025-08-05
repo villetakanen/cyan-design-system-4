@@ -1,16 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
 
-const books = await getCollection('customElements');
+export interface Props {
+  collection?: 'customElements' | 'application';
+}
+
+const { collection = 'customElements' } = Astro.props;
+const items = await getCollection(collection);
 ---
 <section>
-  <h2>Custom Elements</h2>
+  <h2>{collection === 'customElements' ? 'Custom Elements' : 'Application'}</h2>
   <ul>
-    {books.map(book => (
+    {items.map(item => (
       <li>
-        <a href={`/custom-elements/${book.id}`}>
-          <cn-icon noun={book.data.noun} small/>
-          <span>{book.data.title}</span>
+        <a href={`/${collection}/${item.id}`}>
+          <cn-icon noun={item.data.noun} small/>
+          <span>{item.data.title}</span>
         </a>
       </li>
     ))}

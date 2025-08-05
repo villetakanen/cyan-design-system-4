@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import CollectionTraySection from '@components/base/CollectionTraySection.astro';
+import Page from '@layouts/Page.astro';
+
+const posts = await getCollection('application');
+---
+<Page tray>
+  <div class="content-columns">
+    <article class="surface">
+      <h1>Application</h1>
+      <p>Here you can find all the application books available in the Cyan Design System.</p>
+
+  <ul>
+    {posts.map(post => (
+      <li><a href={`/application/${post.id}`}>{post.data.title}</a></li>
+    ))}
+  </ul>
+  </article>
+  </div>
+  
+  <CollectionTraySection slot="tray" collection="application"/>
+</Page>

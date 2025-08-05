@@ -1,0 +1,114 @@
+---
+title: 'Tray'
+noun: 'layout' 
+---
+<article class="column-l">
+
+# Tray
+
+The Tray component is a navigation drawer, inspired by Material Design's navigation drawers. It slides in from the right side of the screen on mobile and from the left on desktop, containing primary navigation links or actions. Its visibility is controlled by the `<cn-tray-button>` component.
+
+## Examples
+
+The Tray is designed to work with the `<cn-tray-button>`. Clicking the button toggles the Tray's visibility.
+
+<div class="p-1 border border-radius surface flex flex-no-wrap">
+  <div style="container: here / inline-size; flex-shrink:1; width: 100px">
+    <cn-tray-button style="position:relative"/>
+  </div>
+  <p><em>(Click the button above to interact with the Tray - requires the Tray element to be present in the page layout)</em></p>
+</div>
+
+## Design tokens
+
+The Tray component uses the following design tokens:
+
+| Token | Default | Description |
+|-------|---------|-------------|
+| `--cn-width-tray` | `calc(var(--cn-grid) * 42)` | Width of the tray (336px) |
+| `--cn-width-rail` | `calc(var(--cn-grid) * 10)` | Width of the rail (80px) |
+| `--z-index-tray` | `3000` | Z-index for tray positioning |
+| `--cn-gap` | `calc(var(--cn-grid) * 2)` | Standard gap for padding (16px) |
+| `--cn-grid` | `0.5rem` | Base grid unit (8px) |
+| `--cn-line` | `calc(var(--cn-grid) * 3)` | Line height unit (24px) |
+| `--cn-border-radius-medium` | `calc(var(--cn-grid) * 2)` | Border radius (16px) |
+| `--cn-app-bar-height` | `calc(var(--cn-grid) * 14)` | App bar height (112px) |
+
+## Color tokens
+
+| Token | Description |
+|-------|-------------|
+| `--color-elevation-1` | Background color of the tray |
+| `--color-border` | Border color for section dividers |
+| `--color-shadow` | Shadow color for mobile tray |
+| `--color-hover` | Hover state background for links |
+
+## Usage
+
+The Tray is typically implemented as a `<nav id="tray">` element placed within your main page layout. Its content usually consists of lists (`<ul>`) containing navigation links (`<a>`) often paired with `<cn-icon>` components.
+
+```html
+<!-- Example structure within your layout -->
+<nav id="tray">
+  <h2>Application Menu</h2>
+  <ul>
+    <li><a href="/"><cn-icon noun="home" small></cn-icon> <span>Home</span></a></li>
+    <li><a href="/settings"><cn-icon noun="settings" small></cn-icon> <span>Settings</span></a></li>
+    <!-- More items -->
+  </ul>
+</nav>
+```
+
+## Responsive Behavior
+
+### Mobile (≤620px)
+- Slides in from the right side
+- Takes full viewport width minus gap
+- Positioned at top: 0
+- Hidden by default with `transform: translateX(100%)`
+
+### Desktop (>620px)
+- Slides in from the left side
+- Fixed width of `--cn-width-tray` (336px)
+- Positioned below the app bar
+- Accounts for rail width in positioning
+- When open, pushes main content to the right
+
+## State Management
+
+The tray visibility is controlled by the `<cn-tray-button>` component through CSS selectors:
+
+- **Closed**: `body:has(cn-tray-button[aria-expanded="false"]) nav#tray`
+- **Open**: `body:has(cn-tray-button[aria-expanded="true"]) nav#tray`
+
+## Styling Guidelines
+
+### Section Headers
+Headers (`h1`, `h2`, `h3`, `h4`) within the tray are styled consistently:
+- Use heading-4 font size and line height
+- Have bottom margin and border
+- Reset default margins and padding
+
+### Navigation Links
+Links within tray lists should:
+- Use flexbox layout with center alignment
+- Include proper gap between icon and text
+- Have hover states for better interaction feedback
+- Maintain consistent height of `calc(var(--cn-line) * 2)`
+
+## Accessibility
+
+- Uses proper `nav` semantic element
+- Controlled by `aria-expanded` state on the tray button
+- Supports keyboard navigation through standard link tabbing
+- Maintains focus management when opening/closing
+
+## Integration
+
+The Tray integrates seamlessly with:
+- **App Bar**: Positioned below app bar on desktop
+- **Rail**: Accounts for rail width in positioning
+- **Main Content**: Pushes content when open on desktop
+- **Tray Button**: State synchronization through CSS selectors
+
+</article>
