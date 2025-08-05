@@ -1,11 +1,23 @@
 ---
 import { getCollection } from 'astro:content';
+import CollectionTraySection from '@components/base/CollectionTraySection.astro';
+import Page from '@layouts/Page.astro';
 
 const posts = await getCollection('customElements');
 ---
-<h1>My posts</h1>
-<ul>
-  {posts.map(post => (
-    <li><a href={`/custom-elements/${post.id}`}>{post.data.title}</a></li>
-  ))}
-</ul>
+<Page tray>
+  <div class="content-columns">
+    <article class="surface">
+      <h1>Custom Elements</h1>
+      <p>Here you can find all the custom elements available in the Cyan Design System.</p>
+
+  <ul>
+    {posts.map(post => (
+      <li><a href={`/custom-elements/${post.id}`}>{post.data.title}</a></li>
+    ))}
+  </ul>
+  </article>
+  </div>
+  
+  <CollectionTraySection slot="tray"/>
+</Page>

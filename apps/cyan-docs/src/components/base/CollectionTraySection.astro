@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+
+const books = await getCollection('customElements');
+---
+<section>
+  <h2>Custom Elements</h2>
+  <ul>
+    {books.map(book => (
+      <li><a href={`/custom-elements/${book.id}`}>{book.data.title}</a></li>
+    ))}
+  </ul>
+</section>

@@ -46,8 +46,8 @@ const resolvedNoun = noun || '';
     />
     {tray && (
       <>
-        <cn-tray-button aria-controls=".cn-tray"></cn-tray-button>
-        <nav class="cn-tray">
+        <cn-tray-button aria-controls="#tray"></cn-tray-button>
+        <nav id="tray" aria-expanded="true">
           <slot name="tray" />
         </nav>
       </>
