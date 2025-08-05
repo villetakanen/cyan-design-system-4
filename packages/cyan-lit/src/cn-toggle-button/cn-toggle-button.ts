@@ -83,6 +83,9 @@ export class CnToggleButton extends LitElement {
       border-radius: 0;
       user-select: none;
       padding-right: calc(var(--cn-grid) * 8);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     :host button::before {
       content: '';

@@ -1,0 +1,13 @@
+blockquote {
+  background-color: color-mix(in hsl, var(--color-secondary), transparent 33%);
+  color: var(--color-on-secondary);
+  padding: var(--cn-grid) var(--cn-gap);
+  border-left: solid calc(var(--cn-grid) / 2) var(--color-on-secondary);
+  margin: var(--cn-gap);
+  --color-heading-1: var(--color-on-secondary);
+  --color-heading-2: color-mix(
+    in hsl,
+    var(--color-on-secondary),
+    var(--color-on-primary) 33%
+  );
+}
