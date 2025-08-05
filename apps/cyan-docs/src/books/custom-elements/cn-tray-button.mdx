@@ -1,0 +1,179 @@
+---
+title: '<cn-tray-button>'
+noun: 'assets'
+---
+<article class="column-l">
+
+# `<cn-tray-button>` Component
+
+A tray button is a toggle button used to open and close navigation trays or menus. It displays as a hamburger menu icon that transforms into an X when active.
+
+The button manages its state via localStorage and adapts to screen size changes. On screens wider than 960px, it remembers the previous state, while on smaller screens it always starts closed.
+
+## Usage
+
+```html
+<cn-tray-button></cn-tray-button>
+```
+
+## Properties
+
+| Property       | Type      | Default    | Description                                      |
+|----------------|-----------|------------|--------------------------------------------------|
+| `ariaExpanded` | `string`  | `'false'`  | ARIA expanded state, reflects to `aria-expanded` |
+| `ariaLabel`    | `string`  | `'Menu'`   | ARIA label for accessibility, reflects to `aria-label` |
+| `ariaControls` | `string`  | `'#cn-tray'` | ARIA controls attribute, reflects to `aria-controls` |
+
+## CSS Custom Properties
+
+The component uses CSS custom properties (tokens) for styling:
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--cn-navigation-icon-size` | `calc(var(--cn-grid) * 7)` | Button container size (56px) |
+| `--cn-grid` | `0.5rem` | Base grid unit for spacing (8px) |
+| `--color-text` | Auto-themed | Color of the hamburger/X icon |
+| `--background-button-text` | `transparent` | Default button background |
+| `--background-button-text-hover` | Auto-themed | Hover state background |
+| `--background-button` | Auto-themed | Active state background |
+| `--color-link` | Auto-themed | Focus outline color |
+
+### Color System
+
+The tray button component uses the **chroma** color palette with advanced theming capabilities:
+
+#### Interactive States
+- **Default**: Transparent background with themed icon color
+- **Hover**: Subtle background circle with `--background-button-text-hover`
+- **Active**: Enhanced background with `--background-button`
+- **Focus**: Outline with `--color-link` for accessibility
+
+#### Automatic Theme Support
+- Uses `light-dark()` CSS function for automatic theme switching
+- Colors automatically adapt based on user's system preference
+- All states maintain proper contrast ratios for accessibility
+
+## CSS Positioning
+
+The component is positioned using CSS in the design system:
+
+```css
+cn-tray-button {
+  position: fixed;
+  top: var(--cn-gap);
+  left: var(--cn-gap);
+  z-index: var(--z-index-tray-button, 3000);
+}
+```
+
+This ensures the button:
+- Stays fixed in the top-left corner
+- Uses consistent spacing with `--cn-gap` (16px)
+- Has high z-index for proper layering
+
+## Examples
+
+### Basic Tray Button
+```html
+<cn-tray-button></cn-tray-button>
+```
+
+### Custom Labels and Controls
+```html
+<cn-tray-button 
+  aria-label="Navigation Menu"
+  aria-controls="#main-navigation">
+</cn-tray-button>
+```
+
+### Programmatic Control
+```html
+<cn-tray-button id="trayBtn"></cn-tray-button>
+
+<script>
+  const trayBtn = document.getElementById('trayBtn');
+  
+  // Listen for state changes
+  trayBtn.addEventListener('change', (event) => {
+    console.log('Tray is now:', event.detail); // 'true' or 'false'
+  });
+  
+  // Programmatically open
+  trayBtn.ariaExpanded = 'true';
+</script>
+```
+
+## Responsive Behavior
+
+### Desktop (>960px)
+- Remembers previous state in localStorage
+- Persists across page reloads
+- State key: `'cn-menu-state'`
+
+### Mobile (≤960px)
+- Always starts closed (`ariaExpanded = 'false'`)
+- Ignores localStorage state
+- Provides consistent mobile experience
+
+### Resize Handling
+- Automatically adapts when window is resized
+- Switches between desktop and mobile behavior
+- Cleans up event listeners on disconnect
+
+## Animation
+
+The hamburger icon transforms smoothly into an X:
+
+### Closed State (Hamburger)
+- Two horizontal bars positioned with grid-based spacing
+- Uses CSS transforms for precise positioning
+
+### Open State (X)
+- Bars rotate 45° and -45° respectively
+- Smooth transition with `0.2s ease-in-out`
+- Bars move to center and cross
+
+### Grid-Based Sizing
+All measurements use the grid system:
+- Icon size: `calc(var(--cn-grid) * 3)` (24px)
+- Bar thickness: `calc(var(--cn-grid) / 2)` (4px)
+- Bar radius: `calc(var(--cn-grid) / 4)` (2px)
+
+## Events
+
+### `change` Event
+Dispatched when the button is toggled:
+
+```javascript
+trayButton.addEventListener('change', (event) => {
+  const isExpanded = event.detail; // 'true' or 'false'
+  // Handle tray visibility
+});
+```
+
+## Accessibility
+
+- **ARIA Support**: Proper `aria-expanded`, `aria-label`, and `aria-controls`
+- **Keyboard Navigation**: Full keyboard support via native button
+- **Screen Readers**: Clear state communication
+- **Focus Indication**: Visible focus outline
+- **High Contrast**: Works with system high contrast modes
+
+## Integration
+
+The tray button integrates seamlessly with:
+- **Navigation rails**: Consistent sizing and positioning
+- **App bars**: Proper z-index layering
+- **Responsive layouts**: Adaptive behavior
+- **State management**: localStorage persistence
+
+## Dependencies
+
+This component requires:
+- **Chroma color palette** and design system tokens
+- CSS design tokens for spacing, colors, and grid system
+- Modern browser support for `light-dark()` CSS function
+
+The component integrates with the Cyan Design System's navigation patterns and provides a consistent, accessible way to toggle navigation visibility across applications.
+
+</article>

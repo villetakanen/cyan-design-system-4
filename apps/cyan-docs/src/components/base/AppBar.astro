@@ -1,4 +1,6 @@
 ---
+import LightModeToggle from './LightModeToggle.astro';
+
 interface Props {
   title: string;
   shortTitle: string;
@@ -17,4 +19,6 @@ const barNoun = noun || 'design';
   title={barTitle}
   short-title={barShortTitle}
   noun={barNoun}
-></cn-app-bar>
+>
+  <!--<LightModeToggle />-->
+</cn-app-bar>

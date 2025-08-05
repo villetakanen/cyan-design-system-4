@@ -4,6 +4,7 @@
 import AppBar from '@components/base/AppBar.astro';
 import 'cyan-css';
 import '../overrides.css';
+import Rail from '@components/base/Rail.astro';
 
 interface Props {
   title?: string;
@@ -45,13 +46,13 @@ const resolvedNoun = noun || '';
     />
     {tray && (
       <>
-        <cn-tray-button aria-controls=".cn-tray"></cn-tray-button>
-        <nav class="cn-tray">
+        <cn-tray-button aria-controls="#tray"></cn-tray-button>
+        <nav id="tray" aria-expanded="true">
           <slot name="tray" />
         </nav>
       </>
     )}
-    <!--Rail /-->
+    <Rail />
     <main>
       <!-- Main content area, all other content is slotted to named slots, if any  -->
       <slot />

@@ -1,0 +1,15 @@
+<cn-toggle-button label="Toggle Button Events, to console" id="toggle-button-events" />
+
+<script is:inline>
+
+    const toggleButton = document.getElementById('toggle-button-events');
+    
+    toggleButton.addEventListener('change', (event) => {
+        console.log('cn-toggle-button:change', event.target.pressed);
+    });
+    
+    toggleButton.addEventListener('input', (event) => {
+        console.log('cn-toggle-button:input', event.detail);
+    });
+
+</script>

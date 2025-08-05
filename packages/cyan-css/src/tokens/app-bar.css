@@ -22,7 +22,4 @@
 
   /* App Bar shadow */
   --cn-app-bar-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  /* Navigation icons */
-  --cn-navigation-icon-size: calc(var(--cn-grid) * 10.5); /* 42px = 10.5 * 4px */
 }

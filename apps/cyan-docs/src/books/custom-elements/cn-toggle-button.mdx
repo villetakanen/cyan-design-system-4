@@ -1,0 +1,57 @@
+---
+title: '<cn-toggle-button>'
+icon: 'edit'
+---
+<article class="column-l">
+
+import CnToggleButtonEvents from '../../components/demo/CnToggleButtonEvents.astro'
+
+# Toggle Buttons
+
+## Examples
+<div class="grid two-col">
+<fieldset  class="light border border-radius p-1 surface">
+  <legend>Toggle Button examples</legend>
+  <cn-toggle-button 
+    label="Toggle Button (off)"
+  ></cn-toggle-button>
+  <cn-toggle-button 
+    label="Toggle Button (on)"
+    pressed></cn-toggle-button>
+  <cn-toggle-button
+    label="Disabled Toggle Button"
+    disabled></cn-toggle-button>
+</fieldset>
+<fieldset class="dark border border-radius p-1 surface">
+  <legend>Toggle Button examples</legend>
+  <cn-toggle-button 
+    label="Toggle Button (off)"
+  ></cn-toggle-button>
+  <cn-toggle-button 
+    label="Toggle Button (on)"
+    pressed></cn-toggle-button>
+  <cn-toggle-button
+    label="Disabled Toggle Button"
+    disabled></cn-toggle-button>
+</fieldset>
+</div>
+
+## Usage
+
+### Tokens
+
+
+| Name | Description | Default |
+|------|-------------|---------|
+| `--background-toggle-button` | Background color of the toggle button | --chroma-primary-40 / --chroma-surface-70 |
+| `--background-toggle-button-off` | Background color of the toggle button when off | --chroma-surface-30 / --chroma-surface-80 |
+| `--color-on-toggle-button` | Color of the toggle button when on | --chroma-primary-70 / --chroma-surface-30 |
+| `--color-on-toggle-button-off` | Color of the toggle button when off | --chroma-surface-50 / --chroma-surface-70 |
+
+### Events
+
+The toggle button here logs all form component events to the console.
+
+<CnToggleButtonEvents />
+
+</article>

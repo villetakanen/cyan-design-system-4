@@ -64,13 +64,13 @@
   );
 
   /* Links */
-  --color-link: light-dark(var(--chroma-surface-60), var(--chroma-surface-60));
+  --color-link: light-dark(var(--chroma-surface-60), var(--chroma-surface-40));
   --color-link-hover: light-dark(
     var(--chroma-surface-50),
-    var(--chroma-surface-30)
+    var(--chroma-surface-20)
   );
   --color-link-active: light-dark(
-    var(--chroma-surface-70),
+    var(--chroma-surface-40),
     var(--chroma-surface-70)
   );
 
@@ -132,8 +132,8 @@
   --cn-color-disabled: var(--chroma-surface-40);
 
   /* Elevation/Shadow colors */
-  --cn-color-shadow: var(--chroma-surface-90);
-  --cn-color-elevation-1: var(--color-surface-1);
-  --cn-color-elevation-2: var(--color-surface-2);
-  --cn-color-elevation-3: var(--color-surface-3);
+  --color-shadow: var(--chroma-surface-90);
+  --color-elevation-1: var(--color-surface-1);
+  --color-elevation-2: var(--color-surface-2);
+  --color-elevation-3: var(--color-surface-3);
 }

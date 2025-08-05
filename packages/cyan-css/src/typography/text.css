@@ -2,3 +2,10 @@
 body {
   font-family: var(--cn-font-family);
 }
+p {
+  margin: 0;
+  margin-bottom: var(--cn-gap);
+}
+p:last-child {
+  margin-bottom: 0;
+}

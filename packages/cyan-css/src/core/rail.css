@@ -1,0 +1,42 @@
+nav.rail {
+  display: none;
+}
+
+body:has(nav.rail) cn-app-bar {
+  /* Add margin to the app bar to make space for the rail */
+  margin-left: calc(var(--cn-margin-for-rail) - var(--cn-gap));
+}
+
+/* The rail is hidden on small screens, if the screen is wider than
+   621px, the rail is displayed as a *fixed* column on the left */
+@media (min-width: 621px) {
+  :root {
+    /* The rail is displayed as a fixed column on the left */
+    --cn-margin-for-rail: var(--cn-width-rail);
+  }
+
+  nav.rail {
+    display: flex;
+    z-index: var(--z-index-rail, 2000);
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--cn-width-rail);
+    height: 100dvh;
+    gap: var(--cn-gap, 16px);
+    align-items: center;
+    padding-bottom: var(--cn-gap, 16px); /* Add extra "gap" at the bottom to make sure the last item is not cut off */
+    padding-top: var(--cn-padding-top-rail, 8px);
+  }
+
+  body:has(cn-tray-button) nav.rail {
+    /* Make space for the tray button */
+    padding-top: calc(var(--cn-grid) * 10);
+  }
+
+  body:has(nav.rail) main {
+    /* Add margin to the main content area to make space for the rail */
+    margin-left: var(--cn-margin-for-rail);
+  }
+}

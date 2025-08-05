@@ -1,0 +1,138 @@
+---
+title: '<cn-navigation-icon>'
+noun: 'admin'
+---
+<article class="column-l">
+
+# `<cn-navigation-icon>` Component
+
+A navigation icon is a clickable icon that is used to navigate to a different page or section of the application. It's intended to be used in application rail and bar navigation.
+
+The element is 56x56 pixels by default, but can be resized using the `--cn-navigation-icon-size` CSS variable. Do note, that the contents are intentionally smaller than the clickable area in size to create a visual effect when hovered over.
+
+## Usage
+
+```html
+<cn-navigation-icon noun="home"></cn-navigation-icon>
+```
+
+## Properties
+
+| Property | Type      | Default | Description                               |
+|----------|-----------|---------|-------------------------------------------|
+| `noun`   | `string`  | `''`    | Icon name to display from the icon set    |
+| `label`  | `string`  | `''`    | Optional label text below the icon       |
+| `active` | `boolean` | `false` | Whether the navigation item is active    |
+
+## CSS Custom Properties
+
+The component uses CSS custom properties (tokens) for styling:
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--cn-navigation-icon-size` | `calc(var(--cn-grid) * 7)` | Navigation icon container size (56px) |
+| `--cn-navigation-icon-label-height` | `calc(var(--cn-grid) * 2)` | Height of the label text (16px) |
+| `--cn-text-small-font-size` | `calc(var(--cn-grid) / 8 * 14)` | Font size for label text (14px) |
+| `--cn-grid` | `0.5rem` | Base grid unit for spacing (8px) |
+| `--color-link` | Auto-themed | Default icon color |
+| `--color-link-active` | Auto-themed | Active state icon color |
+| `--color-text` | Auto-themed | Label text color |
+| `--background-button-text-hover` | Auto-themed | Hover state background |
+| `--cn-navigation-icon-backdrop-color` | Auto-themed | Active state background |
+
+### Color System
+
+The navigation icon component uses the **chroma** color palette with advanced theming capabilities:
+
+#### Interactive States
+- **Default**: Uses `--color-link` for icon color
+- **Hover**: Shows subtle background circle with `--background-button-text-hover`
+- **Active**: Changes icon to `--color-link-active` and background to `--cn-navigation-icon-backdrop-color`
+
+#### Automatic Theme Support
+- Uses `light-dark()` CSS function for automatic theme switching
+- Colors automatically adapt based on user's system preference
+- All states maintain proper contrast ratios for accessibility
+
+## Examples
+
+### Simple Navigation Icon
+```html
+<cn-navigation-icon noun="home"></cn-navigation-icon>
+```
+
+### Navigation Icon with Label
+```html
+<cn-navigation-icon noun="profile" label="Profile"></cn-navigation-icon>
+```
+
+### Active Navigation Icon
+```html
+<cn-navigation-icon noun="settings" label="Settings" active></cn-navigation-icon>
+```
+
+### Custom Sized Navigation Icon
+```html
+<style>
+  .custom-nav-icon {
+    --cn-navigation-icon-size: 72px;
+  }
+</style>
+<cn-navigation-icon class="custom-nav-icon" noun="admin" label="Admin"></cn-navigation-icon>
+```
+
+## Visual Behavior
+
+### Icon Sizing
+- When a label is present, the icon automatically applies the `small` attribute to `cn-icon`
+- This ensures proper visual hierarchy and spacing within the component
+
+### Hover Effects
+- Circular background appears behind the icon on hover
+- Smooth transition animation (0.2s ease)
+- Background extends beyond icon boundaries for better touch targets
+
+### Active States
+- Active state can be set via the `active` property or `:active` pseudo-class
+- Changes both icon color and background color
+- Provides clear visual feedback for current navigation state
+
+## Layout and Spacing
+
+### Default Layout (No Label)
+- Centers icon within 56x56px container
+- Icon receives `--cn-grid` padding (8px) for hover circle
+
+### With Label Layout
+- Justifies content to flex-start
+- Icon positioned at top with `--cn-grid` margin
+- Label positioned below with `--cn-grid` padding-top
+- Total height increases to accommodate label
+
+### Text Handling
+- Label text automatically truncates with ellipsis if too long
+- Label width matches container width (56px by default)
+- Center-aligned text for optimal readability
+
+## Accessibility
+
+- Inherits semantic meaning from the contained `cn-icon` component
+- Proper focus states through CSS `:active` and `[active]` selectors
+- Sufficient color contrast in all states (light and dark themes)
+- Touch-friendly 56x56px minimum touch target
+
+## Dependencies
+
+This component requires:
+- `cn-icon` component for displaying the actual icon
+- **Chroma color palette** and design system tokens
+- Proper icon SVG files in the `/icons/` directory
+- CSS design tokens for spacing, colors, and typography
+
+The component integrates seamlessly with the Cyan Design System's navigation patterns and can be used in:
+- Application sidebars and rails
+- Bottom navigation bars
+- Toolbar navigation areas
+- Menu systems
+
+</article>

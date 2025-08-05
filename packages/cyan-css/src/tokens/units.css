@@ -21,4 +21,10 @@
   --cn-icon-size: calc(36 / 16 * 1rem); /* 36px */
   --cn-icon-size-large: calc(72 / 16 * 1rem); /* 72px */
   --cn-icon-size-xlarge: calc(128 / 16 * 1rem); /* 128px */
+
+  /* Navigation icon tokens */
+  --cn-navigation-icon-label-height: calc(var(--cn-grid) * 2); /* 16px */
+
+  --cn-width-rail: calc(var(--cn-grid) * 10); /* 80px */
+  --cn-width-tray: calc(var(--cn-grid) * 42); /* 160px */
 }

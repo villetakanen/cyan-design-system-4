@@ -2,5 +2,41 @@
   /* Button sizing */
   --cn-button-physical-size: calc(56 / 16 * 1rem);
   --cn-button-size: calc(38 / 16 * 1rem);
-  --cn-navigation-button-size: calc(48 / 16 * 1rem);
+  --cn-navigation-button-size: calc(var(--cn-grid) * 7); /* 56px */
+  --cn-navigation-icon-size: calc(var(--cn-grid) * 6); /* 48px */
+
+  /* Button background colors for hover and active states */
+  --background-button-text: transparent;
+  --background-button: light-dark(
+    var(--color-elevation-1),
+    var(--color-elevation-1)
+  );
+  --background-button-text-hover: light-dark(
+    color-mix(in hsl, var(--chroma-surface-50), transparent 90%),
+    color-mix(in hsl, var(--chroma-surface-50), transparent 80%)
+  );
+
+  /* Navigation icon backdrop color */
+  --cn-navigation-icon-backdrop-color: light-dark(
+    color-mix(in hsl, var(--chroma-primary-70), transparent 85%),
+    color-mix(in hsl, var(--chroma-primary-70), transparent 75%)
+  );
+
+  /* Toggle button colors */
+  --background-toggle-button: light-dark(
+    var(--chroma-primary-40),
+    var(--chroma-surface-70)
+  );
+  --background-toggle-button-off: light-dark(
+    var(--chroma-surface-30),
+    var(--chroma-surface-80)
+  );
+  --color-on-toggle-button: light-dark(
+    var(--chroma-primary-70),
+    var(--chroma-surface-30)
+  );
+  --color-on-toggle-button-off: light-dark(
+    var(--chroma-surface-50),
+    var(--chroma-surface-70)
+  );
 }

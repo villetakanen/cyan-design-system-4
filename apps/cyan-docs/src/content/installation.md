@@ -1,9 +1,3 @@
-# Installation
-
-## Breaking Changes in 4.0.0
-
-**BREAKING CHANGE**: As of version 4.0.0, Cyan Design System is no longer distributed via npm. Instead, we recommend using git submodules to include the design system in your project.
-
 ## Installation via Git Submodule
 
 The recommended method of installation is to add this repository as a git submodule to your project:
