@@ -1,0 +1,21 @@
+/* Navigation component styles */
+
+/* Navigation icon styles */
+/* Host context interop - remove text decoration from links containing navigation icons */
+a:has(cn-navigation-icon) {
+  text-decoration: none;
+}
+
+cn-navigation-icon {
+  --cn-navigation-icon-size: calc(var(--cn-grid) * 7);
+  --cn-navigation-icon-backdrop-color: transparent;
+}
+
+cn-navigation-icon:active,
+cn-navigation-icon[active] {
+  --cn-navigation-icon-backdrop-color: var(--color-elevation-1);
+}
+
+cn-navigation-icon:hover {
+  --cn-navigation-icon-backdrop-color: var(--color-elevation-2);
+}
