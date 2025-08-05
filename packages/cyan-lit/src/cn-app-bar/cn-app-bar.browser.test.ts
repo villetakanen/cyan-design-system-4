@@ -82,7 +82,18 @@ describe('CnAppBar - Browser Tests', () => {
     if (title) {
       const titleStyles = getComputedStyle(title);
       expect(titleStyles.flexGrow).toBe('1');
-      expect(titleStyles.whiteSpace).toBe('nowrap');
+
+      // Check if we're in mobile view (max-width: 620px)
+      const isMobile = window.innerWidth <= 620;
+
+      if (isMobile) {
+        // On mobile, white-space should be normal to allow wrapping
+        expect(titleStyles.whiteSpace).toBe('normal');
+      } else {
+        // On desktop, white-space should be nowrap
+        expect(titleStyles.whiteSpace).toBe('nowrap');
+      }
+
       expect(titleStyles.textOverflow).toBe('ellipsis');
       expect(titleStyles.overflow).toBe('hidden');
     }

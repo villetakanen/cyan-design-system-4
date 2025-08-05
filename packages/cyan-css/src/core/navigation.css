@@ -26,3 +26,16 @@ cn-tray-button {
   left: calc(var(--cn-grid) * 1.5);
   z-index: var(--z-index-tray-button, 3000);
 }
+
+@media screen and (max-width: 620px) {
+  cn-tray-button {
+    position: fixed;
+    top: calc(var(--cn-grid));
+    left: auto;
+    right: calc(var(--cn-grid) * 1.5);
+    z-index: var(--z-index-tray-button, 3000);
+  }
+  body:has(cn-tray-button) cn-app-bar {
+    padding-right: calc(var(--cn-width-rail) - var(--cn-gap));
+  }
+}

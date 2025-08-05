@@ -199,5 +199,16 @@ export class CnAppBar extends LitElement {
       z-index: 120;
       position: relative;
     }
+    @media (max-width: 620px) {
+      :host .title {
+        font-size: var(--cn-heading-5-font-size);
+        line-height: var(--cn-heading-5-line-height);
+        max-height: calc(var(--cn-app-bar-height) - var(--cn-grid));
+        white-space: normal;
+      }
+      .noun-icon {
+        display: none;
+      }
+    }
   `;
 }
