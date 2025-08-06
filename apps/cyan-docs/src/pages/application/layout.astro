@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import CollectionTraySection from '@components/base/CollectionTraySection.astro';
+import Page from '@layouts/Page.astro';
+
+const posts = await getCollection('application');
+const post = posts.find((p) => p.id === 'layout');
+
+if (!post) {
+  throw new Error(
+    `Post with id ${Astro.params.id} not found in 'application' collection.`,
+  );
+}
+const { Content } = await render(post);
+---
+<Page title={post.data.title} tray>
+  <Content />
+  <CollectionTraySection slot="tray" collection="application"/>
+</Page>

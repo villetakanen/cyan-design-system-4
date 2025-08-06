@@ -1,0 +1,37 @@
+.content-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cn-gap);
+  padding: 0 var(--cn-gap);
+  position: relative;
+  width: 100%;
+}
+.content-cards cn-card {
+  width: 100%;
+  flex-grow: 1;
+}
+.content-cards .filter-panel {
+  border-radius: var(--cn-border-radius);
+  padding: var(--cn-gap);
+}
+.content-cards .full-width {
+  width: 100%;
+}
+
+/* Medium screens $breakpoint-medium: 960px*/
+@container main-app-content (width > 720px) {
+  .content-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: min(calc(var(--cn-card-width) * 3 + var(--cn-gap) * 2), 100%);
+    margin: 0 auto;
+  }
+  .content-cards cn-card {
+    flex-grow: 0;
+    width: min(calc(100% / 3 - var(--cn-gap) / 3 * 2), var(--cn-card-width));
+  }
+  header section.filter-panel {
+    width: min(calc(var(--cn-card-width) * 3 + var(--cn-gap) * 2), 100%);
+  }
+}

@@ -7,6 +7,13 @@ export interface Props {
 
 const { collection = 'customElements' } = Astro.props;
 const items = await getCollection(collection);
+
+items.sort((a, b) => {
+  const titleA = a.data?.title?.toLowerCase() || '';
+  const titleB = b.data?.title?.toLowerCase() || '';
+  return titleA.localeCompare(titleB);
+});
+
 const collectionSlug =
   collection === 'customElements' ? 'custom-elements' : 'application';
 ---
