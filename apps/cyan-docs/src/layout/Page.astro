@@ -4,6 +4,7 @@
 import AppBar from '@components/base/AppBar.astro';
 import 'cyan-css';
 import '../overrides.css';
+import Bar from '@components/base/Bar.astro';
 import Rail from '@components/base/Rail.astro';
 
 interface Props {
@@ -53,6 +54,7 @@ const resolvedNoun = noun || '';
       </>
     )}
     <Rail />
+    <Bar />
     <main>
       <!-- Main content area, all other content is slotted to named slots, if any  -->
       <slot />
