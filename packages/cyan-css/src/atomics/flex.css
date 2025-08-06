@@ -1,3 +1,43 @@
+/* Flex container utilities */
+.flex {
+  display: flex;
+  gap: var(--cn-gap);
+  flex-wrap: wrap;
+}
+
+.flex > * {
+  flex: 1 1 auto;
+}
+
+/* Flex direction utilities */
+.flex-col {
+  flex-direction: column;
+}
+
+/* Flex wrap utilities */
+.flex-no-wrap {
+  flex-wrap: nowrap;
+}
+
+/* Flex item utilities */
 .flex-none {
   flex: none;
+}
+
+.grow {
+  flex-grow: 1 !important;
+}
+
+.shrink {
+  flex-shrink: 1 !important;
+}
+
+/* Flex alignment utilities */
+.flex.items-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex.items-center > * {
+  flex-grow: 0;
 }

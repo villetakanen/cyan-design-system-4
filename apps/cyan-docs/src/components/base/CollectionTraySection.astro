@@ -7,13 +7,15 @@ export interface Props {
 
 const { collection = 'customElements' } = Astro.props;
 const items = await getCollection(collection);
+const collectionSlug =
+  collection === 'customElements' ? 'custom-elements' : 'application';
 ---
 <section>
   <h2>{collection === 'customElements' ? 'Custom Elements' : 'Application'}</h2>
   <ul>
     {items.map(item => (
       <li>
-        <a href={`/${collection}/${item.id}`}>
+        <a href={`/${collectionSlug}/${item.id}`}>
           <cn-icon noun={item.data.noun} small/>
           <span>{item.data.title}</span>
         </a>
