@@ -16,7 +16,7 @@ The workspace is divided into `packages/` for reusable libraries and `apps/` for
 
 - **`packages/cyan-lit`**: The core component library built with Lit. All web components reside here.
   - Components are located in `packages/cyan-lit/src/`.
-  - A typical component is [`packages/cyan-lit/src/cyan-button.ts`](packages/cyan-lit/src/cyan-button.ts).
+  - A typical component is [`packages/cyan-lit/src/cyan-example.ts`](packages/cyan-lit/src/cyan-example.ts).
   - All components are exported from [`packages/cyan-lit/src/index.ts`](packages/cyan-lit/src/index.ts).
 - **`apps/cyan-docs`**: The documentation site built with Astro. It consumes and showcases components from `cyan-lit`.
   - The main page is [`apps/cyan-docs/src/pages/index.astro`](apps/cyan-docs/src/pages/index.astro).
