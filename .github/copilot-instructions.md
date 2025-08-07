@@ -4,7 +4,7 @@ This document provides context for GitHub Copilot about the Cyan Design System v
 
 ## Project Overview
 
-The project is a modern design system built as a `pnpm` workspace (monorepo). Its purpose is to provide a consistent and efficient development experience.
+The project is a modern design system built as a `pnpm` workspace (monorepo) where packages are linked directly through Vite/Astro aliases rather than workspace dependencies. Its purpose is to provide a consistent and efficient development experience.
 
 - **Core Goal**: Create a robust, scalable foundation for building user interfaces with web components.
 - **High-level Documentation**: The main project overview is in [README.md](README.md).
@@ -12,18 +12,20 @@ The project is a modern design system built as a `pnpm` workspace (monorepo). It
 
 ## Architecture
 
-The workspace is divided into `packages/` for reusable libraries and `apps/` for consumer applications.
+The workspace is divided into `packages/` for reusable libraries and `apps/` for consumer applications. Packages are linked to applications through Vite/Astro alias configuration rather than traditional workspace dependencies.
 
 - **`packages/cyan-lit`**: The core component library built with Lit. All web components reside here.
   - Components are located in `packages/cyan-lit/src/`.
   - A typical component is [`packages/cyan-lit/src/cyan-example.ts`](packages/cyan-lit/src/cyan-example.ts).
   - All components are exported from [`packages/cyan-lit/src/index.ts`](packages/cyan-lit/src/index.ts).
-- **`apps/cyan-docs`**: The documentation site built with Astro. It consumes and showcases components from `cyan-lit`.
+- **`packages/cyan-css`**: The CSS styles package containing design system styles.
+- **`apps/cyan-docs`**: The documentation site built with Astro. It consumes and showcases components from `cyan-lit` and styles from `cyan-css` via direct aliases configured in [`apps/cyan-docs/astro.config.mjs`](apps/cyan-docs/astro.config.mjs).
   - The main page is [`apps/cyan-docs/src/pages/index.astro`](apps/cyan-docs/src/pages/index.astro).
+  - Packages are imported directly as `import 'cyan-lit'` and `import 'cyan-css'` which resolve through Vite aliases.
 
 ## Technologies
 
-- **pnpm**: Used for package management and workspace orchestration.
+- **pnpm**: Used for package management and workspace organization, but packages are linked via Vite/Astro aliases rather than workspace dependencies.
 - **Lit**: The library for building fast, lightweight web components.
 - **Astro**: Powers the documentation site, with the `@astrojs/lit` integration for rendering web components.
 - **TypeScript**: Used for all components and business logic with a strict configuration.
