@@ -1,0 +1,47 @@
+---
+---
+<div id="app-bar-demo-container">
+  <cn-app-bar
+    id="app-bar-demo"
+    style="margin-left: 0 !important;"
+    title="App Bar, with very very long name"
+    noun="fox"
+    shorttitle="short title" >
+    <cn-share-button></cn-share-button>
+  </cn-app-bar>
+
+  <fieldset class="toolbar justify-center flex">
+    
+  <label>
+    <span>Default</span>
+    <input type="radio" id="default-bar" name="bar-type" value="default" checked/>
+  </label>
+
+  <label>
+    <span>Modal</span>
+    <input type="radio" id="modal-bar" name="bar-type" value="modal"/>
+  </label>
+
+  </fieldset>
+
+</div>
+
+<script is:inline>
+    const defaultBar = document.getElementById('default-bar');
+    const modalBar = document.getElementById('modal-bar');
+    const appBar = document.getElementById('app-bar-demo');
+    
+    defaultBar.addEventListener('change', () => {
+        appBar.setAttribute('mode', 'undefined');
+    });
+    
+    modalBar.addEventListener('change', () => {
+        appBar.setAttribute('mode', 'modal');
+    });
+</script>
+
+<style>
+#app-bar-demo-container {
+  margin-left: 0 !important;
+}
+</style>

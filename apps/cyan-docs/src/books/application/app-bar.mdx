@@ -1,0 +1,49 @@
+---
+title: 'App Bar'
+icon: 'layout'
+---
+import AppBarDemo from '@components/demo/AppBarDemo.astro'
+
+
+<article class="column-l">
+# App Bar
+
+We provide a Material-UI style app-bar component, with some auto-styling, modes for modal and sticky, and support for elevation.
+
+See the [cn-app-bar custom element docs](/elements/cn-app-bar) for more information.
+
+<AppBarDemo />
+
+## Modes
+
+The `cn-app-bar` component has three modes: `static`, `sticky`, and `modal`.
+
+### Static (default)
+
+The default mode is `static`. The app bar will scroll with the page.
+
+### Sticky
+
+The `sticky` mode makes the app bar stick to the top of the screen. It will also automatically adjust its height and title size when the user scrolls.
+
+### Modal
+
+The `modal` mode is for use in modal dialogs. It will display a close button instead of the navigation icon.
+
+## Design Tokens
+
+| Token | Default | Description |
+|---|---|---|
+| `--cn-app-bar-height` | `calc(var(--cn-grid) * 14)` | Height of the app bar (112px) |
+| `--cn-app-bar-height-short` | `calc(var(--cn-grid) * 7)` | Height of the app bar when scrolled (56px) |
+| `--cn-app-bar-padding` | `calc(var(--cn-grid) * 2)` | Padding of the app bar (16px) |
+| `--cn-app-bar-gap` | `calc(var(--cn-grid) * 2)` | Gap between elements in the app bar (16px) |
+| `--z-index-app-bar` | `2000` | Z-index for app bar positioning |
+
+## Color Tokens
+
+| Token | Description |
+|---|---|
+| `--cyan-app-bar-background-color` | Background color of the app bar |
+| `--cyan-app-bar-color` | Text color of the app bar |
+</article>
