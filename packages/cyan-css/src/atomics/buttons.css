@@ -8,7 +8,7 @@ a.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--cn-grid) / 4);
+  gap: var(--cn-grid);
 
   background: var(--background-button);
   color: var(--color-on-button);
@@ -45,17 +45,11 @@ a.button:active {
   background: var(--background-button-active);
 }
 
-button cn-loader:first-child,
-a.button cn-loader:first-child,
-button cn-icon:first-child,
-a.button cn-icon:first-child {
-  margin-top: 1px;
-  margin-left: -4px;
-}
-
-button cn-loader:first-child,
-a.button cn-loader:first-child {
-  margin-right: 4px;
+button cn-loader:first-child:not(:only-child),
+a.button cn-loader:first-child:not(:only-child),
+button cn-icon:first-child:not(:only-child),
+a.button cn-icon:first-child:not(:only-child) {
+  margin-left: calc(var(--cn-grid) * -1);
 }
 
 button cn-loader:only-child,
