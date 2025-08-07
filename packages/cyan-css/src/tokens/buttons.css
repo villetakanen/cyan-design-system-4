@@ -4,17 +4,61 @@
   --cn-button-size: calc(38 / 16 * 1rem);
   --cn-navigation-button-size: calc(var(--cn-grid) * 7); /* 56px */
   --cn-navigation-icon-size: calc(var(--cn-grid) * 6); /* 48px */
+  --cn-line-height-button: calc(38 / 16 * 1rem);
 
-  /* Button background colors for hover and active states */
-  --background-button-text: transparent;
+  /* Button typography tokens */
+  --cn-font-family-ui: var(--cn-font-family);
+  --cn-font-weight-ui: 400;
+  --cn-font-size-ui: var(--cn-text-font-size);
+  --cn-letter-spacing-ui: normal;
+
+  /* Button background colors */
   --background-button: light-dark(
     var(--color-elevation-1),
     var(--color-elevation-1)
   );
+  --background-button-hover: light-dark(
+    var(--color-elevation-2),
+    var(--color-elevation-2)
+  );
+  --background-button-active: light-dark(
+    var(--color-elevation-3),
+    var(--color-elevation-3)
+  );
+  --background-button-disabled: light-dark(
+    var(--chroma-surface-30),
+    var(--chroma-surface-80)
+  );
+
+  /* Button text colors */
+  --color-on-button: light-dark(
+    var(--color-on-surface),
+    var(--color-on-surface)
+  );
+  --color-button-disabled: light-dark(
+    var(--chroma-surface-50),
+    var(--chroma-surface-60)
+  );
+
+  /* Button text variant colors */
+  --background-button-text: transparent;
   --background-button-text-hover: light-dark(
     color-mix(in hsl, var(--chroma-surface-50), transparent 90%),
     color-mix(in hsl, var(--chroma-surface-50), transparent 80%)
   );
+  --background-button-text-active: light-dark(
+    color-mix(in hsl, var(--chroma-surface-50), transparent 85%),
+    color-mix(in hsl, var(--chroma-surface-50), transparent 75%)
+  );
+
+  /* Button CTA variant colors */
+  --color-button-cta: light-dark(
+    var(--chroma-primary-60),
+    var(--chroma-primary-70)
+  );
+
+  /* Button shadows */
+  --shadow-button-hover: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   /* Navigation icon backdrop color */
   --cn-navigation-icon-backdrop-color: light-dark(
