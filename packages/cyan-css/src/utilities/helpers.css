@@ -1,0 +1,14 @@
+/* A set of helper utilities */
+
+.no-text-wrap {
+  word-wrap: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-none li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

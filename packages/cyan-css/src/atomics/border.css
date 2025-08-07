@@ -1,0 +1,7 @@
+.border-l {
+  border-left: var(--color-border) solid 1px;
+  padding-left: var(--cn-gap);
+}
+.border-between:not(:first-child) {
+  border-top: var(--color-border) solid 1px;
+}

@@ -1,0 +1,40 @@
+---
+title: 'Flexbox'
+noun: 'layout'
+topic: 'Atomics'
+---
+
+<div class="column-l">
+
+## Atomic Flexbox CSS Utilities
+
+The following atomic CSS classes are provided by the Cyan Design System for flexbox layouts. Use these classes to quickly compose flexible layouts with minimal custom CSS.
+
+### Flex Container
+- `.flex`: Sets `display: flex`, applies `gap`, and enables wrapping.
+- `.flex-no-wrap`: Prevents flex wrapping (`flex-wrap: nowrap`).
+- `.flex-col`: Sets flex direction to column (`flex-direction: column`).
+
+### Flex Items
+- `.flex > *`: Makes children flexible (`flex: 1 1 auto`).
+- `.flex-none`: Prevents item from growing or shrinking (`flex: none`).
+- `.grow`: Forces item to grow (`flex-grow: 1 !important`).
+- `.shrink`: Allows item to shrink (`flex-shrink: 1 !important`).
+
+### Alignment
+- `.flex.items-center`: Centers items both vertically and horizontally (`align-items: center; justify-content: center`).
+- `.flex.items-center > *`: Prevents children from growing (`flex-grow: 0`).
+
+---
+
+### Example Usage
+
+```html
+<div class="flex items-center">
+  <div class="flex-none">Fixed</div>
+  <div class="grow">Flexible</div>
+  <div class="shrink">Shrinkable</div>
+</div>
+```
+
+</div>
