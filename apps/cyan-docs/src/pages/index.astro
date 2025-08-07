@@ -17,6 +17,37 @@ import { version } from '../../../../package.json';
   
     
   <section>
+    <h2>Button Examples</h2>
+    
+    <h3>Basic Buttons</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+      <button>Default Button</button>
+      <button disabled>Disabled Button</button>
+      <a href="#" class="button">Link Button</a>
+    </div>
+    
+    <h3>Text Buttons</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+      <button class="text">Text Button</button>
+      <button class="text" disabled>Disabled Text</button>
+      <a href="#" class="button text">Text Link Button</a>
+    </div>
+    
+    <h3>CTA Buttons</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+      <button class="cta">Call to Action</button>
+      <a href="#" class="button cta">CTA Link Button</a>
+    </div>
+    
+    <h3>Buttons with Icons</h3>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+      <button><cn-icon noun="home"></cn-icon> Home</button>
+      <button class="text"><cn-icon noun="edit"></cn-icon> Edit</button>
+      <button class="cta"><cn-icon noun="save"></cn-icon> Save</button>
+    </div>
+  </section>
+
+  <section>
     <h2>Icon examples</h2>
     <cn-icon></cn-icon>
     <cn-icon noun="fox"></cn-icon>

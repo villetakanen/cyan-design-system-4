@@ -1,0 +1,108 @@
+/* Button atomic styles
+ * Basic button component styles using semantic tokens
+ */
+
+button,
+a.button {
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--cn-grid) / 4);
+
+  background: var(--background-button);
+  color: var(--color-on-button);
+
+  /* Font and text */
+  font-family: var(--cn-font-family-ui);
+  font-weight: var(--cn-font-weight-ui);
+  font-size: var(--cn-font-size-ui);
+  line-height: var(--cn-line-height-button, calc(38 / 16 * 1rem));
+  /* 38px */
+  letter-spacing: var(--cn-letter-spacing-ui);
+
+  border-radius: calc(19 / 16 * 1rem);
+  border: none;
+  height: var(--cn-line-height-button, calc(38 / 16 * 1rem));
+  margin: 5px 0;
+  padding: 0 16px;
+  transition: all 0.22s ease-in-out;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+button:hover,
+a.button:hover {
+  background: var(--background-button-hover);
+  box-shadow: var(--shadow-button-hover);
+}
+
+button:active,
+a.button:active {
+  background: var(--background-button-active);
+}
+
+button cn-loader:first-child,
+a.button cn-loader:first-child,
+button cn-icon:first-child,
+a.button cn-icon:first-child {
+  margin-top: 1px;
+  margin-left: -4px;
+}
+
+button cn-loader:first-child,
+a.button cn-loader:first-child {
+  margin-right: 4px;
+}
+
+button cn-loader:only-child,
+a.button cn-loader:only-child,
+button cn-icon:only-child,
+a.button cn-icon:only-child {
+  margin-top: 1px;
+  margin-right: -9px;
+  margin-left: -9px;
+}
+
+button:disabled,
+a.button:disabled {
+  background: var(--background-button-disabled);
+  color: var(--color-button-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Text button variant */
+button.text,
+a.button.text {
+  background: var(--background-button-text);
+}
+
+button.text:hover,
+a.button.text:hover {
+  background: var(--background-button-text-hover);
+}
+
+button.text:active,
+a.button.text:active {
+  background: var(--background-button-text-active);
+}
+
+/* CTA button variant */
+button.cta,
+a.button.cta {
+  background: linear-gradient(
+    -37deg,
+    var(--color-button-cta) 0%,
+    var(--color-alert) 100%
+  );
+}
+
+button.cta:hover,
+a.button.cta:hover {
+  background: var(--color-button-cta);
+}
