@@ -5,6 +5,7 @@
 @import url("./pre.css");
 @import url("./lists.css");
 @import url("./blockquote.css");
+@import url("./figure.css");
 
 /* App Components */
 @import url("./rail.css");
