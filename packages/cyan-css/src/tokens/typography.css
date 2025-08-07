@@ -28,7 +28,7 @@
   /* Typography token aliases for consistent component usage */
   --cn-font-family-text: var(--cn-font-family);
   --cn-font-family-headings: var(--cn-font-family-headings);
-  
+
   --cn-font-size-text: var(--cn-text-font-size);
   --cn-line-height-text: var(--cn-text-line-height);
   --cn-font-weight-text: 400;
