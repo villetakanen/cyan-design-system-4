@@ -1,9 +1,32 @@
----
+--- 
 import { getCollection } from 'astro:content';
 import CollectionTraySection from '@components/base/CollectionTraySection.astro';
 import Page from '@layouts/Page.astro';
 
 const posts = await getCollection('styles');
+
+type Post = {
+  id: string;
+  data: {
+    title: string;
+    topic?: string;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+};
+
+const topics = posts.reduce(
+  (acc, post) => {
+    const typedPost = post as Post;
+    const topic = typedPost.data.topic || 'main';
+    if (!acc[topic]) {
+      acc[topic] = [];
+    }
+    acc[topic].push(typedPost);
+    return acc;
+  },
+  {} as Record<string, Post[]>,
+);
 ---
 <Page tray>
   <div class="content-columns">
@@ -11,11 +34,16 @@ const posts = await getCollection('styles');
       <h1>Styles</h1>
       <p>Here you can find all the style guides and examples for base HTML elements and utility classes in the Cyan Design System.</p>
 
-      <ul>
-        {posts.map(post => (
-          <li><a href={`/styles/${post.id}`}>{post.data.title}</a></li>
-        ))}
-      </ul>
+      {Object.entries(topics).map(([topic, posts]) => (
+        <>
+          {topic !== 'main' && <h2>{topic}</h2>}
+          <ul>
+            {posts.map(post => (
+              <li><a href={`/styles/${post.id}`}>{post.data.title}</a></li>
+            ))}
+          </ul>
+        </>
+      ))}
     </article>
   </div>
   
