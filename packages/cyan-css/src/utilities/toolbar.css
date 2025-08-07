@@ -1,0 +1,61 @@
+/*
+ * Toolbar utility classes
+ * 
+ * Provides flexible layout utilities for creating toolbars and action bars
+ * that maintain consistent spacing and alignment across the design system.
+ */
+
+.toolbar {
+  padding: var(--cn-grid);
+  margin-top: var(--cn-grid);
+  margin-bottom: var(--cn-grid);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--cn-gap);
+}
+
+.toolbar:last-child {
+  margin-bottom: 0;
+}
+
+.toolbar:first-child {
+  margin-top: 0;
+}
+
+.flex.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar h4,
+.toolbar p {
+  margin: 0;
+}
+
+fieldset > .toolbar {
+  margin-left: 0;
+  padding-left: 0;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+fieldset > .toolbar:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.toolbar h1,
+.toolbar h2,
+.toolbar h3,
+.toolbar h4,
+.toolbar p {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+cn-bubble .toolbar {
+  margin: 0;
+  padding: 0;
+}
