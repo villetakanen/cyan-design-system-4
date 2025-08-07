@@ -116,7 +116,7 @@ export class CnCard extends LitElement {
     :host .cardContent {
       padding: 0;
       margin: calc(-1 * var(--cn-grid)) calc(-1 * var(--cn-gap));
-      margin-bottom: 0;
+      margin-bottom: var(--cn-gap);
       border-radius: var(--cn-border-radius-large, 16px);
       max-height: 100cqw;
       overflow: hidden;
@@ -159,10 +159,10 @@ export class CnCard extends LitElement {
       margin: 0;
       padding: 0;
       font-family: var(--cn-font-family-headings);
-      font-weight: var(--cn-font-weight-headline-card);
-      font-size: var(--cn-font-size-headline-card);
-      line-height: var(--cn-line-height-headline-card);
-      letter-spacing: var(--cn-letter-spacing-headline-card);
+      font-weight: var(--cn-heading-4-font-weight);
+      font-size: var(--cn-heading-4-font-size);
+      line-height: var(--cn-heading-4-line-height);
+      letter-spacing: normal;
       color: var(--color-heading-2, cyan);
 
       display: -webkit-box;

@@ -12,12 +12,6 @@
 
   /* Card border radius */
   --cn-border-radius-card: var(--cn-border-radius-large, 16px);
-
-  /* Card typography */
-  --cn-font-weight-headline-card: 400;
-  --cn-font-size-headline-card: var(--cn-font-size-heading-4);
-  --cn-line-height-headline-card: var(--cn-line-height-heading-4);
-  --cn-letter-spacing-headline-card: var(--cn-letter-spacing-heading-4);
 }
 
 /* Card elevation variations */
@@ -44,11 +38,6 @@ cn-card {
     var(--chroma-surface-60),
     var(--chroma-surface-40)
   );
-
-  --cn-font-weight-headline-card: 400;
-  --cn-font-size-headline-card: var(--cn-font-size-heading-4);
-  --cn-line-height-headline-card: var(--cn-line-height-heading-4);
-  --cn-letter-spacing-headline-card: var(--cn-letter-spacing-heading-4);
 }
 
 cn-card[elevation="1"] {
