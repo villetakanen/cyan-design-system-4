@@ -32,29 +32,35 @@
 
   /* Button text colors */
   --color-on-button: light-dark(
-    var(--color-on-surface),
-    var(--color-on-surface)
+    var(--chroma-surface-90),
+    var(--chroma-surface-10)
   );
   --color-button-disabled: light-dark(
     var(--chroma-surface-50),
     var(--chroma-surface-60)
   );
 
-  /* Button text variant colors */
+  /* Button text variant colors - migrated from 3.0.0 */
+  --color-button-text: light-dark(
+    color-mix(in hsl, var(--chroma-primary-70), transparent 89%),
+    color-mix(in hsl, var(--chroma-surface-10), transparent 94.5%)
+  );
+  --color-button-text-hover: light-dark(
+    color-mix(in hsl, var(--chroma-primary-70), transparent 78%),
+    color-mix(in hsl, var(--chroma-surface-10), transparent 89%)
+  );
+  --color-button-text-active: light-dark(
+    color-mix(in hsl, var(--chroma-primary-70), transparent 67%),
+    color-mix(in hsl, var(--chroma-surface-80), var(--chroma-surface-70) 50%)
+  );
   --background-button-text: transparent;
-  --background-button-text-hover: light-dark(
-    color-mix(in hsl, var(--chroma-surface-50), transparent 90%),
-    color-mix(in hsl, var(--chroma-surface-50), transparent 80%)
-  );
-  --background-button-text-active: light-dark(
-    color-mix(in hsl, var(--chroma-surface-50), transparent 85%),
-    color-mix(in hsl, var(--chroma-surface-50), transparent 75%)
-  );
+  --background-button-text-hover: var(--color-button-text-hover);
+  --background-button-text-active: var(--color-button-text-active);
 
-  /* Button CTA variant colors */
+  /* Button CTA variant colors - migrated from 3.0.0 */
   --color-button-cta: light-dark(
-    var(--chroma-primary-60),
-    var(--chroma-primary-70)
+    var(--chroma-surface-80),
+    var(--chroma-surface-80)
   );
 
   /* Button shadows */

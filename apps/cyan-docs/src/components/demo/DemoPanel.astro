@@ -1,0 +1,40 @@
+---
+// DemoPanel component for themed demo sections
+export interface Props {
+  theme: 'light' | 'dark';
+  title: string;
+}
+
+const { theme, title } = Astro.props;
+---
+
+<div class={`demo-panel ${theme}`}>
+  <h3>{title}</h3>
+  <slot />
+</div>
+
+<style>
+  .demo-panel {
+    border: 1px solid var(--color-primary-30);
+    border-radius: var(--cn-border-radius);
+    padding: 1rem;
+    background: var(--color-surface-1);
+  }
+
+  .demo-panel.light {
+    color-scheme: light;
+  }
+
+  .demo-panel.dark {
+    color-scheme: dark;
+    background: var(--color-surface-dark-1, #1a1a1a);
+    color: var(--color-on-surface-dark, #ffffff);
+  }
+
+  .demo-panel h3 {
+    margin: 0 0 1rem 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+</style>

@@ -67,6 +67,13 @@ a.button cn-icon:only-child {
   margin-left: -9px;
 }
 
+/* Force all cn-icon elements inside buttons to use small size */
+button cn-icon,
+a.button cn-icon {
+  height: var(--cn-icon-size-small) !important;
+  width: var(--cn-icon-size-small) !important;
+}
+
 button:disabled,
 a.button:disabled {
   background: var(--background-button-disabled);
@@ -80,16 +87,19 @@ a.button:disabled {
 button.text,
 a.button.text {
   background: var(--background-button-text);
+  color: var(--color-button-text);
 }
 
 button.text:hover,
 a.button.text:hover {
   background: var(--background-button-text-hover);
+  color: var(--color-button-text-hover);
 }
 
 button.text:active,
 a.button.text:active {
   background: var(--background-button-text-active);
+  color: var(--color-button-text-active);
 }
 
 /* CTA button variant */

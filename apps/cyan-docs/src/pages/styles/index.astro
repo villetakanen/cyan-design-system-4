@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import CollectionTraySection from '@components/base/CollectionTraySection.astro';
+import Page from '@layouts/Page.astro';
+
+const posts = await getCollection('styles');
+---
+<Page tray>
+  <div class="content-columns">
+    <article class="surface">
+      <h1>Styles</h1>
+      <p>Here you can find all the style guides and examples for base HTML elements and utility classes in the Cyan Design System.</p>
+
+      <ul>
+        {posts.map(post => (
+          <li><a href={`/styles/${post.id}`}>{post.data.title}</a></li>
+        ))}
+      </ul>
+    </article>
+  </div>
+  
+  <CollectionTraySection slot="tray" collection="styles"/>
+</Page>

@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 
 export interface Props {
-  collection?: 'customElements' | 'application';
+  collection?: 'customElements' | 'application' | 'styles';
 }
 
 const { collection = 'customElements' } = Astro.props;
@@ -15,10 +15,21 @@ items.sort((a, b) => {
 });
 
 const collectionSlug =
-  collection === 'customElements' ? 'custom-elements' : 'application';
+  collection === 'customElements'
+    ? 'custom-elements'
+    : collection === 'application'
+      ? 'application'
+      : 'styles';
+
+const collectionTitle =
+  collection === 'customElements'
+    ? 'Custom Elements'
+    : collection === 'application'
+      ? 'Application'
+      : 'Styles';
 ---
 <section>
-  <h2>{collection === 'customElements' ? 'Custom Elements' : 'Application'}</h2>
+  <h2>{collectionTitle}</h2>
   <ul>
     {items.map(item => (
       <li>

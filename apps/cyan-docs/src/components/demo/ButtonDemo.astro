@@ -1,0 +1,56 @@
+---
+// ButtonDemo component for showcasing different button styles
+---
+
+<div class="flex flex-col justify-center align-center">
+  <div>
+    <button>
+      <cn-icon noun="avatar" />
+    </button>
+    <button>Button</button>
+    <button>
+      <cn-icon noun="avatar" />
+      <span>Button</span>
+    </button>
+  </div>
+  <div>
+    <button disabled>Disabled</button>
+    <button class="text">Text</button>
+    <button disabled>
+      <cn-icon noun="send"></cn-icon>
+      <span>Loading...</span>
+    </button>
+  </div>
+  <div>
+    <button>
+      <cn-icon noun="avatar" large />
+      <span>Large Icon (forced small)</span>
+    </button>
+    <button class="text">
+      <cn-icon noun="edit" xlarge />
+      <span>XLarge Icon (forced small)</span>
+    </button>
+  </div>
+  <div class="secondary p-2" style="width: 100%">
+    <button>Secondary</button>
+    <button class="text">Text</button>
+    <button class="cta">
+      <cn-icon noun="send"></cn-icon>
+    </button>
+  </div>
+</div>
+
+<style>
+  div > div {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  div > div:last-child {
+    justify-content: flex-start;
+  }
+</style>

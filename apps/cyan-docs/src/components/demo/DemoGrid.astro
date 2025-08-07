@@ -1,0 +1,22 @@
+---
+// DemoGrid component for light/dark theme demonstrations
+---
+
+<div class="demo-grid">
+  <slot />
+</div>
+
+<style>
+  .demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .demo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

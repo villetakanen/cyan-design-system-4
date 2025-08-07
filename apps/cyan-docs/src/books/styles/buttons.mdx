@@ -1,0 +1,139 @@
+---
+title: Buttons
+noun: components
+---
+import ButtonDemo from '../../components/demo/ButtonDemo.astro'
+import DemoGrid from '../../components/demo/DemoGrid.astro'
+import DemoPanel from '../../components/demo/DemoPanel.astro'
+
+<article class="column-l">
+
+# Buttons
+
+Cyan Design System provides styling for `<button>` elements and `<a>` elements that are used as buttons. The styling is based on modern design principles and provides consistent interaction patterns across the application.
+
+Buttons are designed to be accessible and to provide a consistent look and feel across the app. They conform to touch targets and are designed to be used with the `:focus-visible` pseudo-class to provide a consistent focus style across the app.
+
+## Demo
+
+<DemoGrid>
+  <DemoPanel theme="light" title="LIGHT">
+    <ButtonDemo />
+  </DemoPanel>
+  <DemoPanel theme="dark" title="DARK">
+    <ButtonDemo />
+  </DemoPanel>
+</DemoGrid>
+
+## Stretched Button
+
+<div style="display: flex; flex-direction: column; width: 100%;">
+  <button>Stretched</button>
+</div>
+
+## Icon Sizing Override
+
+Icons inside buttons are automatically sized as **small** (24px) regardless of any size attributes specified on the icon. This ensures consistent button appearance and proper touch targets.
+
+```html
+<!-- These icons will all be rendered at small size (24px) inside buttons -->
+<button><cn-icon noun="home" large /></button>
+<button><cn-icon noun="edit" xlarge /></button>
+<button><cn-icon noun="save" /></button>
+```
+
+**Outside buttons**, icons respect their size attributes:
+<div style="display: flex; gap: 1rem; align-items: center; margin: 1rem 0;">
+  <cn-icon noun="home" />
+  <cn-icon noun="home" large />
+  <cn-icon noun="home" xlarge />
+</div>
+
+**Inside buttons**, all icons are forced to small size:
+<div style="display: flex; gap: 1rem; align-items: center; margin: 1rem 0;">
+  <button><cn-icon noun="home" /></button>
+  <button><cn-icon noun="home" large /></button>
+  <button><cn-icon noun="home" xlarge /></button>
+</div>
+
+## Button Types
+
+### Icon-only Buttons
+Use for compact interfaces where space is limited.
+
+```html
+<button>
+  <cn-icon noun="avatar" />
+</button>
+```
+
+### Standard Buttons
+The default button style for most interactions.
+
+```html
+<button>Button</button>
+```
+
+### Buttons with Icons and Text
+Combine icons with text labels for enhanced usability.
+
+```html
+<button>
+  <cn-icon noun="avatar" />
+  <span>Button</span>
+</button>
+```
+
+### Text Buttons
+Minimal style for secondary actions.
+
+```html
+<button class="text">Text</button>
+```
+
+### Call-to-Action Buttons
+Prominent styling for primary actions.
+
+```html
+<button class="cta">
+  <cn-icon noun="send"></cn-icon>
+</button>
+```
+
+### Disabled State
+All button types support disabled state.
+
+```html
+<button disabled>Disabled</button>
+```
+
+### Loading State
+Show progress for asynchronous actions.
+
+```html
+<button disabled>
+  <cn-icon noun="send"></cn-icon>
+  <span>Loading...</span>
+</button>
+```
+
+## Link Buttons
+
+Any `<a>` element can be styled as a button using the `.button` class:
+
+```html
+<a href="#" class="button">Link Button</a>
+<a href="#" class="button text">Text Link Button</a>
+<a href="#" class="button cta">CTA Link Button</a>
+```
+
+## Button Guidelines
+
+- Use the default button style for standard actions
+- Use text buttons for secondary or less prominent actions
+- Use CTA buttons sparingly for the most important actions on a page
+- Consider accessibility when choosing button styles and colors
+- Ensure sufficient contrast and touch target sizes for mobile devices
+- Use loading states for asynchronous operations to provide user feedback
+
+</article>
