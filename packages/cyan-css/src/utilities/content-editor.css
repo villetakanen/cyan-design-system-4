@@ -1,0 +1,51 @@
+/**
+ * Editor content container utility
+ *
+ * Provides a full-viewport editor area that accounts for the App Bar height,
+ * uses container queries for responsive width, and plays nicely with the
+ * existing toolbar utility.
+ */
+
+.content-editor {
+  /* Fill available viewport height but account for the app bar */
+  height: calc(100dvh - var(--cn-app-bar-height));
+
+  /* Take the full width of the nearest container (usually <main>) */
+  width: 100cqw;
+
+  /* Spacing aligns with base grid */
+  padding: var(--cn-grid);
+
+  /* Establish a named container for potential nested queries */
+  container: editor-content / inline-size;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Toolbars inside the editor should align flush with the container */
+.content-editor .toolbar {
+  padding: 0;
+  flex-shrink: 0;
+}
+
+/* Allow the editor area to grow and consume remaining vertical space */
+.content-editor > cn-editor {
+  flex-grow: 1;
+  /* Alternatively, flex: 1; also works (implies flex-shrink: 1, flex-basis: 0%) */
+  min-height: 0;
+}
+
+/*
+ * Responsive width behavior
+ *
+ * When the main content container grows beyond 621px, constrain the editor to
+ * a comfortable reading width while remaining centered.
+ */
+@container main-app-content (width > 621px) {
+  .content-editor {
+    width: min(100cqw, calc(120 * var(--cn-grid)));
+    margin: 0 auto;
+  }
+}
