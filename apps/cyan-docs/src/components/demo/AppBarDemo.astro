@@ -1,8 +1,9 @@
 ---
+const uniqueId = `app-bar-demo-${Math.random().toString(36).substring(2, 9)}`;
 ---
-<div id="app-bar-demo-container">
+<div id={`${uniqueId}-container`}>
   <cn-app-bar
-    id="app-bar-demo"
+    id={uniqueId}
     style="margin-left: 0 !important;"
     title="App Bar, with very very long name"
     noun="fox"
@@ -14,22 +15,22 @@
     
   <label>
     <span>Default</span>
-    <input type="radio" id="default-bar" name="bar-type" value="default" checked/>
+    <input type="radio" id={`${uniqueId}-default-bar`} name={`${uniqueId}-bar-type`} value="default" checked/>
   </label>
 
   <label>
     <span>Modal</span>
-    <input type="radio" id="modal-bar" name="bar-type" value="modal"/>
+    <input type="radio" id={`${uniqueId}-modal-bar`} name={`${uniqueId}-bar-type`} value="modal"/>
   </label>
 
   </fieldset>
 
 </div>
 
-<script is:inline>
-    const defaultBar = document.getElementById('default-bar');
-    const modalBar = document.getElementById('modal-bar');
-    const appBar = document.getElementById('app-bar-demo');
+<script define:vars={{ uniqueId }}>
+    const defaultBar = document.getElementById(`${uniqueId}-default-bar`);
+    const modalBar = document.getElementById(`${uniqueId}-modal-bar`);
+    const appBar = document.getElementById(uniqueId);
     
     defaultBar.addEventListener('change', () => {
         appBar.setAttribute('mode', 'undefined');
@@ -40,8 +41,8 @@
     });
 </script>
 
-<style>
-#app-bar-demo-container {
+<style define:vars={{ uniqueId }}>
+`#${uniqueId}-container` {
   margin-left: 0 !important;
 }
 </style>
