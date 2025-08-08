@@ -13,22 +13,13 @@
   --cn-letter-spacing-ui: normal;
 
   /* Button background colors */
-  --background-button: light-dark(
-    var(--color-elevation-1),
-    var(--color-elevation-1)
+  --background-button: linear-gradient(
+    120deg,
+    light-dark(var(--chroma-primary-50), var(--chroma-primary-90)),
+    light-dark(var(--chroma-surface-50), var(--chroma-surface-80))
   );
-  --background-button-hover: light-dark(
-    var(--color-elevation-2),
-    var(--color-elevation-2)
-  );
-  --background-button-active: light-dark(
-    var(--color-elevation-3),
-    var(--color-elevation-3)
-  );
-  --background-button-disabled: light-dark(
-    var(--chroma-surface-30),
-    var(--chroma-surface-80)
-  );
+
+  --background-button-disabled: transparent;
 
   /* Button text colors */
   --color-on-button: light-dark(
@@ -59,7 +50,7 @@
 
   /* Button CTA variant colors - migrated from 3.0.0 */
   --color-button-cta: light-dark(
-    var(--chroma-surface-80),
+    var(--color-on-notify),
     var(--chroma-surface-80)
   );
 

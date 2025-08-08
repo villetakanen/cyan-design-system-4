@@ -1,0 +1,63 @@
+---
+title: Editor Content Utility
+noun: editor
+---
+
+<article class="column-l surface elevation-1">
+  <h1>Editor Content Utility</h1>
+  <p>
+    A layout helper for full-height editor screens that adjusts for the App Bar,
+    aligns inner toolbars, and expands the editor area to fill remaining space.
+  </p>
+</article>
+
+<div class="content-columns">
+  <article class="surface elevation-2">
+    <h2>When to use</h2>
+    <p>
+      Use <code>.content-editor</code> to wrap a page-level editor experience (e.g., rich text,
+      code, or canvas) that should:
+    </p>
+    <ul>
+      <li>Fill the viewport height below the App Bar</li>
+      <li>Keep horizontal padding aligned to the design grid</li>
+      <li>Allow a toolbar to sit at the top and the editor area to grow</li>
+    </ul>
+  </article>
+  
+  <article class="surface elevation-2">
+    <h2>Behavior</h2>
+    <ul>
+      <li>
+        Height: <code>calc(100dvh - var(--cn-app-bar-height))</code>
+      </li>
+      <li>
+        Width: <code>100cqw</code> (container width). Constrains to
+        <code>min(100cqw, 120 * var(--cn-grid))</code> on wider screens.
+      </li>
+      <li>
+        Container: <code>editor-content / inline-size</code> for nested container queries
+      </li>
+      <li>
+        Layout: flex column; <code>.toolbar</code> doesn’t add extra padding inside; direct
+        <code>cn-editor</code> child grows to fill space
+      </li>
+    </ul>
+  </article>
+</div>
+
+<article class="surface elevation-3">
+  <h2>Example</h2>
+  <div class="content-editor surface elevation-1" style="height:auto">
+    <div class="toolbar">
+      <strong>Toolbar</strong>
+      <div class="flex" style="gap:var(--cn-gap)">
+        <button class="primary">Save</button>
+        <button>Preview</button>
+      </div>
+    </div>
+    <section style="flex:1; min-height:12rem; border:1px dashed var(--color-border); border-radius:var(--cn-border-radius-medium); display:grid; place-items:center;">
+      Editor area grows here
+    </section>
+  </div>
+</article>

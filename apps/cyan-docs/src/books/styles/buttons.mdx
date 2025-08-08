@@ -1,10 +1,9 @@
 ---
 title: Buttons
 noun: components
+topic: Core
 ---
 import ButtonDemo from '../../components/demo/ButtonDemo.astro'
-import DemoGrid from '../../components/demo/DemoGrid.astro'
-import DemoPanel from '../../components/demo/DemoPanel.astro'
 
 <article class="column-l">
 
@@ -16,14 +15,16 @@ Buttons are designed to be accessible and to provide a consistent look and feel 
 
 ## Demo
 
-<DemoGrid>
-  <DemoPanel theme="light" title="LIGHT">
+<div class="grid two-col">
+  <div class="dark surface">
+    <h4>Dark</h4>
     <ButtonDemo />
-  </DemoPanel>
-  <DemoPanel theme="dark" title="DARK">
+  </div>
+  <div class="light surface">
+    <h4>Light</h4>
     <ButtonDemo />
-  </DemoPanel>
-</DemoGrid>
+  </div>
+</div>
 
 ## Stretched Button
 

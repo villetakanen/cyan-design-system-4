@@ -24,6 +24,7 @@ const styles = defineCollection({
   schema: z.object({
     title: z.string(),
     noun: z.string().optional(),
+    topic: z.enum(['Core', 'Utils', 'Atomics']).optional(),
   }),
 });
 

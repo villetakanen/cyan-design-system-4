@@ -36,13 +36,15 @@ a.button {
 
 button:hover,
 a.button:hover {
-  background: var(--background-button-hover);
+  /*background: var(--background-button-hover);*/
+  filter: brightness(1.1);
   box-shadow: var(--shadow-button-hover);
 }
 
 button:active,
 a.button:active {
-  background: var(--background-button-active);
+  filter: brightness(0.8);
+  box-shadow: var(--shadow-button-hover);
 }
 
 button cn-loader:first-child:not(:only-child),
@@ -80,20 +82,8 @@ a.button:disabled {
 /* Text button variant */
 button.text,
 a.button.text {
-  background: var(--background-button-text);
-  color: var(--color-button-text);
-}
-
-button.text:hover,
-a.button.text:hover {
-  background: var(--background-button-text-hover);
-  color: var(--color-button-text-hover);
-}
-
-button.text:active,
-a.button.text:active {
-  background: var(--background-button-text-active);
-  color: var(--color-button-text-active);
+  background: var(--color-button-text);
+  color: var(--color-on-button-text);
 }
 
 /* CTA button variant */
@@ -102,11 +92,7 @@ a.button.cta {
   background: linear-gradient(
     -37deg,
     var(--color-button-cta) 0%,
-    var(--color-alert) 100%
+    var(--color-notify) 80%
   );
-}
-
-button.cta:hover,
-a.button.cta:hover {
-  background: var(--color-button-cta);
+  color: white;
 }

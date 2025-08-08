@@ -19,8 +19,11 @@
 
 .content-columns > * {
   width: 100cqw;
+  overflow: hidden;
 }
-
+.content-columns > * .grid {
+  max-width: 100%;
+}
 @container main-app-content (width > 760px) {
   .content-columns {
     flex-direction: row;

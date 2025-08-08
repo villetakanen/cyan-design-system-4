@@ -1,0 +1,83 @@
+---
+title: 'Forms'
+noun: 'layout'
+topic: 'Core'
+---
+<div class="column-l">
+# Forms
+
+We use native HTML forms and inputs where possible. This allows us to use the native
+browser validation and accessibility features.  
+
+## Form Elements
+
+### Label
+
+We support only implicit labels: the input has to be inside the label element. The styling should work with explicit labels,
+but we dont test for it.
+
+#### Example
+
+import LabelDemo from '@components/demo/LabelDemo.astro';
+
+```html
+<label>
+  Label
+  <input type="text" />
+</label>
+```
+
+Renders as:
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <LabelDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <LabelDemo />
+  </div>
+</div>
+
+## Input (Text)
+
+We support the native HTML input element, and its siblins like email and password. 
+
+### Example
+
+import InputDemo from '@components/demo/InputDemo.astro';
+
+```html
+<label>
+  Text
+  <input type="text" />
+</label>
+<label>
+  Email
+  <input type="email" />
+</label>
+<label>
+  Password
+  <input type="password" />
+</label>
+```
+
+Renders as:
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <InputDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <InputDemo />
+  </div>
+</div>
+
+</div>
+
+import FormMenu from '@components/demo/FormMenu.astro';
+
+<FormMenu />
