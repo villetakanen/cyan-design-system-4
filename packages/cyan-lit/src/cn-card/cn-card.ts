@@ -161,7 +161,9 @@ export class CnCard extends LitElement {
       font-family: var(--cn-font-family-headings);
       font-weight: var(--cn-heading-4-font-weight);
       font-size: var(--cn-heading-4-font-size);
-      line-height: var(--cn-heading-4-line-height);
+      /* We use "downscaled" h3 as the size, that being the same as h4 size,
+       * however we need to keep to h3 line height for consistency of spacing */
+      line-height: var(--cn-heading-3-line-height);
       letter-spacing: normal;
       color: var(--color-heading-2, cyan);
 

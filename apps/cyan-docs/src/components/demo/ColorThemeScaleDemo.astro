@@ -4,30 +4,40 @@ interface Props {
 }
 const { scale } = Astro.props;
 ---
-<div class="flex">
-  <p>{scale}</p>
+<div class="grid color-grid">
+  <p class="legend">{scale}</p>
+  <div class="box" style={`background-color: var(--chroma-${scale}-99);`}>99</div>
   <div class="box" style={`background-color: var(--chroma-${scale}-95);`}>95</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-90);`}>90</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-80);`}>80</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-70);`}>70</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-60);`}>60</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-50);`}>50</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-40);`}>40</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-30);`}>30</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-20);`}>20</div>
-    <div class="box" style={`background-color: var(--chroma-${scale}-10);`}>10</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-90);`}>90</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-80);`}>80</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-70);`}>70</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-60);`}>60</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-50);`}>50</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-40);`}>40</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-30);`}>30</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-20);`}>20</div>
+  <div class="box" style={`background-color: var(--chroma-${scale}-10);`}>10</div>
 </div>
 
 <style>
-  .box {
-    width: calc(var(--cn-line) * 2); 
-    height: calc(var(--cn-line) * 2); 
-    aspect-ratio: 1;
-    border-radius: 0.25rem;
-    flex-grow: 0;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.box {
+  width: calc(var(--cn-line) * 2); 
+  height: calc(var(--cn-line) * 2); 
+  aspect-ratio: 1;
+  border-radius: 0.25rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.legend {
+  grid-column: span 12;
+  text-align: center;
+  font-weight: bold;
+}
+.color-grid {
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--cn-grid);
+}
 </style>
