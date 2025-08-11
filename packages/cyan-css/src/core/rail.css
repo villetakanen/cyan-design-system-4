@@ -1,6 +1,54 @@
 nav.rail {
-  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: var(--cn-height-rail);
+  width: 100dvw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background: color-mix(in hsl, var(--color-background), transparent 11%);
+  padding-top: calc(var(--cn-grid) / 2);
+  z-index: var(--z-index-rail, 2000);
+  box-shadow: 0 0 var(--cn-line) var(--color-shadow);
 }
+
+/*
+nav#bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100dvw;
+  display: flex;
+  margin: 0;
+  padding: calc(var(--cn-grid) / 2) var(--cn-gap);
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+  height: calc(9 * var(--cn-grid));
+  background: var(--background-mobile-nav-bar);
+  z-index: var(--z-index-bar);
+}
+body:has(#fab-tray) nav#bar {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 76px) 0,
+    calc(100% - 64px) 8px,
+    calc(100% - 24px) 8px,
+    calc(100% - 12px) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+@media screen and (min-width: 621px) {
+  nav#bar {
+    display: none;
+  }
+}
+
+ */
 
 body:has(nav.rail) cn-app-bar {
   /* Add margin to the app bar to make space for the rail */
@@ -16,8 +64,10 @@ body:has(nav.rail) cn-app-bar {
   }
 
   nav.rail {
+    background: none;
     display: flex;
-    z-index: var(--z-index-rail, 2000);
+    justify-content: flex-start;
+    box-shadow: none;
     flex-direction: column;
     position: fixed;
     top: 0;

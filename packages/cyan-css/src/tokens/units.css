@@ -26,5 +26,6 @@
   --cn-navigation-icon-label-height: calc(var(--cn-grid) * 2); /* 16px */
 
   --cn-width-rail: calc(var(--cn-grid) * 10); /* 80px */
+  --cn-height-rail: calc(var(--cn-grid) * 9); /* 72px */
   --cn-width-tray: calc(var(--cn-grid) * 42); /* 160px */
 }
