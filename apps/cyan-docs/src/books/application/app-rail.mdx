@@ -1,0 +1,74 @@
+---
+title: 'App Rail'
+noun: 'layout'
+---
+<article class="surface">
+# App Rail
+
+App Rail is the primary navigation container for the application. It is identified by the `nav#rail` selector.
+
+> ## BREAKING CHANGE 
+>
+> We no longer provide a separate container for mobile (bar) and desktop (rail) primary navigation. Primary navigation container of 4.0.0 and beyond is `nav#rail`, and it will adjust size and position in relation to the viewport.
+>
+> Items available only on mobile or desktop can be conditionally rendered based on the viewport size by using the atomic CSS classes `.sm-hidden`, `.md-hidden`, and `.lg-hidden`.
+
+## Layout and Spacing
+
+The following CSS variables are available for customizing the layout and spacing of the app rail.
+
+| Variable | Default value | Description |
+|---|---|---|
+| `--cn-width-rail` | `calc(var(--cn-grid) * 10)` (80px) | The width of the rail. |
+| `--cn-margin-for-rail` | `var(--cn-width-rail)` | The margin applied to `main` and `cn-app-bar` to make space for the rail. |
+| `--cn-padding-top-rail` | `8px` | The padding at the top of the rail. |
+| `z-index-rail` | `2000` | The z-index of the rail. |
+
+</article>
+
+
+<article class="surface">
+
+## Examples
+
+The `div`'s below are styled with the same CSS styling that is applied to the global nav#rail in desktop (vertical) and mobile (horizontal) views, respectively.
+
+<div class="flex">
+
+<nav class="debug flex-none" 
+  style="
+    display: flex;
+    flex-direction: column;
+    width: var(--cn-width-rail);
+    gap: var(--cn-gap, 16px);
+    align-items: center;
+    padding-bottom: var(--cn-gap, 16px);
+    padding-top: var(--cn-padding-top-rail, 8px);">
+  <a href="#">
+    <cn-navigation-icon noun="mekanismi"></cn-navigation-icon>
+  </a>
+  <a href="#">
+    <cn-navigation-icon noun="tools" label="tools"></cn-navigation-icon>
+  </a>
+</nav>
+
+<nav class="debug flex-none" 
+  style="
+    display: flex;
+    flex-direction: row;
+    height: var(--cn-width-rail);
+    gap: var(--cn-gap, 16px);
+    align-items: center;
+    padding-bottom: var(--cn-gap, 16px);
+    padding-top: var(--cn-padding-top-rail, 8px);">
+  <a href="#">
+    <cn-navigation-icon noun="mekanismi"></cn-navigation-icon>
+  </a>
+  <a href="#">
+    <cn-navigation-icon noun="tools" label="tools"></cn-navigation-icon>
+  </a>
+</nav>
+
+</div>
+
+</article>
