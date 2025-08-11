@@ -1,0 +1,47 @@
+<button id="setTheme">Demo theme switch</button>
+
+<script is:inline>
+
+// Set the theme at the root element
+const r = document.querySelector(':root');
+
+const themeLnL = [
+  "#111", // 95
+  "#222", // 90
+  "#444", // 80
+  "#666", // 70
+  "#888", // 60
+  "#aaa", // 50
+  "#ccc", // 40
+  "#ddd", // 30
+  "#eee", // 20
+  "#fff", // 10
+]
+
+const setTheme = document.getElementById('setTheme');
+
+setTheme.addEventListener('click', setThemeLnL);
+
+// Create a function for setting a theme
+function setThemeLnL() {
+  console.log('Setting theme...');
+
+    // Check if the root element exists
+    if (!r) {
+      console.error('Root element not found');
+      return;
+    }
+
+    // Set the theme variables
+    r.style.setProperty('--chroma-surface-95', themeLnL[0]);
+    r.style.setProperty('--chroma-surface-90', themeLnL[1]);
+    r.style.setProperty('--chroma-surface-80', themeLnL[2]);
+    r.style.setProperty('--chroma-surface-70', themeLnL[3]);
+    r.style.setProperty('--chroma-surface-60', themeLnL[4]);
+    r.style.setProperty('--chroma-surface-50', themeLnL[5]);
+    r.style.setProperty('--chroma-surface-40', themeLnL[6]);
+    r.style.setProperty('--chroma-surface-30', themeLnL[7]);
+    r.style.setProperty('--chroma-surface-20', themeLnL[8]);
+    r.style.setProperty('--chroma-surface-10', themeLnL[9]);
+}
+</script>

@@ -18,6 +18,22 @@ The type scale is generated using https://typescale.com/ with "Major third" saca
 is then adjusted to fit the the design system and units used in the design system (this might cause some _intentional_
 rounding discrepancies between the scale and the actual font sizes used in the design system).
 
+  <div style="display: grid; grid-template-columns: 1fr 1fr;">
+    <h1 class="m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)"> Heading 1</h1>
+      <div class="text-h1 m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)">.text-h1 class</div>
+      <h2 class="m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">Heading 2</h2>
+      <div class="text-h2 m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">.text-h2 class</div>
+      <h3 class="m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)"> Heading 3</h3>
+      <div class="text-h3 m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)">.text-h3 class</div>
+      <h4 class="m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)"> Heading 4</h4>
+      <div class="text-h4 m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)">.text-h4 class</div>
+      <h5 class="m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)"> (Heading 5)</h5>
+      <div class="text-h5 m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)">.text-h5 class</div>
+      <div class="text-small m-0" style="border-left: 4px solid var(--chroma-surface-60); padding-left: var(--cn-grid)">.text-small class</div>
+      <div></div>
+    </div>
+
+
 ### Responsive Behavior
 
 On mobile screens (620px and below), both HTML headings and their corresponding utility classes automatically scale down by one level to maintain readability and hierarchy:
@@ -45,21 +61,7 @@ Instead of relying on downscaled helpers, use explicit heading-level classes to 
 | `.text-h5` | Applies H5 styling to any element | When you need H5 visual weight without semantic H5 |
 | `.text-small` | Smaller text size | For captions, footnotes, or secondary information |
 
-  <h3 class="text-caption pb-1">Type Scale</h3>
-  <div style="display: grid; grid-template-columns: 1fr 1fr;">
-    <h1 class="m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)"> Heading 1</h1>
-      <div class="text-h1 m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)">.text-h1 class</div>
-      <h2 class="m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">Heading 2</h2>
-      <div class="text-h2 m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">.text-h2 class</div>
-      <h3 class="m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)"> Heading 3</h3>
-      <div class="text-h3 m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)">.text-h3 class</div>
-      <h4 class="m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)"> Heading 4</h4>
-      <div class="text-h4 m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)">.text-h4 class</div>
-      <h5 class="m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)"> (Heading 5)</h5>
-      <div class="text-h5 m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)">.text-h5 class</div>
-      <div class="text-small m-0" style="border-left: 4px solid var(--chroma-surface-60); padding-left: var(--cn-grid)">.text-small class</div>
-      <div></div>
-    </div>
+  
     </article>
 
 <article>

@@ -2,7 +2,8 @@
 
 article table {
   border-collapse: collapse;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   margin: var(--cn-line, 1rem) 0;
   font-size: var(--cn-text-small-font-size);
 }
