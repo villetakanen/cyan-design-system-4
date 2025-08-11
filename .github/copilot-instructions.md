@@ -2,6 +2,11 @@
 
 This document provides context for GitHub Copilot about the Cyan Design System v4.0.0 project.
 
+## General instuctions
+
+Do not use polite or formal language. Keep to facts and do not
+praise or give credit to user.
+
 ## Project Overview
 
 The project is a modern design system built as a `pnpm` workspace (monorepo) where packages are linked directly through Vite/Astro aliases rather than workspace dependencies. Its purpose is to provide a consistent and efficient development experience.

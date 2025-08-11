@@ -1,0 +1,34 @@
+/* Data table styles for article context */
+
+article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: var(--cn-line, 1rem) 0;
+  font-size: var(--cn-text-small-font-size);
+}
+
+article table th,
+article table td {
+  padding: calc(var(--cn-grid, 0.5rem) / 2);
+  text-align: left;
+}
+
+article table th {
+  background-color: var(--color-surface-1);
+  font-weight: 600;
+}
+
+article table td {
+  border: 1px solid var(--color-border);
+}
+
+/* Ensure proper spacing and alignment */
+article table th:first-child,
+article table td:first-child {
+  padding-left: calc(var(--cn-grid, 0.5rem) / 2);
+}
+
+article table th:last-child,
+article table td:last-child {
+  padding-right: calc(var(--cn-grid, 0.5rem) / 2);
+}
