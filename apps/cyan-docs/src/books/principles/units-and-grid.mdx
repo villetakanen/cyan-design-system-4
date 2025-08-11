@@ -1,0 +1,148 @@
+---
+title: 'Units & Grid'
+icon: 'design'
+description: 'Spacing, layout, and grid systems in Cyan Design System.'
+---
+<article class="column-l">
+
+# Units & Grid
+
+The Cyan Design System employs a comprehensive set of design tokens to ensure consistency in spacing, layout, and sizing across all applications. These tokens provide a robust foundation for creating visually harmonious and responsive user interfaces. This document outlines the core principles of our grid system, spacing, and layout tokens.
+
+Core design tokens can be found in the `packages/cyan-css/src/tokens` directory. This collection includes definitions for the baseline grid, layout dimensions, breakpoints, and more, all of which are essential for maintaining a cohesive design language.
+
+## The Baseline Grid
+
+At the heart of our design system is an 8px baseline grid, which governs all vertical and horizontal spacing. This grid ensures that all elements are aligned consistently, creating a clean and organized layout. The primary token for this is `--cn-grid`, which is set to `0.5rem` (8px at a standard 16px root font size).
+
+All other spacing and sizing tokens are derived from this fundamental unit, creating a predictable and scalable system.
+
+## Core Spacing Units
+
+Our spacing system is built upon three core tokens that provide consistent rhythm and scale throughout the UI.
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `--cn-grid` | `0.5rem` | The baseline grid unit (8px), used as the smallest spacing increment. |
+| `--cn-gap` | `var(--cn-grid) * 2` | The standard gap unit (16px), ideal for spacing between elements. |
+| `--cn-line` | `var(--cn-grid) * 3` | The line height unit (24px), used for vertical rhythm and component heights. |
+
+</article>
+<article class="column-l">
+
+## Layout Tokens
+
+Our layout tokens define the dimensions for key structural elements like navigation rails and trays, ensuring a consistent and predictable application structure.
+
+### Breakpoints
+
+While our components are designed to be fluid, we provide a set of breakpoint tokens to manage responsive behavior at a global level. These are particularly useful for controlling layout shifts at key screen sizes.
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `--cn-breakpoint-small` | `620px` | The breakpoint for small screens, typically mobile devices. |
+| `--cn-breakpoint-medium` | `960px` | The breakpoint for medium screens, such as tablets. |
+| `--cn-breakpoint-wide` | `1365px` | The breakpoint for wide screens, accommodating most desktop displays. |
+
+### Sizing Tokens
+
+Sizing tokens ensure that components like buttons and icons maintain consistent dimensions and touch-friendly targets.
+
+#### Button Sizing
+
+To ensure accessibility and a good user experience on touch devices, all buttons have a minimum physical touch area of 56x56 pixels, even if their visual appearance is smaller.
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `--cn-button-physical-size:` | `56px` | The minimum clickable area for touch targets. |
+| `--cn-button-size` | `38px` | The standard visual size for most buttons. |
+| `--cn-navigation-button-size` | `56px` | The visual size for navigation buttons, which are slightly larger. |
+
+<div class="flex gap-2">
+  <figure class="elevation-1 p-1 m-0 text-center">
+    <div style="margin: 0 auto; width: var(--cn-button-physical-size); height: var(--cn-button-physical-size); background: var(--chroma-primary-40);border-radius:50%"></div>
+    <figcaption>Physical size (56px)</figcaption>
+  </figure>
+  <figure class="elevation-1 p-1 m-0 text-center">
+    <div style="margin: 0 auto; width: var(--cn-button-size); height: var(--cn-button-size); background: var(--chroma-primary-40);border-radius:50%"></div>
+    <figcaption>Visual size (38px)</figcaption>
+  </figure>
+  <figure class="elevation-1 p-1 m-0 text-center">
+    <div style="margin: 0 auto; width: var(--cn-navigation-button-size); height: var(--cn-navigation-button-size); background: var(--chroma-primary-40);border-radius:50%"></div>
+    <figcaption>Navigation size (56px)</figcaption>
+  </figure>
+</div>
+</article>
+
+<article class="column-l">
+### Border Radius
+
+Border radius tokens are used to apply consistent corner rounding to elements like buttons, cards, and inputs.
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `--cn-border-radius-small` | `0.25rem` | Small border radius (4px). |
+| `--cn-border-radius-medium` | `0.5rem` | Medium border radius (8px). |
+| `--cn-border-radius-large` | `1rem` | Large border radius (16px). |
+| `--cn-border-radius-xl` | `1.5rem` | Extra-large border radius (24px). |
+
+### Icon Sizes
+
+Our icon size tokens provide a consistent scale for iconography across the system.
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `--cn-icon-size-xsmall` | `1rem` | Extra-small icon size (16px). |
+| `--cn-icon-size-small` | `1.5rem` | Small icon size (24px). |
+| `--cn-icon-size` | `2.25rem` | Default icon size (36px). |
+| `--cn-icon-size-large` | `4.5rem` | Large icon size (72px). |
+| `--cn-icon-size-xlarge` | `8rem` | Extra-large icon size (128px). |
+
+### Layout Dimensions
+
+These tokens define the width of major layout containers, such as the navigation rail and side trays.
+
+| Token | Value | Description |
+|-------|-------|-------------|
+| `--cn-width-rail` | `5rem` | The width of the main navigation rail (80px). |
+| `--cn-width-tray` | `21rem` | The width of side trays or panels (336px). |
+
+</article>
+<article class="column-l">
+## Atomic CSS Classes
+
+To complement our design tokens, we provide a set of atomic CSS classes for applying common layout and spacing styles directly in your HTML. These classes are designed to be simple, intuitive, and powerful, enabling you to build complex layouts with ease.
+
+You can find the full set of atomic classes in `packages/cyan-css/src/atomics`.
+
+### Flexbox and Grid
+
+We provide a comprehensive set of utility classes for both Flexbox and CSS Grid to handle most layout needs.
+
+- **Flexbox:** Use classes like `.flex`, `.flex-row`, `.flex-col`, `.items-center`, and `.justify-between` to create flexible layouts.
+- **Grid:** For more complex grid-based layouts, use `.grid`, `.grid-cols-3`, and `.gap-2`.
+
+### Spacing
+
+Spacing classes for `margin` and `padding` are available, following a numeric scale based on our `--cn-grid` unit.
+
+- `.m-1`, `.p-2`, etc.
+- `.mx-auto` for centering.
+- `.gap-1`, `.gap-2` for controlling space between grid and flex items.
+
+### Example
+
+Here is an example of a simple card layout built using our atomic classes:
+
+```html
+<div class="flex flex-col gap-2 p-2 elevation-1 radius-m">
+  <h3 class="m-0">Card Title</h3>
+  <p class="m-0">This card is built using atomic CSS classes for layout and spacing.</p>
+  <div class="flex justify-end">
+    <button>Action</button>
+  </div>
+</div>
+```
+
+</article>
+

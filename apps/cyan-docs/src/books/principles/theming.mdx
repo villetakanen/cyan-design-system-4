@@ -1,0 +1,58 @@
+---
+title: 'Themes'
+icon: 'design'
+description: 'Learn how to customize the theme colors in your application.'
+---
+<article class="column-l">
+# Theming and overriding the theme colors
+
+Cyan Design System provides a set of color tokens that can be used to create a consistent look and feel across the app. 
+
+The simplest way to override the theme colors is to use the `:root` selector in your CSS and set the
+chroma-prefixed color tokens to your desired values. This will override the default theme colors and apply
+them across the app.
+
+## Demo
+
+import ColorThemeSwitchDemo from '../../components/demo/ColorThemeSwitchDemo.astro'
+
+<ColorThemeSwitchDemo />
+
+import ColorThemeScaleDemo from '../../components/demo/ColorThemeScaleDemo.astro'
+
+<ColorThemeScaleDemo scale="surface"/>
+
+---
+
+<ColorThemeScaleDemo scale="primary"/>
+
+</article>
+
+<article class="column-l">
+# Color and theme
+
+Cyan Design System uses a color palette based on the Cyan _"chroma"_ color scales. The palette is designed to be accessible and provide a consistent, harmonious look across applications.
+
+The color scale is themeable by replacing the "chroma" with a custom set of colors that maintain the same luminance and saturation values. This ensures consistency while allowing customization.
+
+## Tokens
+
+Color tokens are defined with a `--color-` prefix and are located in the `src/tokens/colors` directory. Tokens are available for both light and dark modes and include `--color-on-` tokens for accessible text colors on specific backgrounds. Surface tokens prefixed with `--surface-` define background colors for various app surfaces.
+
+## Base theme
+
+### Surfaces and text colors
+
+| Color | Token | Theme:Light | Theme:Dark|
+|---------|-------|---------------|--------------|
+| Surface | `--color-surface` | <div class="color-box light" style="background: var(--color-surface);"></div> | <div class="color-box dark" style="background: var(--color-surface);"></div> |
+| Surface, elevation 1 | `--color-surface-1` | <div class="color-box light" style="background: var(--color-surface-1);"></div> | <div class="color-box dark" style="background: var(--color-surface-1);"></div> |
+| Surface, elevation 2 | `--color-surface-2` | <div class="color-box light" style="background: var(--color-surface-2);"></div> | <div class="color-box dark" style="background: var(--color-surface-2);"></div> |
+| Surface, elevation 3 | `--color-surface-3` | <div class="color-box light" style="background: var(--color-surface-3);"></div> | <div class="color-box dark" style="background: var(--color-surface-3);"></div> |
+| Surface, elevation 4 | `--color-surface-4` | <div class="color-box light" style="background: var(--color-surface-4);"></div> | <div class="color-box dark" style="background: var(--color-surface-4);"></div> |
+| Key     | `--color-on-surface` | <div class="color-box light" style="background: var(--color-on-surface);"></div> | <div class="color-box dark" style="background: var(--color-on-surface);"></div> |
+| Text   | `--color-text` | <div class="color-box light" style="background: var(--color-text);"></div> | <div class="color-box dark" style="background: var(--color-text);"></div> |
+| High Emphasis Text | `--color-text-high` | <div class="color-box light" style="background: var(--color-text-high);"></div> | <div class="color-box dark" style="background: var(--color-text-high);"></div> |
+| Low Emphasis Text | `--color-text-low` | <div class="color-box light" style="background: var(--color-text-low);"></div> | <div class="color-box dark" style="background: var(--color-text-low);"></div> |
+
+</article>

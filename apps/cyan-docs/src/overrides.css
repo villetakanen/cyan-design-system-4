@@ -1,0 +1,8 @@
+.color-box {
+  --color-box-size: 4;
+  height: calc(var(--color-box-size) * var(--cn-grid));
+  width: calc(var(--color-box-size) * var(--cn-grid) * 3);
+  border: dashed 1px var(--color-border);
+  border-radius: 8px;
+  display: inline-block;
+}

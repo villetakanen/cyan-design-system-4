@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import CollectionTraySection from '@components/base/CollectionTraySection.astro';
+import Page from '@layouts/Page.astro';
+
+const posts = await getCollection('principles');
+---
+<Page tray>
+  <div class="content-columns">
+    <article class="surface">
+      <h1>Principles</h1>
+      <p>The design principles and core concepts of the Cyan Design System.</p>
+
+  <ul>
+    {posts.map(post => (
+      <li><a href={`/principles/${post.id}`}>{post.data.title}</a><br>
+      <span class="text-small">{post.data.description}</span></li>
+    ))}
+  </ul>
+  </article>
+  </div>
+
+  <CollectionTraySection slot="tray" collection="principles"/>
+</Page>

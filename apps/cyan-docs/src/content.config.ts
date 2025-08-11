@@ -28,4 +28,13 @@ const styles = defineCollection({
   }),
 });
 
-export const collections = { customElements, application, styles };
+const principles = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/books/principles' }),
+  schema: z.object({
+    title: z.string(),
+    noun: z.string().optional(),
+    description: z.string().optional(),
+  }),
+});
+
+export const collections = { customElements, application, styles, principles };

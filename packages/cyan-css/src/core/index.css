@@ -6,6 +6,8 @@
 @import url("./lists.css");
 @import url("./blockquote.css");
 @import url("./figure.css");
+@import url("./typography.css");
+@import url("./tables.css");
 
 /* App Components */
 @import url("./rail.css");

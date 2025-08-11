@@ -1,0 +1,205 @@
+---
+title: 'Typography'
+noun: 'font'
+description: 'A Longish treatise on typography, type-scales and font-usage on the Pelilauta and related apps.'
+---
+
+<article class="column-l">
+
+# Typography
+
+The Design System uses `Lato` for headings and `Open Sans` for body text. The fonts can be
+loaded via Google Fonts or added as local imports. As the design system expects multiple widths,
+so a variable font is recommended for better fidelity.
+
+  <h2>Type Scale</h2>
+
+The type scale is generated using https://typescale.com/ with "Major third" sacale and 1.25 ratio. The scale
+is then adjusted to fit the the design system and units used in the design system (this might cause some _intentional_
+rounding discrepancies between the scale and the actual font sizes used in the design system).
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr;">
+    <h1 class="m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)"> Heading 1</h1>
+      <div class="text-h1 m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)">.text-h1 class</div>
+      <h2 class="m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">Heading 2</h2>
+      <div class="text-h2 m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">.text-h2 class</div>
+      <h3 class="m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)"> Heading 3</h3>
+      <div class="text-h3 m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)">.text-h3 class</div>
+      <h4 class="m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)"> Heading 4</h4>
+      <div class="text-h4 m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)">.text-h4 class</div>
+      <h5 class="m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)"> (Heading 5)</h5>
+      <div class="text-h5 m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)">.text-h5 class</div>
+      <div class="text-small m-0" style="border-left: 4px solid var(--chroma-surface-60); padding-left: var(--cn-grid)">.text-small class</div>
+      <div></div>
+    </div>
+
+
+### Responsive Behavior
+
+On mobile screens (620px and below), both HTML headings and their corresponding utility classes automatically scale down by one level to maintain readability and hierarchy:
+
+| Desktop | Mobile (≤620px) |
+| --- | --- |
+| `h1`, `.text-h1` | Uses H2 sizing |
+| `h2`, `.text-h2` | Uses H3 sizing |
+| `h3`, `.text-h3` | Uses H4 sizing |
+| `h4`, `.text-h4` | Uses H5 sizing |
+| `.text-h5` | Remains H5 sizing |
+
+This ensures optimal typography hierarchy across all screen sizes while maintaining semantic meaning.
+
+### Heading Classes
+
+Instead of relying on downscaled helpers, use explicit heading-level classes to apply typography styles to any element:
+
+| Class | Description | Use Case |
+| --- | --- | --- |
+| `.text-h1` | Applies H1 styling to any element | When you need H1 visual weight without semantic H1 |
+| `.text-h2` | Applies H2 styling to any element | When you need H2 visual weight without semantic H2 |
+| `.text-h3` | Applies H3 styling to any element | When you need H3 visual weight without semantic H3 |
+| `.text-h4` | Applies H4 styling to any element | When you need H4 visual weight without semantic H4 |
+| `.text-h5` | Applies H5 styling to any element | When you need H5 visual weight without semantic H5 |
+| `.text-small` | Smaller text size | For captions, footnotes, or secondary information |
+
+  
+    </article>
+
+<article>
+
+## Text
+
+We set the base text styles at `body` and override them as needed. 
+
+The style can be forced to a non _body element_ by using the `.text-body` class.
+
+### Styling Text
+
+#### Text Colors
+
+| Class | Description |
+| --- | --- |
+| `.text-high` | <span class="text-high">High emphasis text, used where text needs to stand out</span> |
+| `.text-low` | <span class="text-low">Low emphasis text, used where text needs to be less prominent</span> |
+| `.text-default` | <span class="text-default">Default text color, useful for resetting inherited colors</span> |
+
+#### Text Sizes
+
+| Class | Description |
+| --- | --- |
+| `.text-h1` | Applies H1 typography styles |
+| `.text-h2` | Applies H2 typography styles |
+| `.text-h3` | Applies H3 typography styles |
+| `.text-h4` | Applies H4 typography styles |
+| `.text-h5` | Applies H5 typography styles |
+| `.text-body` | Applies body text styles (default) |
+| `.text-small` | Smaller text for captions and secondary content |
+
+#### Color Tokens
+
+The text colors are built on semantic color tokens that automatically adapt to light and dark themes:
+
+| Token | Description | Light Mode | Dark Mode |
+| --- | --- | --- | --- |
+| `--color-text` | Default text color for paragraphs, lists, tables | `var(--chroma-surface-90)` | `var(--chroma-surface-20)` |
+| `--color-text-high` | High contrast text for emphasis | `black` | `white` |
+| `--color-text-low` | Low contrast text for secondary content | `var(--chroma-surface-80)` | `var(--chroma-surface-40)` |
+
+#### Typography Elements
+
+The following HTML elements automatically use the design system text colors:
+
+- `p` (paragraphs)
+- `li` (list items) 
+- `td`, `th` (table cells and headers)
+- Text within `article`, `section`, and `main` containers
+
+### Examples
+
+<p class="text-high">High emphasis text, used where text needs to stand out</p>
+
+Normal text, and some filler content.
+
+<p class="text-low">Low emphasis text, used where text needs to be less prominent</p>
+
+<div style="color: var(--chroma-primary-60);">
+  <p class="text-default">This paragraph uses .text-default to override the inherited blue color</p>
+</div>
+
+<h4 class="text-body">A H4 element with the `.text-body` class</h4>
+
+<div class="text-h2">A div element styled as H2 using `.text-h2`</div>
+
+<span class="text-h5">A span element styled as H5 using `.text-h5`</span>
+
+<p class="text-small">Small text for captions or secondary information</p>
+
+</article>
+
+<article>
+
+## Lists
+
+Lists inherit the base text styles and support either loose (default) or `.compact` spacing.
+
+### Examples
+
+#### Unordered List
+
+* An unordered list
+* <span class="text-high">With some items, this one being high emphasis.</span>
+
+#### Ordered List
+
+1. An ordered list
+2. <span class="text-low">With some items, this one being low emphasis.</span>
+
+#### Compact Unordered List
+
+<ol class="compact">
+  <li>A compact ordered list</li>
+  <li>With some items</li>
+</ol>
+
+</article>
+
+<article>
+
+## Tables
+
+Please note: tables are intended for tabular data, not for layout. For layout, we provide a set of grid helpers
+and layout containers.
+
+Tables use the token `--color-surface-[+1]` as a highlight color for borders and headers. F.ex `--color-surface-1` for 
+the first surface color, `--color-surface-2` on top of `.elevation-1` for the second surface color, etc.
+
+### Examples
+
+| Header 1 | Header 2 | Header 3 |
+| --- | --- | --- |
+| Row 1, Cell 1 | Row 1, Cell 2 | Row 1, Cell 3 |
+| Row 2, Cell 1 | Row 2, Cell 2 | Row 2, Cell 3 |
+
+<div class="elevation-1 p-1">
+
+| Header 1 | Header 2 | Header 3 |
+| --- | --- | --- |
+| Row 1, Cell 1 | Row 1, Cell 2 | Row 1, Cell 3 |
+
+</div>
+
+<div class="elevation-2 p-1">
+
+| Header 1 | Header 2 | Header 3 |
+| --- | --- | --- |
+| Row 1, Cell 1 | Row 1, Cell 2 | Row 1, Cell 3 |
+
+</div>
+
+<div class="elevation-3 p-1">
+
+| Header 1 | Header 2 | Header 3 |
+| --- | --- | --- |
+| Row 1, Cell 1 | Row 1, Cell 2 | Row 1, Cell 3 |
+
+</div>
+</article>
