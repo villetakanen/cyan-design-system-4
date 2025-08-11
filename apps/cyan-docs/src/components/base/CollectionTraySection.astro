@@ -20,10 +20,10 @@ const collectionSlug =
     : collection === 'application'
       ? 'application'
       : collection === 'principles'
-      ? 'principles'
-      : collection === 'styles'
-      ? 'styles'
-      : 'custom-elements';
+        ? 'principles'
+        : collection === 'styles'
+          ? 'styles'
+          : 'custom-elements';
 
 const collectionTitle =
   collection === 'customElements'
@@ -31,10 +31,10 @@ const collectionTitle =
     : collection === 'application'
       ? 'Application'
       : collection === 'principles'
-      ? 'Principles'
-      : collection === 'styles'
-      ? 'Styles'
-      : 'Custom Elements';
+        ? 'Principles'
+        : collection === 'styles'
+          ? 'Styles'
+          : 'Custom Elements';
 ---
 <section>
   <h2>{collectionTitle}</h2>
