@@ -1,0 +1,12 @@
+.debug {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  padding: var(--cn-gap);
+  border: 1px solid var(--color-on-secondary);
+  --color-text: var(--color-on-secondary);
+}
+@media screen and (max-width: 620px) {
+  .debug {
+    padding: var(--cn-grid);
+  }
+}
