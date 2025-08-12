@@ -44,12 +44,20 @@ export class CnNavigationIcon extends LitElement {
       height: var(--cn-navigation-icon-size);
       width: var(--cn-navigation-icon-size);
       z-index: -1;
-      top: calc(-1.5 * var(--cn-grid));
-      left: calc(-1.5 * var(--cn-grid));
+      top: 0;
+      left: 0;
       transition: background 0.2s ease;
     }
     :host([label]) cn-icon {
       margin-top: var(--cn-grid);
+    }
+    :host([label]) cn-icon::before {
+      top: calc(-1.5 * var(--cn-grid));
+      left: calc(-1.5 * var(--cn-grid));
+    }
+    :host([label='']) cn-icon::before {
+      top: calc(-1 * var(--cn-grid));
+      left: calc((-2 + 1.125) * var(--cn-grid));
     }
 
     :host(:hover) cn-icon::before {
