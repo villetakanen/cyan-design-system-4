@@ -1,0 +1,54 @@
+---
+title: 'Content: Columns'
+noun: 'layout'
+---
+<article class="column-s surface">
+<h1 class="text-h2">Content: Columns</h1>
+
+The original content area container "columns" – aka `div.content-columns` is a flexible 
+layout component that allows for the arrangement of content in a multi-column format. 
+It is designed to adapt to various screen sizes and orientations, providing a 
+responsive and user-friendly experience.
+
+Where the main-area of the application is wide enough, we support 3 column sizes: 
+`column-s`, `column-m`, and `column-l`. The column sizes are defined by the 
+CSS variables `--cn-width-column-s`, `--cn-width-column-m`, and `--cn-width-column-l`. 
+If a direct descendant of the `div.content-columns` does not have a defined column size,
+it will default to `column-m`.
+
+In contrast to the earlier versions of the Design System, we assume that the container
+element is a div, with sections and articles as direct children. This division of semantic
+structure is not enforced strictly, but it's safe to assume that it might be in future
+revisions of the Design System.
+
+</article>
+
+<article class="column-m surface elevation-1">
+## Breakpoints and sizing
+
+The `.content-columns` container has two modes: 
+
+1. **Default mode**: This is the standard multi-column layout, which applies when the main app container (most likely `<main>`) is wider than 760px.
+2. **Single column mode**: This mode is activated when the viewport is narrower than 760px, stacking the columns on top of each other for better readability.
+
+### Column widths
+
+In the default mode, the column widths are derived from the golden ratio, creating a visually appealing layout. 
+The specific widths are as follows:
+
+| Column Size | Token  | Default size |
+|-------------|--------|---|
+| `column-s`  | `34 * var(--cn-grid)`  | `272px` |
+| `[column-m]`  | `55 * var(--cn-grid)`  | `440px`  |
+| `column-l`  | `88 * var(--cn-grid)`  | `704px`  |
+
+In single column mode, all columns stack on top of each other, taking the full width of the container.
+
+</article>
+
+<article class="column-l surface elevation-2">
+# Demo
+
+The three columns here are s, m and l, respectively.
+
+</article>

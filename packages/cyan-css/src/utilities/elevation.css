@@ -1,0 +1,16 @@
+.elevation-1 {
+  background-color: var(--color-surface-1);
+  box-shadow: var(--shadow-elevation-1);
+}
+.elevation-2 {
+  background: var(--color-surface-2);
+  box-shadow: var(--shadow-elevation-2);
+}
+.elevation-3 {
+  background: var(--color-surface-3);
+  box-shadow: var(--shadow-elevation-3);
+}
+.elevation-4 {
+  background: var(--color-surface-4);
+  box-shadow: var(--shadow-elevation-4);
+}
