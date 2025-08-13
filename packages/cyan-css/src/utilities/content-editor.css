@@ -22,6 +22,8 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  margin-top: calc(-2 * var(--cn-grid));
+  margin-bottom: calc(-2 * var(--cn-grid));
 }
 
 /* Toolbars inside the editor should align flush with the container */
@@ -46,6 +48,6 @@
 @container main-app-content (width > 621px) {
   .content-editor {
     width: min(100cqw, calc(120 * var(--cn-grid)));
-    margin: 0 auto;
+    margin: calc(-2 * var(--cn-grid)) auto;
   }
 }

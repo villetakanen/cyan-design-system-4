@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from 'astro:content';
+import CollectionTraySection from '@components/base/CollectionTraySection.astro';
+import Page from '@layouts/Page.astro';
+import ReadMe from 'cn-editor/README.md';
+
+const posts = await getCollection('customElements');
+const post = posts.find((p) => p.id === 'cn-editor');
+
+if (!post) {
+  throw new Error(
+    `Post with id ${Astro.params.id} not found in 'customElements' collection.`,
+  );
+}
+const { Content } = await render(post);
+---
+<Page title={post.data.title} tray>
+  <div class="content-columns">
+  <Content />
+  <article class="column-l surface">
+    <header>'cn-editor/README.md';</header>
+    <ReadMe />
+  </article>
+  </div>
+  <CollectionTraySection slot="tray" collection="customElements"/>
+</Page>
