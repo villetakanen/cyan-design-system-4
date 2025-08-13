@@ -4,7 +4,6 @@
 import AppBar from '@components/base/AppBar.astro';
 import 'cyan-css';
 import '../overrides.css';
-import Bar from '@components/base/Bar.astro';
 import Rail from '@components/base/Rail.astro';
 
 interface Props {
@@ -62,4 +61,10 @@ const resolvedNoun = noun || '';
       <slot name="app-footer" />
     </footer>
   </body>
+
+<script>
+  // Client only
+  import 'cn-editor';
+</script>
+
 </html>

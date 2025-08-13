@@ -11,6 +11,9 @@
     },
     {
       "path": "apps/cyan-docs"
+    },
+    {
+      "path": "packages/cn-editor"
     }
   ],
   "settings": {}

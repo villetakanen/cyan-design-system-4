@@ -1,0 +1,3 @@
+[submodule "packages/cn-editor"]
+	path = packages/cn-editor
+	url = https://github.com/villetakanen/cn-editor.git

@@ -24,6 +24,13 @@ export default defineConfig({
             '../../packages/cyan-css',
           ),
         },
+        {
+          find: 'cn-editor',
+          replacement: path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            '../../packages/cn-editor',
+          ),
+        },
       ],
     },
   },
