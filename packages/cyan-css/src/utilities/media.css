@@ -1,0 +1,9 @@
+.poster {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--cn-border-radius-small);
+}
+.w-16-9 {
+  aspect-ratio: 16 / 9;
+}
