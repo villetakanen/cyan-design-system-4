@@ -1,0 +1,37 @@
+<div class="input-states-demo">
+  <label>
+    Text
+    <input type="text" placeholder="Enter text" />
+  </label>
+  <label>
+    Email
+    <input type="email" placeholder="Enter email" />
+  </label>
+  <label>
+    Password
+    <input type="password" placeholder="Enter password" />
+  </label>
+  <label>
+    Number
+    <input type="number" placeholder="Enter a number" />
+  </label>
+  <button id="toggle-error">Toggle Error State</button>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('#toggle-error');
+    if (button) {
+      button.addEventListener('click', () => {
+        const inputs = document.querySelectorAll('.input-states-demo input');
+        inputs.forEach(input => {
+          if (input.hasAttribute('data-error')) {
+            input.removeAttribute('data-error');
+          } else {
+            input.setAttribute('data-error', 'true');
+          }
+        });
+      });
+    }
+  });
+</script>

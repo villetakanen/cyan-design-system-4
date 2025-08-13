@@ -141,4 +141,33 @@
   --color-elevation-1: var(--color-surface-1);
   --color-elevation-2: var(--color-surface-2);
   --color-elevation-3: var(--color-surface-3);
+
+  /* inputs */
+  --color-input: light-dark(var(--chroma-surface-20), var(--chroma-surface-95));
+  --color-on-input: var(--color-on-surface);
+
+  --color-input-hover: light-dark(
+    var(--chroma-surface-30),
+    var(--chroma-surface-99)
+  );
+
+  --color-input-focus: light-dark(
+    var(--chroma-surface-30),
+    var(--chroma-surface-99)
+  );
+
+  /* Lets just use the surface color for the input label for now */
+  --color-on-label: var(--color-on-surface);
+
+  --color-field: var(--color-input);
+  --color-on-field: var(--color-on-surface);
+  --color-on-field-placeholder: var(--color-on-surface-secondary);
+
+  --color-field-hover: var(--color-input);
+  --color-on-field-hover: var(--color-on-surface);
+
+  --color-field-focus: var(--color-input-focus);
+  --cn-color-on-field-active: var(--color-on-focus);
+
+  --chroma-alert-field-tint: var(--chroma-alert-tint);
 }

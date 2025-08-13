@@ -1,0 +1,56 @@
+---
+title: 'Inputs'
+noun: 'layout'
+topic: 'Core'
+---
+<article class="column-l surface">
+
+# Inputs
+
+We support the native HTML input element, and its siblings like email, password and number.
+
+## Input States
+
+Inputs can have a `data-error` attribute to indicate an error. This can be used to show a visual indicator to the user.
+
+### Example
+
+import InputStatesDemo from 'src/components/demo/InputStatesDemo.astro';
+
+```html
+<label>
+  Text
+  <input type="text" />
+</label>
+<label>
+  Email
+  <input type="email" />
+</label>
+<label>
+  Password
+  <input type="password" />
+</label>
+<label>
+  Number
+  <input type="number" />
+</label>
+<label>
+  Text with error
+  <input type="text" data-error="true" />
+</label>
+```
+
+Renders as:
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <InputStatesDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <InputStatesDemo />
+  </div>
+</div>
+
+</article>

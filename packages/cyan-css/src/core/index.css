@@ -8,10 +8,11 @@
 @import url("./figure.css");
 @import url("./typography.css");
 @import url("./tables.css");
+@import url("./label.css");
+@import url("./input-text.css");
 
 /* App Components */
 @import url("./rail.css");
 @import url("./navigation.css");
 @import url("./tray.css");
-@import url("./bar.css");
 @import url("./buttons.css");

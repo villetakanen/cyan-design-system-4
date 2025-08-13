@@ -1,0 +1,96 @@
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"] {
+  font-family: var(--cn-font-family-ui);
+  font-weight: var(--cn-font-weight-ui);
+  font-size: var(--cn-font-size-ui);
+  line-height: var(--cn-line-height-ui);
+  letter-spacing: var(--cn-letter-spacing-ui);
+  color: var(--color-on-input);
+  background: var(--color-input);
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0 var(--cn-border-radius-medium) 0 0;
+  display: block;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0 calc(var(--cn-grid));
+  height: calc(var(--cn-grid) * 5 - 1px);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="number"]::placeholder,
+input[type="password"]::placeholder,
+input[type="search"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="url"]::placeholder {
+  color: var(--color-on-field-placeholder, red);
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="number"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="url"]:hover {
+  color: var(--color-on-field-hover, var(--color-on-field));
+  background: var(--color-field-hover, var(--color-field));
+  border-bottom: 1px solid var(--color-border-hover, var(--color-border));
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus {
+  outline: none;
+  color: var(--cn-color-on-field-active);
+  background: var(--color-input-focus);
+  border-bottom: 1px solid var(--color-border-hover, var(--color-border));
+}
+
+input[type="text"]:focus::placeholder,
+input[type="email"]:focus::placeholder,
+input[type="number"]:focus::placeholder,
+input[type="password"]:focus::placeholder,
+input[type="search"]:focus::placeholder,
+input[type="tel"]:focus::placeholder,
+input[type="url"]:focus::placeholder {
+  opacity: 0;
+}
+
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="number"]:disabled,
+input[type="password"]:disabled,
+input[type="search"]:disabled,
+input[type="tel"]:disabled,
+input[type="url"]:disabled {
+  opacity: 0.5;
+  background: var(--cn-color-disabled);
+}
+
+input[data-error="true"] {
+  background: var(--chroma-alert-field-tint, red);
+  border-bottom: 1px solid var(--chroma-alert, blue);
+  box-shadow: none;
+}
+
+input[data-error="true"]::placeholder {
+  color: var(--chroma-alert, blue);
+}
+
+input[data-error="true"]:focus {
+  background: var(--cn-background-field-active, red);
+  border-bottom: 1px solid var(--cn-border-color-field-active, blue);
+}
