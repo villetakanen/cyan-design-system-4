@@ -15,7 +15,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 <Page title={post.data.title} tray>
-  <div class="content-columns">
+  <div class={post.data.containerClass}>
     <Content />
   </div>
   <CollectionTraySection slot="tray" collection="application"/>

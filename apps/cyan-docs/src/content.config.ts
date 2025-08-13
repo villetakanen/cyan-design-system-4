@@ -16,6 +16,7 @@ const application = defineCollection({
   schema: z.object({
     title: z.string(),
     noun: z.string().optional(),
+    containerClass: z.string().default('content-columns'),
   }),
 });
 

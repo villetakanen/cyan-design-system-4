@@ -1,0 +1,69 @@
+---
+title: 'Content: Cards'
+noun: 'card'
+description: 'A container for a list or a grid of card-like content blocks.'
+containerClass: 'content-cards'
+---
+
+<header>
+
+# Content: Cards
+
+The `.content-cards` container is used to group together card-like content blocks in a responsive layout.
+
+The content area supports 3 types of content:
+1. The header, including any `.toolbar`'s for filters, actions etc.
+2. The main content area, where the card listing is displayed.
+3. The footer, for any additional information or actions related to the cards.
+
+(Note: all of this info is inside the header)
+
+<div class="toolbar">
+  <p class="grow">A toolbar can be added to the header.</p>
+  <button>Filter</button>
+  <button>Sort</button>
+</div>
+</header>
+
+<cn-card
+  title="Card area"
+>
+  <p class="text-small">
+    The main area of the content grid allows 3 columns of cards to be displayed.
+  </p>
+</cn-card>
+
+<section class="surface elevation-2">
+
+### Card-likes?
+
+We also support `<section>` and `<article>` elements as card-like containers. These elements can be used to create 
+a more semantic structure for your content, displayed in a content grid like cards would.
+</section>
+
+<cn-card
+  title="Responsive behaviour?"
+>
+  <p class="text-small">
+    The `.content-cards` breaks at main app area container < 720px and switches from a grid layout layout to a vertical single-column flexbox.
+  </p>
+</cn-card>
+
+<article class="border">
+  <h4>Support for various elements</h4>
+  <img class="poster" src="https://picsum.photos/400/225" alt="Placeholder image"/>
+
+  <p>The articles and sections can contain any content, just as the content-columns could.</p>
+
+  <p class="text-low text-small">
+    F.ex. this article does not have `.surface` styling applied, and still works with the content grid.
+  </p>
+</article>
+
+<footer>
+
+### The footer?
+
+We also support footer in the same manner that we support the header.
+
+</footer>
