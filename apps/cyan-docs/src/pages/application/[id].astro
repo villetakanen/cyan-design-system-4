@@ -19,4 +19,13 @@ const { Content } = await render(post);
     <Content />
   </div>
   <CollectionTraySection slot="tray" collection="application"/>
+  {post.data.poster && (
+    <div id="cn-background-poster" class="sm-hidden">
+      <picture>
+      { post.data.poster_md && <source media="(min-width:960px)" srcset={post.data.poster_md} /> }
+    { /* sm && <source media="(min-width:620px)" srcset={sm} /> // .sm-hidden  */ }
+    <img src={post.data.poster} alt="">
+  </picture>
+</div> 
+  )}
 </Page>

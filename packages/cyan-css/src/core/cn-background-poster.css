@@ -1,0 +1,57 @@
+#cn-background-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100dvw);
+  height: auto;
+  z-index: -1;
+  opacity: 0.72;
+  overflow: hidden;
+}
+#cn-background-poster picture {
+  width: 100%;
+  height: 100%;
+}
+#cn-background-poster img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#cn-background-poster::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in hsl, var(--chroma-surface-90), transparent 70%) 20%,
+    color-mix(in hsl, var(--chroma-primary-20), transparent 80%) 40%,
+    color-mix(in hsl, var(--chroma-primary-70), transparent 70%) 60%,
+    color-mix(in hsl, var(--chroma-surface-80), transparent 50%) 80%,
+    var(--color-background)
+  );
+  opacity: 1;
+}
+body:has(#cn-background-poster) nav.rail {
+  mix-blend-mode: screen;
+}
+@media (prefers-color-scheme: light) {
+  #cn-background-poster picture {
+    opacity: 0.55;
+    filter: sepia(50%);
+  }
+  #cn-background-poster::before {
+    background: linear-gradient(
+      180deg in hsl,
+      color-mix(in hsl, var(--chroma-surface-90), transparent 90%) 40%,
+      var(--color-background) 95%
+    );
+    opacity: 1;
+  }
+  body:has(#cn-background-poster) nav.rail {
+    mix-blend-mode: multiply;
+  }
+}

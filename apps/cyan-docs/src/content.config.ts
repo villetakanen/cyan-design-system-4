@@ -17,6 +17,8 @@ const application = defineCollection({
     title: z.string(),
     noun: z.string().optional(),
     containerClass: z.string().default('content-columns'),
+    poster: z.string().optional(),
+    poster_md: z.string().optional(),
   }),
 });
 
