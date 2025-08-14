@@ -1,0 +1,229 @@
+---
+title: '<cn-menu>'
+noun: 'kebab'
+---
+
+<article class="surface column-l">
+
+import CnMenuEvents from '../../components/demo/CnMenuEvents.astro'
+
+# `<cn-menu>`
+
+The `<cn-menu>` component provides a dropdown menu with a toggle button. It can display menu items in a popover that appears when the button is clicked.
+
+## Examples
+
+<div class="grid two-col mb-1">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-menu>
+        <ul>
+          <li><a href="#"><cn-icon noun="settings"></cn-icon> Settings</a></li>
+          <li><a href="#"><cn-icon noun="profile"></cn-icon> Profile</a></li>
+          <li><a href="#"><cn-icon noun="logout"></cn-icon> Logout</a></li>
+        </ul>
+      </cn-menu>
+      <cn-menu inline>
+        <ul>
+          <li><a href="#"><cn-icon noun="edit"></cn-icon> Edit</a></li>
+          <li><a href="#"><cn-icon noun="duplicate"></cn-icon> Duplicate</a></li>
+        </ul>
+      </cn-menu>
+      <cn-menu disabled>
+        <ul>
+          <li><a href="#"><cn-icon noun="settings"></cn-icon> Disabled Menu</a></li>
+        </ul>
+      </cn-menu>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-menu>
+        <ul>
+          <li><a href="#"><cn-icon noun="settings"></cn-icon> Settings</a></li>
+          <li><a href="#"><cn-icon noun="profile"></cn-icon> Profile</a></li>
+          <li><a href="#"><cn-icon noun="logout"></cn-icon> Logout</a></li>
+        </ul>
+      </cn-menu>
+      <cn-menu inline>
+        <ul>
+          <li><a href="#"><cn-icon noun="edit"></cn-icon> Edit</a></li>
+          <li><a href="#"><cn-icon noun="duplicate"></cn-icon> Duplicate</a></li>
+        </ul>
+      </cn-menu>
+      <cn-menu disabled>
+        <ul>
+          <li><a href="#"><cn-icon noun="settings"></cn-icon> Disabled Menu</a></li>
+        </ul>
+      </cn-menu>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Properties / Attributes
+
+| Name       | Attribute  | Type    | Default | Description                                                                    |
+|------------|------------|---------|---------|--------------------------------------------------------------------------------|
+| `expanded` | `expanded` | Boolean | `false` | Whether the menu dropdown is currently expanded/visible.                      |
+| `inline`   | `inline`   | Boolean | `false` | If true, shows horizontal dots icon instead of vertical kebab icon.           |
+| `disabled` | `disabled` | Boolean | `false` | If true, the menu button is disabled and cannot be clicked.                   |
+
+### HTML
+
+```html
+<!-- Basic menu with kebab icon -->
+<cn-menu>
+  <ul>
+    <li><a href="#"><cn-icon noun="settings"></cn-icon> Settings</a></li>
+    <li><a href="#"><cn-icon noun="profile"></cn-icon> Profile</a></li>
+    <li><a href="#"><cn-icon noun="logout"></cn-icon> Logout</a></li>
+  </ul>
+</cn-menu>
+
+<!-- Inline menu with horizontal dots -->
+<cn-menu inline>
+  <ul>
+    <li><a href="#"><cn-icon noun="edit"></cn-icon> Edit</a></li>
+    <li><a href="#"><cn-icon noun="duplicate"></cn-icon> Duplicate</a></li>
+  </ul>
+</cn-menu>
+
+<!-- Menu with multiple groups -->
+<cn-menu>
+  <ul>
+    <li><a href="#"><cn-icon noun="profile"></cn-icon> View Profile</a></li>
+    <li><a href="#"><cn-icon noun="settings"></cn-icon> Account Settings</a></li>
+  </ul>
+  <ul>
+    <li><a href="#"><cn-icon noun="help"></cn-icon> Help & Support</a></li>
+    <li><a href="#"><cn-icon noun="logout"></cn-icon> Sign Out</a></li>
+  </ul>
+</cn-menu>
+
+<!-- Disabled menu -->
+<cn-menu disabled>
+  <ul>
+    <li><a href="#"><cn-icon noun="settings"></cn-icon> Disabled Item</a></li>
+  </ul>
+</cn-menu>
+```
+
+## Events
+
+### `menu-toggled`
+
+Dispatched when the menu is toggled open or closed.
+
+**Detail**: `{ expanded: boolean }`
+
+<CnMenuEvents />
+
+## Features
+
+- **Smart Positioning**: Automatically positions the dropdown to the left or right based on the button's position in the viewport
+- **Click Outside to Close**: Clicking outside the menu automatically closes it
+- **Keyboard Accessible**: Proper ARIA attributes for screen readers
+- **Icon Variants**: Shows kebab (vertical dots) by default, or horizontal dots when `inline` is true
+- **Disabled State**: Can be disabled to prevent interaction
+- **Event Dispatching**: Emits `menu-toggled` events for integration with parent components
+- **Light DOM Styling**: Menu content uses light DOM, allowing normal CSS to style nested `<ul>` and `<li>` elements
+
+## Light DOM Menu Structure
+
+The component is designed to work with semantic HTML list structures in the light DOM. This allows for better accessibility and easier styling:
+
+```html
+<cn-menu>
+  <ul>
+    <li><a href="/profile"><cn-icon noun="profile"></cn-icon> Profile</a></li>
+    <li><a href="/settings"><cn-icon noun="settings"></cn-icon> Settings</a></li>
+  </ul>
+  <ul>
+    <li><a href="/help"><cn-icon noun="help"></cn-icon> Help</a></li>
+    <li><a href="/logout"><cn-icon noun="logout"></cn-icon> Logout</a></li>
+  </ul>
+</cn-menu>
+```
+
+### Styling Features:
+- **Automatic List Styling**: `list-style-type: none` applied automatically
+- **Group Separators**: Multiple `<ul>` elements get border separators between them
+- **Hover Effects**: List items have hover states with color-mixed backgrounds
+- **Icon + Text Layout**: Flexbox layout for icons and text with proper spacing
+- **Consistent Heights**: All menu items maintain uniform height using grid units
+
+## Visual Behavior
+
+### Menu Positioning
+The component automatically determines whether to open the dropdown to the left or right:
+- If the button is on the left half of the viewport, the menu opens to the right
+- If the button is on the right half of the viewport, the menu opens to the left
+- This prevents the menu from being cut off by the viewport edge
+
+### Icon Display
+- **Default**: Shows vertical kebab icon (three vertical dots)
+- **Inline**: Shows horizontal dots icon when `inline="true"`
+
+### Interaction States
+- **Hover**: Button background becomes more prominent
+- **Active**: Button background becomes even more prominent during click
+- **Disabled**: Button is non-interactive and visually muted
+- **Expanded**: Menu content is visible with proper shadow elevation
+
+## Dependencies
+
+This component requires:
+- `cn-icon` component for displaying the menu icons
+- **Design system tokens** for colors, spacing, and shadows
+- Proper icon SVG files: `kebab.svg` and `dots.svg`
+
+## CSS Custom Properties
+
+The component uses these design system tokens:
+
+- `--color-on-surface`: Icon and text color
+- `--color-button-text`: Button background color
+- `--color-button-text-hover`: Button background color on hover
+- `--color-button-text-active`: Button background color when active
+- `--color-surface-3`: Menu dropdown background color
+- `--shadow-elevation-3`: Box shadow for the dropdown
+- `--cn-button-size-physical`: Physical button size including touch target
+- `--cn-button-size`: Visual button size
+- `--cn-grid`: Base grid unit for spacing and positioning
+- `--cn-border-radius`: Border radius for the dropdown
+
+## Best Practices
+
+### Content Structure
+- Use semantic HTML `<ul>` and `<li>` elements for menu structure
+- Include `<cn-icon>` elements for visual context
+- Use anchor tags `<a>` for navigation or button elements for actions
+- Group related actions in separate `<ul>` elements for visual separation
+- Consider using proper semantic roles for better accessibility
+
+### Styling Menu Items
+```html
+<cn-menu>
+  <ul>
+    <li><a href="/profile"><cn-icon noun="profile"></cn-icon> View Profile</a></li>
+    <li><a href="/settings"><cn-icon noun="settings"></cn-icon> Settings</a></li>
+  </ul>
+  <ul>
+    <li><button type="button" onclick="handleLogout()"><cn-icon noun="logout"></cn-icon> Logout</button></li>
+  </ul>
+</cn-menu>
+```
+
+### Event Handling
+```javascript
+const menu = document.querySelector('cn-menu');
+menu.addEventListener('menu-toggled', (event) => {
+  console.log('Menu is now:', event.detail.expanded ? 'open' : 'closed');
+});
+```
+
+</article>

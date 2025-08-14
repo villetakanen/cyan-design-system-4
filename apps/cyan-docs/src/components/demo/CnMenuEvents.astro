@@ -1,0 +1,18 @@
+<cn-menu id="menu-events-demo">
+  <div style="padding: 8px 16px; cursor: pointer; border-bottom: 1px solid var(--color-surface-variant);" onclick="console.log('Menu item clicked: Action 1')">Action 1</div>
+  <div style="padding: 8px 16px; cursor: pointer; border-bottom: 1px solid var(--color-surface-variant);" onclick="console.log('Menu item clicked: Action 2')">Action 2</div>
+  <div style="padding: 8px 16px; cursor: pointer;" onclick="console.log('Menu item clicked: Settings')">Settings</div>
+</cn-menu>
+
+<p><small>Open the browser console to see the <code>menu-toggled</code> events.</small></p>
+
+<script is:inline>
+  const menuDemo = document.getElementById('menu-events-demo');
+  
+  menuDemo.addEventListener('menu-toggled', (event) => {
+    console.log('cn-menu:menu-toggled', {
+      expanded: event.detail.expanded,
+      timestamp: new Date().toISOString()
+    });
+  });
+</script>
