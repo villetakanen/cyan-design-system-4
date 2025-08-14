@@ -1,0 +1,11 @@
+cn-reaction-button {
+  --background-reaction-button: var(--color-button-text, cyan);
+  --background-reaction-button-hover: var(--color-button-text-hover, blue);
+  --background-reaction-button-active: linear-gradient(
+    120deg,
+    var(--color-reaction-red) 11%,
+    var(--color-alert) 90%
+  );
+  --color-reaction-button: var(--color-text-low, magenta);
+  --color-reaction-button-active: var(--color-surface);
+}

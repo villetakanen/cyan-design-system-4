@@ -1,0 +1,58 @@
+---
+title: '<cn-reaction-button>'
+noun: 'love'
+---
+<article class="column-l">
+
+# `<cn-reaction-button>`
+
+The `<cn-reaction-button>` component is a button that allows users to react to content. It can be used to like, love, or upvote content.
+
+## Examples
+
+<div class="grid two-col mb-1">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-reaction-button noun="love" count="5"></cn-reaction-button>
+      <cn-reaction-button noun="love" count="5" checked></cn-reaction-button>
+      <cn-reaction-button noun="love" count="5" disabled></cn-reaction-button>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-reaction-button noun="love" count="5"></cn-reaction-button>
+      <cn-reaction-button noun="love" count="5" checked></cn-reaction-button>
+      <cn-reaction-button noun="love" count="5" disabled></cn-reaction-button>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Properties / Attributes
+
+| Name | Attribute | Type | Default | Description |
+| --- | --- | --- | --- | --- |
+| `noun` | `noun` | `string` | `love` | The icon to display. |
+| `count` | `count` | `number` | `-1` | The number of reactions. If -1, the count is not displayed. |
+| `checked` | `checked` | `boolean` | `false` | Whether the button is checked. |
+| `disabled` | `disabled` | `boolean` | `false` | Whether the button is disabled. |
+| `small` | `small` | `boolean` | `false` | Whether the button is small. |
+| `inactive` | `inactive` | `boolean` | `false` | Whether the button is inactive. |
+
+### HTML
+
+```html
+<!-- Reaction button with a count -->
+<cn-reaction-button noun="love" count="5"></cn-reaction-button>
+
+<!-- Checked reaction button -->
+<cn-reaction-button noun="love" count="5" checked></cn-reaction-button>
+
+<!-- Disabled reaction button -->
+<cn-reaction-button noun="love" count="5" disabled></cn-reaction-button>
+```
+
+</article>
