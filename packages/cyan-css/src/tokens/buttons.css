@@ -89,7 +89,7 @@ button {
     var(--chroma-primary-10),
     var(--chroma-surface-10)
   );
-  
+
   /* Icon size override - all icons in buttons should be small */
   --cn-icon-size: var(--cn-icon-size-small);
   --cn-icon-size-large: var(--cn-icon-size-small);
