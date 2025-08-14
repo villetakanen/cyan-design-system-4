@@ -1,0 +1,121 @@
+---
+title: '<cn-bubble>'
+noun: 'bubble'
+---
+<article class="column-l">
+# Bubbles
+
+The `<cn-bubble>` element provides a styled component for comments and replies in discussions. It creates speech bubble-like containers for conversational interfaces with support for both regular messages and reply bubbles.
+
+## Examples
+
+<div class="flex flex-col">
+  <article class="flex flex-row flex-no-wrap">
+    <cn-avatar nick="Sparrow" src="https://picsum.photos/128/128"/>
+    <cn-bubble class="grow">
+      <div class="toolbar">
+        <p>A Toolbar on top of the comment</p>
+        <cn-menu inline="true"/>
+      </div>
+      <p>Some comment details here...</p>
+    </cn-bubble>
+  </article>
+  <cn-bubble class="grow">
+    <div class="toolbar small">
+      <p class="grow">
+        <a href="#complex-example">Link to a profile</a>
+      </p>
+       <cn-menu inline="true">
+       <ul>
+         <li>
+           <a href="#">
+             <cn-icon xsmall noun="edit"></cn-icon>
+             Edit
+           </a>
+           <a href="#">
+             <cn-icon xsmall noun="delete"></cn-icon>
+             Remove
+           </a>
+         </li>
+       </ul>
+      </cn-menu>
+    </div>
+    <div>
+
+
+And here's a comment
+
+    </div>
+    <div class="toolbar justify-end">
+      <cn-reaction-button noun="love" count="4" small></cn-reaction-button>
+    </div>
+  </cn-bubble>
+
+  <cn-bubble reply="true" class="grow">
+    <div class="toolbar small">
+      <p class="grow">
+        <a href="#complex-example">Link to a profile</a>
+      </p>
+      <cn-menu inline>
+      </cn-menu>
+    </div>
+    <div>
+      <p>Here's a reply, with dolor sit amet, consectetur adipiscing elit. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Nulla quis lorem ut libero malesuada feugiat. Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit.</p>
+    </div>
+    <div class="toolbar justify-end">
+      <cn-reaction-button disabled noun="love" count="4" small></cn-reaction-button>
+    </div>
+  </cn-bubble>
+</div>
+
+
+## Properties
+
+| Property | Type      | Default | Description                                    |
+|----------|-----------|---------|------------------------------------------------|
+| `reply`  | `boolean` | `false` | When true, styles the bubble as a reply with different positioning and colors |
+
+## Basic Usage
+
+```html
+<!-- Basic bubble -->
+<cn-bubble>
+  <p>This is a message</p>
+</cn-bubble>
+
+<!-- Reply bubble -->
+<cn-bubble reply>
+  <p>This is a reply</p>
+</cn-bubble>
+```
+
+## Styling
+
+The component uses CSS custom properties for theming:
+
+- `--color-bubble`: Background color for normal bubbles
+- `--color-on-bubble`: Text color for normal bubbles  
+- `--color-reply-bubble`: Background color for reply bubbles
+- `--color-on-reply-bubble`: Text color for reply bubbles
+- `--cn-border-radius-medium`: Border radius for bubble corners
+- `--cn-grid`: Internal padding
+- `--cn-gap`: External margin and tail size
+
+## Content Guidelines
+
+### Toolbar Support
+
+The component provides special styling for elements with the `.toolbar` class:
+
+- First toolbar gets negative top margin to align with bubble padding
+- Last toolbar gets negative bottom margin to align with bubble padding
+- Toolbar padding is reset to align with bubble edges
+
+### Accessibility
+
+- The component sets `role="article"` for screen readers
+- Content should include appropriate semantic markup
+- Interactive elements should have proper focus management
+
+
+</article>

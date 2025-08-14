@@ -1,0 +1,30 @@
+/*
+ * cn-bubble component light DOM styles
+ * 
+ * These styles apply to content inside cn-bubble elements,
+ * providing proper spacing and toolbar integration.
+ */
+
+cn-bubble *:first-child {
+  margin-top: 0;
+}
+
+cn-bubble {
+  min-height: calc(var(--cn-gap) * 4);
+  padding: var(--cn-gap);
+}
+
+cn-bubble .toolbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+cn-bubble .toolbar:first-child {
+  /* If a toolbar is the first child, it should not have a top margin/padding, as standard toolbar margin is enough */
+  margin-top: calc(-1 * var(--cn-gap));
+}
+
+cn-bubble .toolbar:last-child {
+  /* If a toolbar is the last child, it should not have a bottom margin/padding, as standard toolbar margin is enough */
+  margin-bottom: calc(-1 * var(--cn-grid));
+}
