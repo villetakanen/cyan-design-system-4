@@ -170,4 +170,14 @@
   --cn-color-on-field-active: var(--color-on-focus);
 
   --chroma-alert-field-tint: var(--chroma-alert-tint);
+
+  /* Avatar colors */
+  --cn-color-avatar-1: light-dark(
+    var(--chroma-surface-20),
+    var(--chroma-surface-80)
+  );
+  --cn-color-avatar-2: light-dark(
+    var(--chroma-primary-50),
+    var(--chroma-primary-80)
+  );
 }

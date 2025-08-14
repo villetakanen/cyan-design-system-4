@@ -17,11 +17,11 @@
   --cn-heading-4-font-weight: 400;
   --cn-heading-5-font-weight: 400;
 
-  --cn-heading-1-line-height: calc(5 * var(--cn-grid) * 2);
-  --cn-heading-2-line-height: calc(4 * var(--cn-grid) * 2);
-  --cn-heading-3-line-height: calc(3 * var(--cn-grid) * 2);
-  --cn-heading-4-line-height: calc(2 * var(--cn-grid) * 2);
-  --cn-heading-5-line-height: calc(2 * var(--cn-grid) * 2);
+  --cn-heading-1-line-height: calc(10 * var(--cn-grid));
+  --cn-heading-2-line-height: calc(8 * var(--cn-grid));
+  --cn-heading-3-line-height: calc(6 * var(--cn-grid));
+  --cn-heading-4-line-height: calc(5 * var(--cn-grid));
+  --cn-heading-5-line-height: calc(4 * var(--cn-grid));
 
   --cn-heading-3-letter-spacing: calc(var(--cn-grid) / 32);
 

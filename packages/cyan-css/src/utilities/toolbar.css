@@ -7,12 +7,22 @@
 
 .toolbar {
   padding: var(--cn-grid);
-  margin-top: var(--cn-grid);
-  margin-bottom: var(--cn-grid);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--cn-gap);
+
+  --cn-heading-1-font-size: var(--cn-heading-4-font-size);
+  --cn-heading-2-font-size: var(--cn-heading-4-font-size);
+  --cn-heading-3-font-size: var(--cn-heading-4-font-size);
+
+  --cn-heading-1-line-height: var(--cn-heading-4-line-height);
+  --cn-heading-2-line-height: var(--cn-heading-4-line-height);
+  --cn-heading-3-line-height: var(--cn-heading-4-line-height);
+
+  height: calc(7 * var(--cn-grid));
+  margin-top: calc(0.5 * var(--cn-grid));
+  margin-bottom: calc(0.5 * var(--cn-grid));
 }
 
 .toolbar:last-child {
@@ -29,9 +39,24 @@
   align-items: center;
 }
 
+.toolbar h1,
+.toolbar h2,
+.toolbar h3,
 .toolbar h4,
 .toolbar p {
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.toolbar p {
+  -webkit-line-clamp: 2;
+}
+
+.toolbar button {
+  flex: none;
 }
 
 fieldset > .toolbar {

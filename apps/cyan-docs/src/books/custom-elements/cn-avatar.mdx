@@ -1,0 +1,109 @@
+---
+title: '<cn-avatar>'
+icon: 'avatar'
+---
+
+<article class="surface column-l">
+
+# `<cn-avatar>`
+
+The `<cn-avatar>` component displays a user's avatar. It can show an image, initials from a nickname, or a default placeholder icon.
+
+## Examples
+
+<div class="grid two-col mb-1">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-avatar nick="VT" src="https://picsum.photos/256/256"></cn-avatar>
+      <cn-avatar elevation="1" nick="Ville Takanen"></cn-avatar>
+      <cn-avatar elevation="2"></cn-avatar>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-avatar nick="AC" src="https://picsum.photos/256/256"></cn-avatar>
+      <cn-avatar elevation="1" nick="Alice Cyan"></cn-avatar>
+      <cn-avatar elevation="2"></cn-avatar>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Properties / Attributes
+
+| Name   | Attribute | Type   | Default | Description                                                                                                |
+|--------|-----------|--------|---------|------------------------------------------------------------------------------------------------------------|
+| `src`  | `src`     | String | `''`    | URL to the avatar image. If provided, this will be displayed.                                              |
+| `nick` | `nick`    | String | `''`    | User's nickname. If `src` is not provided and `nick` is, the first two characters of `nick` will be shown. |
+| `elevation` | `elevation` | Number | `0`     | The elevation level of the avatar. This affects the shadow and depth of the avatar.                        |
+| (color) | (derived)   | - | `''`    | The background color of the avatar, derived from the `nick` hash.                                        |
+
+If neither `src` nor `nick` is provided, the _avatar.svg_ `<cn-icon>` is displayed as a fallback.
+
+### HTML
+
+```html
+<!-- Avatar with an image -->
+<cn-avatar src="https://via.placeholder.com/48"></cn-avatar>
+
+<!-- Avatar with initials (e.g., "JD") -->
+<cn-avatar nick="John Doe"></cn-avatar>
+
+<!-- Default placeholder avatar -->
+<cn-avatar></cn-avatar>
+
+<!-- Avatar with elevation -->
+<cn-avatar nick="User Name" elevation="1"></cn-avatar>
+```
+
+## Features
+
+- **Image Support**: Display user profile images
+- **Initials Fallback**: Show first two characters of nickname when no image is provided  
+- **Default Icon**: Falls back to avatar icon when neither image nor nickname is available
+- **Color Generation**: Automatically generates consistent colors based on nickname hash
+- **Elevation Support**: Add shadow depth with elevation levels 1-2
+- **Hover Effects**: Interactive hover states
+- **Accessibility**: Proper ARIA labels
+
+## Visual Behavior
+
+### Avatar Content Priority
+1. **Image**: If `src` is provided, displays the image
+2. **Initials**: If no `src` but `nick` is provided, shows first 2 characters uppercased
+3. **Default Icon**: If neither `src` nor `nick`, shows the avatar icon
+
+### Color Generation
+When displaying initials, the component generates a consistent background color by:
+- Creating a hash from the nickname characters
+- Using `color-mix()` to blend between two avatar color tokens
+- Ensuring the same nickname always produces the same color
+
+### Elevation
+- `elevation="0"` (default): No shadow
+- `elevation="1"`: Light shadow depth
+- `elevation="2"`: Medium shadow depth
+
+## Dependencies
+
+This component requires:
+- `cn-icon` component for displaying the default avatar icon
+- **Chroma color palette** and design system tokens
+- Proper icon SVG files in the `/icons/` directory (specifically `avatar.svg`)
+
+## CSS Custom Properties
+
+The component uses these design system tokens:
+
+- `--cn-color-avatar-1`: Primary avatar background color
+- `--cn-color-avatar-2`: Secondary avatar background color (for color mixing)
+- `--cn-line`: Base line height unit for sizing
+- `--cn-grid`: Base grid unit for spacing
+- `--shadow-elevation-1`: Box shadow for elevation level 1
+- `--shadow-elevation-2`: Box shadow for elevation level 2
+- `--color-on-surface`: Text/icon color on surface backgrounds
+
+</article>
