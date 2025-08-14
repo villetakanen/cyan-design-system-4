@@ -1,0 +1,139 @@
+---
+title: '<cn-avatar-button>'
+icon: 'avatar'
+---
+
+<article class="surface column-l">
+
+# `<cn-avatar-button>`
+
+The `<cn-avatar-button>` component displays a user's avatar with a dropdown indicator. It supports popover functionality for showing additional content like user menus or profile information.
+
+## Examples
+
+<div class="grid two-col mb-1">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-avatar-button src="https://picsum.photos/256/256" popovertarget="menu1"></cn-avatar-button>
+      <cn-avatar-button popovertarget="menu2"></cn-avatar-button>
+    </div>
+    <div id="menu1" popover="manual" class="popover-menu">
+      <p>User Menu</p>
+      <p>Profile Settings</p>
+      <p>Sign Out</p>
+    </div>
+    <div id="menu2" popover="manual" class="popover-menu">
+      <p>Guest Menu</p>
+      <p>Sign In</p>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-avatar-button src="https://picsum.photos/256/256" popovertarget="menu3"></cn-avatar-button>
+      <cn-avatar-button popovertarget="menu4"></cn-avatar-button>
+    </div>
+    <div id="menu3" popover="manual" class="popover-menu">
+      <p>User Menu</p>
+      <p>Profile Settings</p>
+      <p>Sign Out</p>
+    </div>
+    <div id="menu4" popover="manual" class="popover-menu">
+      <p>Guest Menu</p>
+      <p>Sign In</p>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Properties / Attributes
+
+| Name   | Attribute | Type   | Default | Description                                                                                                |
+|--------|-----------|--------|---------|------------------------------------------------------------------------------------------------------------|
+| `src`  | `src`     | String | `''`    | URL to the avatar image. If provided, this will be displayed.                                              |
+| `popovertarget` | `popovertarget` | String | `''`    | ID of the element to toggle as a popover when the button is clicked.                        |
+
+If `src` is not provided, the _avatar.svg_ `<cn-icon>` is displayed as a fallback along with the dropdown indicator.
+
+### HTML
+
+```html
+<!-- Avatar button with an image and popover -->
+<cn-avatar-button src="https://via.placeholder.com/48" popovertarget="user-menu"></cn-avatar-button>
+<div id="user-menu" popover>
+  <p>Profile</p>
+  <p>Settings</p>
+  <p>Sign Out</p>
+</div>
+
+<!-- Avatar button with placeholder icon -->
+<cn-avatar-button popovertarget="guest-menu"></cn-avatar-button>
+<div id="guest-menu" popover>
+  <p>Sign In</p>
+  <p>Register</p>
+</div>
+
+<!-- Avatar button without popover (click handler only) -->
+<cn-avatar-button src="https://via.placeholder.com/48"></cn-avatar-button>
+```
+
+## Features
+
+- **Image Support**: Display user profile images
+- **Default Icon**: Falls back to avatar icon when no image is provided
+- **Popover Integration**: Built-in support for HTML Popover API
+- **Dropdown Indicator**: Always shows a down arrow to indicate interactive behavior
+- **Auto-positioning**: Automatically positions popover relative to button
+- **Hover Effects**: Interactive hover and active states
+- **Accessibility**: Proper role and ARIA labels
+
+## Visual Behavior
+
+### Avatar Content
+1. **Image**: If `src` is provided, displays the image with rounded corners
+2. **Default Icon**: If no `src`, shows the avatar icon with background styling
+
+### Dropdown Indicator
+- Always displays a small "open-down" icon in the bottom right
+- Indicates that the button has dropdown/popover functionality
+
+### Popover Positioning
+When clicked and `popovertarget` is set:
+- Finds the target element by ID within the parent element
+- Positions the popover 12px offset from the button's top-left corner
+- Sets explicit positioning styles (top, left, right: auto, bottom: auto)
+- Calls `togglePopover()` on the target element
+
+## Dependencies
+
+This component requires:
+- `cn-icon` component for displaying the avatar and dropdown icons
+- **Button color tokens** from the design system
+- Proper icon SVG files: `avatar.svg` and `open-down.svg`
+- HTML Popover API support (modern browsers)
+
+## CSS Custom Properties
+
+The component uses these design system tokens:
+
+- `--background-button`: Default button background color
+- `--background-button-hover`: Button background on hover
+- `--background-button-active`: Button background when active/pressed
+- `--color-on-field`: Text/icon color on field backgrounds
+- `--color-primary`: Primary color for avatar placeholder styling
+- `--cn-line`: Base line height unit for sizing
+- `--cn-grid`: Base grid unit for spacing and positioning
+- `--cn-gap`: Gap unit for spacing calculations
+
+## Browser Support
+
+The popover functionality requires browsers that support the HTML Popover API:
+- Chrome/Edge 114+
+- Firefox 125+
+- Safari 17+
+
+For older browsers, the component will still render but popover functionality may need a polyfill.
+
+</article>
