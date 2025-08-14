@@ -1,0 +1,12 @@
+/*
+ * Loader component tokens
+ */
+:root {
+  /* Default loader configuration */
+  --cn-loader-color: light-dark(
+    var(--chroma-primary-60),
+    var(--chroma-surface-60)
+  );
+  --cn-loader-size: calc(var(--cn-line) * 3);
+  --cn-loader-line-width: calc(var(--cn-grid) / 2);
+}

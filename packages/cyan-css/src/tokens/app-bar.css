@@ -23,3 +23,13 @@
   /* App Bar shadow */
   --cn-app-bar-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.rail,
+.app-bar {
+  /* Loader tokens for rail and app-bar contexts */
+  --cn-loader-size: calc(var(--cn-line) * 2);
+  --cn-loader-color: light-dark(
+    var(--chroma-primary-10),
+    var(--chroma-surface-10)
+  );
+}

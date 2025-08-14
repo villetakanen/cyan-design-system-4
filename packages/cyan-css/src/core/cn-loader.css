@@ -1,0 +1,12 @@
+/* Light-dom interactions */
+
+/**
+ * When the loader is direct (and often only) child of
+ * a section, article, or cn-card, it should be centered and
+ * spaced appropriately.
+ */
+section > cn-loader,
+article > cn-loader,
+cn-card > cn-loader {
+  margin: var(--cn-line) auto;
+}

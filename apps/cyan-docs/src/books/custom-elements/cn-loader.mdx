@@ -1,0 +1,140 @@
+---
+title: '<cn-loader>'
+noun: 'fox'
+---
+
+<article class="surface column-l">
+
+# `<cn-loader>`
+
+The `<cn-loader>` component displays a loading indicator with a spinning dual-ring animation and an icon in the center. It provides visual feedback when content is loading or processing.
+
+## Examples
+
+<div class="grid two-col mb-1">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <div class="flex flex-col items-center">
+      <cn-loader></cn-loader>
+      <cn-loader for="navigation"></cn-loader>
+      <button>
+        <cn-loader noun="assets"></cn-loader>
+        <span>Loading media...</span>
+      </button>
+      <button class="text">
+        <cn-icon noun="assets"></cn-icon>
+        <span>Loading media...</span>
+      </button>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <div class="flex flex-col items-center">
+      <cn-loader noun="mekanismi"></cn-loader>
+      <cn-loader noun="mekanismi" for="navigation"></cn-loader>
+      <button>
+        <cn-loader noun="assets"></cn-loader>
+        <span>Loading media...</span>
+      </button>
+      <button class="text">
+        <cn-icon noun="assets"></cn-icon>
+        <span>Loading media...</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Properties / Attributes
+
+| Name   | Attribute | Type   | Default | Description                                                                                                |
+|--------|-----------|--------|---------|------------------------------------------------------------------------------------------------------------|
+| `noun` | `noun`    | String | `'fox'` | The noun/name of the icon to display in the center of the loader. Uses the `<cn-icon>` component.         |
+| `for`  | `for`     | String | `''`    | Specifies the context of the loader. When set to `'navigation'`, the loader is smaller and optimized for navigation elements. |
+
+### HTML
+
+```html
+<!-- Default loader with fox icon -->
+<cn-loader></cn-loader>
+
+<!-- Loader with custom icon -->
+<cn-loader noun="star"></cn-loader>
+
+<!-- Small loader for navigation -->
+<cn-loader for="navigation"></cn-loader>
+
+<!-- Custom icon for navigation -->
+<cn-loader noun="cat" for="navigation"></cn-loader>
+```
+
+## Features
+
+- **Dual-Ring Animation**: Rotating dual-ring border provides smooth loading indication
+- **Static Center Icon**: Center icon provides visual context without distraction
+- **Navigation Variant**: Smaller size optimized for navigation elements
+- **Customizable Icon**: Center icon can be changed using the `noun` property
+- **Semantic Loading**: Clear visual indication of loading state
+- **CSS Custom Properties**: Configurable via design system tokens
+- **Smooth Animation**: Clean rotating ring animation
+
+## Visual Behavior
+
+### Default State
+- Displays a spinning dual-ring border
+- Center icon rotates slowly in the opposite direction
+- Standard size suitable for content areas
+
+### Navigation State (`for="navigation"`)
+- Smaller dimensions matching `--cn-line` height
+- Same animations but scaled appropriately
+- Suitable for buttons and navigation elements
+
+### Animation Details
+- **Dual ring**: Rotates 360° in 1.2 seconds (linear)
+- **Center icon**: Static, provides visual context
+- Icon has 44% opacity for subtle appearance
+- Ring has 72% opacity for prominence
+
+## Dependencies
+
+This component requires:
+- `cn-icon` component for displaying the center icon
+- Proper icon SVG files in the `/icons/` directory
+- **Design system tokens** for sizing and colors
+
+## CSS Custom Properties
+
+The component uses these design system tokens:
+
+- `--cn-loader-size`: Size of the loader (default state)
+- `--cn-loader-line-width`: Width of the spinning ring border
+- `--cn-loader-color`: Color of both the ring and center icon
+- `--cn-line`: Base line height unit (used for navigation variant)
+
+### Default Token Values
+- `--cn-loader-size`: 48px (calc(var(--cn-grid) * 12))
+- `--cn-loader-line-width`: 2px (calc(var(--cn-grid) / 2))
+- `--cn-loader-color`: Uses primary color palette (light-dark adaptive)
+
+## Accessibility
+
+- Uses semantic loading indication
+- Icon provides context for the loading state
+- Animations follow system motion preferences
+- Color contrast meets accessibility standards
+
+</article>
+
+<article class="border">
+
+## An article with a loader
+
+  <cn-loader noun="fox"></cn-loader>
+</article>
+
+
+<cn-card title="Card with a loader">
+  <cn-loader noun="fox"></cn-loader>
+</cn-card>
