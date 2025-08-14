@@ -22,7 +22,7 @@ describe('CnBubble Browser Tests', () => {
   it('should apply different styles for reply bubbles', async () => {
     const normalBubble = document.createElement('cn-bubble') as CnBubble;
     const replyBubble = document.createElement('cn-bubble') as CnBubble;
-    
+
     normalBubble.innerHTML = '<p>Normal message</p>';
     replyBubble.innerHTML = '<p>Reply message</p>';
     replyBubble.reply = true;
@@ -52,7 +52,9 @@ describe('CnBubble Browser Tests', () => {
     expect(slot).toBeTruthy();
 
     // Check that slotted content is visible
-    const slottedContent = element.querySelector('.test-content') as HTMLElement;
+    const slottedContent = element.querySelector(
+      '.test-content',
+    ) as HTMLElement;
     expect(slottedContent).toBeTruthy();
     expect(slottedContent.textContent).toBe('Hello World');
 
@@ -78,7 +80,9 @@ describe('CnBubble Browser Tests', () => {
     const toolbars = element.querySelectorAll('.toolbar');
     expect(toolbars.length).toBe(2);
 
-    const mainContent = element.querySelector('p:not(.toolbar p)') as HTMLElement;
+    const mainContent = element.querySelector(
+      'p:not(.toolbar p)',
+    ) as HTMLElement;
     expect(mainContent?.textContent?.trim()).toBe('Main message content');
 
     document.body.removeChild(element);
