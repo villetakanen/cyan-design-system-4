@@ -9,11 +9,11 @@ export interface Props {
   };
 }
 
-const { 
-  message, 
+const {
+  message,
   buttonText = 'Show snackbar',
   theme = 'light',
-  action
+  action,
 } = Astro.props;
 
 const uniqueId = `snackbar-demo-${Math.random().toString(36).substr(2, 9)}`;
