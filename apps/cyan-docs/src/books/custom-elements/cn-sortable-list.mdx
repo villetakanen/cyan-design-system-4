@@ -1,0 +1,93 @@
+---
+title: 'Sortable List'
+noun: 'drag'
+---
+<article class="column-l">
+
+# cn-sortable-list
+
+A sortable list component that allows reordering of items using drag and drop.
+
+## Demo
+
+Here is a live demo of the component. It will automatically adapt to light and dark modes.
+
+import CnSortableListDemo from '@components/demo/CnSortableListDemo.astro'
+
+<div class="grid two-col">
+  <div class="surface dark">
+    <CnSortableListDemo />
+  </div>
+  <div class="surface light">
+    <CnSortableListDemo />
+  </div>
+</div>
+
+
+## API
+
+The component's properties and attributes.
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `items` | `CnListItem[]` | `[]` | An array of objects, where each object has a `key` and `title` property. |
+
+The `CnListItem` interface has the following structure:
+
+```typescript
+export interface CnListItem {
+  key: string;
+  title: string;
+}
+```
+
+## Usage
+
+To use the `cn-sortable-list` component, you need to set its `items` property with an array of `CnListItem` objects.
+
+```html
+<cn-sortable-list id="my-list"></cn-sortable-list>
+
+<script>
+  const myList = document.getElementById('my-list');
+  myList.items = [
+    { key: '1', title: 'Item 1' },
+    { key: '2', title: 'Item 2' },
+    { key: '3', title: 'Item 3' },
+  ];
+
+  myList.addEventListener('items-changed', (event) => {
+    console.log('New item order:', event.detail.items);
+  });
+</script>
+```
+
+## Guidelines
+
+Best practices and accessibility considerations.
+
+### Best Practices
+- Use a unique `key` for each item in the list.
+- Provide a descriptive `title` for each item.
+
+### Accessibility
+- The component uses `draggable="true"` to enable drag and drop functionality.
+- The `cn-icon` with `noun="drag"` provides a visual indicator for the drag handle.
+
+## Theming
+
+How to style the component using CSS custom properties.
+
+| Property | Default | Description |
+|---|---|---|
+| `--cn-font-family-ui` | `sans-serif` | The font family for the UI text. |
+| `--cn-font-weight-ui` | `400` | The font weight for the UI text. |
+| `--cn-font-size-ui` | `1rem` | The font size for the UI text. |
+| `--cn-line-height-ui` | `1.5` | The line height for the UI text. |
+| `--cn-letter-spacing-ui` | `normal` | The letter spacing for the UI text. |
+| `--color-border` | `#ccc` | The border color for the items. |
+| `--cn-border-radius` | `0.25rem` | The border radius for the items. |
+| `--cn-grid` | `0.5rem` | The gap between items and padding within items. |
+| `--background-button-text-hover` | `#f0f0f0` | The background color of an item when hovered. |
+
+</article>

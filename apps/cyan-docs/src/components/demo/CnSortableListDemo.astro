@@ -1,0 +1,22 @@
+---
+// CnSortableListDemo component for showcasing the sortable list
+const uniqueId = `sortable-list-demo-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<cn-sortable-list id={uniqueId}>
+</cn-sortable-list>
+
+<script define:vars={{ uniqueId }}>
+  const sortableList = document.getElementById(uniqueId);
+
+  sortableList && (sortableList.items = [
+    { key: '1', title: 'Item 1: a fox' },
+    { key: '2', title: 'Item 2: a triangle' },
+    { key: '3', title: 'Item 3: a monster' }
+  ]);
+
+
+  sortableList && sortableList.addEventListener('items-changed', (event) => {
+    console.log('Items changed:', event.detail.items);
+  });
+</script>
