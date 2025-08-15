@@ -31,6 +31,13 @@ export default defineConfig({
             '../../packages/cn-editor',
           ),
         },
+        {
+          find: 'cn-lightbox',
+          replacement: path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            '../../packages/cn-lightbox',
+          ),
+        },
       ],
     },
   },
