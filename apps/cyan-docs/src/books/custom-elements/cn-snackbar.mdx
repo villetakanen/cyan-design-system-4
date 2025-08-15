@@ -1,0 +1,63 @@
+---
+title: '<cn-snackbar>'
+noun: 'snackbar'
+---
+
+<article class="surface column-l">
+
+# `<cn-snackbar>`
+
+The `<cn-snackbar>` component provides brief messages about app processes at the bottom of the screen.
+
+## Examples
+
+<div class="grid two-col mb-1">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-button onclick="document.dispatchEvent(new CustomEvent('cn-snackbar-add', {detail: {message: 'This is a light snackbar'}}))">Show snackbar</cn-button>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-button onclick="document.dispatchEvent(new CustomEvent('cn-snackbar-add', {detail: {message: 'This is a dark snackbar'}}))">Show snackbar</cn-button>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Properties / Attributes
+
+| Name   | Attribute | Type   | Default | Description                                                                                                |
+|--------|-----------|--------|---------|------------------------------------------------------------------------------------------------------------|
+| `visible`  | `visible`     | Boolean | `false`    | Controls the visibility of the snackbar.                                              |
+
+### Events
+
+| Name   | Description |
+|--------|-----------|
+| `cn-snackbar-add` | The snackbar listens to this event to show a new message. The event detail should be an object with a `message` property and an optional `action` object with `label` and `callback` properties. |
+
+### HTML
+
+```html
+<!-- Snackbar will appear when a 'cn-snackbar-add' event is dispatched -->
+<cn-snackbar></cn-snackbar>
+
+<script>
+  // Example of dispatching an event to show a snackbar
+  document.dispatchEvent(new CustomEvent('cn-snackbar-add', {
+    detail: {
+      message: 'Hello, world!',
+      action: {
+        label: 'Undo',
+        callback: () => console.log('Undo clicked')
+      }
+    }
+  }));
+</script>
+```
+
+</article>

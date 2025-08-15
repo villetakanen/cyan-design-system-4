@@ -9,6 +9,7 @@ export { CnMenu } from './cn-menu/cn-menu.js';
 export { CnNavigationIcon } from './cn-navigation-icon/cn-navigation-icon.js';
 export { CnReactionButton } from './cn-reaction-button/cn-reaction-button.js';
 export { CnShareButton } from './cn-share-button/cn-share-button.js';
+export { CnSnackbar } from './cn-snackbar/cn-snackbar.js';
 export { CnSortableList } from './cn-sortable-list/cn-sortable-list.js';
 export { CnToggleButton } from './cn-toggle-button/cn-toggle-button.js';
 export { CnTrayButton } from './cn-tray-button/cn-tray-button.js';
