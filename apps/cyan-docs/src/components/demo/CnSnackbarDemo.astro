@@ -1,0 +1,43 @@
+---
+export interface Props {
+  message: string;
+  buttonText?: string;
+  theme?: 'light' | 'dark';
+  action?: {
+    label: string;
+    callback?: string; // JavaScript code to execute
+  };
+}
+
+const { 
+  message, 
+  buttonText = 'Show snackbar',
+  theme = 'light',
+  action
+} = Astro.props;
+
+const uniqueId = `snackbar-demo-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<button id={uniqueId} class="button">{buttonText}</button>
+
+<script is:inline define:vars={{ message, action, uniqueId }}>
+  const button = document.getElementById(uniqueId);
+  
+  button.addEventListener('click', () => {
+    const eventDetail = {
+      message: message
+    };
+    
+    if (action) {
+      eventDetail.action = {
+        label: action.label,
+        callback: action.callback ? new Function(action.callback) : () => console.log('Action clicked')
+      };
+    }
+    
+    document.dispatchEvent(new CustomEvent('cn-snackbar-add', {
+      detail: eventDetail
+    }));
+  });
+</script>

@@ -3,6 +3,8 @@ title: '<cn-snackbar>'
 noun: 'snackbar'
 ---
 
+import CnSnackbarDemo from '../../components/demo/CnSnackbarDemo.astro';
+
 <article class="surface column-l">
 
 # `<cn-snackbar>`
@@ -15,15 +17,28 @@ The `<cn-snackbar>` component provides brief messages about app processes at the
   <div class="light border border-radius p-1 surface">
     <h3>LIGHT</h3>
     <div class="flex items-center gap-1 my-1">
-      <cn-button onclick="document.dispatchEvent(new CustomEvent('cn-snackbar-add', {detail: {message: 'This is a light snackbar'}}))">Show snackbar</cn-button>
+      <CnSnackbarDemo message="This is a light snackbar" />
     </div>
   </div>
   <div class="dark border border-radius p-1 surface">
     <h3>DARK</h3>
     <div class="flex items-center gap-1 my-1">
-      <cn-button onclick="document.dispatchEvent(new CustomEvent('cn-snackbar-add', {detail: {message: 'This is a dark snackbar'}}))">Show snackbar</cn-button>
+      <CnSnackbarDemo message="This is a dark snackbar" />
     </div>
   </div>
+</div>
+
+### With Action Button
+
+<div class="mb-1">
+  <CnSnackbarDemo 
+    message="This snackbar has an action" 
+    buttonText="Show with Action"
+    action={{
+      label: "Undo",
+      callback: "console.log('Undo action executed!')"
+    }}
+  />
 </div>
 
 ## Usage
@@ -61,3 +76,5 @@ The `<cn-snackbar>` component provides brief messages about app processes at the
 ```
 
 </article>
+
+<cn-snackbar></cn-snackbar>
