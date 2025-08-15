@@ -1,0 +1,27 @@
+<section class="tester">
+    <cn-lightbox id="display-1"></cn-lightbox>  
+    <br>
+    <br>
+    <cn-lightbox  id="display-2"></cn-lightbox>
+</section>
+
+  <script is:inline>
+
+    async function setGalleryImages(galleryElement, images) {
+      galleryElement.images = images;
+      await galleryElement.updateComplete; // Wait for update to complete
+    }
+
+    const gallery2 = document.querySelector('#display-2');
+    setGalleryImages(gallery2, [
+      { src: 'https://picsum.photos/200/300', caption: 'Image 1' },
+      { src: 'https://picsum.photos/300/200', caption: 'Image 2' },
+    ]);
+
+    const gallery1 = document.querySelector('#display-1');
+    setGalleryImages(gallery1, [
+        { src: 'https://picsum.photos/700/1200', caption: 'Image 1' },
+        ]
+    )
+    
+  </script>
