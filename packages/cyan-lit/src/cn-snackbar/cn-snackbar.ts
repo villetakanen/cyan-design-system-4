@@ -145,6 +145,8 @@ export class CnSnackbar extends LitElement {
   static styles = css`
     :host {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       position: fixed;
       bottom: var(--cn-grid, 8px);
       left: var(--cn-grid, 8px);
@@ -160,6 +162,7 @@ export class CnSnackbar extends LitElement {
       opacity: 1;
     }
     :host .message {
+      flex: 1;
       font-family: var(--cn-font-family-ui);
       font-weight: var(--cn-font-weight-ui);
       font-size: var(--cn-font-size-ui);
@@ -168,9 +171,10 @@ export class CnSnackbar extends LitElement {
       margin: 5px var(--cn-gap, 1rem) 5px var(--cn-gap, 1rem);
     }
     :host button {
+      flex-shrink: 0;
       display: inline-block;
-      color: var(--cn-color-on-button);
-      background: var(--cn-color-button);
+      color: var(--color-on-button);
+      background: var(--background-button);
 
       font-family: var(--cn-font-family-ui);
       font-weight: var(--cn-font-weight-ui);
