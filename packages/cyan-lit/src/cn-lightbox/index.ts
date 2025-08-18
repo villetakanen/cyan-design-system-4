@@ -1,5 +1,5 @@
 import { css, html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 
 interface Image {
   src: string;
@@ -11,22 +11,36 @@ export class CnLightbox extends LitElement {
   @property({ type: Array, reflect: true })
   images: Image[] = [];
 
+  @query('.flex-container')
+  private _flexContainer!: HTMLElement;
+
+  firstUpdated() {
+    if (this._flexContainer) {
+      this._flexContainer.addEventListener('wheel', (event: WheelEvent) => {
+        if (event.deltaY !== 0) {
+          event.preventDefault();
+          this._flexContainer.scrollLeft += event.deltaY;
+        }
+      });
+    }
+  }
+
   static styles = css`
     /* Basic styles for the container */
     :host {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: var(--cn-lightbox-background, #eee);
-      border-radius: var(--cn-lightbox-border-radius, 0.5rem);
+      background: var(--cn-lightbox-background);
+      border-radius: var(--cn-lightbox-border-radius);
       container-type: inline-size;
     }
     :host img {
-      border-radius: var(--cn-lightbox-image-border-radius, 0.375rem);
+      border-radius: var(--cn-border-radius-small);
     }
     :host .single-figure {
       margin: 0;
-      padding: var(--cn-lightbox-inner-spacing, 0.25rem);
+      padding: var(--cn-lightbox-inner-spacing);
     }
     :host .single-figure img {
       width: 100%;
@@ -37,21 +51,21 @@ export class CnLightbox extends LitElement {
     :host .caption {
       margin: 0 auto;
       text-align: center;
-      max-width: 200px;
       max-height: var(--cn-line, 1.2em);
       overflow: hidden;
       text-overflow: ellipsis;
-      color: var(--cn-lightbox-color, black);
+      white-space: nowrap;
+      color: var(--cn-lightbox-color);
     }
     :host .flex-container {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--cn-lightbox-inner-spacing, 0.25rem);
+      gap: var(--cn-lightbox-inner-spacing);
       flex-wrap: nowrap;
       overflow-x: scroll;
       position: relative;
-      scrollbar-color: var(--cn-lightbox-scrollbar-color, black) transparent;
-      padding: var(--cn-lightbox-inner-spacing, 0.25rem);
+      scrollbar-color: var(--cn-lightbox-scrollbar-color) transparent;
+      padding: var(--cn-lightbox-inner-spacing);
       height: 100%;
       box-sizing: border-box;
     }
@@ -61,12 +75,30 @@ export class CnLightbox extends LitElement {
       margin: 0;
       position: relative;
       height: 100%;
+      aspect-ratio: 1 / 1;
     }
     :host .square-figure img {
-      aspect-ratio: 1 / 1;
+      width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
+    }
+    :host .square-figure .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: color-mix(in srgb, var(--color-shadow, black) 80%, transparent);
+      color: var(--cn-color-on-primary, white);
+      padding: var(--cn-grid);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+      max-width: none;
+      border-bottom-left-radius: var(--cn-border-radius-small);
+      border-bottom-right-radius: var(--cn-border-radius-small);
     }
   `;
 
