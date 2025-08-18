@@ -1,28 +1,84 @@
 ---
-title: 'cn-lightbox'
+title: '<cn-lightbox>'
 noun: 'photo'
 description: "A versatile image gallery component for the Cyan Design System, supporting single or multiple images with captions."
 ---
-import CnLightboxExamples from '../../components/demo/CnLightboxExamples.astro'
+import CnLightboxDemo from '../../components/demo/CnLightboxDemo.astro'
 
-# cn-lightbox
+<article class="column-l">
+
+# `<cn-lightbox>`
 
 The `cn-lightbox` component is a LitElement that provides a flexible and stylish way to display one or more images. It can render a single large image with a caption or a scrollable gallery of images, each with its own caption.
+
+## Examples
+
+<CnLightboxDemo />
 
 ## Usage
 
 To use the `cn-lightbox`, you need to provide an array of image objects to its `images` property. Each object should contain a `src` (the image URL) and a `caption`.
 
-### Single Image
+### Properties / Attributes
 
-When a single image is provided, it is displayed prominently within the component's bounds.
+| Name     | Attribute | Type      | Default | Description                                      |
+|----------|-----------|-----------|---------|--------------------------------------------------|
+| `images` | `images`  | `Image[]` | `[]`    | An array of image objects to display in the gallery. |
+
+The `Image` interface has the following structure:
+```typescript
+interface Image {
+  src: string;
+  caption: string;
+}
+```
+
+### HTML
+
+```html
+<cn-lightbox id="my-lightbox"></cn-lightbox>
+
+<script>
+  const myLightbox = document.getElementById('my-lightbox');
+  myLightbox.images = [
+    { src: 'image1.jpg', caption: 'First image' },
+    { src: 'image2.jpg', caption: 'Second image' }
+  ];
+</script>
+```
+
+## Features
+
+- **Single Image View**: Displays a single image prominently with its caption.
+- **Multi-Image Gallery**: Shows multiple images in a horizontal, scrollable view.
+- **Captions**: Each image can have a caption displayed below it.
+- **Responsive**: The component adapts to the available width.
+- **Themable**: All colors, spacing, and border radii are customizable through CSS custom properties.
+
+## Visual Behavior
+
+### Single Image
+- The image fills the width of the container.
+- The aspect ratio is 16:9.
+- The image is scaled to cover the area using `object-fit: cover`.
+- The caption is centered below the image.
 
 ### Multiple Images
+- Images are displayed in a horizontal flex container.
+- The container is scrollable on the x-axis.
+- Each image is displayed as a square (1:1 aspect ratio).
+- Images are scaled to cover their area using `object-fit: cover`.
+- Captions are centered below each image.
 
-When multiple images are provided, they are displayed in a horizontal, scrollable list. Each image is displayed as a square, preserving its aspect ratio within the gallery.
+## CSS Custom Properties
 
-## Examples
+| Property                          | Default                  | Description                               |
+|-----------------------------------|--------------------------|-------------------------------------------|
+| `--cn-lightbox-background`        | `var(--color-surface-2)` | Background color of the lightbox.         |
+| `--cn-lightbox-color`             | `var(--color-on-surface)`| Text color for captions.                  |
+| `--cn-lightbox-border-radius`     | `var(--cn-border-radius-medium)` | Border radius of the lightbox container.    |
+| `--cn-lightbox-image-border-radius` | `var(--cn-border-radius-small)`  | Border radius of the images.              |
+| `--cn-lightbox-inner-spacing`     | `var(--cn-grid)`         | Padding inside the lightbox and gap between images. |
+| `--cn-lightbox-scrollbar-color`   | `var(--color-secondary)` | Color of the scrollbar thumb.             |
 
-Here are some live examples of the `cn-lightbox` component:
-
-<CnLightboxExamples />
+</article>

@@ -1,0 +1,37 @@
+<h3>LIGHT</h3>
+<cn-lightbox id="lightbox-light-single"></cn-lightbox>
+<br/>
+<cn-lightbox id="lightbox-light-multi"></cn-lightbox>
+
+
+<script>
+  const lightboxLightSingle = document.querySelector('#lightbox-light-single');
+  if(lightboxLightSingle) {
+      lightboxLightSingle.images = [{ src: 'https://picsum.photos/id/1015/1200/700', caption: 'A boat' }];
+  }
+
+  const lightboxLightMulti = document.querySelector('#lightbox-light-multi');
+  if(lightboxLightMulti) {
+      lightboxLightMulti.images = [
+        { src: 'https://picsum.photos/id/1015/300/200', caption: 'A boat' },
+        { src: 'https://picsum.photos/id/1016/300/200', caption: 'A road' },
+        { src: 'https://picsum.photos/id/1018/300/200', caption: 'A city' },
+        { src: 'https://picsum.photos/id/1019/300/200', caption: 'A landscape' },
+      ];
+  }
+
+  const lightboxDarkSingle = document.querySelector('#lightbox-dark-single');
+  if(lightboxDarkSingle) {
+      lightboxDarkSingle.images = [{ src: 'https://picsum.photos/id/1025/1200/700', caption: 'A dog' }];
+  }
+
+  const lightboxDarkMulti = document.querySelector('#lightbox-dark-multi');
+  if(lightboxDarkMulti) {
+      lightboxDarkMulti.images = [
+        { src: 'https://picsum.photos/id/1025/300/200', caption: 'A dog' },
+        { src: 'https://picsum.photos/id/1026/300/200', caption: 'A cat' },
+        { src: 'https://picsum.photos/id/1027/300/200', caption: 'A bird' },
+        { src: 'https://picsum.photos/id/1028/300/200', caption: 'A fish' },
+      ];
+  }
+</script>
