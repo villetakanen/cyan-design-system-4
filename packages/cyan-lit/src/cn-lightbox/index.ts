@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, type TemplateResult } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
 
 interface Image {
@@ -10,6 +10,9 @@ interface Image {
 export class CnLightbox extends LitElement {
   @property({ type: Array, reflect: true })
   images: Image[] = [];
+
+  @property({ type: Object })
+  private _selectedImage: Image | null = null;
 
   @query('.flex-container')
   private _flexContainer!: HTMLElement;
@@ -100,31 +103,84 @@ export class CnLightbox extends LitElement {
       border-bottom-left-radius: var(--cn-border-radius-small);
       border-bottom-right-radius: var(--cn-border-radius-small);
     }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: var(--z-index-modal);
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+    .modal .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 2rem;
+      --cn-icon-color: white;
+    }
   `;
 
   render() {
+    let content: TemplateResult | null;
     if (this.images.length === 1) {
-      return html`
-      <figure class="single-figure">
-        <img src="${this.images[0].src}" alt="${this.images[0].caption}" />
-        <figcaption class="caption">${this.images[0].caption}</figcaption>
-  </figure>
-    `;
+      content = html`
+        <figure class="single-figure" @click="${() => this._openModal(this.images[0])}">
+          <img src="${this.images[0].src}" alt="${this.images[0].caption}" />
+          <figcaption class="caption">${this.images[0].caption}</figcaption>
+        </figure>
+      `;
+    } else if (this.images.length > 1) {
+      content = html`
+        <div class="flex-container">
+          ${this.images.map(
+            (image) => html`
+              <figure class="square-figure" @click="${() => this._openModal(image)}">
+                <img src="${image.src}" alt="${image.caption}" />
+                <figcaption class="caption">${image.caption}</figcaption>
+              </figure>
+            `,
+          )}
+        </div>
+      `;
+    } else {
+      content = html``;
     }
-    if (this.images.length > 1) {
-      return html`
-      <div class="flex-container">
-        ${this.images.map(
-          (image) => html`
-            <figure class="square-figure">
-              <img src="${image.src}" alt="${image.caption}" />
-              <figcaption class="caption">${image.caption}</figcaption>
-            </figure>
-          `,
-        )}
+
+    return html`
+      ${content}
+      ${this._selectedImage ? this._renderModal() : ''}
+    `;
+  }
+
+  _renderModal() {
+    return html`
+      <div class="modal" @click="${this._closeModal}">
+        <button class="close-button" @click="${this._closeModal}">
+          <cn-icon noun="close"></cn-icon>
+        </button>
+        <img src="${this._selectedImage?.src}" alt="${this._selectedImage?.caption}" />
       </div>
     `;
-    }
-    return html``; // Nothing to render if no images
+  }
+
+  _openModal(image: Image) {
+    this._selectedImage = image;
+  }
+
+  _closeModal() {
+    this._selectedImage = null;
   }
 }

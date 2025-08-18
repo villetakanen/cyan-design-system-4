@@ -2,4 +2,5 @@
   --z-index-tray: 20000;
   --z-index-rail: 30000;
   --z-index-tray-button: 40000;
+  --z-index-modal: 50000;
 }
