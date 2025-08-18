@@ -32,10 +32,10 @@ export default defineConfig({
           ),
         },
         {
-          find: 'cn-lightbox',
+          find: 'cn-story-clock',
           replacement: path.resolve(
             path.dirname(fileURLToPath(import.meta.url)),
-            '../../packages/cn-lightbox',
+            '../../packages/cn-story-clock',
           ),
         },
       ],

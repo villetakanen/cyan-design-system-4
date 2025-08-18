@@ -85,6 +85,7 @@ export class CnLightbox extends LitElement {
       height: 100%;
       object-fit: cover;
       object-position: center;
+      aspect-ratio: 1 / 1;
     }
     :host .square-figure .caption {
       position: absolute;

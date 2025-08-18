@@ -1,0 +1,72 @@
+---
+title: '<cn-story-clock>'
+noun: 'clock'
+description: 'A visual tracking tool for tabletop RPGs.'
+---
+
+import Demo from '../../components/demo/story-clock-demo.astro'
+
+<article class="column-l surface">
+
+# `<cn-story-clock>`
+
+A form component that implements a Story Clock - a visual tracking tool originating from tabletop RPGs like Apocalypse World and Blades in the Dark. Story Clocks display progress as segments in a pie chart, filling in wedges as events or actions advance toward completion.
+
+<Demo />
+
+## API
+
+### Properties / Attributes
+
+| Name       | Attribute    | Type      | Default     | Description                                                                 |
+|------------|--------------|-----------|-------------|-----------------------------------------------------------------------------|
+| `name`     | `name`       | `string`  | 'A Clock'   | The name of the clock, used for the `aria-label`.                           |
+| `value`    | `value`      | `number`  | 2           | The current value of the clock, representing the number of ticked segments. |
+| `disabled` | `disabled`   | `boolean` | `false`     | Disables the component.                                                     |
+| `required` | `required`   | `boolean` | `false`     | Marks the component as required in a form.                                  |
+| `view`     | `view`       | `boolean` | `false`     | Renders the component in a read-only view mode.                             |
+
+### Slots
+
+| Name      | Description                               |
+|-----------|-------------------------------------------|
+| (default) | Holds `<cn-tick>` elements for the clock. |
+
+### CSS Custom Properties
+
+| Name                                | Default               | Description                                |
+|-------------------------------------|-----------------------|--------------------------------------------|
+| `--cn-story-clock-slice-color`      | `lightgray`           | The color of the clock slices.             |
+| `--cn-story-clock-border-color`     | `darkgray`            | The color of the clock border.             |
+| `--cn-story-clock-slice-border-width` | `2px`                 | The width of the border for each slice.    |
+| `--cn-story-clock-tick-color`       | `gray`                | The color of the ticked slices.            |
+
+---
+
+## `<cn-tick>`
+
+The `<cn-tick>` element defines a segment in the `<cn-story-clock>`.
+
+### Properties / Attributes
+
+| Name    | Attribute | Type     | Default | Description                                         |
+|---------|-----------|----------|---------|-----------------------------------------------------|
+| `label` | `label`   | `string` | ''      | The label for the tick, used for `aria-valuetext`.  |
+| `value` | `value`   | `string` | ''      | The value of the tick.                              |
+| `size`  | `size`    | `number` | 1       | The relative size of the tick's slice in the clock. |
+
+## Usage
+
+```html
+<cn-story-clock
+  name="Example clock"
+  value="1">
+
+  <cn-tick label="Start of the threat" value="0"></cn-tick>
+  <cn-tick label="Mid point of the threat" value="1"></cn-tick>
+  <cn-tick label="End of the threat" value="2"></cn-tick>
+
+</cn-story-clock>
+```
+
+</article>
