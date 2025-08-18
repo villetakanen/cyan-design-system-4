@@ -1,0 +1,29 @@
+<section class="tester">
+    <cn-lightbox id="lightbox-1"></cn-lightbox>  
+    <br>
+    <br>
+    <cn-lightbox  id="lightbox-2"></cn-lightbox>
+</section>
+
+  <script is:inline>
+
+    async function setGalleryImages(galleryElement, images) {
+      galleryElement.images = images;
+      await galleryElement.updateComplete; // Wait for update to complete
+    }
+
+    const gallery2 = document.querySelector('#lightbox-2');
+    setGalleryImages(gallery2, [
+      { src: 'https://picsum.photos/id/1015/300/200', caption: 'A boat' },
+      { src: 'https://picsum.photos/id/1016/300/200', caption: 'A road' },
+      { src: 'https://picsum.photos/id/1018/300/200', caption: 'A city' },
+      { src: 'https://picsum.photos/id/1019/300/200', caption: 'A landscape' },
+    ]);
+
+    const gallery1 = document.querySelector('#lightbox-1');
+    setGalleryImages(gallery1, [
+        { src: 'https://picsum.photos/id/1025/1200/700', caption: 'A dog' },
+        ]
+    )
+    
+  </script>

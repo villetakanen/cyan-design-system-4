@@ -13,3 +13,4 @@ export { CnSnackbar } from './cn-snackbar/cn-snackbar.js';
 export { CnSortableList } from './cn-sortable-list/cn-sortable-list.js';
 export { CnToggleButton } from './cn-toggle-button/cn-toggle-button.js';
 export { CnTrayButton } from './cn-tray-button/cn-tray-button.js';
+export { CnLightbox } from './cn-lightbox/index.js';

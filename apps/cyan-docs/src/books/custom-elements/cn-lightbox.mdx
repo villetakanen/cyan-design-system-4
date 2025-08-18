@@ -1,20 +1,28 @@
 ---
-title: 'cn-image-display'
-noun: 'add'
-description: "A figure/image display component for Cyan Design System, with support for 1 to n images"
+title: 'cn-lightbox'
+noun: 'photo'
+description: "A versatile image gallery component for the Cyan Design System, supporting single or multiple images with captions."
 ---
-import CnImageDisplayExamples from '../../components/demo/CnImageDisplayExamples.astro'
+import CnLightboxExamples from '../../components/demo/CnLightboxExamples.astro'
 
-# cn-image-display
+# cn-lightbox
 
-The `cn-image-display` component is a LitElement component that renders a figure/image display. The component supports displaying 1 to n images, with captions.
+The `cn-lightbox` component is a LitElement that provides a flexible and stylish way to display one or more images. It can render a single large image with a caption or a scrollable gallery of images, each with its own caption.
 
 ## Usage
 
-`<cn-image-display>` renders a figure/image display:
+To use the `cn-lightbox`, you need to provide an array of image objects to its `images` property. Each object should contain a `src` (the image URL) and a `caption`.
+
+### Single Image
+
+When a single image is provided, it is displayed prominently within the component's bounds.
+
+### Multiple Images
+
+When multiple images are provided, they are displayed in a horizontal, scrollable list. Each image is displayed as a square, preserving its aspect ratio within the gallery.
 
 ## Examples
 
-<CnImageDisplayExamples />
+Here are some live examples of the `cn-lightbox` component:
 
-
+<CnLightboxExamples />

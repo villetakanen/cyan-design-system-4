@@ -1,6 +1,4 @@
 [submodule "packages/cn-editor"]
 	path = packages/cn-editor
 	url = https://github.com/villetakanen/cn-editor.git
-[submodule "packages/cn-lightbox"]
-	path = packages/cn-lightbox
-	url = https://github.com/villetakanen/cn-lightbox.git
+
