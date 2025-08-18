@@ -76,7 +76,7 @@ export class CnSortableList extends LitElement {
     if (!dataTransfer) {
       return;
     }
-    const dragIndex = Number.parseInt(dataTransfer.getData('text/plain'));
+    const dragIndex = Number.parseInt(dataTransfer.getData('text/plain'), 10);
     if (dragIndex >= 0 && dragIndex !== dropIndex) {
       const updatedItems = [...this.items];
       const [removed] = updatedItems.splice(dragIndex, 1);

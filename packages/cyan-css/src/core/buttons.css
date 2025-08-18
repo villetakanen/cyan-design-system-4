@@ -66,8 +66,8 @@ a.button cn-icon:only-child {
 /* Force all cn-icon elements inside buttons to use small size */
 button cn-icon,
 a.button cn-icon {
-  height: var(--cn-icon-size-small) !important;
-  width: var(--cn-icon-size-small) !important;
+  height: var(--cn-icon-size-small);
+  width: var(--cn-icon-size-small);
 }
 
 button:disabled,

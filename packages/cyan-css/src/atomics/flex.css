@@ -25,11 +25,11 @@
 }
 
 .grow {
-  flex-grow: 1 !important;
+  flex-grow: 1;
 }
 
 .shrink {
-  flex-shrink: 1 !important;
+  flex-shrink: 1;
 }
 
 /* Flex alignment utilities */
