@@ -16,7 +16,7 @@ The `<cn-loader>` component displays a loading indicator with a spinning dual-ri
     <h3>LIGHT</h3>
     <div class="flex flex-col items-center">
       <cn-loader></cn-loader>
-      <cn-loader for="navigation"></cn-loader>
+      <cn-loader inline></cn-loader>
       <button>
         <cn-loader noun="assets"></cn-loader>
         <span>Loading media...</span>
@@ -31,7 +31,7 @@ The `<cn-loader>` component displays a loading indicator with a spinning dual-ri
     <h3>DARK</h3>
     <div class="flex flex-col items-center">
       <cn-loader noun="mekanismi"></cn-loader>
-      <cn-loader noun="mekanismi" for="navigation"></cn-loader>
+      <cn-loader noun="mekanismi" inline></cn-loader>
       <button>
         <cn-loader noun="assets"></cn-loader>
         <span>Loading media...</span>
@@ -48,10 +48,10 @@ The `<cn-loader>` component displays a loading indicator with a spinning dual-ri
 
 ### Properties / Attributes
 
-| Name   | Attribute | Type   | Default | Description                                                                                                |
-|--------|-----------|--------|---------|------------------------------------------------------------------------------------------------------------|
-| `noun` | `noun`    | String | `'fox'` | The noun/name of the icon to display in the center of the loader. Uses the `<cn-icon>` component.         |
-| `for`  | `for`     | String | `''`    | Specifies the context of the loader. When set to `'navigation'`, the loader is smaller and optimized for navigation elements. |
+| Name     | Attribute | Type    | Default | Description                                                                                                |
+|----------|-----------|---------|---------|------------------------------------------------------------------------------------------------------------|
+| `noun`   | `noun`    | String  | `'fox'` | The noun/name of the icon to display in the center of the loader. Uses the `<cn-icon>` component.         |
+| `inline` | `inline`  | Boolean | `false` | When true, the loader is smaller and optimized for use inside buttons or other navigation elements.        |
 
 ### HTML
 
@@ -63,17 +63,17 @@ The `<cn-loader>` component displays a loading indicator with a spinning dual-ri
 <cn-loader noun="star"></cn-loader>
 
 <!-- Small loader for navigation -->
-<cn-loader for="navigation"></cn-loader>
+<cn-loader inline></cn-loader>
 
 <!-- Custom icon for navigation -->
-<cn-loader noun="cat" for="navigation"></cn-loader>
+<cn-loader noun="cat" inline></cn-loader>
 ```
 
 ## Features
 
 - **Dual-Ring Animation**: Rotating dual-ring border provides smooth loading indication
 - **Static Center Icon**: Center icon provides visual context without distraction
-- **Navigation Variant**: Smaller size optimized for navigation elements
+- **Inline Variant**: Smaller size optimized for navigation elements
 - **Customizable Icon**: Center icon can be changed using the `noun` property
 - **Semantic Loading**: Clear visual indication of loading state
 - **CSS Custom Properties**: Configurable via design system tokens
@@ -86,7 +86,7 @@ The `<cn-loader>` component displays a loading indicator with a spinning dual-ri
 - Center icon rotates slowly in the opposite direction
 - Standard size suitable for content areas
 
-### Navigation State (`for="navigation"`)
+### Inline State (`inline`)
 - Smaller dimensions matching `--cn-line` height
 - Same animations but scaled appropriately
 - Suitable for buttons and navigation elements

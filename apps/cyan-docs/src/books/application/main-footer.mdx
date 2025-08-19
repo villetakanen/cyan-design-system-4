@@ -1,0 +1,117 @@
+---
+title: 'Main Footer'
+noun: 'design'
+description: 'The primary footer of the application within the main content area.'
+---
+
+<article class="column-l surface">
+
+# Main Footer
+
+The main footer (`main > footer`) is the primary footer section of the application, positioned within the `<main>` content area. It's distinct from article or section footers and provides application-level footer content such as navigation links, legal information, and additional resources.
+
+## Structure
+
+The main footer is a direct child of the `<main>` element and should contain application-level footer content:
+
+```html
+<main>
+  <!-- Main content -->
+  
+  <footer>
+    <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/privacy">Privacy Policy</a></li>
+      <li><a href="/terms">Terms of Service</a></li>
+    </ul>
+    <ul>
+      <li><a href="/help">Help</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/feedback">Feedback</a></li>
+    </ul>
+  </footer>
+</main>
+```
+
+## Visual Behavior
+
+### Layout
+
+- **Padding**: Uses `--cn-gap` for consistent spacing
+- **Minimum Height**: Set to `calc(var(--cn-gap) * 20)` to ensure adequate footer space
+- **Container**: Defines `main-app-footer` container for nested container queries
+- **Bottom Spacing**: Additional bottom padding and margin using `calc(9 * var(--cn-grid))`
+
+### Responsive Design
+
+The footer adapts to different screen sizes:
+
+**Mobile (< 621px)**:
+- Full width within main padding
+- Bottom margin for visual separation
+
+**Desktop (≥ 621px)**:
+- Left margin adjusted by rail width (`--cn-width-rail`)
+- No bottom margin (aligns with rail layout)
+
+### List Item Styling
+
+List items within the footer automatically receive bottom margin (`--cn-grid`) for proper vertical spacing between navigation items.
+
+## CSS Custom Properties
+
+The main footer uses the following design tokens:
+
+| Property | Value | Description |
+|---|---|---|
+| `--cn-gap` | `calc(var(--cn-grid) * 2)` | Primary padding and spacing |
+| `--cn-grid` | `0.5rem` | Base grid unit for margins and spacing |
+| `--cn-width-rail` | `calc(var(--cn-grid) * 10)` | Rail width for desktop layout adjustment |
+
+## Container Queries
+
+The footer defines its own container context (`main-app-footer / inline-size`) enabling responsive design at the footer level. This allows nested components to respond to the footer's width rather than the viewport.
+
+## Best Practices
+
+### Content Structure
+- Use semantic `<ul>` and `<li>` elements for footer navigation
+- Group related links in separate lists for visual organization
+- Include proper anchor tags with meaningful href attributes
+- Consider accessibility with proper link text and structure
+
+### Avoiding Conflicts
+- The styles specifically target `main > footer` to avoid conflicts with article or section footers
+- Article and section footers should use different styling approaches
+- Keep footer content focused on application-level navigation and information
+
+### Usage Guidelines
+```html
+<!-- ✅ Good: Application-level footer -->
+<main>
+  <article>...</article>
+  <footer>
+    <ul>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </footer>
+</main>
+
+<!-- ✅ Good: Article footer (different styling) -->
+<article>
+  <h1>Article Title</h1>
+  <p>Article content...</p>
+  <footer>
+    <p>Published on <time>2024-01-01</time></p>
+  </footer>
+</article>
+```
+
+## Related Components
+
+- **[Main Element](/application/main)**: The parent container element
+- **[App Rail](/application/app-rail)**: Navigation rail that affects footer positioning
+- **[Content Cards](/application/content-cards)**: May contain their own footer elements
+
+</article>

@@ -15,3 +15,38 @@ main {
     margin-left: calc(var(--cn-width-tray) + var(--cn-gap));
   }
 }
+
+/**
+ * Main area footer - the primary footer of the application within the <main> element.
+ * This is distinct from article or section footers.
+ */
+main > footer {
+  padding: var(--cn-gap);
+  min-height: calc(var(--cn-gap) * 20);
+  container: main-app-footer / inline-size;
+  padding-bottom: calc(9 * var(--cn-grid));
+  margin-bottom: calc(9 * var(--cn-grid));
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--cn-line);
+  padding-top: calc(var(--cn-line) - 1px);
+}
+
+main > footer h4 {
+  margin-top: 0;
+  text-transform: uppercase;
+  font-size: var(--cn-font-size-caption);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--cn-color-text-secondary);
+}
+
+main > footer li {
+  margin-bottom: var(--cn-grid);
+}
+
+@media screen and (min-width: 621px) {
+  main > footer {
+    margin-left: var(--cn-width-rail);
+    margin-bottom: var(--cn-line);
+  }
+}

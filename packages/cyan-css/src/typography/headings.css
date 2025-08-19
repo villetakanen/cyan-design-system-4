@@ -6,6 +6,7 @@ h1 {
   line-height: var(--cn-heading-1-line-height);
   margin: 0;
   margin-bottom: var(--cn-line);
+  color: var(--color-heading-1);
 }
 
 .text-h2,
@@ -16,6 +17,7 @@ h2 {
   line-height: var(--cn-heading-2-line-height);
   margin: 0;
   margin-bottom: var(--cn-line);
+  color: var(--color-heading-1);
 }
 
 .text-h3,
@@ -27,6 +29,7 @@ h3 {
   letter-spacing: var(--cn-heading-3-letter-spacing);
   margin: 0;
   margin-bottom: var(--cn-line);
+  color: var(--color-heading-2);
 }
 
 .text-h4,
@@ -37,6 +40,7 @@ h4 {
   line-height: var(--cn-heading-4-line-height);
   margin: 0;
   margin-bottom: var(--cn-line);
+  color: var(--color-heading-2);
 }
 
 .text-h5 /* Note: we are omitting non-atomic h5 intentionally */ {
@@ -46,6 +50,7 @@ h4 {
   line-height: var(--cn-heading-5-line-height);
   margin: 0;
   margin-bottom: var(--cn-line);
+  color: var(--color-heading-2);
 }
 
 article h1:first-of-type,

@@ -1,22 +1,20 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-export type CN_LOADER_FOR_VALUES = '' | 'navigation';
-
 @customElement('cn-loader')
 export class CnLoader extends LitElement {
   @property({ type: String, reflect: true })
   noun = 'fox';
 
-  @property({ type: String, reflect: true })
-  for: CN_LOADER_FOR_VALUES = '';
+  @property({ type: Boolean, reflect: true })
+  inline = false;
 
   public render() {
     return html`
       <div class="lds-dual-ring"></div>
       <cn-icon
         noun="${this.noun}"
-        ?large=${this.for === ''}
+        ?large=${!this.inline}
       ></cn-icon>
     `;
   }
@@ -30,11 +28,11 @@ export class CnLoader extends LitElement {
       place-content: center;
       position: relative;
     }
-    :host([for="navigation"]) {
+    :host([inline]) {
       height: calc(var(--cn-line) * 1);
       width: calc(var(--cn-line) * 1);
     }
-    
+
     :host cn-icon {
       grid-area: 1 / 1;
       opacity: 0.44;

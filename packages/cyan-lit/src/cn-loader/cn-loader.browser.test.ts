@@ -51,9 +51,9 @@ describe('CnLoader - Browser Tests', () => {
     document.body.removeChild(element);
   });
 
-  it('should not have large icon when for navigation', async () => {
+  it('should not have large icon when inline', async () => {
     const element = document.createElement('cn-loader') as CnLoader;
-    element.for = 'navigation';
+    element.inline = true;
     document.body.appendChild(element);
 
     await customElements.whenDefined('cn-loader');
@@ -89,21 +89,21 @@ describe('CnLoader - Browser Tests', () => {
     document.body.removeChild(element);
   });
 
-  it('should reflect for attribute correctly', async () => {
+  it('should reflect inline attribute correctly', async () => {
     const element = document.createElement('cn-loader') as CnLoader;
     document.body.appendChild(element);
 
     await customElements.whenDefined('cn-loader');
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    // Initially should have empty for attribute (default value is '')
-    expect(element.getAttribute('for')).toBe('');
+    // Initially should not have inline attribute
+    expect(element.hasAttribute('inline')).toBe(false);
 
-    // Set for navigation
-    element.for = 'navigation';
+    // Set inline
+    element.inline = true;
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    expect(element.getAttribute('for')).toBe('navigation');
+    expect(element.hasAttribute('inline')).toBe(true);
 
     document.body.removeChild(element);
   });

@@ -16,7 +16,7 @@ describe('CnLoader', () => {
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     expect(element.noun).toBe('fox');
-    expect(element.for).toBe('');
+    expect(element.inline).toBe(false);
 
     document.body.removeChild(element);
   });
@@ -35,16 +35,16 @@ describe('CnLoader', () => {
     document.body.removeChild(element);
   });
 
-  it('should render for navigation', async () => {
+  it('should render as inline', async () => {
     const element = document.createElement('cn-loader') as CnLoader;
-    element.for = 'navigation';
+    element.inline = true;
     document.body.appendChild(element);
 
     await customElements.whenDefined('cn-loader');
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    expect(element.for).toBe('navigation');
-    expect(element.getAttribute('for')).toBe('navigation');
+    expect(element.inline).toBe(true);
+    expect(element.hasAttribute('inline')).toBe(true);
 
     document.body.removeChild(element);
   });
@@ -64,7 +64,7 @@ describe('CnLoader', () => {
     document.body.removeChild(element);
   });
 
-  it('should set large attribute on icon when not for navigation', async () => {
+  it('should set large attribute on icon when not inline', async () => {
     const element = document.createElement('cn-loader') as CnLoader;
     document.body.appendChild(element);
 
@@ -78,9 +78,9 @@ describe('CnLoader', () => {
     document.body.removeChild(element);
   });
 
-  it('should not set large attribute on icon when for navigation', async () => {
+  it('should not set large attribute on icon when inline', async () => {
     const element = document.createElement('cn-loader') as CnLoader;
-    element.for = 'navigation';
+    element.inline = true;
     document.body.appendChild(element);
 
     await customElements.whenDefined('cn-loader');

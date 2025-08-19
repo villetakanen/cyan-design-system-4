@@ -27,7 +27,7 @@
     var(--chroma-surface-10)
   );
   --color-secondary: light-dark(
-    color-mix(in hsl, var(--chroma-primary-90), white),
+    color-mix(in hsl, var(--chroma-primary-70), transparent 78%),
     var(--chroma-primary-99)
   );
   --color-on-secondary: light-dark(
