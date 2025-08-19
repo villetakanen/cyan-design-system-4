@@ -5,11 +5,13 @@
   flex-wrap: wrap;
 }
 
-.flex-col > * {
+.flex-col > *,
+.flex-col > astro-island > * {
   width: 100%;
 }
 
-.flex:not(.flex-col) > * {
+.flex:not(.flex-col) > *,
+.flex:not(.flex-col) > astro-island > * {
   flex: 1 1 auto;
 }
 
