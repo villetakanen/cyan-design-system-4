@@ -1,0 +1,7 @@
+cn-card .toolbar {
+  border-radius: var(--cn-border-radius-card);
+  margin: 0;
+}
+cn-card:has(.toolbar) p:last-of-type {
+  margin-bottom: 0;
+}

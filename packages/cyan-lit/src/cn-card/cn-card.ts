@@ -70,11 +70,16 @@ export class CnCard extends LitElement {
         }
         ${this.titleSlot}
       </div>
-      <p class="cardDescription">
-        <slot></slot>
-     </p>
-     <div style="flex-grow:1"></div>
-     <nav class="cardActions"><slot name="actions"></slot></nav>`;
+      ${
+        this.description
+          ? html`
+        <p class="cardDescription">${this.description}</p>
+      `
+          : ''
+      }
+      <slot></slot>
+      <div style="flex-grow:1"></div>
+      <nav class="cardActions"><slot name="actions"></slot></nav>`;
   }
 
   public static styles = css`
@@ -97,6 +102,7 @@ export class CnCard extends LitElement {
       /* These are set with variables in the cyan-css package */
       background: var(--cn-card-background);
       box-shadow: var(--cn-card-box-shadow);
+      min-height: calc(7 * var(--cn-line));
     }
     :host([cover]) .cardNoun {
       position: absolute;
@@ -116,7 +122,7 @@ export class CnCard extends LitElement {
     :host .cardContent {
       padding: 0;
       margin: calc(-1 * var(--cn-grid)) calc(-1 * var(--cn-gap));
-      margin-bottom: var(--cn-gap);
+      margin-bottom: 0;
       border-radius: var(--cn-border-radius-large, 16px);
       max-height: 100cqw;
       overflow: hidden;

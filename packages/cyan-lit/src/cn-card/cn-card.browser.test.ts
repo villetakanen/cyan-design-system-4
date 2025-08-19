@@ -84,7 +84,7 @@ describe('CnCard - Browser Tests', () => {
     await customElements.whenDefined('cn-card');
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    const slot = element.shadowRoot?.querySelector('.cardDescription slot');
+    const slot = element.shadowRoot?.querySelector('slot:not([name])');
     expect(slot).toBeTruthy();
 
     const slottedContent = element.querySelector('span');

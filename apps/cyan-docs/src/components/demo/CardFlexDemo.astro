@@ -4,15 +4,18 @@
   <section class="flex flex-no-wrap items-start" id="card-flex-demo-section">
     <cn-card 
       title="101 with ellipsis in the title, which is long enough to cut off"
+      description="with some text"
       noun="fox">
-      <p>With some text</p>
     </cn-card>
     <cn-card
       title="102"
       elevation="2"
       noun="mekanismi"
       cover="https://picsum.photos/400/225">
-      Card with cover image and elevated shadow
+      <p>Card with cover image and elevated shadow</p>
+      <div class="toolbar items-center" slot="actions">
+        <a href="#" class="button text">Action</a>
+      </div>
     </cn-card>
     <cn-card 
       title="203"

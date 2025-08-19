@@ -15,9 +15,24 @@ describe('CnCard', () => {
     await customElements.whenDefined('cn-card');
     await new Promise((resolve) => setTimeout(resolve, 0));
 
+    const defaultSlot = element.shadowRoot?.querySelector('slot:not([name])');
+    expect(defaultSlot).toBeTruthy();
+
+    document.body.removeChild(element);
+  });
+
+  it('should render description when provided', async () => {
+    const element = document.createElement('cn-card') as CnCard;
+    element.description = 'Test description';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-card');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
     const cardDescription =
       element.shadowRoot?.querySelector('.cardDescription');
     expect(cardDescription).toBeTruthy();
+    expect(cardDescription?.textContent).toBe('Test description');
 
     document.body.removeChild(element);
   });
