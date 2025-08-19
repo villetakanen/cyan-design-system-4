@@ -5,7 +5,11 @@
   flex-wrap: wrap;
 }
 
-.flex > * {
+.flex-col > * {
+  width: 100%;
+}
+
+.flex:not(.flex-col) > * {
   flex: 1 1 auto;
 }
 
@@ -40,4 +44,8 @@
 
 .flex.items-center > * {
   flex-grow: 0;
+}
+
+.flex.items-start {
+  align-items: flex-start;
 }

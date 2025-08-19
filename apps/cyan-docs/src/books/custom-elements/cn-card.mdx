@@ -2,40 +2,15 @@
 title: '<cn-card>'
 noun: 'card'
 ---
+import CardFlexDemo from '../../components/demo/CardFlexDemo.astro'
+
 <article class="column-l">
 
 # Cards
 
 A `cn-card` is a fixed container for a piece of content. It can be used to display a small amount of information, or to highlight a piece of content.
 
-<section class="flex flex-no-wrap">
-  <cn-card 
-    title="101 with ellipsis in the title, which is long enough to cut off"
-    noun="fox">
-    <p>With some text</p>
-  </cn-card>
-  <cn-card
-    title="102"
-    elevation="2"
-    noun="mekanismi"
-    cover="https://picsum.photos/400/225">
-    Card with cover image and elevated shadow
-  </cn-card>
-  <cn-card 
-    title="203"
-    elevation="3"
-    noun="card">
-    <div class="toolbar border border-radius" slot="actions">
-      <button>Actions</button>
-      <button class="text">
-        <cn-icon noun="delete"></cn-icon>
-      </button>
-      <button class="call-to-action">
-        <cn-icon noun="add"></cn-icon>
-      </button>
-    </div>
-  </cn-card>
-</section>
+<CardFlexDemo />
 
 ## Basic Usage
 

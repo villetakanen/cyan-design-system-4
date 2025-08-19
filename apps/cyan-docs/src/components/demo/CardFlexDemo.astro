@@ -1,0 +1,45 @@
+<cn-toggle-button id="toggle-flex-direction" class="flex-none" label="Flex row/col">
+  </cn-toggle-button>
+  
+  <section class="flex flex-no-wrap items-start" id="card-flex-demo-section">
+    <cn-card 
+      title="101 with ellipsis in the title, which is long enough to cut off"
+      noun="fox">
+      <p>With some text</p>
+    </cn-card>
+    <cn-card
+      title="102"
+      elevation="2"
+      noun="mekanismi"
+      cover="https://picsum.photos/400/225">
+      Card with cover image and elevated shadow
+    </cn-card>
+    <cn-card 
+      title="203"
+      elevation="3"
+      noun="card">
+      <div class="toolbar border border-radius" slot="actions">
+        <button>Actions</button>
+        <button class="text">
+          <cn-icon noun="delete"></cn-icon>
+        </button>
+        <button class="call-to-action">
+          <cn-icon noun="add"></cn-icon>
+        </button>
+      </div>
+    </cn-card>
+  </section>
+
+
+<script>
+  const toggleButton = document.getElementById('toggle-flex-direction') as any;
+  const section = document.getElementById('card-flex-demo-section');
+
+  toggleButton?.addEventListener('change', () => {
+    if (toggleButton.pressed) {
+      section?.classList.add('flex-col');
+    } else {
+      section?.classList.remove('flex-col');
+    }
+  });
+</script>
