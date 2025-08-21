@@ -1,6 +1,6 @@
 {
   "name": "cyan-lit",
-  "version": "1.0.0",
+  "version": "4.0.0-beta.3",
   "description": "Cyan Design System Lit Components",
   "type": "module",
   "main": "dist/index.js",
