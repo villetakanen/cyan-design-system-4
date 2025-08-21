@@ -22,7 +22,7 @@
     "design-system"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "lit": "^3.3.1"
   },

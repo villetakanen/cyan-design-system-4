@@ -2,8 +2,17 @@
   "name": "cn-story-clock",
   "version": "4.0.0-beta.3",
   "description": "A form input custom element for a PbtA style story clock",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
+    "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "check": "biome check --write",
     "dev": "vite"
