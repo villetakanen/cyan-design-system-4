@@ -1,0 +1,37 @@
+{
+  "name": "cn-dice",
+  "version": "4.0.0-beta.3",
+  "description": "A custom element for displaying dice.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "check": "biome check --write"
+  },
+  "keywords": [
+    "lit",
+    "web-components",
+    "dice"
+  ],
+  "author": "Ville Takanen",
+  "license": "MIT",
+  "dependencies": {
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.0.7"
+  },
+  "files": [
+    "dist"
+  ]
+}

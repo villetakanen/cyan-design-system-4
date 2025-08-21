@@ -1,0 +1,19 @@
+<div class="dice-grid">
+    <cn-dice sides="4" value="4"></cn-dice>
+    <cn-dice sides="6" value="6"></cn-dice>
+    <cn-dice sides="8" value="8"></cn-dice>
+    <cn-dice sides="10" value="10"></cn-dice>
+    <cn-dice sides="12" value="12"></cn-dice>
+    <cn-dice sides="20" value="20"></cn-dice>
+</div>
+<style>
+    .dice-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border: 1px solid var(--cn-color-border);
+        border-radius: var(--cn-border-radius-medium);
+    }
+</style>

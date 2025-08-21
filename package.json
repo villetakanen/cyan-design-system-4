@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "lefthook install",
     "dev": "concurrently \"pnpm --filter cyan-lit dev\" \"pnpm --filter cyan-css dev\" \"pnpm --filter cn-editor dev\" \"pnpm --filter cn-story-clock dev\" \"pnpm --filter cyan-docs dev\"",
-    "build": "pnpm --filter cyan-lit build && pnpm --filter cyan-css build && pnpm --filter cn-editor build && pnpm --filter cn-story-clock build && pnpm --filter cyan-docs build",
+    "build": "pnpm --filter cyan-lit build && pnpm --filter cyan-css build && pnpm --filter cn-editor build && pnpm --filter cn-story-clock build && pnpm --filter cn-dice build && pnpm --filter cyan-docs build",
     "test": "pnpm --recursive test",
     "lint": "biome lint .",
     "format": "biome format --write .",

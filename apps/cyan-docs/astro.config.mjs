@@ -38,6 +38,13 @@ export default defineConfig({
             '../../packages/cn-story-clock',
           ),
         },
+        {
+          find: 'cn-dice',
+          replacement: path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            '../../packages/cn-dice',
+          ),
+        },
       ],
     },
   },
