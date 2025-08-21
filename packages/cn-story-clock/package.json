@@ -12,7 +12,7 @@
   "author": "Ville Takanen",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.2.0",
     "@types/node": "^22.10.5",
     "typescript": "^5.7.2",
     "vite": "^6.0.7"
