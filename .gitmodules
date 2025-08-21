@@ -1,7 +1,0 @@
-[submodule "packages/cn-editor"]
-	path = packages/cn-editor
-	url = https://github.com/villetakanen/cn-editor.git
-
-[submodule "packages/cn-story-clock"]
-	path = packages/cn-story-clock
-	url = https://github.com/villetakanen/cn-story-clock.git
