@@ -2,7 +2,15 @@
   "name": "cn-editor",
   "version": "2.0.0-beta.3",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/cn-editor.umd.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/cn-editor.es.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
