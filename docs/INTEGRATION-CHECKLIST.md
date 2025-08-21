@@ -13,12 +13,12 @@
 
 ### 1. Clean Integration (10 minutes)
 ```bash
-# Remove git directories
+# Remove git directories - DONE
 cd /Users/ville.takanen/dev/cyan-design-system-4
 rm -rf packages/cn-editor/.git
 rm -rf packages/cn-story-clock/.git
 
-# Clean up any git-specific files
+# Clean up any git-specific files - DONE
 find packages/cn-editor -name ".gitignore" -delete
 find packages/cn-story-clock -name ".gitignore" -delete
 
