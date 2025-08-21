@@ -11,8 +11,7 @@
     "lint": "biome lint .",
     "format": "biome format --write .",
     "check": "biome check --write ."
-  }
-,
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -29,7 +28,9 @@
     "onlyBuiltDependencies": [
       "core-js",
       "fsevents",
-      "lefthook"
+      "lefthook",
+      "@biomejs/biome",
+      "esbuild"
     ]
   }
 }

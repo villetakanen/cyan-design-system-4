@@ -30,8 +30,5 @@
     "lit": "^3.2.1",
     "turndown": "^7.2.0",
     "turndown-plugin-gfm": "^1.0.2"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": ["@biomejs/biome", "esbuild"]
   }
 }
