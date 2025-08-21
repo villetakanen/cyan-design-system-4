@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "test": "echo \"no tests yet\"",
+    "test": "vitest",
     "check": "biome check --write",
     "dev": "vite"
   },
@@ -22,12 +22,16 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
-    "@types/node": "^22.10.5",
-    "typescript": "^5.7.2",
-    "vite": "^6.0.7"
+    "@vitest/browser": "^3.2.4",
+    "jsdom": "^26.1.0",
+    "playwright": "^1.54.1",
+    "typescript": "^5.8.3",
+    "vite": "^6.0.7",
+    "vitest": "^3.2.4",
+    "vitest-browser-lit": "^0.1.0"
   },
   "dependencies": {
-    "lit": "^3.2.1",
+    "lit": "^3.3.1",
     "ts-key-enum": "^3.0.13"
   }
 }
