@@ -1,6 +1,6 @@
 {
-  "name": "cn-editor",
-  "version": "2.0.0-beta.3",
+  "name": "@11thdeg/cn-editor",
+  "version": "4.0.0-beta.4",
   "description": "",
   "type": "module",
   "main": "dist/cn-editor.umd.js",
@@ -11,7 +11,12 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepare": "pnpm build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

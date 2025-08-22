@@ -1,0 +1,54 @@
+name: Publish @11thdeg/cyan-css (beta)
+
+on:
+  push:
+    tags:
+      - 'v4.*-beta.*'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build cyan-css
+        run: pnpm --filter @11thdeg/cyan-css build
+
+      - name: Verify package files
+        run: |
+          ls -la packages/cyan-css/dist || true
+
+      - name: Configure npm auth
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Dry-run publish
+        run: |
+          cd packages/cyan-css
+          npm publish --access public --dry-run
+
+      - name: Publish package
+        if: github.ref =~ 'refs/tags/v4.*-beta.*'
+        run: |
+          cd packages/cyan-css
+          npm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

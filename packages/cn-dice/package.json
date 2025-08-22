@@ -1,6 +1,6 @@
 {
-  "name": "cn-dice",
-  "version": "4.0.0-beta.3",
+  "name": "@11thdeg/cn-dice",
+  "version": "4.0.0-beta.4",
   "description": "A custom element for displaying dice.",
   "type": "module",
   "main": "dist/index.js",
@@ -11,7 +11,14 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepare": "pnpm build",
     "build": "vite build",
     "dev": "vite",
     "check": "biome check --write"
@@ -30,8 +37,5 @@
     "@biomejs/biome": "2.2.0",
     "typescript": "^5.8.3",
     "vite": "^6.0.7"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }

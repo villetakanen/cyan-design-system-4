@@ -1,6 +1,6 @@
 {
-  "name": "cyan-lit",
-  "version": "4.0.0-beta.3",
+  "name": "@11thdeg/cyan-lit",
+  "version": "4.0.0-beta.4",
   "description": "Cyan Design System Lit Components",
   "type": "module",
   "main": "dist/index.js",
@@ -11,7 +11,12 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepare": "pnpm build",
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "vitest"

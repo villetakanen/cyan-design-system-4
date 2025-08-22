@@ -1,6 +1,6 @@
 {
-  "name": "cyan-css",
-  "version": "4.0.0-beta.3",
+  "name": "@11thdeg/cyan-css",
+  "version": "4.0.0-beta.4",
   "description": "Cyan Design System CSS Styles",
   "type": "module",
   "main": "src/index.css",
@@ -9,9 +9,14 @@
     ".": "./src/index.css"
   },
   "files": [
+    "dist",
     "src"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepare": "pnpm build",
     "build": "cpx 'src/**/*.css' dist",
     "dev": "cpx 'src/**/*.css' dist --watch"
   },

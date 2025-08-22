@@ -1,4 +1,4 @@
-## NPM Release Plan — publish packages as `@11thd/*` (v4.x)
+## NPM Release Plan — publish packages as `@11thdeg/*` (v4.x)
 
 Status: Draft
 
@@ -8,12 +8,12 @@ Risk: Medium (npm org permissions, accidental public publish, versioning mistake
 Overview
 --------
 
-This document describes a conservative, repeatable process to prepare and publish the monorepo packages under the npm scope `@11thd` and to standardize versions to `4.something` (semantic versioning).
+This document describes a conservative, repeatable process to prepare and publish the monorepo packages under the npm scope `@11thdeg` and to standardize versions to `4.something` (semantic versioning).
 We are currently in a beta phase — all published beta releases should use semver pre-release identifiers (for example `4.0.0-beta.3`). The plan focuses on checklistable steps, CI automation, and safe dry-runs.
 
 Requirements (explicit)
 -----------------------
-- All packages will be published under the npm scope `@11thd/[name]`.  
+- All packages will be published under the npm scope `@11thdeg/[name]`.  
 - All released versions must be `4.x.y` (use semver: major = 4). During the beta phase, prefer pre-release identifiers such as `4.0.0-beta.1`, `4.0.1-beta.2` to make the release channel explicit.
 - Provide a repeatable CI-driven release flow using GitHub Actions.  
 - Include dry-run/publish checks and post-release validation.
@@ -27,8 +27,8 @@ Assumptions
 Quick checklist
 ---------------
 - [ ] Confirm access to `@11thd` org and that `NPM_TOKEN` will be added to GitHub Secrets. (Required)
-- [ ] Update each package `package.json`:
-  - `name`: `@11thd/<package-name>`
+-- [ ] Update each package `package.json`:
+  - `name`: `@11thdeg/<package-name>`
   - `version`: `4.0.0-beta.0` (or appropriate `4.x.y-beta.n` starting point for beta releases)
   - `publishConfig`: `{ "access": "public" }` (if packages are public)
   - `files`, `main`, `module`, `types`, `style`, `exports` should point to build artifacts
@@ -48,7 +48,7 @@ Detailed steps
 
 2) Package metadata changes (10–30m per package)
   - In each `packages/<pkg>/package.json` update fields:
-    - `name`: `@11thd/<pkg>` (e.g. `@11thd/cyan-lit`).
+  - `name`: `@11thdeg/<pkg>` (e.g. `@11thdeg/cyan-lit`).
     - `version`: set initial v4 version (recommend `4.0.0` or an opportune patch like `4.0.1`).
     - `publishConfig.access`: `public` if publishing publicly.
     - Ensure `files` includes `dist/`, and `main`/`module`/`types` point to built outputs.
@@ -97,15 +97,15 @@ Example publishing flow notes
 - On success, CI pushes Git tags and optionally creates a GitHub Release with changelog.
 
 7) Post-publish validation (5–10m per package)
-  - `npm view @11thd/<pkg> versions` to confirm the new version is listed.
-  - `npm pack @11thd/<pkg>@4.x.y` to download the published tarball and inspect contents.
+  - `npm view @11thdeg/<pkg> versions` to confirm the new version is listed.
+  - `npm pack @11thdeg/<pkg>@4.x.y` to download the published tarball and inspect contents.
   - Update `apps/cyan-docs` imports to use the `@11thd/*` package names, if desired.
 
 8) Rollback / deprecate (optional)
   - If a bad package is published, you can deprecate it with:
 
 ```bash
-npm deprecate @11thd/<pkg>@<version> "DO NOT USE - reason"
+npm deprecate @11thdeg/<pkg>@<version> "DO NOT USE - reason"
 ```
 
 Tips & safe-guards

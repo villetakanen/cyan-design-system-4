@@ -1,6 +1,6 @@
 {
-  "name": "cn-story-clock",
-  "version": "4.0.0-beta.3",
+  "name": "@11thdeg/cn-story-clock",
+  "version": "4.0.0-beta.4",
   "description": "A form input custom element for a PbtA style story clock",
   "type": "module",
   "main": "dist/cn-story-clock.umd.js",
@@ -11,7 +11,12 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": ["dist"],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepare": "pnpm build",
     "build": "vite build",
     "test": "vitest",
     "check": "biome check --write",
