@@ -18,7 +18,9 @@ for (const name of readdirSync(packagesDir)) {
   const pkgPath = path.join(packagesDir, name);
   try {
     if (!statSync(pkgPath).isDirectory()) continue;
-  } catch (_err) { continue; }
+  } catch (_err) {
+    continue;
+  }
 
   const pkgJsonPath = path.join(pkgPath, 'package.json');
   let pkg;
@@ -31,18 +33,30 @@ for (const name of readdirSync(packagesDir)) {
   if (!pkg.types) continue;
   pkgNamesChecked++;
   const expected = normalize(pkg.types);
-  console.log(`\nChecking ${pkg.name || name}: expecting types at '${expected}'`);
+  console.log(
+    `\nChecking ${pkg.name || name}: expecting types at '${expected}'`,
+  );
 
   try {
     // npm pack --dry-run will run prepare scripts and show the tarball contents
-  // npm prints the tarball listing to stderr as "npm notice", so capture stderr too by redirecting it to stdout
-  const out = execSync('npm pack --dry-run 2>&1', { cwd: pkgPath, encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 });
+    // npm prints the tarball listing to stderr as "npm notice", so capture stderr too by redirecting it to stdout
+    const out = execSync('npm pack --dry-run 2>&1', {
+      cwd: pkgPath,
+      encoding: 'utf8',
+      maxBuffer: 20 * 1024 * 1024,
+    });
     const normalizedOut = out.replace(/\\r\\n/g, '\n');
 
     // Diagnostic output: show what we're looking for and what .d.ts files are present in the pack output
     const expectedBasename = path.posix.basename(expected);
-    const hasExpected = normalizedOut.includes(expected) || normalizedOut.includes(`./${expected}`) || normalizedOut.includes(expectedBasename);
-    const dtsLines = normalizedOut.split('\n').filter(l => l.includes('.d.ts')).slice(0, 200);
+    const hasExpected =
+      normalizedOut.includes(expected) ||
+      normalizedOut.includes(`./${expected}`) ||
+      normalizedOut.includes(expectedBasename);
+    const dtsLines = normalizedOut
+      .split('\n')
+      .filter((l) => l.includes('.d.ts'))
+      .slice(0, 200);
     console.log(`    expected: '${expected}'`);
     console.log(`    expected basename: '${expectedBasename}'`);
     if (dtsLines.length) {
@@ -55,13 +69,18 @@ for (const name of readdirSync(packagesDir)) {
     if (hasExpected) {
       console.log(`  OK: pack contains '${expected}'`);
     } else {
-      console.error(`  FAIL: pack did not include '${expected}'. Pack output snippet:`);
+      console.error(
+        `  FAIL: pack did not include '${expected}'. Pack output snippet:`,
+      );
       const lines = normalizedOut.split('\n').slice(0, 200).join('\n');
       console.error(lines);
       failures++;
     }
   } catch (err) {
-  console.error(`  ERROR running npm pack for ${name}:`, err?.message ?? String(err));
+    console.error(
+      `  ERROR running npm pack for ${name}:`,
+      err?.message ?? String(err),
+    );
     failures++;
   }
 }

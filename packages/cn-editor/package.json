@@ -30,8 +30,8 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
-  "typescript": "^5.7.2",
-  "@types/turndown": "^5.0.5",
+    "typescript": "^5.7.2",
+    "@types/turndown": "^5.0.5",
     "vite": "^5.4.11"
   },
   "dependencies": {
