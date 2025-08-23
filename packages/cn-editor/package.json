@@ -1,0 +1,51 @@
+{
+  "name": "@11thdeg/cn-editor",
+  "version": "4.0.0-beta.7",
+  "description": "",
+  "type": "module",
+  "main": "dist/cn-editor.umd.js",
+  "types": "dist/cn-editor.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/cn-editor.es.js",
+      "types": "./dist/cn-editor.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "pnpm build && pnpm build:types",
+    "dev": "vite",
+    "build": "vite build",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "preview": "vite preview",
+    "check": "biome check --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "typescript": "^5.7.2",
+    "@types/turndown": "^5.0.5",
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "@codemirror/commands": "^6.8.1",
+    "@codemirror/lang-markdown": "^6.3.2",
+    "@codemirror/language": "^6.11.0",
+    "@codemirror/language-data": "^6.5.1",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.8",
+    "@lezer/highlight": "^1.2.1",
+    "codemirror": "^6.0.1",
+    "dompurify": "^3.2.5",
+    "lit": "^3.2.1",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2"
+  }
+}

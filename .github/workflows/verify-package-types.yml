@@ -1,0 +1,24 @@
+name: Verify package types
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - feat/dics
+
+jobs:
+  verify-types:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+      - name: Install workspace deps
+        run: pnpm install --frozen-lockfile
+      - name: Run types verification
+        run: node .github/scripts/verify-package-types.js

@@ -1,0 +1,49 @@
+---
+title: '<cn-dice>'
+noun: 'd20'
+description: 'A custom element for displaying dice of various types.'
+---
+import DiceDemo from '../../components/demo/DiceDemo.astro'
+
+<article class="column-l surface">
+
+# `<cn-dice>`
+
+A `cn-dice` is a custom element to display a die of a certain type with a certain value.
+
+<DiceDemo />
+
+## Usage
+
+```html
+<cn-dice sides="6" value="6"></cn-dice>
+```
+
+## Properties
+
+| Property | Attribute | Type      | Default | Description |
+|----------|-----------|-----------|---------|-------------|
+| `sides`  | `sides`   | `Number`  | `6`     | The type of die to display (4, 6, 8, 10, 12, 20). |
+| `value`  | `value`   | `Number`  | `1`     | The value to display on the die. |
+| `roll`   | `roll`    | `Boolean` | `false` | A boolean property to trigger a roll animation (not implemented yet). |
+
+
+## CSS Custom Properties
+
+The component uses CSS custom properties (tokens) for styling:
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--_cn-dice-size` | `48px` | The size of the die. |
+| `--_cn-dice-font-family` | `var(--cn-font-family-ui)` | The font family for the die value. |
+| `--_cn-dice-font-weight` | `var(--cn-font-weight-bold)` | The font weight for the die value. |
+| `--_cn-dice-font-size` | `var(--cn-font-size-x-large)` | The font size for the die value. |
+| `--_cn-dice-text-shadow` | `none` | The text shadow for the die value. |
+| `--cn-dice-color-d4` | `#c3ef48` | The color of the d4 die. |
+| `--cn-dice-color-d6` | `#7bcb52` | The color of the d6 die. |
+| `--cn-dice-color-d8` | `#59b752` | The color of the d8 die. |
+| `--cn-dice-color-d10` | `#288f57` | The color of the d10 die. |
+| `--cn-dice-color-d12` | `#006655` | The color of the d12 die. |
+| `--cn-dice-color-d20` | `#0a89de` | The color of the d20 die. |
+
+</article>

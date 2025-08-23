@@ -19,10 +19,16 @@ This project is structured as a workspaces with the following packages:
 cyan-design-system-4/
 ├── packages/
 │   ├── cyan-css/          # Core CSS utilities and design tokens
-│   └── cyan-lit/          # Lit web components library
+│   ├── cyan-lit/          # Lit web components library
+│   ├── cn-editor/         # Rich text editor component
+│   └── cn-story-clock/    # Story clock component
 └── apps/
     └── cyan-docs/         # Astro documentation site
 ```
+
+### Unified Versioning
+
+All packages in this monorepo are on a unified version, `4.0.0-beta.3`. This ensures that all components and libraries are compatible and simplifies dependency management. The original git history for `cn-editor` and `cn-story-clock` before version 4.0.0 is preserved in their original external repositories.
 
 ### Technologies
 
@@ -185,6 +191,14 @@ The core component library built with Lit. Provides reusable web components with
 - Reactive properties
 - Event handling
 - Accessibility features
+
+### `cn-editor`
+
+A rich text editor component based on CodeMirror.
+
+### `cn-story-clock`
+
+A story clock component for PbtA style games.
 
 ### `cyan-docs`
 
