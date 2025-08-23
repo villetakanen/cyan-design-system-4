@@ -7,3 +7,29 @@
 .w-16-9 {
   aspect-ratio: 16 / 9;
 }
+
+img.icon {
+  height: var(--cn-icon-size, 36px);
+  width: var(--cn-icon-size, 36px);
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  vertical-align: middle;
+}
+img.icon.xsmall {
+  height: var(--cn-icon-size-xsmall);
+  width: var(--cn-icon-size-xsmall);
+}
+img.icon.small {
+  height: var(--cn-icon-size-small);
+  width: var(--cn-icon-size-small);
+}
+img.icon.large {
+  height: var(--cn-icon-size-large);
+  width: var(--cn-icon-size-large);
+}
+img.icon.xlarge {
+  height: var(--cn-icon-size-xlarge);
+  width: var(--cn-icon-size-xlarge);
+}

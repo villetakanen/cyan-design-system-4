@@ -1,9 +1,9 @@
 ---
-const iconsFiles = await Astro.glob('/public/icons/*.svg');
+const iconsFiles = import.meta.glob('/public/icons/*.svg', { eager: true });
 
 // the file src looks something like "/@fs/Users/vtak/Dev/cyan-design-system/public/icons/add.svg"
 // We want to take just the name, like "add"
-const icons = iconsFiles.map((file) => {
+const icons = Object.values(iconsFiles).map((file) => {
   if (!file.default.src) return '';
   const parts = file.default.src.split('/');
   const filename = parts[parts.length - 1];
