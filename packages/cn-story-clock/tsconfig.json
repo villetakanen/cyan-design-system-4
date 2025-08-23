@@ -2,12 +2,21 @@
   "compilerOptions": {
     "target": "es2020",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
-    "types": ["node"],
+    "declaration": true,
+    "declarationDir": "dist",
+    "sourceMap": true,
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "useDefineForClassFields": false // Add this line
+    "useDefineForClassFields": false,
+    "skipLibCheck": true
   },
-  "include": ["./src"]
+  "include": ["./src/**/*.ts"],
+  "exclude": [
+    "./src/**/*.test.ts",
+    "./src/**/*.browser.test.ts",
+    "node_modules"
+  ]
 }

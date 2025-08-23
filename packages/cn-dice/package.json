@@ -1,7 +1,7 @@
 {
-  "name": "@11thdeg/cyan-lit",
-  "version": "4.0.0-beta.6",
-  "description": "Cyan Design System Lit Components",
+  "name": "@11thdeg/cn-dice",
+  "version": "4.0.0-beta.5",
+  "description": "A custom element for displaying dice.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,28 +18,25 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "pnpm build",
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "test": "vitest"
+    "prepare": "pnpm build && pnpm build:types",
+    "build": "vite build",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "dev": "vite",
+    "check": "biome check --write"
   },
   "keywords": [
     "lit",
     "web-components",
-    "design-system"
+    "dice"
   ],
-  "author": "",
+  "author": "Ville Takanen",
   "license": "MIT",
   "dependencies": {
     "lit": "^3.3.1"
   },
   "devDependencies": {
-    "@vitest/browser": "^3.2.4",
-    "jsdom": "^26.1.0",
-    "playwright": "^1.54.1",
+    "@biomejs/biome": "2.2.0",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.4",
-    "vitest-browser-lit": "^0.1.0",
-    "cpx": "^1.5.0"
+    "vite": "^6.0.7"
   }
 }

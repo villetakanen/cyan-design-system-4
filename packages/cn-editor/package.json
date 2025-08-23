@@ -1,19 +1,27 @@
 {
-  "name": "cn-editor",
-  "version": "2.0.0-beta.3",
+  "name": "@11thdeg/cn-editor",
+  "version": "4.0.0-beta.7",
   "description": "",
   "type": "module",
   "main": "dist/cn-editor.umd.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/cn-editor.d.ts",
   "exports": {
     ".": {
       "import": "./dist/cn-editor.es.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/cn-editor.d.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepare": "pnpm build && pnpm build:types",
     "dev": "vite",
     "build": "vite build",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "preview": "vite preview",
     "check": "biome check --write"
   },
@@ -23,6 +31,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
     "typescript": "^5.7.2",
+    "@types/turndown": "^5.0.5",
     "vite": "^5.4.11"
   },
   "dependencies": {

@@ -1,0 +1,27 @@
+:root {
+  --_cn-dice-size: var(--cn-dice-size, 2em); /* default: 2rem for accessibility */
+  --_cn-dice-font-family: var(
+    --cn-dice-font-family,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif
+  );
+  --_cn-dice-font-weight: var(--cn-dice-font-weight, 700);
+  --_cn-dice-font-size: var(--cn-dice-font-size, 1.5em); /* default: 1.73rem for accessibility */
+  --_cn-dice-text-shadow: var(--cn-dice-text-shadow, 0 0 4px black);
+  --cn-dice-color-d4: #c3ef48;
+  --cn-dice-color-d6: #7bcb52;
+  --cn-dice-color-d8: #59b752;
+  --cn-dice-color-d10: #288f57;
+  --cn-dice-color-d12: #006655;
+  --cn-dice-color-d20: #0a89de;
+}
+p cn-dice {
+  display: inline-flex;
+  margin: 0 0.1em;
+}
