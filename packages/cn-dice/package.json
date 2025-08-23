@@ -1,6 +1,6 @@
 {
   "name": "@11thdeg/cn-dice",
-  "version": "4.0.0-beta.4",
+  "version": "4.0.0-beta.5",
   "description": "A custom element for displaying dice.",
   "type": "module",
   "main": "dist/index.js",
@@ -18,8 +18,9 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "pnpm build",
+    "prepare": "pnpm build && pnpm build:types",
     "build": "vite build",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "dev": "vite",
     "check": "biome check --write"
   },

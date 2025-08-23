@@ -1,6 +1,6 @@
 {
   "name": "@11thdeg/cn-story-clock",
-  "version": "4.0.0-beta.4",
+  "version": "4.0.0-beta.5",
   "description": "A form input custom element for a PbtA style story clock",
   "type": "module",
   "main": "dist/cn-story-clock.umd.js",
@@ -18,8 +18,9 @@
     "access": "public"
   },
   "scripts": {
-    "prepare": "pnpm build",
+    "prepare": "pnpm build && pnpm build:types",
     "build": "vite build",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "test": "vitest",
     "check": "biome check --write",
     "dev": "vite"
@@ -32,8 +33,8 @@
     "@vitest/browser": "^3.2.4",
     "jsdom": "^26.1.0",
     "playwright": "^1.54.1",
-    "typescript": "^5.8.3",
-    "vite": "^6.0.7",
+  "typescript": "^5.8.3",
+  "vite": "^6.0.7",
     "vitest": "^3.2.4",
     "vitest-browser-lit": "^0.1.0"
   },
