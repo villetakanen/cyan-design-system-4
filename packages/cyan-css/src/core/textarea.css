@@ -1,4 +1,3 @@
-
 textarea {
   font-family: var(--cn-font-family-ui);
   font-weight: var(--cn-font-weight-ui);
@@ -18,7 +17,6 @@ textarea {
   padding: var(--cn-grid);
   min-height: calc(var(--cn-grid) * 5 - 1px);
 }
-
 textarea::placeholder {
   color: var(--color-on-field-placeholder, red);
 }
