@@ -53,4 +53,38 @@ Renders as:
   </div>
 </div>
 
+
+
+## Textarea
+
+We also support the native HTML textarea element.
+
+### Example
+
+import TextareaDemo from 'src/components/demo/TextareaDemo.astro';
+
+```html
+<label>
+  Textarea
+  <textarea></textarea>
+</label>
+<label>
+  Textarea with error
+  <textarea data-error="true"></textarea>
+</label>
+```
+
+Renders as:
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <TextareaDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <TextareaDemo />
+  </div>
+</div>
+
 </article>
