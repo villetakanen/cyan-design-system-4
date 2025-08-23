@@ -70,6 +70,7 @@ export class CnCard extends LitElement {
         }
         ${this.titleSlot}
       </div>
+      <div class="cardInfo">
       ${
         this.description
           ? html`
@@ -77,7 +78,9 @@ export class CnCard extends LitElement {
       `
           : ''
       }
+     
       <slot></slot>
+      </div>
       <div style="flex-grow:1"></div>
       <nav class="cardActions"><slot name="actions"></slot></nav>`;
   }
@@ -167,9 +170,7 @@ export class CnCard extends LitElement {
       font-family: var(--cn-font-family-headings);
       font-weight: var(--cn-heading-4-font-weight);
       font-size: var(--cn-heading-4-font-size);
-      /* We use "downscaled" h3 as the size, that being the same as h4 size,
-       * however we need to keep to h3 line height for consistency of spacing */
-      line-height: var(--cn-heading-3-line-height);
+      line-height: var(--cn-heading-4-line-height);
       letter-spacing: normal;
       color: var(--color-heading-2, cyan);
 
@@ -227,13 +228,16 @@ export class CnCard extends LitElement {
       opacity: 1;
     }
     :host .cardActions {
-      margin-left: calc(-1 * var(--cn-grid));
-      margin-right: calc(-1 * var(--cn-grid));
+      margin-left: calc(-1 * var(--cn-gap));
+      margin-right: calc(-1 * var(--cn-gap));
     }
     :host h4.cardTitle,
     :host h4.cardTitle a {
       color: var(--_cn-card-title-color, var(--color-heading-2));
       text-decoration: none;
+    }
+    :host .cardInfo {
+      padding: var(--cn-grid) 0;
     }
     `;
 }
