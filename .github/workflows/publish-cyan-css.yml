@@ -1,4 +1,4 @@
-name: Publish @11thdeg/cyan-css (beta)
+name: Publish All Packages (beta)
 
 on:
   push:
@@ -50,27 +50,50 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build cyan-css
-        run: pnpm --filter @11thdeg/cyan-css build
-
-      - name: Verify package files
-        run: |
-          ls -la packages/cyan-css/dist || true
+      - name: Build all packages
+        run: pnpm build
 
       - name: Configure npm auth
         run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Dry-run publish
-        run: |
-          cd packages/cyan-css
-          npm publish --access public --dry-run
-
-      - name: Publish package
+      - name: Publish cyan-css
         if: startsWith(github.ref, 'refs/tags/v4.') && contains(github.ref, '-beta.')
         run: |
           cd packages/cyan-css
-          npm publish --access public
+          npm publish --access public --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish cyan-lit
+        if: startsWith(github.ref, 'refs/tags/v4.') && contains(github.ref, '-beta.')
+        run: |
+          cd packages/cyan-lit
+          npm publish --access public --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish cn-dice
+        if: startsWith(github.ref, 'refs/tags/v4.') && contains(github.ref, '-beta.')
+        run: |
+          cd packages/cn-dice
+          npm publish --access public --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish cn-editor
+        if: startsWith(github.ref, 'refs/tags/v4.') && contains(github.ref, '-beta.')
+        run: |
+          cd packages/cn-editor
+          npm publish --access public --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish cn-story-clock
+        if: startsWith(github.ref, 'refs/tags/v4.') && contains(github.ref, '-beta.')
+        run: |
+          cd packages/cn-story-clock
+          npm publish --access public --tag beta
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
