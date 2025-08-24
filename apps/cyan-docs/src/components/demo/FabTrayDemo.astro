@@ -1,0 +1,49 @@
+---
+---
+<div class="demo fab-demo">
+  <p class="muted">Client-side demo: buttons will be added to the page's FAB tray.</p>
+</div>
+
+<script is:inline>
+// Client-side demo script: append some FAB buttons to nav#fab-tray
+(() => {
+  const createFab = (label, href) => {
+    const a = document.createElement('a');
+    a.className = 'fab button';
+    a.setAttribute('role', 'button');
+    a.href = href || '#';
+    a.textContent = label;
+    return a;
+  };
+
+  const mount = () => {
+    const tray = document.getElementById('fab-tray');
+    if (!tray) return;
+
+    // clear existing demo items
+    const existing = tray.querySelectorAll('.fab[data-demo]');
+    existing.forEach((n) => {
+      n.remove();
+    });
+
+    const actions = [
+      ['New', '#new'],
+      ['Edit', '#edit'],
+      ['Delete', '#delete'],
+    ];
+
+    actions.forEach(([label, href]) => {
+      const btn = createFab(label, href);
+      btn.setAttribute('data-demo', 'true');
+      tray.appendChild(btn);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mount);
+  } else {
+    mount();
+  }
+})();
+
+</script>

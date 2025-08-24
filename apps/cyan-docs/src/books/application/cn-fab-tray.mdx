@@ -1,0 +1,52 @@
+---
+title: 'FAB Tray'
+noun: 'layout'
+description: 'A floating action button tray for holding primary actions.'
+---
+
+import FabTrayDemo from '@components/demo/FabTrayDemo.astro';
+
+<article class="column-l surface">
+<h1>FAB Tray</h1>
+<p>The FAB tray is a fixed-position container for floating action buttons. It is intended to hold primary actions that should be easily accessible to the user.</p>
+
+<h2>Usage</h2>
+<p>To use the FAB tray, add the single `nav#fab-tray` element to your page. There can only be one global FAB tray; place your floating action buttons inside this element.</p>
+
+<figure class="demo">
+  <nav id="fab-tray">
+    {/* Add FABs here */}
+  </nav>
+  <FabTrayDemo />
+</figure>
+
+```html
+<nav id="fab-tray">
+  {/* Add FABs here */}
+</nav>
+```
+
+<h2>CSS Custom Properties</h2>
+<p>You can customize the position of the FAB tray using the following CSS custom properties:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--cyan-fab-tray-bottom</code></td>
+      <td>The distance from the bottom of the viewport.</td>
+      <td><code>24px</code></td>
+    </tr>
+    <tr>
+      <td><code>--cyan-fab-tray-right</code></td>
+      <td>The distance from the right of the viewport.</td>
+      <td><code>24px</code></td>
+    </tr>
+  </tbody>
+</table>
+</article>

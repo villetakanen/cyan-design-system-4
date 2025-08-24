@@ -98,6 +98,10 @@ A typical documentation file has the following structure:
     -   Use the `grid two-col` class to show light and dark mode examples side-by-side.
     -   For complex demos with JavaScript, create a separate `.astro` component in `apps/cyan-docs/src/components/demo/` and import it into the MDX file.
 
+    ### Loading client-side demo JS
+
+    When MDX pages need client-side JavaScript for interactive demos, prefer keeping the JS inside an `.astro` demo component. Astro components can include inline scripts that run in the browser (for example using `<script is:inline>`). Do not add hydration directives like `client:load` to the Astro component itself in the MDX file — Astro components are not hydrated. Instead, keep the demo's client code inside the `.astro` file so it can execute on the client without attempting to hydrate the component.
+
 6.  **API Reference**:
     -   Use sections like "API", "Properties / Attributes", and "CSS Custom Properties" to document the component's interface.
     -   Use markdown tables to list properties, attributes, and CSS custom properties.
