@@ -15,6 +15,7 @@
   justify-content: center;
   align-items: flex-start;
   width: calc(100dvw - var(--cn-grid) * 2);
+  margin-bottom: var(--cn-gap);
 }
 
 .content-columns > * {
