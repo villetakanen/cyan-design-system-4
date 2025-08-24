@@ -57,7 +57,6 @@
   /* Button shadows */
   --shadow-button-hover: 0 2px 8px rgba(0, 0, 0, 0.1);
 
-
   /* Toggle button colors */
   --background-toggle-button: light-dark(
     var(--chroma-primary-40),
