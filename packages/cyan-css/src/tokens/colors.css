@@ -152,6 +152,13 @@
     var(--chroma-surface-99)
   );
 
+  /* Dialog/backdrop specific token */
+  --background-dialog-backdrop: color-mix(
+    in hsl,
+    var(--color-shadow),
+    transparent 44%
+  );
+
   /* Lets just use the surface color for the input label for now */
   --color-on-label: var(--color-on-surface);
 

@@ -1,0 +1,53 @@
+---
+// A small demo component to show a button that opens a native <dialog>
+---
+
+<style>
+  .demo-actions { margin-bottom: var(--cn-gap); }
+  dialog { min-width: 320px; }
+  dialog .content { padding-top: var(--cn-gap); }
+  .dialog-actions { display:flex; gap: var(--cn-gap); justify-content:flex-end; margin-top: var(--cn-gap); }
+</style>
+
+<div class="demo">
+  <div class="demo-actions">
+  <button id="open" class="button">Open dialog</button>
+  </div>
+
+  <dialog id="demo-dialog" aria-labelledby="demo-dialog-title">
+    <div class="header">
+      <h3 id="demo-dialog-title">Dialog title</h3>
+    </div>
+    <div class="content">
+      <p>This is a simple demo of the native &lt;dialog&gt; with the design system styles applied.</p>
+      <div class="dialog-actions">
+  <button class="text" id="cancel">Cancel</button>
+  <button id="confirm">Confirm</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script is:inline>
+    const openBtn = document.getElementById('open');
+    const dialog = document.getElementById('demo-dialog');
+    const cancel = document.getElementById('cancel');
+    const confirm = document.getElementById('confirm');
+
+    openBtn?.addEventListener('click', () => {
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        // fallback: make visible as an absolute positioned panel
+        dialog.setAttribute('open', '');
+      }
+    });
+
+    cancel?.addEventListener('click', () => dialog.close());
+    confirm?.addEventListener('click', () => dialog.close());
+
+    // close on backdrop click (for browsers that support .open and ::backdrop)
+    dialog?.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  </script>
+</div>

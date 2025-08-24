@@ -1,0 +1,49 @@
+---
+title: Dialog
+noun: dialog
+description: Modal dialog patterns and tokens.
+---
+
+import DialogDemo from '../../components/demo/DialogDemo.astro'
+
+<article class="column-l surface">
+
+# &lt;dialog&gt;
+
+A small set of utilities and styles for native HTML `<dialog>` usage. These styles were migrated from the legacy design system and mapped to the v4 tokens.
+
+## Usage
+
+Basic structure:
+
+```html
+<dialog open>
+  <div class="header">
+    <h3>Dialog title</h3>
+  </div>
+  <div class="content">Content</div>
+</dialog>
+```
+
+<DialogDemo />
+
+
+The CSS lives in the `packages/cyan-css/src/components/dialog.css` file and uses the following tokens:
+
+| Name | Default / Notes |
+| --- | --- |
+| `--color-surface-1` | Dialog surface background |
+| `--cn-border-radius-large` | Dialog corner radius |
+| `--shadow-elevation-2` | Dialog shadow/elevation |
+| `--cn-gap` | Internal spacing |
+| `--cn-border-width` | Border width (fallback `1px` used) |
+| `--color-border` | Border color used for header divider |
+| `--cn-font-family-headings` | Heading font family |
+| `--cn-font-size-heading-4` | Heading size (fallback provided) |
+| `--background-dialog-backdrop` | Backdrop color (new token)
+
+## Tokens
+
+- `--background-dialog-backdrop` — added to `packages/cyan-css/src/tokens/colors.css` with a default of `rgba(0,0,0,0.45)`; adjust in your theme if needed.
+
+</article>
