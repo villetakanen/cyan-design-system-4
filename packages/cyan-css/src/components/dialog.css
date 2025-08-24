@@ -1,0 +1,68 @@
+/* Legacy dialog styles (ported from cyan-next v3 -> adapted to v4 tokens)
+   Mapped tokens:
+   - --color-surface-1 -> existing token
+   - --cn-border-radius-large -> existing token
+   - --shadow-elevation-2 -> existing token
+   - --cn-gap -> existing token
+   - --cn-border-width -> use 1px if not defined elsewhere
+   - --color-border -> existing token
+   - heading font tokens map to existing font family; sizes/weights fall back to heading-4 tokens if present
+   - --background-dialog-backdrop -> added in tokens/colors.css
+*/
+
+dialog {
+  background-color: var(--color-surface-1);
+  border-radius: var(--cn-border-radius-large);
+  border: none;
+  box-shadow:
+    var(--shadow-elevation-2),
+    0 0 var(--cn-line) 0 var(--chroma-primary-95);
+
+  padding: var(--cn-gap);
+}
+
+dialog .header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--cn-gap);
+  border-bottom: solid var(--cn-border-width, 1px) var(--color-border);
+  margin-bottom: calc(var(--cn-gap) - var(--cn-border-width, 1px));
+}
+
+dialog .header h1,
+dialog .header h2,
+dialog .header h3,
+dialog .header h4 {
+  margin: 0;
+  font-family: var(--cn-font-family-headings);
+  /* fall back to sensible heading tokens if present */
+  font-weight: var(--cn-font-weight-heading-4, 600);
+  font-size: var(--cn-font-size-heading-4, 1.125rem);
+  line-height: var(--cn-line-height-heading-4, 1.25);
+  letter-spacing: var(--cn-letter-spacing-heading-4, 0);
+}
+
+/* Backdrop styling for <dialog> element */
+dialog::backdrop {
+  background: var(--background-dialog-backdrop);
+  backdrop-filter: blur(1px);
+}
+
+@media screen and (max-width: 620px) {
+  dialog {
+    max-width: calc(100vw - var(--cn-grid) * 2);
+    margin-top: var(--cn-grid);
+    margin-right: var(--cn-grid);
+    margin-left: var(--cn-grid);
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}
+@media screen and (min-width: 620px) {
+  dialog {
+    max-height: 95vh;
+    max-width: 720px;
+    overflow-y: auto;
+  }
+}

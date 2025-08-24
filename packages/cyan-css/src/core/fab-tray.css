@@ -1,0 +1,14 @@
+/*
+FAB - Floating Action Button
+A tray for holding floating action buttons. Target the single global tray by id: nav#fab-tray
+*/
+nav#fab-tray {
+  position: fixed;
+  bottom: var(--cyan-fab-tray-bottom, 24px);
+  right: var(--cyan-fab-tray-right, 24px);
+  z-index: var(--cyan-z-index-fab, 100);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}

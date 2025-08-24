@@ -10,12 +10,15 @@
 @import url("./tables.css");
 @import url("./label.css");
 @import url("./input-text.css");
+@import url("./textarea.css");
+@import url("./buttons.css");
+@import url("./fab.css");
 
 /* App Components */
 @import url("./rail.css");
 @import url("./navigation.css");
 @import url("./tray.css");
-@import url("./buttons.css");
+@import url("./fab-tray.css");
 @import url("./cn-background-poster.css");
 @import url("./cn-bubble.css");
 @import url("./cn-loader.css");

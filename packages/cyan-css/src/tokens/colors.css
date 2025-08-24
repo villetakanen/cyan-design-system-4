@@ -34,7 +34,6 @@
     var(--chroma-primary-95),
     var(--chroma-primary-40)
   );
-
   --color-secondary-1: light-dark(
     var(--chroma-primary-70),
     var(--chroma-primary-80)
@@ -121,9 +120,6 @@
   --cn-color-background: var(--color-surface);
   --cn-color-on-background: var(--color-on-surface);
 
-  --cn-color-accent: var(--chroma-A);
-  --cn-color-on-accent: var(--color-surface);
-
   /* Functional colors */
   --cn-color-success: var(--chroma-primary-60);
   --cn-color-warning: var(--chroma-N);
@@ -137,7 +133,7 @@
   --cn-color-disabled: var(--chroma-surface-40);
 
   /* Elevation/Shadow colors */
-  --color-shadow: var(--chroma-surface-90);
+  --color-shadow: var(--chroma-surface-70);
   --color-elevation-1: var(--color-surface-1);
   --color-elevation-2: var(--color-surface-2);
   --color-elevation-3: var(--color-surface-3);
@@ -154,6 +150,13 @@
   --color-input-focus: light-dark(
     var(--chroma-surface-30),
     var(--chroma-surface-99)
+  );
+
+  /* Dialog/backdrop specific token */
+  --background-dialog-backdrop: color-mix(
+    in hsl,
+    var(--color-shadow),
+    transparent 44%
   );
 
   /* Lets just use the surface color for the input label for now */

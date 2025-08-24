@@ -20,8 +20,8 @@ input[type="url"] {
   position: relative;
   transition: all 0.3s ease;
   margin: 0;
-  padding: 0 calc(var(--cn-grid));
-  height: calc(var(--cn-grid) * 5 - 1px);
+  padding: var(--cn-grid);
+  height: calc(var(--cn-grid) * 5);
 }
 
 input[type="text"]::placeholder,

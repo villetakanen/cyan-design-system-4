@@ -5,6 +5,7 @@
   padding: 0 var(--cn-gap);
   position: relative;
   width: 100%;
+  margin-bottom: var(--cn-gap);
 }
 .content-cards cn-card {
   width: 100%;

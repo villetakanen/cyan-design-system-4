@@ -1,0 +1,124 @@
+---
+title: "Floating Action Buttons"
+noun: "components"
+topic: "Core"
+---
+import FabDemo from '../../components/demo/FabDemo.astro'
+
+<article class="column-l">
+
+# Floating Action Buttons
+
+This page documents floating action buttons (FABs) in Cyan Design System — both native `<button>` FABs (`button.fab`) and anchor-based FABs (`a.button.fab`). The examples show appearance, usage, accessibility notes, and guidance for when to use each.
+
+## Demo
+
+<div class="grid two-col">
+  <div class="dark surface">
+    <h4>Dark</h4>
+    <FabDemo />
+  </div>
+  <div class="light surface">
+    <h4>Light</h4>
+    <FabDemo />
+  </div>
+</div>
+
+## Native FAB (`button.fab`)
+
+Use a native `<button>` styled with `.fab` for actions that trigger in-page behavior (create, open dialog, perform an action).
+
+```html
+<button class="fab" aria-label="Create">
+  <cn-icon noun="add" />
+</button>
+
+<!-- With visible label for clarity / accessibility -->
+<button class="fab">
+  <cn-icon noun="add" />
+  <span class="visually-hidden">Create</span>
+</button>
+```
+
+### States & variants
+
+- Default (primary) — prominent, elevated FAB for the main action
+- Secondary (`.secondary`) — less prominent FAB using secondary color scheme
+- Small (`.small`) — compact FAB with button-like dimensions instead of fixed circle
+- Disabled — use `disabled` to represent inactive state
+- Loading — show a spinner or loading indicator inside the FAB when the action is pending
+
+```html
+<button class="fab"> <cn-icon noun="add" /> </button>
+<button class="fab secondary"> <cn-icon noun="edit" /> </button>
+<button class="fab small"> <cn-icon noun="save" /> </button>
+<button class="fab small secondary"> <cn-icon noun="delete" /> </button>
+<button class="fab" disabled> <cn-icon noun="add" /> </button>
+```
+
+## Anchor FAB (`a.button.fab`)
+
+Use an anchor styled as a FAB when the action is navigational or needs an `href` (link to another page or resource).
+
+```html
+<a href="/create" class="button fab" aria-label="Create">
+  <cn-icon noun="add" />
+</a>
+
+<!-- Keep link semantics intact when the label is visible -->
+<a href="/create" class="button fab">
+  <cn-icon noun="add" />
+  <span class="visually-hidden">Create</span>
+</a>
+```
+
+### When to choose link vs. button
+
+- Use `a.button.fab` when following a link (navigation or resource retrieval).
+- Use `button.fab` for actions that change state on the current page (open dialogs, submit data, trigger client-side behavior).
+
+## Variants
+
+### Secondary FABs
+
+Add `.secondary` to use the secondary color scheme instead of the primary accent color. Useful for less prominent actions.
+
+```html
+<button class="fab secondary" aria-label="Edit">
+  <cn-icon noun="edit" />
+</button>
+```
+
+### Small FABs
+
+Add `.small` to create a compact FAB that uses button-like dimensions (auto width with minimum width and standard button height) instead of a fixed circle. Useful in constrained spaces or when you need the FAB to fit with other button elements.
+
+```html
+<button class="fab small" aria-label="Save">
+  <cn-icon noun="save" />
+</button>
+
+<!-- Combine with secondary -->
+<button class="fab small secondary" aria-label="Delete">
+  <cn-icon noun="delete" />
+</button>
+```
+
+## Icon sizing
+
+Icons inside FABs are constrained to a consistent size to maintain visual balance. Using `<cn-icon>` inside either variant will produce an appropriately sized icon.
+
+## Accessibility
+
+- Provide an accessible name for icon-only FABs (use `aria-label`, `aria-labelledby`, or a visible label).
+- Ensure the FAB meets minimum touch target size recommendations.
+- For anchor FABs preserve `href`, `target`, and `rel` as needed to keep link semantics and security.
+
+## Guidelines
+
+- Reserve FABs for the most important or frequent action on a view.
+- Avoid multiple competing FABs in the same context.
+- Prefer icon-only FABs for compact screens; always include an accessible name.
+- Ensure sufficient contrast and elevation to readably separate the FAB from underlying content.
+
+</article>

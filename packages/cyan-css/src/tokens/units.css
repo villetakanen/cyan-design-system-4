@@ -10,10 +10,10 @@
   --cn-line: calc(var(--cn-grid) * 3);
 
   /* Border radius tokens */
-  --cn-border-radius-small: calc(var(--cn-grid) * 1); /* 4px */
-  --cn-border-radius-medium: calc(var(--cn-grid) * 2); /* 8px */
-  --cn-border-radius-large: calc(var(--cn-grid) * 4); /* 16px */
-  --cn-border-radius-xl: calc(var(--cn-grid) * 6); /* 24px */
+  --cn-border-radius-small: calc(var(--cn-grid) * 0.5); /* 4px */
+  --cn-border-radius-medium: calc(var(--cn-grid) * 1); /* 8px */
+  --cn-border-radius-large: calc(var(--cn-grid) * 2); /* 12px */
+  --cn-border-radius-xl: calc(var(--cn-grid) * 4); /* 16px */
 
   /* Icon size tokens */
   --cn-icon-size-xsmall: 1rem; /* 16px */

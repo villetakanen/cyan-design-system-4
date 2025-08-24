@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-const { execSync } = require('child_process');
-const { readdirSync, readFileSync, statSync } = require('fs');
-const path = require('path');
+const { execSync } = require('node:child_process');
+const { readdirSync, readFileSync, statSync } = require('node:fs');
+const path = require('node:path');
 
 function normalize(p) {
   if (!p) return p;
@@ -61,7 +61,7 @@ for (const name of readdirSync(packagesDir)) {
     console.log(`    expected basename: '${expectedBasename}'`);
     if (dtsLines.length) {
       console.log('    .d.ts files found in pack output:');
-      for (const l of dtsLines) console.log('      ' + l);
+      for (const l of dtsLines) console.log(`      ${l}`);
     } else {
       console.log('    no .d.ts files found in pack output');
     }

@@ -1,0 +1,99 @@
+:root {
+  --fab-size: calc(7 * var(--cn-grid));
+}
+
+/* packages/cyan-css/src/utilities/cn-fab.css */
+a.fab,
+button.fab {
+  position: relative;
+  min-width: var(--fab-size);
+  height: var(--fab-size);
+  border-radius: var(--cn-border-radius-large);
+  background: linear-gradient(
+    120deg,
+    var(--chroma-primary-20),
+    var(--chroma-primary-60)
+  );
+  color: var(--chroma-primary-99);
+  display: inline-flex;
+  /* Prevent FABs from growing inside flex/grid containers */
+  /* Use an explicit non-flexible shorthand so this rule wins over generic selectors like `.flex > *` */
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-elevation-4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  z-index: 1;
+}
+.fab:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.flex > .fab {
+  /* Keep for backward compatibility but ensure element-specific selectors below override other generic flex rules */
+  flex: 0 0 auto;
+}
+
+.fab:hover {
+  box-shadow: var(--shadow-elevation-4);
+}
+
+.fab:active {
+  box-shadow: var(--shadow-elevation-2);
+}
+
+.fab cn-icon {
+  font-size: var(--cn-icon-size-small);
+}
+
+/* Secondary FABs - use bright surface color instead of primary gradient */
+a.fab.secondary,
+button.fab.secondary {
+  background: light-dark(var(--chroma-surface-40), var(--chroma-surface-40));
+  color: var(--chroma-surface-80);
+}
+
+/* Small FABs - use button height for both height and min-width */
+a.fab.small,
+button.fab.small {
+  min-width: var(--cn-button-size);
+  height: var(--cn-button-size);
+  border-radius: var(--cn-border-radius-large);
+}
+
+/* Increase specificity for cases where `.flex > *` or similar rules try to override `.fab`.
+   Using element+class selectors ensures FABs keep their fixed size inside flex containers. */
+button.fab,
+a.button.fab,
+.button.fab {
+  flex: 0 0 auto;
+}
+
+/* Higher specificity override for flex containers - this needs to win over `.flex:not(.flex-col) > *` */
+.flex > .fab,
+.flex > button.fab,
+.flex > a.button.fab,
+.flex > .button.fab {
+  flex: 0 0 auto;
+  min-width: var(--fab-size);
+  height: var(--fab-size);
+}
+
+/* Small FABs in flex containers should use button size */
+.flex > .fab.small,
+.flex > button.fab.small,
+.flex > a.button.fab.small,
+.flex > .button.fab.small {
+  min-width: var(--cn-button-size);
+  height: var(--cn-button-size);
+}
+
+button.fab cn-loader:first-child:not(:only-child),
+a.button.fab cn-loader:first-child:not(:only-child),
+button.fab cn-icon:first-child:not(:only-child),
+a.button.fab cn-icon:first-child:not(:only-child) {
+  margin-left: 0;
+}

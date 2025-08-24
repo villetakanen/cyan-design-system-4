@@ -20,7 +20,7 @@ It is designed to make the image stand out and provide a visually appealing pres
 
 
 <section class="surface elevation-1">
-  <img class="poster" src="https://picsum.photos/800/800" alt="Description of the image" />
+  <img class="poster" src="https://picsum.photos/800/400" alt="Description of the image" />
 </section>
 
 
@@ -50,5 +50,36 @@ The `.w-16-9` utility class applies a 16:9 aspect ratio to an element, making it
   <img class="poster w-16-9" src="https://picsum.photos/800/450" alt="Description of the image" />
 </figure>
 ```
+
+</article>
+
+<article class="surface column-s">
+
+## The `.icon` class
+
+Sometimes you just want to use a plain `<img>` tag, but have it behave like a `cn-icon`. For this, you can use the `.icon` class. It will make the image scale with the text, and you can use the size modifiers to control the size of the icon.
+
+### Examples
+
+Here is an example of an `<img>` tag with the `.icon` class in a paragraph of text. The icon will be scaled to the same size as the text. Here is a <img src="https://picsum.photos/24/24" class="icon" /> icon in a sentence.
+
+#### In a heading
+
+## Heading with an <img src="https://picsum.photos/36/36" class="icon" /> icon
+
+### Heading with a <img src="https://picsum.photos/24/24" class="icon small" /> icon
+
+#### Heading with a <img src="https://picsum.photos/16/16" class="icon xsmall" /> icon
+
+<nav class="toolbar">
+  <a href="#" class="button">
+    <img src="https://picsum.photos/24/24" class="icon" />
+    Back
+  </a>
+  <a href="#" class="button">
+    Next
+    <img src="https://picsum.photos/24/24" class="icon" />
+  </a>
+</nav>
 
 </article>

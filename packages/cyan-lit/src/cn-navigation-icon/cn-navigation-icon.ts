@@ -28,12 +28,12 @@ export class CnNavigationIcon extends LitElement {
       justify-content: flex-start;
     }
     :host cn-icon {
-      color: var(--color-link);
+      color: var(--color-text-high);
       position: relative;
     }
     :host(:active) cn-icon,
     :host([active]) cn-icon{
-      color: var(--color-link-active);
+      color: var(--color-text-high);
     }
     :host cn-icon::before {
       background: transparent;
@@ -61,12 +61,12 @@ export class CnNavigationIcon extends LitElement {
     }
 
     :host(:hover) cn-icon::before {
-      background: var(--background-button-text-hover);
+      background: var(--color-surface-2);
     }
     
     :host(:active) cn-icon::before,
     :host([active]) cn-icon::before {
-      background: var(--cn-navigation-icon-backdrop-color);
+      background: var(--color-surface-1);
     }
     :host .navigation-icon-label {
       height: var(--cn-navigation-icon-label-height, calc(var(--cn-grid, 0.5rem) * 2));
