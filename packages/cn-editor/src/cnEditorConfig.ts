@@ -8,7 +8,6 @@ import {
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 // Import necessary syntax highlighting tools
 import { syntaxHighlighting } from '@codemirror/language'; // <<< ADD THIS IMPORT
-import { languages } from '@codemirror/language-data';
 import {
   type Compartment,
   EditorState,
@@ -66,10 +65,10 @@ export function createEditorState(
     highlightSpecialChars(),
     highlightActiveLine(),
     highlightActiveLineGutter(),
-    markdown({
-      base: markdownLanguage,
-      codeLanguages: languages,
-    }),
+  // We don't need fenced code block language highlighting. Avoid importing
+  // `@codemirror/language-data` so the build doesn't pull in many language
+  // modules. Use the markdown language base only.
+  markdown({ base: markdownLanguage }),
 
     placeholderCompartment.of(cmPlaceholder(initialPlaceholder)),
     disabledCompartment.of(EditorState.readOnly.of(initialIsDisabled)),
