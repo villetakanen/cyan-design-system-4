@@ -1,6 +1,6 @@
 {
   "name": "@11thdeg/cn-editor",
-  "version": "4.0.0-beta.8",
+  "version": "4.0.0-beta.9",
   "description": "",
   "type": "module",
   "main": "dist/cn-editor.umd.js",
