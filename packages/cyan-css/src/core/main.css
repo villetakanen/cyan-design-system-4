@@ -46,7 +46,7 @@ main > footer li {
 
 @media screen and (min-width: 621px) {
   main > footer {
-    margin-left: var(--cn-width-rail);
+    /*margin-left: var(--cn-width-rail);*/
     margin-bottom: var(--cn-line);
   }
 }

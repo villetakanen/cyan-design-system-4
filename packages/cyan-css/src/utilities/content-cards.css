@@ -36,7 +36,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--cn-gap);
-    width: min(calc(var(--cn-card-width) * 3 + var(--cn-gap) * 2), 100%);
+    width: min(calc(var(--cn-card-width) * 3 + var(--cn-gap) * 2), 100cqw);
     margin: 0 auto;
   }
   .content-cards header,
