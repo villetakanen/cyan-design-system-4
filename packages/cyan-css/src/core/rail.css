@@ -52,7 +52,7 @@ body:has(#fab-tray) nav#bar {
 
 body:has(nav.rail) cn-app-bar {
   /* Add margin to the app bar to make space for the rail */
-  margin-left: calc(var(--cn-margin-for-rail) - var(--cn-gap));
+  margin-left: calc(var(--cn-margin-for-rail) - var(--cn-grid));
 }
 
 /* The rail is hidden on small screens, if the screen is wider than
