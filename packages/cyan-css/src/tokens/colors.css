@@ -78,6 +78,11 @@
     var(--chroma-surface-70)
   );
 
+  --color-on-rail-button: light-dark(
+    var(--chroma-surface-70),
+    var(--chroma-surface-40)
+  );
+
   --color-alert: light-dark(var(--chroma-A), var(--chroma-A));
 
   /* Notifications (updated from existing) */

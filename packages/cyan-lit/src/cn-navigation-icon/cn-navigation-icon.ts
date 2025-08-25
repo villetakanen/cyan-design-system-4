@@ -28,7 +28,7 @@ export class CnNavigationIcon extends LitElement {
       justify-content: flex-start;
     }
     :host cn-icon {
-      color: var(--color-text-high);
+      color: var(--color-on-rail-button);
       position: relative;
     }
     :host(:active) cn-icon,

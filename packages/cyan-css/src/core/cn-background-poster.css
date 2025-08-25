@@ -54,4 +54,7 @@ body:has(#cn-background-poster) nav.rail {
   body:has(#cn-background-poster) nav.rail {
     mix-blend-mode: multiply;
   }
+  body:has(#cn-background-poster) nav.rail {
+    mix-blend-mode: multiply;
+  }
 }
