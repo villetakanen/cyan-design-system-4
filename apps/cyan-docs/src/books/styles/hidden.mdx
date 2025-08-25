@@ -1,0 +1,83 @@
+---
+title: "Visibility Atomics"
+noun: "layout"
+description: "CSS utility classes for controlling the visibility of elements based on screen size."
+topic: 'Atomics'
+---
+
+<article class="surface column-l">
+
+# Visibility Atomics
+
+A set of atomic classes to control the visibility of elements based on screen size. These are useful for creating responsive layouts that adapt to different devices.
+
+## Hiding elements
+
+You can hide elements on specific screen sizes using the `.sm-hidden`, `.md-hidden`, and `.lg-hidden` classes.
+
+| Class | Description |
+| --- | --- |
+| `.sm-hidden` | Hides the element on small screens (up to 620px). |
+| `.md-hidden` | Hides the element on medium screens (961px to 1364px). |
+| `.lg-hidden` | Hides the element on large screens (1365px and up). |
+
+```html
+<div class="sm-hidden">
+  This element is hidden on small screens.
+</div>
+<div class="md-hidden">
+  This element is hidden on medium screens.
+</div>
+<div class="lg-hidden">
+  This element is hidden on large screens.
+</div>
+```
+
+<h3>Live example</h3>
+<div class="flex three-col">
+  <div class="surface sm-hidden"><p>Hidden on small screens</p></div>
+  <div class="surface md-hidden"><p>Hidden on medium screens</p></div>
+  <div class="surface lg-hidden"><p>Hidden on large screens</p></div>
+</div>
+
+## Showing elements on specific screen sizes
+
+You can also show elements only on specific screen sizes using the `.sm-only`, `.md-only`, and `.lg-only` classes.
+
+| Class | Description |
+| --- | --- |
+| `.sm-only` | Shows the element only on small screens. |
+| `.md-only` | Shows the element only on medium screens. |
+| `.lg-only` | Shows the element only on large screens. |
+
+```html
+<div class="sm-only">
+  This element is only visible on small screens.
+</div>
+<div class="md-only">
+  This element is only visible on medium screens.
+</div>
+<div class="lg-only">
+  This element is only visible on large screens.
+</div>
+```
+
+<h3>Live example</h3>
+<div class="flex three-col">
+  <div class="surface sm-only"><p>Only on small screens</p></div>
+  <div class="surface md-only"><p>Only on medium screens</p></div>
+  <div class="surface lg-only"><p>Only on large screens</p></div>
+</div>
+
+## Screen reader only
+
+The `.screen-reader-only` class hides an element visually but keeps it accessible to screen readers. This is useful for providing additional context to visually impaired users.
+
+```html
+<a href="/login">
+  Login
+  <span class="screen-reader-only">(opens a new page)</span>
+</a>
+```
+
+</article>

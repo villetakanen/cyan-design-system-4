@@ -2,6 +2,39 @@
   .sm-hidden {
     display: none;
   }
+  /* not visible outside of md breakpoints */
+  .md-only {
+    display: none;
+  }
+  .lg-only {
+    display: none;
+  }
+}
+
+/* md and lg atomics (design system breakpoints)
+   sm <= 620px < md <= 1364px < lg */
+@media (min-width: 621px) and (max-width: 1364px) {
+  .md-hidden {
+    display: none;
+  }
+  .sm-only {
+    display: none;
+  }
+  .lg-only {
+    display: none;
+  }
+}
+
+@media (min-width: 1365px) {
+  .lg-hidden {
+    display: none;
+  }
+  .sm-only {
+    display: none;
+  }
+  .md-only {
+    display: none;
+  }
 }
 
 /* screen reader only */
