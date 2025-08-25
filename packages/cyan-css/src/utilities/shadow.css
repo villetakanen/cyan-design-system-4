@@ -1,0 +1,12 @@
+.shadow-1 {
+  box-shadow: var(--shadow-elevation-1);
+}
+.shadow-2 {
+  box-shadow: var(--shadow-elevation-2);
+}
+.shadow-3 {
+  box-shadow: var(--shadow-elevation-3);
+}
+.shadow-4 {
+  box-shadow: var(--shadow-elevation-4);
+}

@@ -19,6 +19,7 @@ textarea {
 }
 textarea::placeholder {
   color: var(--color-on-field-placeholder, red);
+  font-style: italic;
 }
 
 textarea:hover {
@@ -44,16 +45,18 @@ textarea:disabled {
 }
 
 textarea[data-error="true"] {
-  background: var(--chroma-alert-field-tint, red);
-  border-bottom: 1px solid var(--chroma-alert, blue);
+  background: var(--color-alert);
+  border-bottom: 1px solid var(--color-on-alert);
+  color: var(--color-on-alert);
   box-shadow: none;
 }
 
 textarea[data-error="true"]::placeholder {
-  color: var(--chroma-alert, blue);
+  color: var(--color-on-alert);
 }
 
 textarea[data-error="true"]:focus {
-  background: var(--cn-background-field-active, red);
-  border-bottom: 1px solid var(--cn-border-color-field-active, blue);
+  background: var(--color-alert);
+  border-bottom: 1px solid var(--color-on-alert);
+  color: var(--color-on-alert);
 }

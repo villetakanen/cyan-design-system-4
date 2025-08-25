@@ -3,7 +3,9 @@
  */
 @import "./tokens/index.css";
 
+/* Explicitly run as first non-token import */
 @import "./core/preflight.css";
+/* Rest of the core are imported by the index.css */
 @import "./core/index.css";
 
 @import "./utilities/index.css";

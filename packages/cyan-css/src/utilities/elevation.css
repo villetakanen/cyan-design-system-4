@@ -1,6 +1,6 @@
 .elevation-1 {
   background-color: var(--color-surface-1);
-  box-shadow: var(--shadow-elevation-1);
+  /*box-shadow: var(--shadow-elevation-1);*/
 }
 .elevation-2 {
   background: var(--color-surface-2);
@@ -13,4 +13,28 @@
 .elevation-4 {
   background: var(--color-surface-4);
   box-shadow: var(--shadow-elevation-4);
+}
+
+/* Elevation 1 + elevation rules */
+.elevation-1 .elevation-2 {
+  box-shadow: var(--shadow-elevation-1);
+}
+.elevation-1 .elevation-3 {
+  box-shadow: var(--shadow-elevation-2);
+}
+.elevation-1 .elevation-4 {
+  box-shadow: var(--shadow-elevation-3);
+}
+
+/* Elevation 2 + elevation rules */
+.elevation-2 .elevation-3 {
+  box-shadow: var(--shadow-elevation-1);
+}
+.elevation-2 .elevation-4 {
+  box-shadow: var(--shadow-elevation-2);
+}
+
+/* Elevation 3 + elevation rules */
+.elevation-3 .elevation-4 {
+  box-shadow: var(--shadow-elevation-1);
 }

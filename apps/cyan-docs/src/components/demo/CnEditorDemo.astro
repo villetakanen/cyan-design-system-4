@@ -1,0 +1,27 @@
+<div class="toolbar border-b">
+  <h2 class="grow">Live demo</h2>
+  <div>
+    <cn-toggle-button id="numbers" label="Gutter"></cn-toggle-button>
+  </div>
+</div>
+
+<cn-editor id="editor-demo"></cn-editor>
+
+<script is:inline>
+  const toggle = document.getElementById('numbers');
+  const editor = document.getElementById('editor-demo');
+
+  if (toggle && editor) {
+    toggle.addEventListener('change', (event) => {
+      const pressed = event?.target?.pressed;
+      if (pressed) {
+        editor.setAttribute('gutter', '');
+      } else {
+        editor.removeAttribute('gutter');
+      }
+    });
+  }
+</script>
+
+
+

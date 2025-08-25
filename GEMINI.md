@@ -143,3 +143,38 @@ For each component (e.g., `cn-card`), create two test files in the component's d
     -   Use `getComputedStyle()` to make assertions about the component's visual appearance.
     -   Test responsive behavior and different visual states.
     -   Test user interactions like clicks, popovers, and other events that rely on browser APIs.
+
+## Package specific instructions
+
+<package name="cyan-css">
+
+### Cyan-css
+
+- location: `packages/cyan-css`
+- description: A CSS framework used by all of the components and addon packages in the Cyan Design System.
+
+
+#### Tokens
+
+We provide 2 types of design tokens. All tokens are defined as CSS variables in the `packages/cyan-css/tokens` directory.
+
+CN Tokens
+- `--cn-[selector]-[token]`: These are the core design tokens used throughout the framework.
+- `--cn-[selector]-[token]-[state]`: These tokens represent different states (e.g., hover, focus) for interactive elements.
+
+Some legacy tokens use different order (e.g., `--cn-[state]-[selector]-[token]`). These should be updated to the new naming convention, as they are updated.
+
+Theming tokens
+- `--color-[token]`: These tokens are used for theming and can be overridden to create custom themes.
+- `--background-[token]`: These tokens are used to define background styles and can be customized for different themes.
+
+Theming and color tokens should not use the `--cn-` prefix. Historical tokens with the `--cn-` prefix should be migrated to the new naming convention as they are updated.
+
+### CSS categories
+- `core`: Native html and core app element styling. 
+- `utilities`: Utility classes for layout, spacing, typography, etc. Composite styles, that can be combined to create more complex designs.
+- `atomics`: Low-level utility classes that apply a single CSS property. These are typically used for rapid prototyping and corner cases.
+- `components`: Light-dom rules for lit-element components and integration.
+- `typography`: Styles related to text, including font sizes, weights, line heights, and other typographic elements.
+
+</package>

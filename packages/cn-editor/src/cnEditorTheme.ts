@@ -9,6 +9,7 @@ export const editorBaseTheme = EditorView.theme(
       // Sizing and spacing from :host textarea
       width: '100%',
       height: '100%',
+      minHeight: 'calc(4 * var(--cn-line))',
       margin: '0',
       boxSizing: 'border-box',
 
@@ -17,9 +18,9 @@ export const editorBaseTheme = EditorView.theme(
       // If var(--_cn-editor-border) is meant for T/L/R and var(--_cn-editor-border-bottom) for bottom:
       // you might need to set borderTop, borderLeft, borderRight individually if var(--_cn-editor-border)
       // is not a shorthand that excludes bottom, or if it's a full shorthand, borderBottom overrides.
-      border: 'var(--_cn-editor-border)',
-      borderBottom: 'var(--_cn-editor-border-bottom)', // Explicitly sets/overrides the bottom border for default state
-      borderRadius: 'var(--_cn-editor-border-radius)',
+      border: '0',
+      borderBottom: 'var(--cn-input-border)', // Explicitly sets/overrides the bottom border for default state
+      borderRadius: 'var(--cn-input-border-radius)',
       outline: 'none', // Remove default browser outline
 
       // Background and Text color from :host textarea

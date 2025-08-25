@@ -26,6 +26,10 @@
     var(--chroma-surface-90),
     var(--chroma-surface-10)
   );
+  --color-on-surface-secondary: light-dark(
+    var(--chroma-surface-60),
+    var(--chroma-surface-40)
+  );
   --color-secondary: light-dark(
     color-mix(in hsl, var(--chroma-primary-70), transparent 78%),
     var(--chroma-primary-99)
@@ -83,7 +87,8 @@
     var(--chroma-surface-40)
   );
 
-  --color-alert: light-dark(var(--chroma-A), var(--chroma-A));
+  --color-alert: light-dark(var(--chroma-primary-20), var(--chroma-primary-20));
+  --color-on-alert: light-dark(var(--chroma-A), var(--chroma-A));
 
   /* Notifications (updated from existing) */
   --color-notify: light-dark(var(--chroma-primary-95), var(--chroma-N));

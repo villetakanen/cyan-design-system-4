@@ -295,8 +295,7 @@ export class CnEditor extends LitElement {
       height: 100%;
       display: flex;
       flex-direction: column;
-      box-sizing: border-box;
-      overflow: hidden;
+      align-items: stretch;
     }
   `;
 }

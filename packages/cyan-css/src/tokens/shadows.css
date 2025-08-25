@@ -1,10 +1,29 @@
 :root {
+  /* isolate */
   --shadow-elevation-1:
-    0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px var(--color-shadow);
+    0 0 calc(var(--cn-grid) * 1) 0
+    color-mix(in hsl, var(--color-shadow), transparent 44%), /* drop */
+    calc(var(--cn-grid) * 0.5) calc(var(--cn-grid) * 0.5)
+    calc(var(--cn-grid) * 2) calc(var(--cn-grid) * -1) var(--color-shadow);
+
+  /* isolate */
   --shadow-elevation-2:
-    0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px var(--color-shadow);
+    0 0 calc(var(--cn-grid) * 1) 0
+    color-mix(in hsl, var(--color-shadow), transparent 44%), /* drop */
+    calc(var(--cn-grid) * 1) calc(var(--cn-grid) * 1) calc(var(--cn-grid) * 3)
+    calc(var(--cn-grid) * -1) var(--color-shadow);
+
+  /* isolate */
   --shadow-elevation-3:
-    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px var(--color-shadow);
+    0 0 calc(var(--cn-grid) * 1.5) 0
+    color-mix(in hsl, var(--color-shadow), transparent 44%), /* drop */
+    calc(var(--cn-grid) * 1) calc(var(--cn-grid) * 1) calc(var(--cn-grid) * 5)
+    calc(var(--cn-grid) * -1) var(--color-shadow);
+
+  /* isolate */
   --shadow-elevation-4:
-    0 0 8px -4px var(--color-shadow), 8px 8px 16px -8px var(--color-shadow);
+    0 0 calc(var(--cn-grid) * 1.5) 0
+    color-mix(in hsl, var(--color-shadow), transparent 44%), /* drop */
+    calc(var(--cn-grid) * 1.5) calc(var(--cn-grid) * 1.5)
+    calc(var(--cn-grid) * 5) calc(var(--cn-grid) * -1) var(--color-shadow);
 }

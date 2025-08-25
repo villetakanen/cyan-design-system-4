@@ -1,0 +1,59 @@
+---
+title: 'Inputs: Select'
+noun: edit
+description: Styled select element.
+---
+
+<article class="surface column-l">
+
+# `<select>`
+
+Cyan provides styling for the native `<select>` element.
+
+## Select States
+
+Select elements can be disabled or have validation states to indicate errors. This provides visual feedback to users.
+
+### Example
+
+import SelectDemo from 'src/components/demo/SelectDemo.astro';
+
+```html
+<label>
+  Text
+  <select>
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+  </select>
+</label>
+<label>
+  Disabled
+  <select disabled>
+    <option>Disabled</option>
+  </select>
+</label>
+<label>
+  Invalid
+  <select required>
+    <option value="">Please select an option</option>
+    <option>Option 1</option>
+    <option>Option 2</option>
+  </select>
+</label>
+```
+
+Renders as:
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <SelectDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <SelectDemo />
+  </div>
+</div>
+
+</article>

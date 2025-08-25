@@ -1,0 +1,64 @@
+/*
+Copyright 2024 11thdeg
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+select {
+  font-family: var(--cn-font-family-ui);
+  font-weight: var(--cn-font-weight-ui);
+  font-size: var(--cn-font-size-ui);
+  line-height: var(--cn-line-height-ui);
+  letter-spacing: var(--cn-letter-spacing-ui);
+  color: var(--color-on-input);
+  background: var(--color-input);
+  border: 0;
+  border-bottom: var(--cn-input-border);
+  border-radius: var(--cn-input-border-radius);
+  display: block;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: var(--cn-grid);
+  height: calc(var(--cn-grid) * 5);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'%3E%3Cpath d='M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--cn-grid) center;
+  background-size: 1.5em;
+  padding-right: calc(var(--cn-grid) + 1.5em);
+  cursor: pointer;
+}
+
+select:hover {
+  color: var(--color-on-field-hover, var(--color-on-field));
+  background: var(--color-field-hover, var(--color-field));
+  border-bottom-color: var(--color-border-hover, var(--color-border));
+}
+
+select:focus {
+  outline: none;
+  color: var(--cn-color-on-field-active);
+  background: var(--color-input-focus);
+  border-bottom-color: var(--color-border-hover, var(--color-border));
+}
+
+select:disabled {
+  opacity: 0.5;
+  background: var(--cn-color-disabled);
+  cursor: not-allowed;
+}
+
+select:invalid {
+  border-bottom-color: var(--chroma-alert, blue);
+}
