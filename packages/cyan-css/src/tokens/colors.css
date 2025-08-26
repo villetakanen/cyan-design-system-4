@@ -143,11 +143,7 @@
   --cn-color-disabled: var(--chroma-surface-40);
 
   /* Elevation/Shadow colors */
-  --color-shadow: light-dark(
-    var(--chroma-surface-70),
-    var(--chroma-surface-99)
-  );
-
+  --color-shadow: light-dark(var(--chroma-surface-70), var(--chroma-surface-99));
 
   --color-elevation-1: var(--color-surface-1);
   --color-elevation-2: var(--color-surface-2);
