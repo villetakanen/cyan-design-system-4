@@ -4,7 +4,7 @@ cn-reaction-button {
   --background-reaction-button-active: linear-gradient(
     120deg,
     var(--color-reaction-red) 11%,
-    var(--color-alert) 90%
+    var(--chroma-A) 90%
   );
   --color-reaction-button: var(--color-text-low, magenta);
   --color-reaction-button-active: var(--color-surface);
