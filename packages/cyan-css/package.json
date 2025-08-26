@@ -1,6 +1,6 @@
 {
   "name": "@11thdeg/cyan-css",
-  "version": "4.0.0-beta.13",
+  "version": "4.0.0-beta.14",
   "description": "Cyan Design System CSS Styles",
   "type": "module",
   "main": "src/index.css",
