@@ -8,6 +8,9 @@ import { customElement, property } from 'lit/decorators.js';
  * The element is 56x56 pixels by default, but can be resized using the
  * `--cn-navigation-icon-size` CSS variable. Do note, that the contents are intentionally
  * smaller that the clickable area in size to create a visual effect when hovered over.
+ *
+ * When the `notification` property is set with a non-empty string, a pill-shaped indicator
+ * appears at the lower-left corner of the icon to show notification count or status.
  */
 @customElement('cn-navigation-icon')
 export class CnNavigationIcon extends LitElement {
@@ -82,6 +85,27 @@ export class CnNavigationIcon extends LitElement {
       padding-top: calc(var(--cn-grid));
       color: var(--color-text);
     }
+    
+    :host .notification-pill {
+      position: absolute;
+      bottom: calc(var(--cn-grid) * 1.5);
+      right: calc(var(--cn-grid) * 1.5);
+      background: var(--cn-notification-pill-background, var(--color-notify));
+      color: var(--cn-notification-pill-color, var(--color-on-notify));
+      font-size: var(--cn-notification-pill-font-size, var(--cn-caption-font-size));
+      line-height: 1;
+      padding: var(--cn-notification-pill-padding, calc(var(--cn-grid) * 0.25) calc(var(--cn-grid) * 0.5));
+      border-radius: var(--cn-notification-pill-border-radius, calc(var(--cn-grid) * 1.5));
+      min-width: var(--cn-notification-pill-min-width, calc(var(--cn-grid) * 1.5));
+      text-align: center;
+      font-weight: var(--cn-notification-pill-font-weight, 500);
+      box-sizing: border-box;
+      z-index: 1;
+    }
+    
+    :host([label]) .notification-pill {
+      bottom: calc(var(--cn-grid) * 3.5);
+    }
   `;
 
   @property({ type: String, reflect: true })
@@ -93,14 +117,25 @@ export class CnNavigationIcon extends LitElement {
   @property({ type: Boolean, reflect: true })
   public active = false;
 
+  @property({ type: String, reflect: true })
+  public notification = '';
+
   public render() {
     const hasLabel = this.label !== '';
+    const hasNotification =
+      this.notification && this.notification.trim() !== '';
 
     return html`<cn-icon noun="${this.noun}" ?small=${hasLabel}></cn-icon> 
     ${
       this.label
         ? html`
       <div class="navigation-icon-label">${this.label}</div>`
+        : ''
+    }
+    ${
+      hasNotification
+        ? html`
+      <div class="notification-pill">${this.notification}</div>`
         : ''
     }`;
   }

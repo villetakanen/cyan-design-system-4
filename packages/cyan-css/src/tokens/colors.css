@@ -94,7 +94,7 @@
   --color-notify: light-dark(var(--chroma-primary-95), var(--chroma-N));
   --color-on-notify: light-dark(
     var(--chroma-primary-20),
-    var(--chroma-surface-10)
+    var(--chroma-surface-70)
   );
 
   --color-on-focus: light-dark(
@@ -143,7 +143,12 @@
   --cn-color-disabled: var(--chroma-surface-40);
 
   /* Elevation/Shadow colors */
-  --color-shadow: var(--chroma-surface-70);
+  --color-shadow: light-dark(
+    var(--chroma-surface-70),
+    var(--chroma-surface-99)
+  );
+
+
   --color-elevation-1: var(--color-surface-1);
   --color-elevation-2: var(--color-surface-2);
   --color-elevation-3: var(--color-surface-3);
