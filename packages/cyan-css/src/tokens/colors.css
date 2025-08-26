@@ -206,4 +206,10 @@
     color-mix(in hsl, var(--chroma-surface-90), var(--chroma-primary-90) 50%)
   );
   --color-on-reply-bubble: var(--color-on-surface);
+
+  --color-button-cta: light-dark(
+    var(--chroma-primary-50),
+    var(--chroma-primary-60)
+  );
+  --color-on-button-cta: var(--color-on-button);
 }

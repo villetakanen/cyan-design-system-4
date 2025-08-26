@@ -1,0 +1,118 @@
+---
+title: "Text Atomics"
+noun: "font"
+description: "CSS utility classes for text alignment and color control."
+topic: 'Atomics'
+---
+
+<article class="surface column-l">
+
+# Text Atomics
+
+A collection of atomic classes for controlling text alignment and color. These utilities provide quick, consistent text styling options that integrate with the Cyan Design System's color tokens and typography principles.
+
+## Text Alignment
+
+Control text alignment with these simple utility classes.
+
+| Class | CSS | Description |
+| --- | --- | --- |
+| `.text-left` | `text-align: left` | Align text to the left |
+| `.text-center` | `text-align: center` | Center-align text |
+| `.text-right` | `text-align: right` | Align text to the right |
+
+```html
+<p class="text-left">Left-aligned text</p>
+<p class="text-center">Center-aligned text</p>
+<p class="text-right">Right-aligned text</p>
+```
+
+<h3>Live Example</h3>
+<div class="grid three-col">
+  <div class="surface p-1">
+    <p class="text-left">Left-aligned text</p>
+  </div>
+  <div class="surface p-1">
+    <p class="text-center">Center-aligned text</p>
+  </div>
+  <div class="surface p-1">
+    <p class="text-right">Right-aligned text</p>
+  </div>
+</div>
+
+## Text Color
+
+Control text color using semantic color tokens from the design system.
+
+| Class | CSS | Description |
+| --- | --- | --- |
+| `.text-default` | `color: var(--color-text)` | Default text color |
+| `.text-high` | `color: var(--color-text-high)` | High contrast text color |
+| `.text-low` | `color: var(--color-text-low)` | Low contrast text color |
+
+```html
+<p class="text-default">Default text color</p>
+<p class="text-high">High contrast text</p>
+<p class="text-low">Low contrast text</p>
+```
+
+<h3>Live Example</h3>
+<div class="grid three-col">
+  <div class="surface p-1">
+    <p class="text-default">Default text color</p>
+  </div>
+  <div class="surface p-1">
+    <p class="text-high">High contrast text</p>
+  </div>
+  <div class="surface p-1">
+    <p class="text-low">Low contrast text</p>
+  </div>
+</div>
+
+## Usage Examples
+
+Combine text atomics with other utilities for quick text styling:
+
+```html
+<!-- Centered heading with high contrast -->
+<h2 class="text-center text-high">Important Notice</h2>
+
+<!-- Right-aligned caption with low contrast -->
+<p class="text-right text-low text-small">Photo by John Doe</p>
+
+<!-- Default text alignment and color -->
+<p class="text-default">Regular paragraph text</p>
+```
+
+<h3>Combined Example</h3>
+<div class="surface p-2">
+  <h3 class="text-center text-high">Newsletter Signup</h3>
+  <p class="text-center text-default">Stay updated with our latest news and offers.</p>
+  <p class="text-right text-low text-small">* We respect your privacy</p>
+</div>
+
+## Design System Integration
+
+These text atomics are designed to work seamlessly with the Cyan Design System:
+
+- **Semantic Colors**: Color classes use design system tokens that adapt to light/dark themes
+- **Consistent Alignment**: Text alignment classes work with the grid system and layout utilities
+- **Typography Integration**: These atomics complement the comprehensive typography system
+
+### Color Token Reference
+
+The text color atomics use these design system tokens:
+
+- `--color-text`: Primary text color, optimized for readability
+- `--color-text-high`: High contrast text, used for emphasis and important content
+- `--color-text-low`: Reduced contrast text, used for secondary content and metadata
+
+For comprehensive typography styling including font sizes, weights, and semantic heading classes, see [Typography](/books/principles/typography).
+
+## Accessibility
+
+- **High Contrast**: `.text-high` ensures maximum readability for important content
+- **Semantic Usage**: Use color classes semantically (high for emphasis, low for secondary content)
+- **Text Alignment**: Avoid center or right alignment for large blocks of text as it reduces readability
+
+</article>

@@ -48,6 +48,17 @@
   flex-grow: 0;
 }
 
-.flex.items-start {
+.toolbar.items-center {
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Center single items in toolbar */
+.toolbar.items-center:has(> *:only-child) {
+  justify-content: center;
+}
+
+.flex.items-start,
+.toolbar.items-start {
   align-items: flex-start;
 }

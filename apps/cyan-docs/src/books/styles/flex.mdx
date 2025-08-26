@@ -30,6 +30,20 @@ Control how flex items wrap in a flex container.
 - `.grow`: Forces item to grow (`flex-grow: 1 !important`).
 - `.shrink`: Allows item to shrink (`flex-shrink: 1 !important`).
 
+#### Examples
+<div class="grid two-col">
+  <div class="flex flex-col" style="height: 200px;">
+    <div class="flex-none elevation-1">Fixed</div>
+    <div class="grow elevation-2">Flexible</div>
+    <div class="shrink elevation-3">Shrinkable</div>
+  </div>
+  <div class="flex">
+    <span class="flex-none elevation-1">Fixed</span>
+    <span class="grow elevation-2">Flexible</span>
+    <span class="shrink elevation-3">Shrinkable</span>
+  </div>
+</div>
+
 ### Alignment
 - `.flex.items-center`: Centers items both vertically and horizontally (`align-items: center; justify-content: center`).
 - `.flex.items-center > *`: Prevents children from growing (`flex-grow: 0`).

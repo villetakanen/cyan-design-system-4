@@ -89,10 +89,6 @@ a.button.text {
 /* CTA button variant */
 button.cta,
 a.button.cta {
-  background: linear-gradient(
-    -37deg,
-    var(--color-button-cta) 0%,
-    var(--color-notify) 80%
-  );
-  color: white;
+  background: var(--color-button-cta);
+  color: var(--color-on-button-cta);
 }

@@ -48,3 +48,88 @@ Regardless of the headings semantic level, it will be sized to h4 size.
 ```
 
 </article>
+
+<article class="surface">
+
+# Flexbox Alignment with Toolbars
+
+The `.toolbar` class is built on flexbox and works with flexbox alignment atomics for precise control over item positioning.
+
+## Default Behavior
+
+By default, toolbars use `justify-content: space-between` and `align-items: center`:
+
+<div class="toolbar border border-radius">
+  <h3>Default Toolbar</h3>
+  <button>Action</button>
+</div>
+
+```html
+<div class="toolbar">
+  <h3>Default Toolbar</h3>
+  <button>Action</button>
+</div>
+```
+
+## Vertical Centering
+
+Use `.items-center` to vertically center items while maintaining the default horizontal spacing. Single items are automatically centered horizontally:
+
+<div class="toolbar items-center border border-radius">
+  <h3>Centered Single Item</h3>
+</div>
+
+<div class="toolbar items-center border border-radius">
+  <button class="flex-none">Fixed</button>
+  <h3 class="grow">Growing Title</h3>
+  <button class="flex-none">
+    <cn-icon noun="settings"></cn-icon>
+  </button>
+</div>
+
+```html
+<div class="toolbar items-center">
+  <h3>Centered Single Item</h3>
+</div>
+
+<div class="toolbar items-center">
+  <button class="flex-none">Fixed</button>
+  <h3 class="grow">Growing Title</h3>
+  <button class="flex-none">
+    <cn-icon noun="settings"></cn-icon>
+  </button>
+</div>
+```
+
+## Start Alignment
+
+Use `.items-start` to align items to the start (left in LTR layouts):
+
+<div class="toolbar items-start border border-radius">
+  <h3>Start Aligned</h3>
+  <button>Action</button>
+  <button>
+    <cn-icon noun="delete"></cn-icon>
+  </button>
+</div>
+
+```html
+<div class="toolbar items-start">
+  <h3>Start Aligned</h3>
+  <button>Action</button>
+  <button>
+    <cn-icon noun="delete"></cn-icon>
+  </button>
+</div>
+```
+
+## Available Alignment Classes
+
+| Class | Effect |
+| --- | --- |
+| `.items-center` | Vertically centers items, maintains default horizontal spacing |
+| `.items-start` | Aligns items to flex-start |
+
+These classes work with flex item utilities like `.grow` and `.flex-none` for complete layout control.
+
+</article>

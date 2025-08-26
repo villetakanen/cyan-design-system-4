@@ -48,12 +48,6 @@
   --background-button-text-hover: var(--color-button-text-hover);
   --background-button-text-active: var(--color-button-text-active);
 
-  /* Button CTA variant colors - migrated from 3.0.0 */
-  --color-button-cta: light-dark(
-    var(--color-on-notify),
-    var(--chroma-surface-80)
-  );
-
   /* Button shadows */
   --shadow-button-hover: 0 2px 8px rgba(0, 0, 0, 0.1);
 

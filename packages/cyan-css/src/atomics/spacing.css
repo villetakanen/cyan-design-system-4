@@ -93,3 +93,11 @@
 .mb-2 {
   margin-bottom: calc(var(--cn-grid) * 2);
 }
+
+/* Full width and height atomics */
+.full-w {
+  width: 100cqw;
+}
+.full-h {
+  height: 100cqh;
+}
