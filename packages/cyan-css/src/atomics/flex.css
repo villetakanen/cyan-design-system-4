@@ -2,7 +2,6 @@
 .flex {
   display: flex;
   gap: var(--cn-gap);
-  flex-wrap: wrap;
 }
 
 .flex-col > *,
@@ -18,6 +17,10 @@
 /* Flex direction utilities */
 .flex-col {
   flex-direction: column;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
 }
 
 /* Flex wrap utilities */
