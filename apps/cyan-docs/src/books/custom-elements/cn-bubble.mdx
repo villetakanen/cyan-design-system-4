@@ -119,5 +119,116 @@ The component provides special styling for elements with the `.toolbar` class:
 - Content should include appropriate semantic markup
 - Interactive elements should have proper focus management
 
+</article>
+
+<article class="column-l">
+
+## Complex Discussion Example
+
+This example demonstrates a realistic discussion thread showcasing the interaction between `<cn-avatar>` and `<cn-bubble>` components. Note how avatars position themselves on different sides based on the bubble's origin.
+
+<div class="discussion-thread flex flex-col gap">
+  
+  {/* Initial message */}
+  <div class="message-row flex items-start">
+    <cn-avatar nick="Alice" src="https://picsum.photos/seed/alice/128/128"></cn-avatar>
+    <cn-bubble class="grow">
+      <div class="toolbar">
+        <p class="grow"><strong>Alice</strong> <span class="muted">2 hours ago</span></p>
+        <cn-menu inline="true"></cn-menu>
+      </div>
+      <p>Has anyone tried the new component architecture? I'm curious about the performance implications of deeply nested components.</p>
+      <div class="toolbar justify-end">
+        <cn-reaction-button noun="love" count="3" small></cn-reaction-button>
+        <cn-reaction-button noun="thumbs-up" count="7" small></cn-reaction-button>
+      </div>
+    </cn-bubble>
+  </div>
+
+  {/* Reply from different user */}
+  <div class="message-row flex items-start flex-row-reverse">
+    <cn-avatar nick="Bob" src="https://picsum.photos/seed/bob/128/128"></cn-avatar>
+    <cn-bubble reply class="grow">
+      <div class="toolbar">
+        <p class="grow"><strong>Bob</strong> <span class="muted">1 hour ago</span></p>
+        <cn-menu inline="true"></cn-menu>
+      </div>
+      <p>@Alice I've been testing it extensively! The shadow DOM isolation actually helps with performance since style recalculation is scoped.</p>
+      <div class="toolbar justify-end">
+        <cn-reaction-button noun="thumbs-up" count="2" small></cn-reaction-button>
+      </div>
+    </cn-bubble>
+  </div>
+
+  {/* Follow-up from Alice */}
+  <div class="message-row flex items-start">
+    <cn-avatar nick="Alice" src="https://picsum.photos/seed/alice/128/128"></cn-avatar>
+    <cn-bubble class="grow">
+      <div class="toolbar">
+        <p class="grow"><strong>Alice</strong> <span class="muted">45 minutes ago</span></p>
+        <cn-menu inline="true"></cn-menu>
+      </div>
+      <p>o_O</p>
+    </cn-bubble>
+  </div>
+
+  {/* Follow-up from Alice */}
+  <div class="message-row flex items-start">
+    <cn-avatar nick="Alice" src="https://picsum.photos/seed/alice/128/128"></cn-avatar>
+    <cn-bubble class="grow">
+      <div class="toolbar">
+        <p class="grow"><strong>Alice</strong> <span class="muted">45 minutes ago</span></p>
+        <cn-menu inline="true"></cn-menu>
+      </div>
+      <p>That's interesting! Have you noticed any differences in memory usage? I'm particularly concerned about component cleanup.</p>
+    </cn-bubble>
+  </div>
+
+  {/* Reply from Charlie */}
+  <div class="message-row flex items-start flex-row-reverse">
+    <cn-avatar nick="Charlie" src="https://picsum.photos/seed/charlie/128/128"></cn-avatar>
+    <cn-bubble reply class="grow">
+      <div class="toolbar">
+        <p class="grow"><strong>Charlie</strong> <span class="muted">30 minutes ago</span></p>
+        <cn-menu inline="true"></cn-menu>
+      </div>
+      <p>I can share some performance metrics from our production app. The new architecture reduced our bundle size by 15% and improved initial load times.</p>
+      <div class="toolbar justify-end">
+        <cn-reaction-button noun="love" count="5" small></cn-reaction-button>
+        <cn-reaction-button noun="thumbs-up" count="4" small></cn-reaction-button>
+      </div>
+    </cn-bubble>
+  </div>
+
+  {/* Final response from Alice */}
+  <div class="message-row flex items-start">
+    <cn-avatar nick="Alice" src="https://picsum.photos/seed/alice/128/128"></cn-avatar>
+    <cn-bubble class="grow">
+      <div class="toolbar">
+        <p class="grow"><strong>Alice</strong> <span class="muted">5 minutes ago</span></p>
+        <cn-menu inline="true"></cn-menu>
+      </div>
+      <p>Wow, those are impressive numbers! @Charlie would you mind sharing those metrics in our next team meeting? I think everyone would benefit from seeing the data.</p>
+      <div class="toolbar justify-end">
+        <cn-reaction-button noun="thumbs-up" count="1" small></cn-reaction-button>
+      </div>
+    </cn-bubble>
+  </div>
+
+</div>
+
+### Discussion Layout Features
+
+This example demonstrates several key design patterns:
+
+- **Alternating Sides**: Messages from different users appear on alternating sides, with avatars positioned accordingly
+- **Consistent Spacing**: All elements use design system spacing tokens (`--cn-gap`)
+- **Interactive Elements**: Each message includes toolbars with menus and reaction buttons
+- **Visual Hierarchy**: Usernames, timestamps, and content are clearly differentiated
+- **Reply Styling**: Reply bubbles use the `reply` attribute for visual distinction
+
+### Implementation Notes
+
+The layout uses `flex-direction: row-reverse` to position certain messages on the right side with their avatars. This creates a natural conversation flow while maintaining proper semantic order for screen readers.
 
 </article>
