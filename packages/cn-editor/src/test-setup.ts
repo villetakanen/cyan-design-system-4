@@ -32,7 +32,11 @@ if (!('ElementInternals' in globalThis)) {
     setFormValue = vi.fn();
     setValidity = vi.fn();
   }
-  
+
   // Mock attachInternals on HTMLElement
-  (HTMLElement.prototype as unknown as { attachInternals: () => MockElementInternals }).attachInternals = vi.fn(() => new MockElementInternals());
+  (
+    HTMLElement.prototype as unknown as {
+      attachInternals: () => MockElementInternals;
+    }
+  ).attachInternals = vi.fn(() => new MockElementInternals());
 }

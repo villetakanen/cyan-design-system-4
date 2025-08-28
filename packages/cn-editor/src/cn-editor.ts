@@ -57,13 +57,13 @@ export class CnEditor extends LitElement {
 
   private _updateFormValue() {
     this._internals.setFormValue(this.value);
-    
+
     // Handle form validation
     if (this.required && !this.value.trim()) {
       this._internals.setValidity(
         { valueMissing: true },
         'Please fill out this field.',
-        this._editorContainer
+        this._editorContainer,
       );
     } else {
       this._internals.setValidity({});
@@ -163,7 +163,7 @@ export class CnEditor extends LitElement {
             insert: this.value,
           },
         });
-        
+
         // Emit form events when value is set programmatically
         this.dispatchEvent(
           new Event('input', { bubbles: true, composed: true }),
