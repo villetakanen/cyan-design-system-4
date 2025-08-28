@@ -18,6 +18,7 @@ export class CnEditor extends LitElement {
   @property({ type: String, reflect: true }) value = '';
   @property({ type: String, reflect: true }) placeholder = '';
   @property({ type: Boolean, reflect: true }) disabled = false;
+  @property({ type: Boolean, reflect: true }) required = false;
   // Show/hide gutter (line numbers) from the editor
   @property({ type: Boolean, reflect: true }) gutter = false;
 
@@ -27,19 +28,19 @@ export class CnEditor extends LitElement {
   @query('#editor-container') private _editorContainer!: HTMLDivElement;
 
   // The CodeMirror editor instance
-  private _editorView?: EditorView;
+  protected _editorView?: EditorView;
   private _placeholderCompartment = new Compartment();
   private _disabledCompartment = new Compartment();
   private _gutterCompartment = new Compartment();
 
   // Store the value on focus for potential use in blur event
-  private _valueOnFocus = '';
+  protected _valueOnFocus = '';
   // Flag to prevent re-entrant focus calls
-  private _isDelegatingFocus = false;
+  protected _isDelegatingFocus = false;
 
   // --- Form associated element ----------------------------------------------
   static formAssociated = true;
-  private _internals: ElementInternals;
+  protected _internals: ElementInternals;
 
   constructor() {
     super();
@@ -56,9 +57,20 @@ export class CnEditor extends LitElement {
 
   private _updateFormValue() {
     this._internals.setFormValue(this.value);
+    
+    // Handle form validation
+    if (this.required && !this.value.trim()) {
+      this._internals.setValidity(
+        { valueMissing: true },
+        'Please fill out this field.',
+        this._editorContainer
+      );
+    } else {
+      this._internals.setValidity({});
+    }
   }
 
-  private _handleHostFocus(_event: FocusEvent) {
+  protected _handleHostFocus(_event: FocusEvent) {
     // This is the native focus event handler for the <cn-editor> host.
     // External listeners will receive THIS event.
     // console.log('[CN-EDITOR] _handleHostFocus (Native Host Focus) CALLED. Current activeElement:', document.activeElement);
@@ -111,6 +123,7 @@ export class CnEditor extends LitElement {
           onDocChanged: (newDoc) => {
             if (this.value !== newDoc) {
               this.value = newDoc;
+              this._updateFormValue(); // Update validation state
             }
             this.dispatchEvent(
               new Event('input', { bubbles: true, composed: true }),
@@ -136,9 +149,10 @@ export class CnEditor extends LitElement {
   }
 
   updated(changedProperties: Map<string, unknown>) {
-    if (changedProperties.has('value')) {
+    if (changedProperties.has('value') || changedProperties.has('required')) {
       this._updateFormValue();
       if (
+        changedProperties.has('value') &&
         this._editorView &&
         this.value !== this._editorView.state.doc.toString()
       ) {
@@ -149,6 +163,14 @@ export class CnEditor extends LitElement {
             insert: this.value,
           },
         });
+        
+        // Emit form events when value is set programmatically
+        this.dispatchEvent(
+          new Event('input', { bubbles: true, composed: true }),
+        );
+        this.dispatchEvent(
+          new Event('change', { bubbles: true, composed: true }),
+        );
       }
     }
     // Reconfigure placeholder and disabled state using compartments
@@ -205,7 +227,7 @@ export class CnEditor extends LitElement {
     this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
   }
 
-  private _handleFocusOut(event: FocusEvent) {
+  protected _handleFocusOut(event: FocusEvent) {
     //console.log('[cn-editor] _handleFocusOut CALLED. relatedTarget:', event.relatedTarget, 'Current activeElement:', document.activeElement);
     const shadow = this.shadowRoot;
 
@@ -231,9 +253,8 @@ export class CnEditor extends LitElement {
     if (focusHasLeftComponent) {
       // console.log('[CN-EDITOR] Focus truly moved outside component (from _editorContainer focusout). Value on focus:', this._valueOnFocus, 'Current value:', this.value);
 
-      // DO NOT dispatch custom 'blur' event from here anymore.
-      // The native 'blur' event on the host element will be the one external listeners get.
-      // this.dispatchEvent(new CustomEvent('blur', { /* ... */ }));
+      // Dispatch blur event for form integration
+      this.dispatchEvent(new Event('blur', { bubbles: true, composed: true }));
 
       if (this._valueOnFocus !== this.value) {
         // console.log('[CN-EDITOR] Value changed since focus, dispatching component change event from _handleFocusOut.');

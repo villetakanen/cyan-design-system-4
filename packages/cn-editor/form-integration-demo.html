@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CN-Editor Form Integration Demo</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .demo-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .demo-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        cn-editor {
+            min-height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 0.5rem;
+        }
+        
+        cn-editor:invalid {
+            border-color: #d32f2f;
+            box-shadow: 0 0 0 1px rgba(211, 47, 47, 0.2);
+        }
+        
+        cn-editor:valid {
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 1px rgba(46, 125, 50, 0.2);
+        }
+        
+        button {
+            padding: 0.75rem 1.5rem;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        button:hover:not(:disabled) {
+            background: #1565c0;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .controls button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .event-log {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+        
+        .event-log .event {
+            margin: 0.2rem 0;
+            padding: 0.2rem;
+            border-radius: 2px;
+        }
+        
+        .event.input { background: #e3f2fd; }
+        .event.change { background: #e8f5e8; }
+        .event.blur { background: #fff3e0; }
+        
+        .validation-status {
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+        
+        .validation-status.valid {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        
+        .validation-status.invalid {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐛➡️✅ CN-Editor Form Integration Demo</h1>
+    <p>This demo shows that the cn-editor form integration bugs have been fixed. The component now properly emits form events and works with standard form validation patterns.</p>
+
+    <div class="demo-section">
+        <h3>📝 Form with Required Validation</h3>
+        <form id="demo-form">
+            <label for="content">Content (Required):</label>
+            <cn-editor 
+                id="content" 
+                name="content" 
+                required 
+                placeholder="Enter some content... (try leaving it empty and clicking submit)">
+            </cn-editor>
+            
+            <div class="validation-status" id="validation-status">
+                Validation status will appear here
+            </div>
+            
+            <button type="submit" id="submit-btn">Submit Form</button>
+        </form>
+    </div>
+
+    <div class="demo-section">
+        <h3>🎮 Test Controls</h3>
+        <p>These buttons demonstrate that programmatic value changes now automatically trigger form events:</p>
+        <div class="controls">
+            <button onclick="setEditorValue('Hello world!')">Set Value: "Hello world!"</button>
+            <button onclick="setEditorValue('')">Clear Value</button>
+            <button onclick="setEditorValue('Valid content for testing')">Set Valid Content</button>
+            <button onclick="triggerBlur()">Trigger Blur Event</button>
+            <button onclick="clearEventLog()">Clear Event Log</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>📊 Event Log</h3>
+        <p>This shows all form events automatically emitted by the cn-editor:</p>
+        <div class="event-log" id="event-log">
+            <div>Event log will appear here...</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h3>✅ Bug Fixes Demonstrated</h3>
+        <ul>
+            <li><strong>Automatic Event Emission:</strong> Setting editor.value now automatically triggers input and change events</li>
+            <li><strong>Form Validation:</strong> Required validation works properly with visual feedback</li>
+            <li><strong>Blur Events:</strong> Proper blur events are emitted when focus leaves the editor</li>
+            <li><strong>Submit Button State:</strong> Submit button automatically enables/disables based on validation</li>
+        </ul>
+    </div>
+
+    <!-- Import the fixed cn-editor component -->
+    <script type="module" src="./dist/cn-editor.es.js"></script>
+    
+    <script>
+        const editor = document.getElementById('content');
+        const form = document.getElementById('demo-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const eventLog = document.getElementById('event-log');
+        const validationStatus = document.getElementById('validation-status');
+        
+        // Function to log events
+        function logEvent(event) {
+            const timestamp = new Date().toLocaleTimeString();
+            const eventDiv = document.createElement('div');
+            eventDiv.className = `event ${event.type}`;
+            eventDiv.innerHTML = `<strong>${timestamp}</strong> - ${event.type} event (bubbles: ${event.bubbles}, composed: ${event.composed})`;
+            eventLog.appendChild(eventDiv);
+            eventLog.scrollTop = eventLog.scrollHeight;
+        }
+        
+        // Listen for all form events
+        ['input', 'change', 'blur', 'focus'].forEach(eventType => {
+            editor.addEventListener(eventType, (e) => {
+                logEvent(e);
+                updateValidationStatus();
+                updateSubmitButton();
+            });
+        });
+        
+        // Handle form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (editor.value.trim()) {
+                alert(`Form submitted successfully with content: "${editor.value}"`);
+            } else {
+                alert('Form submission blocked - required field is empty');
+            }
+        });
+        
+        // Update validation status display
+        function updateValidationStatus() {
+            const isValid = !editor.required || editor.value.trim() !== '';
+            validationStatus.className = `validation-status ${isValid ? 'valid' : 'invalid'}`;
+            validationStatus.textContent = isValid 
+                ? '✅ Valid - Content meets requirements' 
+                : '❌ Invalid - Required field is empty';
+        }
+        
+        // Update submit button state
+        function updateSubmitButton() {
+            const isValid = !editor.required || editor.value.trim() !== '';
+            submitBtn.disabled = !isValid;
+        }
+        
+        // Test functions
+        function setEditorValue(value) {
+            console.log(`Setting editor value to: "${value}"`);
+            editor.value = value; // This should now automatically trigger events!
+        }
+        
+        function triggerBlur() {
+            editor.blur();
+        }
+        
+        function clearEventLog() {
+            eventLog.innerHTML = '<div>Event log cleared...</div>';
+        }
+        
+        // Initialize
+        updateValidationStatus();
+        updateSubmitButton();
+        
+        // Add initial log entry
+        setTimeout(() => {
+            const initDiv = document.createElement('div');
+            initDiv.className = 'event';
+            initDiv.innerHTML = '<strong>📋 Ready</strong> - cn-editor form integration demo loaded. Try the controls above!';
+            eventLog.appendChild(initDiv);
+        }, 100);
+    </script>
+</body>
+</html>
