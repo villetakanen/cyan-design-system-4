@@ -24,13 +24,22 @@ export class CnLoader extends LitElement {
       display: grid;
       height: var(--cn-loader-size);
       width: var(--cn-loader-size);
+      min-height: var(--cn-loader-size);
+      min-width: var(--cn-loader-size);
+      max-height: var(--cn-loader-size);
+      max-width: var(--cn-loader-size);
       aspect-ratio: 1;
       place-content: center;
       position: relative;
+      flex-shrink: 0;
     }
     :host([inline]) {
       height: calc(var(--cn-line) * 1);
       width: calc(var(--cn-line) * 1);
+      min-height: calc(var(--cn-line) * 1);
+      min-width: calc(var(--cn-line) * 1);
+      max-height: calc(var(--cn-line) * 1);
+      max-width: calc(var(--cn-line) * 1);
     }
 
     :host cn-icon {

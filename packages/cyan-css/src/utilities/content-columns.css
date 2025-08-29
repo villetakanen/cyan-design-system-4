@@ -20,7 +20,8 @@
 
 .content-columns > * {
   width: 100cqw;
-  overflow: hidden;
+  max-width: 100%;
+  overflow: visible;
 }
 .content-columns > * .grid {
   max-width: 100%;
