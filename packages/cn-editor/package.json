@@ -1,6 +1,6 @@
 {
   "name": "@11thdeg/cn-editor",
-  "version": "4.0.0-beta.12",
+  "version": "4.0.0-beta.13",
   "description": "",
   "type": "module",
   "main": "dist/cn-editor.umd.js",
@@ -24,8 +24,8 @@
     "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly",
     "preview": "vite preview",
     "check": "biome check --write",
-    "test": "vitest",
-    "test:run": "vitest run"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",

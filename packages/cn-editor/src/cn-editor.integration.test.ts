@@ -81,7 +81,10 @@ describe('CnEditor Form Integration Demo', () => {
       // Check internal validation state
       const mockInternals = (
         editor as unknown as {
-          getInternals: () => { setValidity: any; setFormValue: any };
+          getInternals: () => {
+            setValidity: (...args: unknown[]) => void;
+            setFormValue: (value: unknown) => void;
+          };
         }
       ).getInternals();
       expect(mockInternals.setValidity).toHaveBeenCalledWith(
@@ -104,7 +107,10 @@ describe('CnEditor Form Integration Demo', () => {
 
       let mockInternals = (
         editor as unknown as {
-          getInternals: () => { setValidity: any; setFormValue: any };
+          getInternals: () => {
+            setValidity: (...args: unknown[]) => void;
+            setFormValue: (value: unknown) => void;
+          };
         }
       ).getInternals();
       expect(mockInternals.setValidity).toHaveBeenCalledWith(
@@ -120,7 +126,10 @@ describe('CnEditor Form Integration Demo', () => {
       // Should now be valid and have form value set
       mockInternals = (
         editor as unknown as {
-          getInternals: () => { setValidity: any; setFormValue: any };
+          getInternals: () => {
+            setValidity: (...args: unknown[]) => void;
+            setFormValue: (value: unknown) => void;
+          };
         }
       ).getInternals();
       expect(mockInternals.setFormValue).toHaveBeenCalledWith('form content');
@@ -184,7 +193,10 @@ describe('CnEditor Form Integration Demo', () => {
     it('should maintain form state consistency', async () => {
       const mockInternals = (
         editor as unknown as {
-          getInternals: () => { setValidity: any; setFormValue: any };
+          getInternals: () => {
+            setValidity: (...args: unknown[]) => void;
+            setFormValue: (value: unknown) => void;
+          };
         }
       ).getInternals();
 
