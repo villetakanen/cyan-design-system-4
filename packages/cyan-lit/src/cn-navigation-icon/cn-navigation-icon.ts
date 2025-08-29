@@ -92,13 +92,14 @@ export class CnNavigationIcon extends LitElement {
       right: calc(var(--cn-grid) * 1.5);
       background: var(--cn-notification-pill-background, var(--color-notify));
       color: var(--cn-notification-pill-color, var(--color-on-notify));
-      font-size: var(--cn-notification-pill-font-size, var(--cn-caption-font-size));
-      line-height: 1;
-      padding: var(--cn-notification-pill-padding, calc(var(--cn-grid) * 0.25) calc(var(--cn-grid) * 0.5));
+      font-size: var(--cn-font-size-text-small);
+      line-height: calc(var(--cn-grid) * 2); /* 16px */ 
+      padding: calc(var(--cn-grid) * 0.25) calc(var(--cn-grid) * 0.75);
       border-radius: var(--cn-notification-pill-border-radius, calc(var(--cn-grid) * 1.5));
-      min-width: var(--cn-notification-pill-min-width, calc(var(--cn-grid) * 1.5));
+      min-width: calc(var(--cn-grid) * 3);
       text-align: center;
-      font-weight: var(--cn-notification-pill-font-weight, 500);
+      font-weight: var(--cn-font-weight-text, 500);
+      box-shadow: var(--shadow-elevation-1);
       box-sizing: border-box;
       z-index: 1;
     }

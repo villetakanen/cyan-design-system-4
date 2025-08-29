@@ -4,7 +4,7 @@ noun: 'font'
 description: 'A Longish treatise on typography, type-scales and font-usage on the Pelilauta and related apps.'
 ---
 
-<article class="column-l">
+<article class="column-l surface">
 
 # Typography
 
@@ -30,7 +30,7 @@ rounding discrepancies between the scale and the actual font sizes used in the d
       <h5 class="m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)"> (Heading 5)</h5>
       <div class="text-h5 m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)">.text-h5 class</div>
       <div class="text-small m-0" style="border-left: 4px solid var(--chroma-surface-60); padding-left: var(--cn-grid)">.text-small class</div>
-      <div></div>
+      <div class="text-caption m-0" style="border-left: 4px solid var(--chroma-surface-40); padding-left: var(--cn-grid)">.text-caption class</div>
     </div>
 
 
@@ -59,12 +59,14 @@ Instead of relying on downscaled helpers, use explicit heading-level classes to 
 | `.text-h3` | Applies H3 styling to any element | When you need H3 visual weight without semantic H3 |
 | `.text-h4` | Applies H4 styling to any element | When you need H4 visual weight without semantic H4 |
 | `.text-h5` | Applies H5 styling to any element | When you need H5 visual weight without semantic H5 |
+| `.text-body` | Applies body text styling to any element | For consistent body text on non-text elements |
 | `.text-small` | Smaller text size | For captions, footnotes, or secondary information |
+| `.text-caption` | Very small text size | For fine print, labels, or minimal details |
 
   
     </article>
 
-<article>
+<article class="surface">
 
 ## Text
 
@@ -93,6 +95,7 @@ The style can be forced to a non _body element_ by using the `.text-body` class.
 | `.text-h5` | Applies H5 typography styles |
 | `.text-body` | Applies body text styles (default) |
 | `.text-small` | Smaller text for captions and secondary content |
+| `.text-caption` | Even smaller text for fine print and labels |
 
 #### Color Tokens
 
@@ -133,9 +136,11 @@ Normal text, and some filler content.
 
 <p class="text-small">Small text for captions or secondary information</p>
 
+<p class="text-caption">Caption text for fine print, labels, or very small details</p>
+
 </article>
 
-<article>
+<article class="surface">
 
 ## Lists
 
@@ -162,7 +167,7 @@ Lists inherit the base text styles and support either loose (default) or `.compa
 
 </article>
 
-<article>
+<article class="surface">
 
 ## Tables
 

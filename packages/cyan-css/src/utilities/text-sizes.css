@@ -1,0 +1,19 @@
+/* Text size utility classes */
+
+.text-body {
+  font-family: var(--cn-font-family);
+  font-size: var(--cn-text-font-size);
+  line-height: var(--cn-text-line-height);
+  font-weight: var(--cn-font-weight-text);
+  letter-spacing: var(--cn-letter-spacing-text);
+}
+
+.text-small {
+  font-size: var(--cn-text-small-font-size);
+  line-height: calc(var(--cn-grid) * 3); /* 24px */
+}
+
+.text-caption {
+  font-size: var(--cn-caption-font-size);
+  line-height: calc(var(--cn-grid) * 2); /* 16px */
+}

@@ -30,6 +30,7 @@
   --cn-font-family-headings: var(--cn-font-family-headings);
 
   --cn-font-size-text: var(--cn-text-font-size);
+  --cn-font-size-text-small: var(--cn-text-small-font-size);
   --cn-line-height-text: var(--cn-text-line-height);
   --cn-font-weight-text: 400;
   --cn-letter-spacing-text: normal;
