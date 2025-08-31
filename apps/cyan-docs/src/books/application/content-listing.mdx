@@ -1,0 +1,54 @@
+---
+title: 'Content: Listing'
+noun: 'list'
+description: 'A layout container for list-based data, with responsive columns.'
+containerClass: 'content-listing'
+---
+
+<header>
+  <h1>Content Listing Demo</h1>
+  <p>This page demonstrates the `.content-listing` layout.</p>
+</header>
+
+<div class="listing-items">
+  <article class="cols-2">
+    <div class="surface">
+      <h3>A Two-Column Article</h3>
+        <p>This is the first column. The `.cols-2` class splits the article into two columns on wider screens.</p>
+      </div>
+      <div class="surface">
+        <p>This is the second column. The content reflows into a single column on screens narrower than 620px.</p>
+      </div>
+    </article>
+
+    <article class="cols-3">
+      <div class="surface">
+        <h3>Three-Column Article</h3>
+        <p>First column.</p>
+      </div>
+      <div class="surface">
+        <p>Second column.</p>
+      </div>
+      <div class="surface">
+        <p>Third column. The `.cols-3` class creates three columns on wider screens.</p>
+      </div>
+    </article>
+
+    <article class="surface card">
+      <div>
+        <h3>Single-Column Article</h3>
+        <p>This article does not have a `.cols-*` class, so it will always render as a single column.</p>
+      </div>
+    </article>
+  </div>
+
+  <aside>
+    <div class="surface card">
+      <h4>Sidebar</h4>
+      <p>This is the `aside` element. On screens wider than 960px, it appears as a sidebar. On narrower screens, it stacks below the listing items.</p>
+    </div>
+  </aside>
+
+  <footer>
+    <p>This is the footer of the content listing.</p>
+  </footer>
