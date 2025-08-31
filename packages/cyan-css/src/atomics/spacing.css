@@ -1,9 +1,16 @@
 /* Padding shorthands */
+.p-0 {
+  padding: 0;
+}
 .p-1 {
   padding: var(--cn-grid);
 }
 .p-2 {
   padding: calc(var(--cn-grid) * 2);
+}
+.px-0 {
+  padding-left: 0;
+  padding-right: 0;
 }
 .px-1 {
   padding-left: var(--cn-grid);
@@ -13,6 +20,10 @@
   padding-left: calc(var(--cn-grid) * 2);
   padding-right: calc(var(--cn-grid) * 2);
 }
+.py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .py-1 {
   padding-top: var(--cn-grid);
   padding-bottom: var(--cn-grid);
@@ -21,11 +32,17 @@
   padding-top: calc(var(--cn-grid) * 2);
   padding-bottom: calc(var(--cn-grid) * 2);
 }
+.pt-0 {
+  padding-top: 0;
+}
 .pt-1 {
   padding-top: var(--cn-grid);
 }
 .pt-2 {
   padding-top: calc(var(--cn-grid) * 2);
+}
+.pl-0 {
+  padding-left: 0;
 }
 .pl-1 {
   padding-left: var(--cn-grid);
@@ -33,11 +50,17 @@
 .pl-2 {
   padding-left: calc(var(--cn-grid) * 2);
 }
+.pr-0 {
+  padding-right: 0;
+}
 .pr-1 {
   padding-right: var(--cn-grid);
 }
 .pr-2 {
   padding-right: calc(var(--cn-grid) * 2);
+}
+.pb-0 {
+  padding-bottom: 0;
 }
 .pb-1 {
   padding-bottom: var(--cn-grid);
@@ -47,11 +70,18 @@
 }
 
 /* Margin shorthands */
+.m-0 {
+  margin: 0;
+}
 .m-1 {
   margin: var(--cn-grid);
 }
 .m-2 {
   margin: calc(var(--cn-grid) * 2);
+}
+.mx-0 {
+  margin-left: 0;
+  margin-right: 0;
 }
 .mx-1 {
   margin-left: var(--cn-grid);
@@ -61,6 +91,10 @@
   margin-left: calc(var(--cn-grid) * 2);
   margin-right: calc(var(--cn-grid) * 2);
 }
+.my-0 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .my-1 {
   margin-top: var(--cn-grid);
   margin-bottom: var(--cn-grid);
@@ -69,11 +103,17 @@
   margin-top: calc(var(--cn-grid) * 2);
   margin-bottom: calc(var(--cn-grid) * 2);
 }
+.mt-0 {
+  margin-top: 0;
+}
 .mt-1 {
   margin-top: var(--cn-grid);
 }
 .mt-2 {
   margin-top: calc(var(--cn-grid) * 2);
+}
+.ml-0 {
+  margin-left: 0;
 }
 .ml-1 {
   margin-left: var(--cn-grid);
@@ -81,11 +121,17 @@
 .ml-2 {
   margin-left: calc(var(--cn-grid) * 2);
 }
+.mr-0 {
+  margin-right: 0;
+}
 .mr-1 {
   margin-right: var(--cn-grid);
 }
 .mr-2 {
   margin-right: calc(var(--cn-grid) * 2);
+}
+.mb-0 {
+  margin-bottom: 0;
 }
 .mb-1 {
   margin-bottom: var(--cn-grid);
