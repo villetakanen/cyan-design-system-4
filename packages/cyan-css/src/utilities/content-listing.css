@@ -8,11 +8,13 @@
     "listing"
     "aside"
     "footer";
-  gap: var(--cn-gap);
+  gap: var(--cn-grid);
   margin: 0 auto;
-  max-width: 1365px;
+  max-width: 1024px;
   width: 100cqw;
 }
+
+
 
 .content-listing > header {
   grid-area: header;
@@ -35,7 +37,7 @@
 }
 
 @container main-app-content (width > 880px) {
-  .content-listing {
+  .content-listing:has(aside) {
     grid-template-columns: 3.236fr 1fr;
     grid-template-areas:
       "header header"
@@ -46,7 +48,7 @@
 
 @container main-app-content (width > 620px) {
   .listing-items > article.cols-2 {
-    grid-template-columns: 3.236fr 1fr;
+    grid-template-columns: 1.618fr 1fr;
     gap: var(--cn-grid);
   }
   .listing-items > article.cols-3 {
