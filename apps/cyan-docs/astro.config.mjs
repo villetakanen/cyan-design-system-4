@@ -45,6 +45,13 @@ export default defineConfig({
             '../../packages/cn-dice',
           ),
         },
+        {
+          find: '@',
+          replacement: path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            './src',
+          ),
+        },
       ],
     },
   },

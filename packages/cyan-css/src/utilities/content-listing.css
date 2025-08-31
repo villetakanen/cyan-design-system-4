@@ -1,0 +1,56 @@
+/*
+[content-listing] utility
+*/
+.content-listing {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "listing"
+    "aside"
+    "footer";
+  gap: var(--cn-gap);
+  margin: 0 auto;
+  max-width: 1365px;
+  width: 100cqw;
+}
+
+.content-listing > header {
+  grid-area: header;
+}
+.content-listing > .listing-items {
+  grid-area: listing;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cn-grid);
+}
+.content-listing > aside {
+  grid-area: aside;
+}
+.content-listing > footer {
+  grid-area: footer;
+}
+
+.listing-items > article {
+  display: grid;
+}
+
+@container main-app-content (width > 880px) {
+  .content-listing {
+    grid-template-columns: 3.236fr 1fr;
+    grid-template-areas:
+      "header header"
+      "listing aside"
+      "footer footer";
+  }
+}
+
+@container main-app-content (width > 620px) {
+  .listing-items > article.cols-2 {
+    grid-template-columns: 3.236fr 1fr;
+    gap: var(--cn-grid);
+  }
+  .listing-items > article.cols-3 {
+    grid-template-columns: 1.618fr 1.618fr 1fr;
+    gap: var(--cn-grid);
+  }
+}
