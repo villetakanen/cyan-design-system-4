@@ -1,0 +1,86 @@
+---
+title: '<cn-d20-ability-score>'
+noun: 'd20'
+description: 'A custom element for displaying D&D 5e ability scores with optional input functionality.'
+---
+import AbilityScoreDemo from '../../components/demo/AbilityScoreDemo.astro'
+
+<article class="column-l surface">
+
+# `<cn-d20-ability-score>`
+
+A `cn-d20-ability-score` is a custom element designed for displaying D&D 5th Edition ability scores. It shows both the base score and calculated modifier in a compact, hexagonal-style layout. The component can function as either a read-only display or an interactive input field.
+
+<AbilityScoreDemo />
+
+## Usage
+
+```html
+<!-- Display mode (default) -->
+<cn-d20-ability-score base="15"></cn-d20-ability-score>
+
+<!-- Interactive input mode -->
+<cn-d20-ability-score interactive base="12" min="8" max="20"></cn-d20-ability-score>
+```
+
+## Features
+
+- **Automatic modifier calculation**: Follows D&D 5e rules (modifier = floor((base - 10) / 2))
+- **Display mode**: Shows the ability score and modifier as read-only
+- **Interactive mode**: Allows user input with validation and clamping
+- **Event dispatching**: Emits `score-change` events when values change
+- **Accessible**: Proper ARIA labels and keyboard navigation support
+
+## API
+
+### Properties / Attributes
+
+| Property | Attribute | Type      | Default | Description |
+|----------|-----------|-----------|---------|-------------|
+| `base` | `base` | `Number` | `10` | The base ability score value. |
+| `interactive` | `interactive` | `Boolean` | `false` | Whether the component is an input field or display-only. |
+| `min` | `min` | `Number` | `1` | Minimum allowed value in interactive mode. |
+| `max` | `max` | `Number` | `30` | Maximum allowed value in interactive mode. |
+
+### Events
+
+| Event | Description |
+|-------|-------------|
+| `score-change` | Fired when the score changes in interactive mode. Contains `detail.base` and `detail.modifier`. |
+
+### CSS Custom Properties
+
+The component uses CSS custom properties (tokens) for styling:
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--cn-d20-ability-score-size` | `80px` | The size of the ability score component. |
+| `--cn-d20-ability-score-font-weight` | `700` | Font weight for text display. |
+| `--cn-d20-ability-score-modifier-font-size` | `calc(var(--cn-grid) * 4)` | Font size for the modifier display. |
+| `--cn-d20-ability-score-base-font-size` | `calc(var(--cn-grid) * 2)` | Font size for the base score display. |
+
+## Visual Behavior
+
+The component displays:
+- **Top section**: The calculated modifier with appropriate sign (+/-)
+- **Bottom section**: The base ability score value
+
+In interactive mode, the base score becomes an input field that:
+- Validates input against min/max bounds
+- Automatically clamps values to the allowed range
+- Updates the modifier display in real-time
+- Provides visual feedback on hover and focus
+
+## Dependencies
+
+This is a standalone addon package that works with the Cyan Design System. It requires:
+- `lit` for the web component framework
+- The Cyan CSS tokens for proper theming
+
+## Package Information
+
+- **Package**: `@11thdeg/cn-d20-ability-score`
+- **Type**: Addon package (not part of core cyan-lit)
+- **Installation**: Available as a separate npm package
+
+</article>

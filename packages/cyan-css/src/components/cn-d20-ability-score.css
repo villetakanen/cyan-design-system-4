@@ -1,0 +1,35 @@
+:root {
+  --_cn-d20-ability-score-size: var(--cn-d20-ability-score-size, 80px);
+  --_cn-d20-ability-score-font-weight: var(
+    --cn-d20-ability-score-font-weight,
+    700
+  );
+  --_cn-d20-ability-score-modifier-font-size: var(
+    --cn-d20-ability-score-modifier-font-size,
+    calc(var(--cn-grid, 8px) * 4)
+  );
+  --_cn-d20-ability-score-base-font-size: var(
+    --cn-d20-ability-score-base-font-size,
+    calc(var(--cn-grid, 8px) * 2)
+  );
+  --_cn-d20-ability-score-base-line-height: var(
+    --cn-d20-ability-score-base-line-height,
+    calc(var(--cn-grid, 8px) * 4)
+  );
+  --_cn-d20-ability-score-base-margin: var(
+    --cn-d20-ability-score-base-margin,
+    calc(var(--cn-grid, 8px) * 2)
+  );
+  --_cn-d20-ability-score-base-margin-top: var(
+    --cn-d20-ability-score-base-margin-top,
+    calc(var(--cn-grid, 8px) * -2)
+  );
+  --_cn-d20-ability-score-input-margin: var(
+    --cn-d20-ability-score-input-margin,
+    calc(var(--cn-grid, 8px) * 1.5)
+  );
+}
+
+cn-d20-ability-score {
+  display: inline-block;
+}

@@ -1,0 +1,80 @@
+<section class="ability-score-grid">
+    <div>
+        <h4>Display Mode</h4>
+        <div class="ability-row">
+            <cn-d20-ability-score base="8"></cn-d20-ability-score>
+            <cn-d20-ability-score base="10"></cn-d20-ability-score>
+            <cn-d20-ability-score base="12"></cn-d20-ability-score>
+            <cn-d20-ability-score base="15"></cn-d20-ability-score>
+            <cn-d20-ability-score base="18"></cn-d20-ability-score>
+            <cn-d20-ability-score base="20"></cn-d20-ability-score>
+        </div>
+    </div>
+    
+    <div>
+        <h4>Interactive Mode</h4>
+        <div class="ability-row">
+            <cn-d20-ability-score interactive base="8" min="3" max="18"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="10" min="3" max="18"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="12" min="3" max="18"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="15" min="3" max="18"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="18" min="3" max="18"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="20" min="3" max="30"></cn-d20-ability-score>
+        </div>
+    </div>
+</section>
+
+<div class="event-demo">
+    <h4>Event Demonstration</h4>
+    <p>Change the values below to see the score-change event:</p>
+    <cn-d20-ability-score interactive base="13" id="event-demo"></cn-d20-ability-score>
+    <pre id="event-output">No events yet</pre>
+</div>
+
+<style>
+    .ability-score-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border: 1px solid var(--color-border);
+        border-radius: var(--cn-border-radius-medium);
+    }
+    
+    .ability-row {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .event-demo {
+        padding: 1rem;
+        border: 1px solid var(--color-border);
+        border-radius: var(--cn-border-radius-medium);
+        margin-bottom: 2rem;
+    }
+    
+    #event-output {
+        background: var(--color-surface-2);
+        color: var(--color-on-surface);
+        padding: 0.5rem;
+        border-radius: var(--cn-border-radius-small);
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const eventDemo = document.getElementById('event-demo');
+        const eventOutput = document.getElementById('event-output');
+        
+        if (eventDemo && eventOutput) {
+            eventDemo.addEventListener('score-change', (event) => {
+                eventOutput.textContent = `Event: base=${event.detail.base}, modifier=${event.detail.modifier}`;
+            });
+        }
+    });
+</script>
