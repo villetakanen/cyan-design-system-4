@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cn-d20-ability-score Test</title>
+  <style>
+    /* Basic styling for the demo */
+    :root {
+      --color-surface: #ffffff;
+      --color-on-surface: #000000;
+      --color-input: #f5f5f5;
+      --color-input-hover: #e0e0e0;
+      --color-on-input: #000000;
+      --cn-border-radius: 8px;
+      --cn-grid: 8px;
+      --cn-gap: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-surface: #1e1e1e;
+        --color-on-surface: #ffffff;
+        --color-input: #2a2a2a;
+        --color-input-hover: #3a3a3a;
+        --color-on-input: #ffffff;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--color-surface);
+      color: var(--color-on-surface);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .demo-section {
+      margin-bottom: 3rem;
+      border: 1px solid var(--color-on-surface);
+      border-radius: var(--cn-border-radius);
+      padding: 1.5rem;
+    }
+
+    .ability-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .ability-label {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .flex-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    code {
+      background: var(--color-input);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>cn-d20-ability-score Component Demo</h1>
+  
+  <section class="demo-section">
+    <h2>Standard Ability Scores (Display Mode)</h2>
+    <p>These show the classic D&D 5e ability score display with modifier calculation:</p>
+    
+    <div class="ability-grid">
+      <div>
+        <div class="ability-label">STR</div>
+        <cn-d20-ability-score base="16"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">DEX</div>
+        <cn-d20-ability-score base="14"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">CON</div>
+        <cn-d20-ability-score base="15"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">INT</div>
+        <cn-d20-ability-score base="12"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">WIS</div>
+        <cn-d20-ability-score base="13"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">CHA</div>
+        <cn-d20-ability-score base="8"></cn-d20-ability-score>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h2>Interactive Mode</h2>
+    <p>Click the base score to edit the value. Changes will dispatch <code>score-change</code> events:</p>
+    
+    <div class="ability-grid">
+      <div>
+        <div class="ability-label">STR</div>
+        <cn-d20-ability-score interactive base="10" id="str-input"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">DEX</div>
+        <cn-d20-ability-score interactive base="10" id="dex-input"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">CON</div>
+        <cn-d20-ability-score interactive base="10" id="con-input"></cn-d20-ability-score>
+      </div>
+    </div>
+
+    <div id="event-log">
+      <h3>Event Log:</h3>
+      <div id="log-content" style="background: var(--color-input); padding: 1rem; border-radius: var(--cn-border-radius); min-height: 100px; font-family: monospace;">
+        Waiting for score changes...
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h2>Edge Cases</h2>
+    <div class="flex-row">
+      <div>
+        <div class="ability-label">Min (1)</div>
+        <cn-d20-ability-score base="1"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">Max (30)</div>
+        <cn-d20-ability-score base="30"></cn-d20-ability-score>
+      </div>
+      <div>
+        <div class="ability-label">Average (10)</div>
+        <cn-d20-ability-score base="10"></cn-d20-ability-score>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h2>Custom Limits</h2>
+    <p>This interactive score has custom min/max values (8-18, typical for point buy):</p>
+    <div class="flex-row">
+      <div>
+        <div class="ability-label">Point Buy</div>
+        <cn-d20-ability-score interactive base="15" min="8" max="18"></cn-d20-ability-score>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="/src/cn-d20-ability-score.ts"></script>
+  
+  <script>
+    // Add event listeners for the interactive examples
+    const logContent = document.getElementById('log-content');
+    const interactiveElements = document.querySelectorAll('cn-d20-ability-score[interactive]');
+    
+    interactiveElements.forEach(el => {
+      el.addEventListener('score-change', (event) => {
+        const timestamp = new Date().toLocaleTimeString();
+        const logEntry = `${timestamp} - Base: ${event.detail.base}, Modifier: ${event.detail.modifier >= 0 ? '+' : ''}${event.detail.modifier}`;
+        logContent.innerHTML = logEntry + '\\n' + logContent.innerHTML;
+      });
+    });
+  </script>
+</body>
+</html>

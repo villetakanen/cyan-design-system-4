@@ -46,6 +46,13 @@ export default defineConfig({
           ),
         },
         {
+          find: 'cn-d20-ability-score',
+          replacement: path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            '../../packages/cn-d20-ability-score',
+          ),
+        },
+        {
           find: '@',
           replacement: path.resolve(
             path.dirname(fileURLToPath(import.meta.url)),

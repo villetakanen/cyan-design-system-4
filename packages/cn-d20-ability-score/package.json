@@ -1,0 +1,45 @@
+{
+  "name": "@11thdeg/cn-d20-ability-score",
+  "version": "4.0.0-beta.2",
+  "description": "A custom element for displaying D&D 5e ability scores.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "pnpm build && pnpm build:types",
+    "build": "vite build",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "dev": "vite",
+    "check": "biome check --write"
+  },
+  "keywords": [
+    "lit",
+    "web-components",
+    "dnd",
+    "d20",
+    "ability-score",
+    "rpg"
+  ],
+  "author": "Ville Takanen",
+  "license": "MIT",
+  "dependencies": {
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.0.7"
+  }
+}
