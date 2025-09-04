@@ -147,7 +147,7 @@ export class CnAppBar extends LitElement {
     .title {
       color: inherit;
       flex-grow: 1;
-      font-family: var(--cn-font-family-headings);
+      font-family: var(--cn-font-family);
       font-weight: var(--cn-app-bar-font-weight);
       font-size: var(--cn-app-bar-font-size);
       line-height: var(--cn-app-bar-height);

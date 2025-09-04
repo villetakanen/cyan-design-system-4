@@ -167,7 +167,7 @@ export class CnCard extends LitElement {
      :host h4 {
       margin: 0;
       padding: 0;
-      font-family: var(--cn-font-family-headings);
+      font-family: var(--cn-font-family);
       font-weight: var(--cn-heading-4-font-weight);
       font-size: var(--cn-heading-4-font-size);
       line-height: var(--cn-heading-4-line-height);
