@@ -31,8 +31,12 @@ describe('cn-d20-ability-score', () => {
     await customElements.whenDefined('cn-d20-ability-score');
     await el?.updateComplete;
 
+    if (!el) throw new Error('Element is null');
+
     // Access private method for testing through type assertion
-    const modifier = (el as any)._calculateModifier();
+    const modifier = (
+      el as unknown as { _calculateModifier: () => number }
+    )._calculateModifier();
     expect(modifier).toBe(2); // (15 - 10) / 2 = 2.5, floored to 2
   });
 
@@ -91,11 +95,11 @@ describe('cn-d20-ability-score', () => {
     await el?.updateComplete;
 
     let eventFired = false;
-    let eventDetail: any = null;
+    let eventDetail: { base: number; modifier: number } | null = null;
 
-    el?.addEventListener('score-change', (event: any) => {
+    el?.addEventListener('score-change', (event: unknown) => {
       eventFired = true;
-      eventDetail = event.detail;
+      eventDetail = (event as CustomEvent).detail;
     });
 
     const input = el?.shadowRoot?.querySelector(
@@ -107,8 +111,9 @@ describe('cn-d20-ability-score', () => {
     await el?.updateComplete;
 
     expect(eventFired).toBe(true);
-    expect(eventDetail.base).toBe(16);
-    expect(eventDetail.modifier).toBe(3);
+    if (!eventDetail) throw new Error('Event detail is null');
+    expect((eventDetail as { base: number }).base).toBe(16);
+    expect((eventDetail as { modifier: number }).modifier).toBe(3);
     expect(el?.base).toBe(16);
   });
 

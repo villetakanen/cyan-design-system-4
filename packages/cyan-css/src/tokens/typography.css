@@ -33,5 +33,11 @@
   --cn-font-size-text-small: var(--cn-text-small-font-size);
   --cn-line-height-text: var(--cn-text-line-height);
   --cn-font-weight-text: 400;
+  --cn-font-weight-bold: 700;
   --cn-letter-spacing-text: normal;
+
+  /* Monospace, ie-code */
+  --cn-font-family-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }

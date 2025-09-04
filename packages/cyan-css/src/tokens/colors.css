@@ -97,6 +97,13 @@
     var(--chroma-surface-70)
   );
 
+  /* Code elements */
+  --color-code: light-dark(var(--chroma-primary-10), var(--chroma-primary-99));
+  --color-on-code: light-dark(
+    var(--chroma-primary-90),
+    var(--chroma-primary-10)
+  );
+
   --color-on-focus: light-dark(
     var(--chroma-surface-99),
     var(--chroma-primary-10)
