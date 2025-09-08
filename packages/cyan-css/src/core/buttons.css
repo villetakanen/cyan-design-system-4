@@ -10,8 +10,12 @@ a.button {
   justify-content: center;
   gap: var(--cn-grid);
 
-  background: linear-gradient(in lab 137deg, var(--color-button-light), var(--color-button));
-  
+  background: linear-gradient(
+    in lab 137deg,
+    var(--color-button-light),
+    var(--color-button)
+  );
+
   color: var(--color-on-button);
 
   /* Font and text */
@@ -90,13 +94,21 @@ a.button.text {
 /* CTA button variant */
 button.cta,
 a.button.cta {
-  background: linear-gradient(in lab 137deg, var(--color-button-cta), var(--color-button));
+  background: linear-gradient(
+    in lab 137deg,
+    var(--color-button-cta),
+    var(--color-button)
+  );
   color: var(--color-on-button-cta);
 }
 .secondary button,
 .secondary a.button,
 button.secondary,
 a.button.secondary {
-  background: linear-gradient(in lab 137deg, var(--color-surface-3), var(--color-button));
+  background: linear-gradient(
+    in lab 137deg,
+    var(--color-surface-3),
+    var(--color-button)
+  );
   color: var(--color-on-button-secondary);
 }
