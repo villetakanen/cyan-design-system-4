@@ -117,6 +117,20 @@
     color-mix(in hsl, var(--chroma-surface-50), transparent 80%)
   );
 
+  --color-button: light-dark(
+    var(--chroma-surface-50),
+    var(--chroma-surface-80)
+  );
+  --color-button-light: light-dark(
+    var(--chroma-primary-60),
+    var(--chroma-primary-95)
+  );
+  --color-button-cta: light-dark(
+    var(--chroma-A),
+    var(--chroma-A)
+  );
+
+
   /* Borders */
   --color-border: light-dark(var(--chroma-surface-40), var(--chroma-surface-70));
 
@@ -214,9 +228,5 @@
   );
   --color-on-reply-bubble: var(--color-on-surface);
 
-  --color-button-cta: light-dark(
-    var(--chroma-primary-50),
-    var(--chroma-primary-60)
-  );
   --color-on-button-cta: var(--color-on-button);
 }

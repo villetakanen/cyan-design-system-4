@@ -9,19 +9,13 @@ button.fab {
   min-width: var(--fab-size);
   height: var(--fab-size);
   border-radius: var(--cn-border-radius-large);
-  background: linear-gradient(
-    120deg,
-    var(--chroma-primary-20),
-    var(--chroma-primary-60)
-  );
-  color: var(--chroma-primary-99);
   display: inline-flex;
   /* Prevent FABs from growing inside flex/grid containers */
   /* Use an explicit non-flexible shorthand so this rule wins over generic selectors like `.flex > *` */
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-elevation-4);
+  box-shadow: var(--shadow-elevation-1);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -47,13 +41,6 @@ button.fab {
 
 .fab cn-icon {
   font-size: var(--cn-icon-size-small);
-}
-
-/* Secondary FABs - use bright surface color instead of primary gradient */
-a.fab.secondary,
-button.fab.secondary {
-  background: light-dark(var(--chroma-surface-40), var(--chroma-surface-40));
-  color: var(--chroma-surface-80);
 }
 
 /* Small FABs - use button height for both height and min-width */
@@ -97,3 +84,4 @@ button.fab cn-icon:first-child:not(:only-child),
 a.button.fab cn-icon:first-child:not(:only-child) {
   margin-left: 0;
 }
+
