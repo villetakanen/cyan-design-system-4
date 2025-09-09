@@ -126,8 +126,14 @@
 
   /* Borders */
   --color-border: light-dark(var(--chroma-surface-40), var(--chroma-surface-70));
-  --color-border-hover: light-dark(var(--chroma-surface-50), var(--chroma-surface-60));
-  --color-border-focus: light-dark(var(--chroma-primary-70), var(--chroma-primary-40));
+  --color-border-hover: light-dark(
+    var(--chroma-surface-50),
+    var(--chroma-surface-60)
+  );
+  --color-border-focus: light-dark(
+    var(--chroma-primary-70),
+    var(--chroma-primary-40)
+  );
 
   /* Text selection */
   --color-selection: light-dark(
