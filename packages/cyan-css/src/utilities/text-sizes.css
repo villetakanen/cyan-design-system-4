@@ -2,7 +2,7 @@
 
 .text-body {
   font-family: var(--cn-font-family);
-  font-size: var(--cn-text-font-size);
+  font-size: var(--cn-font-size-text);
   line-height: var(--cn-text-line-height);
   font-weight: var(--cn-font-weight-text);
   letter-spacing: var(--cn-letter-spacing-text);

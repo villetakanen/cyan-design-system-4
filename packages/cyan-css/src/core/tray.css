@@ -47,7 +47,7 @@ nav#tray h4 {
 nav#tray li a {
   display: flex;
   align-items: center;
-  font-size: var(--cn-text-font-size);
+  font-size: var(--cn-font-size-text);
   line-height: var(--cn-text-line-height);
   height: calc(var(--cn-line) * 2);
   gap: var(--cn-gap);

@@ -5,7 +5,7 @@
   --cn-heading-4-font-size: calc(1.777 * var(--cn-grid) * 2);
   --cn-heading-5-font-size: calc(1.333 * var(--cn-grid) * 2);
 
-  --cn-text-font-size: calc(var(--cn-grid) * 2.2); /* 16px, 1rem, 12pt */
+  --cn-font-size-text: calc(var(--cn-grid) * 2.2); /* 17.2px */
   --cn-text-line-height: calc(var(--cn-grid) * 3); /* 24px, 1.5rem, 18pt */
 
   --cn-text-small-font-size: calc(var(--cn-grid) / 8 * 14);
@@ -28,7 +28,6 @@
   /* Typography token aliases for consistent component usage */
   --cn-font-family-text: var(--cn-font-family);
 
-  --cn-font-size-text: var(--cn-text-font-size);
   --cn-font-size-text-small: var(--cn-text-small-font-size);
   --cn-line-height-text: var(--cn-text-line-height);
   --cn-font-weight-text: 400;
