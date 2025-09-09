@@ -126,6 +126,15 @@
 
   /* Borders */
   --color-border: light-dark(var(--chroma-surface-40), var(--chroma-surface-70));
+  --color-border-hover: light-dark(var(--chroma-surface-50), var(--chroma-surface-60));
+  --color-border-focus: light-dark(var(--chroma-primary-70), var(--chroma-primary-40));
+
+  /* Text selection */
+  --color-selection: light-dark(
+    color-mix(in hsl, var(--chroma-primary-60), transparent 70%),
+    color-mix(in hsl, var(--chroma-primary-40), transparent 70%)
+  );
+  --color-on-selection: var(--color-on-surface);
 
   /* Legacy semantic mappings for backward compatibility */
   --cn-color-primary: var(--chroma-primary-70);

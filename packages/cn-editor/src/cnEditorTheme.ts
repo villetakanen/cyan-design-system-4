@@ -94,6 +94,16 @@ export const editorBaseTheme = EditorView.theme(
       background: 'var(--color-selection) !important', // May need !important
     },
 
+    // Focused selection styling (sometimes needed for CodeMirror)
+    '&.cm-focused .cm-selectionBackground': {
+      background: 'var(--color-selection) !important',
+    },
+
+    // Text color on selection
+    '&.cm-focused .cm-selectionBackground *': {
+      color: 'var(--color-on-selection) !important',
+    },
+
     /* --- Styling for Active Line --- */
     '.cm-activeLine': {
       borderRadius: '4px', // Optional, if you want rounded corners
