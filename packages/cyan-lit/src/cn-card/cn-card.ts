@@ -169,8 +169,8 @@ export class CnCard extends LitElement {
       padding: 0;
       font-family: var(--cn-font-family);
       font-weight: var(--cn-heading-4-font-weight);
-      font-size: var(--cn-heading-4-font-size);
-      line-height: var(--cn-heading-4-line-height);
+      font-size: var(--cn-font-size-h4);
+      line-height: var(--cn-line-height-h4);
       letter-spacing: normal;
       color: var(--color-heading-2, cyan);
 

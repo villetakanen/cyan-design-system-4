@@ -1,11 +1,21 @@
 :root {
-  --cn-heading-1-font-size: calc(4.21 * var(--cn-grid) * 2);
-  --cn-heading-2-font-size: calc(3.157 * var(--cn-grid) * 2);
-  --cn-heading-3-font-size: calc(4.5 * var(--cn-grid)); /* 2.25rem, 36px, approx. 24pt or 37.5px */
-  --cn-heading-4-font-size: calc(1.777 * var(--cn-grid) * 2);
-  --cn-heading-5-font-size: calc(1.333 * var(--cn-grid) * 2);
+  /*** Headings ***********/
+  --cn-font-size-h1: calc(var(--cn-grid) / 8 * 65.61); /* 65.61px, approx. 48pt or 66px */
+  --cn-line-height-h1: calc(var(--cn-grid) * 10); /* 80px */
+  --cn-line-height-h2: calc(8 * var(--cn-grid));
+  --cn-line-height-h3: calc(6 * var(--cn-grid));
+  --cn-line-height-h4: calc(5 * var(--cn-grid));
+  --cn-line-height-h5: calc(4 * var(--cn-grid));
 
-  --cn-font-size-text: calc(var(--cn-grid) * 2.2); /* 17.2px */
+  --cn-font-size-h2: calc(var(--cn-grid) / 8 * 52.49); /* 52.49px, approx. 36pt or 52px */
+
+  --cn-font-size-h3: calc(var(--cn-grid) / 8 * 41.99); /* 41.99px, approx. 30pt or 42px */
+  --cn-font-size-h4: calc(var(--cn-grid) / 8 * 33.59); /* 33.59px, approx. 24pt or 34px */
+  --cn-font-size-h5: calc(var(--cn-grid) / 8 * 26.87); /* 26.87px, approx. 20pt or 27px */
+
+  /*** Body text ***********/
+  --cn-font-size-text: calc(var(--cn-grid) * 2.2); /* 17.2px, 1.075rem, approx. 12pt or 17px */
+
   --cn-text-line-height: calc(var(--cn-grid) * 3); /* 24px, 1.5rem, 18pt */
 
   --cn-text-small-font-size: calc(var(--cn-grid) / 8 * 14);
@@ -17,11 +27,11 @@
   --cn-heading-4-font-weight: 400;
   --cn-heading-5-font-weight: 400;
 
-  --cn-heading-1-line-height: calc(10 * var(--cn-grid));
-  --cn-heading-2-line-height: calc(8 * var(--cn-grid));
-  --cn-heading-3-line-height: calc(6 * var(--cn-grid));
-  --cn-heading-4-line-height: calc(5 * var(--cn-grid));
-  --cn-heading-5-line-height: calc(4 * var(--cn-grid));
+  --cn-heading-1-line-height: var(--cn-line-height-h1);
+  --cn-heading-2-line-height: var(--cn-line-height-h2);
+  --cn-heading-3-line-height: var(--cn-line-height-h3);
+  --cn-heading-4-line-height: var(--cn-line-height-h4);
+  --cn-heading-5-line-height: var(--cn-line-height-h5);
 
   --cn-heading-3-letter-spacing: calc(var(--cn-grid) / 32);
 

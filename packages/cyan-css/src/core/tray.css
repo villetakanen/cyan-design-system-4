@@ -22,8 +22,8 @@ nav#tray h3,
 nav#tray h4 {
   margin: 0;
   padding: 0;
-  font-size: var(--cn-heading-4-font-size);
-  line-height: var(--cn-heading-4-line-height);
+  font-size: var(--cn-font-size-h4);
+  line-height: var(--cn-line-height-h4);
   margin-bottom: var(--cn-grid);
   border-bottom: 1px solid var(--color-border);
 }
