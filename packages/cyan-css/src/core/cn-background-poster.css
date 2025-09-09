@@ -35,9 +35,7 @@
   );
   opacity: 1;
 }
-body:has(#cn-background-poster) nav.rail {
-  mix-blend-mode: screen;
-}
+
 @media (prefers-color-scheme: light) {
   #cn-background-poster picture {
     opacity: 0.55;

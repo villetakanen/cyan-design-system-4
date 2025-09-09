@@ -35,7 +35,7 @@ dialog .header h2,
 dialog .header h3,
 dialog .header h4 {
   margin: 0;
-  font-family: var(--cn-font-family-headings);
+  font-family: var(--cn-font-family);
   /* fall back to sensible heading tokens if present */
   font-weight: var(--cn-font-weight-heading-4, 600);
   font-size: var(--cn-font-size-heading-4, 1.125rem);

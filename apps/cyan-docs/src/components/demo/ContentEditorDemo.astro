@@ -1,0 +1,225 @@
+---
+// Content Editor Demo with pre-filled text and interactive buttons
+---
+
+<div class="toolbar">
+    <label>
+      Document Name
+      <input type="text" id="document-name" value="My Adventure Notes"/>
+    </label>
+    <div class="grow"></div>
+    <button type="button" id="select-all" class="text">
+      Select All
+    </button>
+    <button type="button" id="copy-selection" class="text">
+      Copy Selection
+    </button>
+    <button type="button" id="insert-template" class="text">
+      Insert Template
+    </button>
+    <button type="button" id="toggle-gutter" class="text">
+      Toggle Numbers
+    </button>
+  </div>
+
+  <cn-editor 
+    id="content-editor" 
+    placeholder="Start writing your adventure..."
+    gutter
+  ></cn-editor>
+
+  <div class="toolbar justify-end">
+    <button type="button" id="word-count" class="text secondary" disabled>
+      Words: 0
+    </button>
+    <div class="grow"></div>
+    <button type="button" id="clear-editor" class="text secondary">
+      Clear
+    </button>
+    <button type="button" id="save-content" class="primary">
+      Save
+    </button>
+  </div>
+
+<script is:inline>
+  // Sample adventure content to pre-fill the editor
+  const sampleContent = `# The Crystal Caverns
+
+## Session Notes - Chapter 3
+
+The party has discovered an ancient **crystal cavern** beneath the ruined temple. The walls shimmer with an ethereal blue light, casting dancing shadows across the intricate carvings that tell the story of a forgotten civilization.
+
+### Key Discoveries
+
+1. **The Oracle's Chamber**: A circular room with a floating crystal orb
+2. **Ancient Inscriptions**: Written in an unknown dialect, possibly Draconic
+3. **Hidden Passages**: Three tunnels leading deeper into the mountain
+
+### Character Status
+
+- **Aria** (Ranger): Currently tracking strange footprints near the eastern passage
+- **Thorne** (Paladin): Investigating the magical aura emanating from the crystal
+- **Zara** (Wizard): Attempting to decipher the ancient inscriptions
+
+### Next Steps
+
+> The crystal seems to pulse with a rhythm that matches the party's heartbeats. There's definitely something magical happening here.
+
+**Important**: The crystal appears to react to touch - proceed with caution!
+
+---
+
+*Notes for next session: Consider introducing the Guardian of the Crystals if players attempt to remove any gems.*
+
+## Combat Encounters
+
+If the party triggers the guardian:
+
+\`\`\`
+Crystal Guardian
+AC: 17, HP: 85
+Abilities: Crystal Shard attack (2d8 + 4), Blinding Flash (save or blinded)
+\`\`\`
+
+### Environmental Hazards
+
+- Unstable crystal formations (Dex save DC 15)
+- Magical resonance causing confusion
+- Slippery surfaces from condensation`;
+
+  // Get references to elements
+  const editor = document.getElementById('content-editor');
+  const documentName = document.getElementById('document-name');
+  const selectAllBtn = document.getElementById('select-all');
+  const copySelectionBtn = document.getElementById('copy-selection');
+  const insertTemplateBtn = document.getElementById('insert-template');
+  const toggleGutterBtn = document.getElementById('toggle-gutter');
+  const wordCountBtn = document.getElementById('word-count');
+  const clearEditorBtn = document.getElementById('clear-editor');
+  const saveContentBtn = document.getElementById('save-content');
+
+  // Template to insert
+  const templateText = `
+
+## New Section
+
+### Subsection
+
+Add your content here...
+
+- List item 1
+- List item 2
+- List item 3
+
+`;
+
+  // Initialize editor with sample content
+  if (editor) {
+    // Set initial content
+    editor.value = sampleContent;
+
+    // Update word count function
+    function updateWordCount() {
+      const text = editor.value || '';
+      const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+      if (wordCountBtn) {
+        wordCountBtn.textContent = `Words: ${words}`;
+      }
+    }
+
+    // Set up event listeners
+    editor.addEventListener('input', updateWordCount);
+    
+    // Initialize word count
+    setTimeout(updateWordCount, 100);
+
+    // Button event listeners
+    if (selectAllBtn) {
+      selectAllBtn.addEventListener('click', () => {
+        editor.select();
+      });
+    }
+
+    if (copySelectionBtn) {
+      copySelectionBtn.addEventListener('click', () => {
+        editor.copy();
+      });
+    }
+
+    if (insertTemplateBtn) {
+      insertTemplateBtn.addEventListener('click', () => {
+        editor.insertText(templateText);
+      });
+    }
+
+    if (toggleGutterBtn) {
+      toggleGutterBtn.addEventListener('click', () => {
+        const hasGutter = editor.hasAttribute('gutter');
+        if (hasGutter) {
+          editor.removeAttribute('gutter');
+          toggleGutterBtn.textContent = 'Show Numbers';
+        } else {
+          editor.setAttribute('gutter', '');
+          toggleGutterBtn.textContent = 'Hide Numbers';
+        }
+      });
+    }
+
+    if (clearEditorBtn) {
+      clearEditorBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to clear all content?')) {
+          editor.value = '';
+        }
+      });
+    }
+
+    if (saveContentBtn) {
+      saveContentBtn.addEventListener('click', () => {
+        const docName = documentName?.value || 'Untitled';
+        const content = editor.value;
+        
+        // Create a simple notification
+        const notification = document.createElement('div');
+        notification.textContent = `"${docName}" saved! (${content.length} characters)`;
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: var(--color-success);
+          color: var(--color-on-success);
+          padding: 12px 20px;
+          border-radius: var(--cn-border-radius);
+          z-index: 1000;
+          animation: slideIn 0.3s ease-out;
+        `;
+        
+        // Add animation keyframes
+        if (!document.querySelector('#save-notification-styles')) {
+          const style = document.createElement('style');
+          style.id = 'save-notification-styles';
+          style.textContent = `
+            @keyframes slideIn {
+              from { transform: translateX(100%); opacity: 0; }
+              to { transform: translateX(0); opacity: 1; }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+        
+        document.body.appendChild(notification);
+        
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+        
+        console.log('Content saved:', { name: docName, content });
+      });
+    }
+
+    // Update toggle button text based on initial state
+    if (toggleGutterBtn) {
+      toggleGutterBtn.textContent = editor.hasAttribute('gutter') ? 'Hide Numbers' : 'Show Numbers';
+    }
+  }
+</script>

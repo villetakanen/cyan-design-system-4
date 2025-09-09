@@ -147,7 +147,7 @@ export class CnAppBar extends LitElement {
     .title {
       color: inherit;
       flex-grow: 1;
-      font-family: var(--cn-font-family-headings);
+      font-family: var(--cn-font-family);
       font-weight: var(--cn-app-bar-font-weight);
       font-size: var(--cn-app-bar-font-size);
       line-height: var(--cn-app-bar-height);
@@ -201,8 +201,8 @@ export class CnAppBar extends LitElement {
     }
     @media (max-width: 620px) {
       :host .title {
-        font-size: var(--cn-heading-5-font-size);
-        line-height: var(--cn-heading-5-line-height);
+        font-size: var(--cn-font-size-h5);
+        line-height: var(--cn-line-height-h5);
         max-height: calc(var(--cn-app-bar-height) - var(--cn-grid));
         white-space: normal;
       }

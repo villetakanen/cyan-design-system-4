@@ -55,6 +55,21 @@ The CSS framework provides styling for core HTML elements, utility classes, and 
 To use it, import the main stylesheet in your application's entry point:
 `import '@11thdeg/cyan-css';`
 
+### Fonts
+
+The design system uses **Lato** as the primary font for all text elements. You need to install and import the font in your project:
+
+```bash
+npm install lato-font
+```
+
+Then import it in your CSS:
+```css
+@import 'lato-font/css/lato-font.css';
+```
+
+The system uses a single font token `--cn-font-family` that references Lato with appropriate fallbacks.
+
 ### CSS Categories:
 
 -   **`core`**: Base styles for native HTML elements (e.g., `body`, `h1`, `p`).

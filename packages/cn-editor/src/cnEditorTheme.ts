@@ -94,6 +94,16 @@ export const editorBaseTheme = EditorView.theme(
       background: 'var(--color-selection) !important', // May need !important
     },
 
+    // Focused selection styling (sometimes needed for CodeMirror)
+    '&.cm-focused .cm-selectionBackground': {
+      background: 'var(--color-selection) !important',
+    },
+
+    // Text color on selection
+    '&.cm-focused .cm-selectionBackground *': {
+      color: 'var(--color-on-selection) !important',
+    },
+
     /* --- Styling for Active Line --- */
     '.cm-activeLine': {
       borderRadius: '4px', // Optional, if you want rounded corners
@@ -138,30 +148,30 @@ export const editorBaseTheme = EditorView.theme(
 export const cnMarkdownHighlightStyle = HighlightStyle.define([
   {
     tag: t.heading1,
-    fontSize: 'var(--cn-heading-1-font-size)',
+    fontSize: 'var(--cn-font-size-h1)',
     fontWeight: 'var(--cn-heading-1-font-weight)',
-    lineHeight: 'var(--cn-heading-1-line-height)',
+    lineHeight: 'var(--cn-line-height-h1)',
     color: 'var(--color-heading-1)',
   },
   {
     tag: t.heading2,
-    fontSize: 'var(--cn-heading-2-font-size)',
+    fontSize: 'var(--cn-font-size-h2)',
     fontWeight: 'var(--cn-heading-2-font-weight)',
-    lineHeight: 'var(--cn-heading-2-line-height)',
+    lineHeight: 'var(--cn-line-height-h2)',
     color: 'var(--color-heading-1)',
   },
   {
     tag: t.heading3,
-    fontSize: 'var(--cn-heading-3-font-size)',
+    fontSize: 'var(--cn-font-size-h3)',
     fontWeight: 'var(--cn-heading-3-font-weight)',
-    lineHeight: 'var(--cn-heading-3-line-height)',
+    lineHeight: 'var(--cn-line-height-h3)',
     color: 'var(--color-heading-2)',
   },
   {
     tag: t.heading4,
-    fontSize: 'var(--cn-heading-4-font-size)',
+    fontSize: 'var(--cn-font-size-h4)',
     fontWeight: 'var(--cn-heading-4-font-weight)',
-    lineHeight: 'var(--cn-heading-4-line-height)',
+    lineHeight: 'var(--cn-line-height-h4)',
     color: 'var(--color-heading-2)',
   },
 

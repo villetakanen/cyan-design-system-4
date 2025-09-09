@@ -7,12 +7,20 @@
 <script is:inline>
 // Client-side demo script: append some FAB buttons to nav#fab-tray
 (() => {
-  const createFab = (label, href) => {
+  const createFab = (label, href, classes = '') => {
+    const noun = document.createElement('cn-icon');
+    noun.setAttribute('noun', 'add');
+
+    const l = document.createElement('span');
+    l.className = 'sm-hidden';
+    l.textContent = label;
+     
     const a = document.createElement('a');
-    a.className = 'fab button';
+    a.className = `fab button ${classes}`;
     a.setAttribute('role', 'button');
     a.href = href || '#';
-    a.textContent = label;
+    a.appendChild(noun);
+    a.appendChild(l);
     return a;
   };
 
@@ -27,13 +35,15 @@
     });
 
     const actions = [
-      ['New', '#new'],
-      ['Edit', '#edit'],
+      ['New', '#new', 'secondary small'],
+      ['A very long name, indeed', '#new', 'small'],
+      ['Edit', '#edit', 'secondary'],
+      ['CTA', '#delete', 'cta'],
       ['Delete', '#delete'],
     ];
 
-    actions.forEach(([label, href]) => {
-      const btn = createFab(label, href);
+    actions.forEach(([label, href, classes]) => {
+      const btn = createFab(label, href, classes);
       btn.setAttribute('data-demo', 'true');
       tray.appendChild(btn);
     });

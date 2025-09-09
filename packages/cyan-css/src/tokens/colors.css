@@ -97,6 +97,13 @@
     var(--chroma-surface-70)
   );
 
+  /* Code elements */
+  --color-code: light-dark(var(--chroma-primary-10), var(--chroma-primary-99));
+  --color-on-code: light-dark(
+    var(--chroma-primary-90),
+    var(--chroma-primary-10)
+  );
+
   --color-on-focus: light-dark(
     var(--chroma-surface-99),
     var(--chroma-primary-10)
@@ -110,8 +117,30 @@
     color-mix(in hsl, var(--chroma-surface-50), transparent 80%)
   );
 
+  --color-button: light-dark(var(--chroma-surface-50), var(--chroma-surface-80));
+  --color-button-light: light-dark(
+    var(--chroma-primary-60),
+    var(--chroma-primary-95)
+  );
+  --color-button-cta: light-dark(var(--chroma-A), var(--chroma-A));
+
   /* Borders */
   --color-border: light-dark(var(--chroma-surface-40), var(--chroma-surface-70));
+  --color-border-hover: light-dark(
+    var(--chroma-surface-50),
+    var(--chroma-surface-60)
+  );
+  --color-border-focus: light-dark(
+    var(--chroma-primary-70),
+    var(--chroma-primary-40)
+  );
+
+  /* Text selection */
+  --color-selection: light-dark(
+    color-mix(in hsl, var(--chroma-primary-60), transparent 70%),
+    color-mix(in hsl, var(--chroma-primary-40), transparent 70%)
+  );
+  --color-on-selection: var(--color-on-surface);
 
   /* Legacy semantic mappings for backward compatibility */
   --cn-color-primary: var(--chroma-primary-70);
@@ -207,9 +236,5 @@
   );
   --color-on-reply-bubble: var(--color-on-surface);
 
-  --color-button-cta: light-dark(
-    var(--chroma-primary-50),
-    var(--chroma-primary-60)
-  );
   --color-on-button-cta: var(--color-on-button);
 }

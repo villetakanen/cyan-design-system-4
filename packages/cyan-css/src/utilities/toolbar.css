@@ -12,13 +12,13 @@
   align-items: center;
   gap: var(--cn-gap);
 
-  --cn-heading-1-font-size: var(--cn-heading-4-font-size);
-  --cn-heading-2-font-size: var(--cn-heading-4-font-size);
-  --cn-heading-3-font-size: var(--cn-heading-4-font-size);
+  --cn-font-size-h1: var(--cn-font-size-h4);
+  --cn-font-size-h2: var(--cn-font-size-h4);
+  --cn-font-size-h3: var(--cn-font-size-h4);
 
-  --cn-heading-1-line-height: var(--cn-heading-4-line-height);
-  --cn-heading-2-line-height: var(--cn-heading-4-line-height);
-  --cn-heading-3-line-height: var(--cn-heading-4-line-height);
+  --cn-line-height-h1: var(--cn-line-height-h4);
+  --cn-line-height-h2: var(--cn-line-height-h4);
+  --cn-line-height-h3: var(--cn-line-height-h4);
 
   height: calc(7 * var(--cn-grid));
   margin-top: calc(0.5 * var(--cn-grid));

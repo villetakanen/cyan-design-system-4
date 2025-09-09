@@ -309,7 +309,11 @@ export class CnEditor extends LitElement {
 
   static styles = css`
     :host {
-      display: contents;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      width: 100%;
     }
     #editor-container { /* The div CodeMirror attaches to */
       width: 100%;

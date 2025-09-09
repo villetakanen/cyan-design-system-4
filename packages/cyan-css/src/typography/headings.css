@@ -1,9 +1,9 @@
 .text-h1,
 h1 {
-  font-family: var(--cn-font-family-headings);
-  font-size: var(--cn-heading-1-font-size);
+  font-family: var(--cn-font-family);
+  font-size: var(--cn-font-size-h1);
   font-weight: var(--cn-heading-1-font-weight);
-  line-height: var(--cn-heading-1-line-height);
+  line-height: var(--cn-line-height-h1);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-1);
@@ -11,10 +11,10 @@ h1 {
 
 .text-h2,
 h2 {
-  font-family: var(--cn-font-family-headings);
-  font-size: var(--cn-heading-2-font-size);
+  font-family: var(--cn-font-family);
+  font-size: var(--cn-font-size-h2);
   font-weight: var(--cn-heading-2-font-weight);
-  line-height: var(--cn-heading-2-line-height);
+  line-height: var(--cn-line-height-h2);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-1);
@@ -22,10 +22,10 @@ h2 {
 
 .text-h3,
 h3 {
-  font-family: var(--cn-font-family-headings);
-  font-size: var(--cn-heading-3-font-size);
+  font-family: var(--cn-font-family);
+  font-size: var(--cn-font-size-h3);
   font-weight: var(--cn-heading-3-font-weight);
-  line-height: var(--cn-heading-3-line-height);
+  line-height: var(--cn-line-height-h3);
   letter-spacing: var(--cn-heading-3-letter-spacing);
   margin: 0;
   margin-bottom: var(--cn-line);
@@ -34,20 +34,20 @@ h3 {
 
 .text-h4,
 h4 {
-  font-family: var(--cn-font-family-headings);
-  font-size: var(--cn-heading-4-font-size);
+  font-family: var(--cn-font-family);
+  font-size: var(--cn-font-size-h4);
   font-weight: var(--cn-heading-4-font-weight);
-  line-height: var(--cn-heading-4-line-height);
+  line-height: var(--cn-line-height-h4);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-2);
 }
 
 .text-h5 /* Note: we are omitting non-atomic h5 intentionally */ {
-  font-family: var(--cn-font-family-headings);
-  font-size: var(--cn-heading-5-font-size);
+  font-family: var(--cn-font-family);
+  font-size: var(--cn-font-size-h5);
   font-weight: var(--cn-heading-5-font-weight);
-  line-height: var(--cn-heading-5-line-height);
+  line-height: var(--cn-line-height-h5);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-2);
@@ -63,37 +63,37 @@ article h4:first-of-type {
 @media (max-width: 620px) {
   h1,
   .text-h1 {
-    font-size: var(--cn-heading-2-font-size);
+    font-size: var(--cn-font-size-h2);
     font-weight: var(--cn-heading-2-font-weight);
-    line-height: var(--cn-heading-2-line-height);
-    font-family: var(--cn-font-family-headings);
+    line-height: var(--cn-line-height-h2);
+    font-family: var(--cn-font-family);
   }
   h2,
   .text-h2 {
-    font-size: var(--cn-heading-3-font-size);
+    font-size: var(--cn-font-size-h3);
     font-weight: var(--cn-heading-3-font-weight);
-    line-height: var(--cn-heading-3-line-height);
-    font-family: var(--cn-font-family-headings);
+    line-height: var(--cn-line-height-h3);
+    font-family: var(--cn-font-family);
     letter-spacing: var(--cn-heading-3-letter-spacing);
   }
   h3,
   .text-h3 {
-    font-size: var(--cn-heading-4-font-size);
+    font-size: var(--cn-font-size-h4);
     font-weight: var(--cn-heading-4-font-weight);
-    line-height: var(--cn-heading-4-line-height);
-    font-family: var(--cn-font-family-headings);
+    line-height: var(--cn-line-height-h4);
+    font-family: var(--cn-font-family);
   }
   h4,
   .text-h4 {
-    font-size: var(--cn-heading-5-font-size);
+    font-size: var(--cn-font-size-h5);
     font-weight: var(--cn-heading-5-font-weight);
-    line-height: var(--cn-heading-5-line-height);
-    font-family: var(--cn-font-family-headings);
+    line-height: var(--cn-line-height-h5);
+    font-family: var(--cn-font-family);
   }
   .text-h5 {
-    font-size: var(--cn-heading-5-font-size);
+    font-size: var(--cn-font-size-h5);
     font-weight: var(--cn-heading-5-font-weight);
-    line-height: var(--cn-heading-5-line-height);
-    font-family: var(--cn-font-family-headings);
+    line-height: var(--cn-line-height-h5);
+    font-family: var(--cn-font-family);
   }
 }

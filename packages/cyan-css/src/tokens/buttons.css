@@ -9,7 +9,7 @@
   /* Button typography tokens */
   --cn-font-family-ui: var(--cn-font-family);
   --cn-font-weight-ui: 400;
-  --cn-font-size-ui: var(--cn-text-font-size);
+  --cn-font-size-ui: var(--cn-font-size-text);
   --cn-letter-spacing-ui: normal;
 
   /* Button background colors */

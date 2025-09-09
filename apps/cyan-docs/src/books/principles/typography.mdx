@@ -8,9 +8,7 @@ description: 'A Longish treatise on typography, type-scales and font-usage on th
 
 # Typography
 
-The Design System uses `Lato` for headings and `Open Sans` for body text. The fonts can be
-loaded via Google Fonts or added as local imports. As the design system expects multiple widths,
-so a variable font is recommended for better fidelity.
+The Design System uses `Lato` for headings and body text. The fonts should be imported from the `lato-font` package.
 
   <h2>Type Scale</h2>
 
@@ -19,18 +17,18 @@ is then adjusted to fit the the design system and units used in the design syste
 rounding discrepancies between the scale and the actual font sizes used in the design system).
 
   <div style="display: grid; grid-template-columns: 1fr 1fr;">
-    <h1 class="m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)"> Heading 1</h1>
-      <div class="text-h1 m-0" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)">.text-h1 class</div>
-      <h2 class="m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">Heading 2</h2>
-      <div class="text-h2 m-0" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">.text-h2 class</div>
-      <h3 class="m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)"> Heading 3</h3>
-      <div class="text-h3 m-0" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)">.text-h3 class</div>
-      <h4 class="m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)"> Heading 4</h4>
-      <div class="text-h4 m-0" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)">.text-h4 class</div>
-      <h5 class="m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)"> (Heading 5)</h5>
-      <div class="text-h5 m-0" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)">.text-h5 class</div>
-      <div class="text-small m-0" style="border-left: 4px solid var(--chroma-surface-60); padding-left: var(--cn-grid)">.text-small class</div>
-      <div class="text-caption m-0" style="border-left: 4px solid var(--chroma-surface-40); padding-left: var(--cn-grid)">.text-caption class</div>
+    <h1 class="" style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)"> Heading 1</h1>
+      <div class="text-h1 " style="border-left: 4px solid var(--chroma-primary-20); padding-left: var(--cn-grid)">.text-h1</div>
+      <h2 class="" style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">Heading 2</h2>
+      <div class="text-h2 " style="border-left: 4px solid var(--chroma-primary-40); padding-left: var(--cn-grid)">.text-h2</div>
+      <h3 class="" style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)"> Heading 3</h3>
+      <div class="text-h3 " style="border-left: 4px solid var(--chroma-primary-60); padding-left: var(--cn-grid)">.text-h3</div>
+      <h4 class="" style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)"> Heading 4</h4>
+      <div class="text-h4 " style="border-left: 4px solid var(--chroma-primary-80); padding-left: var(--cn-grid)">.text-h4</div>
+      <h5 class="" style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)"> (Heading 5)</h5>
+      <div class="text-h5 " style="border-left: 4px solid var(--chroma-primary-95); padding-left: var(--cn-grid)">.text-h5</div>
+      <div class="text-small " style="border-left: 4px solid var(--chroma-surface-60); padding-left: var(--cn-grid)">.text-small</div>
+      <div class="text-caption " style="border-left: 4px solid var(--chroma-surface-40); padding-left: var(--cn-grid)">.text-caption</div>
     </div>
 
 
