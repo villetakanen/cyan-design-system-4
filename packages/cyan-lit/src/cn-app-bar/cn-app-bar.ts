@@ -147,11 +147,14 @@ export class CnAppBar extends LitElement {
     .title {
       color: inherit;
       flex-grow: 1;
+
       font-family: var(--cn-font-family);
-      font-weight: var(--cn-app-bar-font-weight);
-      font-size: var(--cn-app-bar-font-size);
+      font-size: var(--cn-font-size-h3);
+      font-weight: var(--cn-font-weight-h3);
+      letter-spacing: var(--cn-letter-spacing-h3, 0);
+      
       line-height: var(--cn-app-bar-height);
-      letter-spacing: var(--cn-app-bar-letter-spacing);
+      
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -203,6 +206,7 @@ export class CnAppBar extends LitElement {
       :host .title {
         font-size: var(--cn-font-size-h5);
         line-height: var(--cn-line-height-h5);
+        letter-spacing: var(--cn-letter-spacing-h5, 0);
         max-height: calc(var(--cn-app-bar-height) - var(--cn-grid));
         white-space: normal;
       }

@@ -23,7 +23,6 @@ li {
 }
 
 /* Other text elements */
-span,
 blockquote {
   font-size: var(--cn-font-size-text);
   line-height: var(--cn-line-height-text);
@@ -36,7 +35,7 @@ strong,
 b {
   font-size: var(--cn-font-size-text);
   line-height: var(--cn-line-height-text);
-  font-weight: var(--cn-font-weight-bold);
+  font-weight: var(--cn-font-weight-text-strong);
   letter-spacing: var(--cn-letter-spacing-text);
 }
 
@@ -53,8 +52,10 @@ i {
 /* Code elements */
 code {
   font-family: var(--cn-font-family-mono, monospace);
-  line-height: var(--cn-line-height-text);
-  font-weight: var(--cn-font-weight-text);
+  font-size: var(--cn-font-size-mono);
+  line-height: var(--cn-line-height-mono);
+  font-weight: var(--cn-font-weight-mono);
+  letter-spacing: var(--cn-letter-spacing-mono);
   background-color: var(--color-code);
   color: var(--color-on-code);
   padding-inline: calc(var(--cn-grid) / 2);
@@ -62,8 +63,10 @@ code {
 
 pre {
   font-family: var(--cn-font-family-mono, monospace);
-  line-height: var(--cn-line-height-text);
-  font-weight: var(--cn-font-weight-text);
+  font-size: var(--cn-font-size-mono);
+  line-height: var(--cn-line-height-mono);
+  font-weight: var(--cn-font-weight-mono);
+  letter-spacing: var(--cn-letter-spacing-mono);
   background-color: var(--color-code);
   color: var(--color-on-code);
   border: 1px solid var(--color-border);

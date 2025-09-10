@@ -9,11 +9,13 @@
 }
 
 .text-small {
-  font-size: var(--cn-text-small-font-size);
-  line-height: calc(var(--cn-grid) * 3); /* 24px */
+  font-size: var(--cn-font-size-text-small);
+  line-height: var(--cn-line-height-text-small);
+  letter-spacing: var(--cn-letter-spacing-text-small);
 }
 
 .text-caption {
-  font-size: var(--cn-caption-font-size);
-  line-height: calc(var(--cn-grid) * 2); /* 16px */
+  font-size: var(--cn-font-size-caption);
+  line-height: var(--cn-line-height-caption);
+  letter-spacing: var(--cn-letter-spacing-caption);
 }

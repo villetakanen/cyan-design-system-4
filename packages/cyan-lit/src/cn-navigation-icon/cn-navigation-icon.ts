@@ -32,7 +32,6 @@ export class CnNavigationIcon extends LitElement {
     }
     :host cn-icon {
       color: var(--color-on-rail-button);
-      position: relative;
     }
     :host(:active) cn-icon,
     :host([active]) cn-icon{
@@ -73,7 +72,7 @@ export class CnNavigationIcon extends LitElement {
     }
     :host .navigation-icon-label {
       height: var(--cn-navigation-icon-label-height, calc(var(--cn-grid, 0.5rem) * 2));
-      font-size: var(--cn-text-small-font-size, calc(var(--cn-grid, 0.5rem) / 8 * 14));
+      font-size: var(--cn-font-size-text-small, calc(var(--cn-grid, 0.5rem) / 8 * 15));
       line-height: var(--cn-navigation-icon-label-height, calc(var(--cn-grid, 0.5rem) * 2));
       display: block;
       text-align: center;
@@ -88,24 +87,20 @@ export class CnNavigationIcon extends LitElement {
     
     :host .notification-pill {
       position: absolute;
-      bottom: calc(var(--cn-grid) * 1.5);
-      right: calc(var(--cn-grid) * 1.5);
+      top: 0;
+      right: 0;
       background: var(--cn-notification-pill-background, var(--color-notify));
       color: var(--cn-notification-pill-color, var(--color-on-notify));
       font-size: var(--cn-font-size-text-small);
       line-height: calc(var(--cn-grid) * 2); /* 16px */ 
       padding: calc(var(--cn-grid) * 0.25) calc(var(--cn-grid) * 0.75);
       border-radius: var(--cn-notification-pill-border-radius, calc(var(--cn-grid) * 1.5));
-      min-width: calc(var(--cn-grid) * 3);
+      min-width: calc(var(--cn-grid) * 4);
       text-align: center;
       font-weight: var(--cn-font-weight-text, 500);
       box-shadow: var(--shadow-elevation-1);
       box-sizing: border-box;
       z-index: 1;
-    }
-    
-    :host([label]) .notification-pill {
-      bottom: calc(var(--cn-grid) * 3.5);
     }
   `;
 

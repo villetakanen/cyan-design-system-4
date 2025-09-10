@@ -1,8 +1,8 @@
 label {
   font-family: var(--cn-font-family);
   font-weight: var(--cn-font-weight);
-  font-size: var(--cn-caption-font-size);
-  line-height: var(--cn-caption-line-height);
+  font-size: var(--cn-font-size-caption);
+  line-height: var(--cn-line-height-caption);
   letter-spacing: var(--cn-letter-spacing-caption);
   color: var(--color-on-label);
   background-color: transparent;

@@ -1,51 +1,68 @@
 :root {
+  /*
+   * Typography
+   * Based on 8pt grid, 17px base font size
+   *  See: https://material.io/design/typography/the-type-system.html#type-scale
+   */
+
   /*** Headings ***********/
-  --cn-font-size-h1: calc(var(--cn-grid) / 8 * 65.61); /* 65.61px, approx. 48pt or 66px */
+
+  --cn-line-height-display: calc(var(--cn-grid) * 14); /* 112px */
   --cn-line-height-h1: calc(var(--cn-grid) * 10); /* 80px */
   --cn-line-height-h2: calc(8 * var(--cn-grid));
   --cn-line-height-h3: calc(6 * var(--cn-grid));
   --cn-line-height-h4: calc(5 * var(--cn-grid));
   --cn-line-height-h5: calc(4 * var(--cn-grid));
 
-  --cn-font-size-h2: calc(var(--cn-grid) / 8 * 52.49); /* 52.49px, approx. 36pt or 52px */
+  --cn-font-size-display: calc(var(--cn-grid) / 8 * 102);
+  --cn-font-size-h1: calc(var(--cn-grid) / 8 * 64);
+  --cn-font-size-h2: calc(var(--cn-grid) / 8 * 51);
+  --cn-font-size-h3: calc(var(--cn-grid) / 8 * 36);
+  --cn-font-size-h4: calc(var(--cn-grid) / 8 * 25);
+  --cn-font-size-h5: calc(var(--cn-grid) / 8 * 21);
 
-  --cn-font-size-h3: calc(var(--cn-grid) / 8 * 41.99); /* 41.99px, approx. 30pt or 42px */
-  --cn-font-size-h4: calc(var(--cn-grid) / 8 * 33.59); /* 33.59px, approx. 24pt or 34px */
-  --cn-font-size-h5: calc(var(--cn-grid) / 8 * 26.87); /* 26.87px, approx. 20pt or 27px */
+  --cn-font-weight-display: 300;
+  --cn-font-weight-h1: 300;
+  --cn-font-weight-h2: 400;
+  --cn-font-weight-h3: 400;
+  --cn-font-weight-h4: 400;
+  --cn-font-weight-h5: 500;
+
+  --cn-letter-spacing-display: calc(var(--cn-grid) / 8 * -1.5);
+  --cn-letter-spacing-h1: calc(var(--cn-grid) / 8 * -0.5);
+  --cn-letter-spacing-h2: 0;
+  --cn-letter-spacing-h3: calc(var(--cn-grid) / 8 * 0.25);
+  --cn-letter-spacing-h4: 0;
+  --cn-letter-spacing-h5: calc(var(--cn-grid) / 8 * 0.15);
 
   /*** Body text ***********/
-  --cn-font-size-text: calc(var(--cn-grid) * 2.2); /* 17.2px, 1.075rem, approx. 12pt or 17px */
+  --cn-font-size-text: calc(var(--cn-grid) * 2.125); /* 17px */
+  --cn-font-size-text-small: calc(var(--cn-grid) * 1.875); /* 15px */
+  --cn-font-size-caption: calc(var(--cn-grid) * 1.625); /* 13px */
+  --cn-font-size-button: var(--cn-font-size-text-small);
+  --cn-font-size-overline: calc(var(--cn-grid) * 1.375); /* 11px */
+
+  --cn-line-height-text: var(--cn-line); /* 3 * --cn-grid = 24px */
+  --cn-line-height-text-small: var(--cn-line); /* 3 * --cn-grid = 24px */
+  --cn-line-height-button: var(--cn-line); /* 3 * --cn-grid = 24px */
+  --cn-line-height-caption: calc(var(--cn-grid) * 2); /* 16px */
+  --cn-line-height-overline: calc(var(--cn-grid) * 2); /* 16px */
+
+  --cn-letter-spacing-text: calc(var(--cn-grid) / 8 * 0.5);
+  --cn-letter-spacing-text-small: calc(var(--cn-grid) / 8 * 0.25);
+  --cn-letter-spacing-button: calc(var(--cn-grid) / 8 * 1.25);
+  --cn-letter-spacing-caption: calc(var(--cn-grid) / 8 * 0.4);
+  --cn-letter-spacing-overline: calc(var(--cn-grid) / 8 * 1.5);
+
+  --cn-font-weight-text: 400; /* universal for all text except buttons */
+  --cn-font-weight-text-strong: 700; /* for strong/emphasis */
+  --cn-font-weight-text-button: 500;
 
   --cn-text-line-height: calc(var(--cn-grid) * 3); /* 24px, 1.5rem, 18pt */
 
-  --cn-text-small-font-size: calc(var(--cn-grid) / 8 * 14);
-  --cn-caption-font-size: calc(var(--cn-grid) / 8 * 11);
-
-  --cn-heading-1-font-weight: 400;
-  --cn-heading-2-font-weight: 400;
-  --cn-heading-3-font-weight: 400;
-  --cn-heading-4-font-weight: 400;
-  --cn-heading-5-font-weight: 400;
-
-  --cn-heading-1-line-height: var(--cn-line-height-h1);
-  --cn-heading-2-line-height: var(--cn-line-height-h2);
-  --cn-heading-3-line-height: var(--cn-line-height-h3);
-  --cn-heading-4-line-height: var(--cn-line-height-h4);
-  --cn-heading-5-line-height: var(--cn-line-height-h5);
-
-  --cn-heading-3-letter-spacing: calc(var(--cn-grid) / 32);
-
-  /* Typography token aliases for consistent component usage */
-  --cn-font-family-text: var(--cn-font-family);
-
-  --cn-font-size-text-small: var(--cn-text-small-font-size);
-  --cn-line-height-text: var(--cn-text-line-height);
-  --cn-font-weight-text: 400;
-  --cn-font-weight-bold: 700;
-  --cn-letter-spacing-text: normal;
-
   /* Monospace, ie-code */
-  --cn-font-family-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  --cn-font-size-mono: calc(var(--cn-grid) * 1.75); /* 14px */
+  --cn-line-height-mono: calc(var(--cn-grid) * 3); /* 24px */
+  --cn-letter-spacing-mono: normal;
+  --cn-font-weight-mono: 400;
 }
