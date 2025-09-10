@@ -4,3 +4,9 @@
     system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* Font loading performance optimizations (PBI-007 Phase 1) */
+/* Prevent invisible text during font swap (FOIT prevention) */
+.font-loading {
+  font-display: swap;
+}

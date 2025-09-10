@@ -21,6 +21,9 @@
   --cn-text-small-font-size: calc(var(--cn-grid) / 8 * 14);
   --cn-caption-font-size: calc(var(--cn-grid) / 8 * 11);
 
+  /* Button line height - visual height (38px), physical size handled separately */
+  --cn-line-height-button: calc(var(--cn-grid) * 4.75); /* 38px */
+
   --cn-heading-1-font-weight: 400;
   --cn-heading-2-font-weight: 400;
   --cn-heading-3-font-weight: 400;
