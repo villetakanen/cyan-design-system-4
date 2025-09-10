@@ -1,6 +1,6 @@
 {
   "name": "@11thdeg/cn-d20-ability-score",
-  "version": "4.0.0-beta.3",
+  "version": "4.0.0-beta.4",
   "description": "A custom element for displaying D&D 5e ability scores.",
   "type": "module",
   "main": "dist/index.js",
