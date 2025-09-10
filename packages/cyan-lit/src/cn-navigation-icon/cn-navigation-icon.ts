@@ -122,13 +122,13 @@ export class CnNavigationIcon extends LitElement {
   public notification = '';
 
   public render() {
-    const hasLabel = this.label !== '';
+    const hasLabel = this.label && this.label.trim() !== '';
     const hasNotification =
       this.notification && this.notification.trim() !== '';
 
-    return html`<cn-icon noun="${this.noun}" ?small=${hasLabel}></cn-icon> 
+    return html`<cn-icon noun="${this.noun}" ?small=${!!hasLabel}></cn-icon>
     ${
-      this.label
+      hasLabel
         ? html`
       <div class="navigation-icon-label">${this.label}</div>`
         : ''

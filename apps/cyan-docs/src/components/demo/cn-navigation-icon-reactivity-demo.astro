@@ -1,0 +1,182 @@
+---
+// Demo component to test the cn-navigation-icon reactivity fix
+---
+
+<div class="demo-container">
+  <h3>cn-navigation-icon Reactivity Demo</h3>
+  <p>This demo tests the fix for the label attribute reactivity bug. Use the buttons to change the label value and observe how the component updates.</p>
+  
+  <div class="demo-section">
+    <h4>Test Component:</h4>
+    <div class="component-area">
+      <cn-navigation-icon id="test-icon" noun="tools" label=""></cn-navigation-icon>
+    </div>
+    <div class="current-state">
+      <strong>Current label:</strong> <span id="current-label-display">""</span>
+    </div>
+  </div>
+
+  <div class="demo-controls">
+    <h4>Test Controls:</h4>
+    <div class="control-buttons">
+      <button id="set-empty">Set Empty ("")</button>
+      <button id="set-whitespace">Set Whitespace ("   ")</button>
+      <button id="set-settings">Set "Settings"</button>
+      <button id="set-profile">Set "Profile"</button>
+      <button id="set-null">Set null</button>
+      <button id="set-undefined">Set undefined</button>
+    </div>
+  </div>
+
+  <div class="bug-explanation">
+    <h4>Bug Description:</h4>
+    <p>Before the fix, when the <code>label</code> attribute changed from an empty/falsy value to a non-empty value, the component would not update its visual representation. This was especially problematic in reactive frameworks like Svelte where store values might start as <code>null</code> or <code>undefined</code> and be populated asynchronously.</p>
+    
+    <h4>The Fix:</h4>
+    <p>The issue was in the <code>render()</code> method's logic. The original code used inconsistent conditions:</p>
+    <ul>
+      <li><code>const hasLabel = this.label !== '';</code></li>
+      <li><code>$&#123;this.label ? html`...` : ''&#125;</code></li>
+    </ul>
+    <p>This was fixed to use consistent truthiness checks:</p>
+    <ul>
+      <li><code>const hasLabel = this.label && this.label.trim() !== '';</code></li>
+      <li><code>$&#123;hasLabel ? html`...` : ''&#125;</code></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .demo-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--cn-grid);
+  }
+
+  .demo-section {
+    margin: var(--cn-grid-2) 0;
+    padding: var(--cn-grid);
+    border: 1px solid var(--color-border);
+    border-radius: var(--cn-border-radius);
+  }
+
+  .component-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--cn-grid-2);
+    background: var(--color-surface-1);
+    border-radius: var(--cn-border-radius);
+    min-height: 100px;
+  }
+
+  .current-state {
+    margin-top: var(--cn-grid);
+    padding: var(--cn-grid);
+    background: var(--color-surface-2);
+    border-radius: var(--cn-border-radius);
+    font-family: monospace;
+  }
+
+  .demo-controls {
+    margin: var(--cn-grid-2) 0;
+  }
+
+  .control-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cn-grid);
+  }
+
+  .control-buttons button {
+    padding: var(--cn-grid) var(--cn-grid-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--cn-border-radius);
+    background: var(--color-surface-1);
+    color: var(--color-text);
+    cursor: pointer;
+    font-family: monospace;
+  }
+
+  .control-buttons button:hover {
+    background: var(--color-surface-2);
+  }
+
+  .control-buttons button:active {
+    background: var(--color-surface-3);
+  }
+
+  .bug-explanation {
+    margin: var(--cn-grid-2) 0;
+    padding: var(--cn-grid);
+    background: var(--color-surface-1);
+    border-radius: var(--cn-border-radius);
+  }
+
+  .bug-explanation ul {
+    margin-left: var(--cn-grid-2);
+  }
+
+  .bug-explanation code {
+    background: var(--color-surface-2);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const testIcon = document.getElementById('test-icon');
+    const currentLabelDisplay = document.getElementById('current-label-display');
+    
+    function updateDisplay() {
+      const currentLabel = testIcon.label;
+      if (currentLabel === null) {
+        currentLabelDisplay.textContent = 'null';
+      } else if (currentLabel === undefined) {
+        currentLabelDisplay.textContent = 'undefined';
+      } else {
+        currentLabelDisplay.textContent = `"${currentLabel}"`;
+      }
+      
+      // Also show the actual DOM attribute
+      const attr = testIcon.getAttribute('label');
+      console.log('Label property:', currentLabel, 'DOM attribute:', attr);
+    }
+    
+    // Set up button event listeners
+    document.getElementById('set-empty').addEventListener('click', function() {
+      testIcon.label = '';
+      updateDisplay();
+    });
+    
+    document.getElementById('set-whitespace').addEventListener('click', function() {
+      testIcon.label = '   ';
+      updateDisplay();
+    });
+    
+    document.getElementById('set-settings').addEventListener('click', function() {
+      testIcon.label = 'Settings';
+      updateDisplay();
+    });
+    
+    document.getElementById('set-profile').addEventListener('click', function() {
+      testIcon.label = 'Profile';
+      updateDisplay();
+    });
+    
+    document.getElementById('set-null').addEventListener('click', function() {
+      testIcon.label = null;
+      updateDisplay();
+    });
+    
+    document.getElementById('set-undefined').addEventListener('click', function() {
+      testIcon.label = undefined;
+      updateDisplay();
+    });
+    
+    // Initial display
+    updateDisplay();
+  });
+</script>
