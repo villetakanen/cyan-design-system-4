@@ -1,6 +1,6 @@
 {
   "name": "@11thdeg/cn-story-clock",
-  "version": "4.0.0-beta.8",
+  "version": "4.0.0-beta.9",
   "description": "A form input custom element for a PbtA style story clock",
   "type": "module",
   "main": "dist/cn-story-clock.umd.js",

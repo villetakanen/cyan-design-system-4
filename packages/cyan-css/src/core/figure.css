@@ -6,8 +6,9 @@ figure {
 }
 figcaption {
   text-align: center;
-  font-size: var(--cn-text-small-font-size);
+  font-size: var(--cn-font-size-caption);
+  line-height: var(--cn-line-height-caption);
+  letter-spacing: var(--cn-letter-spacing-caption);
   color: var(--color-text-low);
-  line-height: var(--cn-line);
   padding: calc(var(--cn-grid) * 0.5) 0;
 }

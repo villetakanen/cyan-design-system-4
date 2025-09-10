@@ -5,7 +5,7 @@ article table {
   width: auto;
   max-width: 100%;
   margin: var(--cn-line, 1rem) 0;
-  font-size: var(--cn-text-small-font-size);
+  font-size: var(--cn-font-size-text-small);
 }
 
 article table th,

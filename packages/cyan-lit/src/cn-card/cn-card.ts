@@ -95,7 +95,7 @@ export class CnCard extends LitElement {
       container-type: inline-size;
       flex-grow: 1;
       transition: background 0.27s ease-in-out;
-      font-family: var(--cn-font-family-text);
+      font-family: var(--cn-font-family);
       font-size: var(--cn-font-size-text);
       font-weight: var(--cn-font-weight-text);
       line-height: var(--cn-line-height-text);
@@ -168,7 +168,7 @@ export class CnCard extends LitElement {
       margin: 0;
       padding: 0;
       font-family: var(--cn-font-family);
-      font-weight: var(--cn-heading-4-font-weight);
+      font-weight: var(--cn-font-weight-h4);
       font-size: var(--cn-font-size-h4);
       line-height: var(--cn-line-height-h4);
       letter-spacing: normal;

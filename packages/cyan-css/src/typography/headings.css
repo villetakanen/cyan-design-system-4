@@ -2,8 +2,9 @@
 h1 {
   font-family: var(--cn-font-family);
   font-size: var(--cn-font-size-h1);
-  font-weight: var(--cn-heading-1-font-weight);
+  font-weight: var(--cn-font-weight-h1);
   line-height: var(--cn-line-height-h1);
+  letter-spacing: var(--cn-letter-spacing-h1);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-1);
@@ -13,8 +14,9 @@ h1 {
 h2 {
   font-family: var(--cn-font-family);
   font-size: var(--cn-font-size-h2);
-  font-weight: var(--cn-heading-2-font-weight);
+  font-weight: var(--cn-font-weight-h2);
   line-height: var(--cn-line-height-h2);
+  letter-spacing: var(--cn-letter-spacing-h2);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-1);
@@ -24,9 +26,9 @@ h2 {
 h3 {
   font-family: var(--cn-font-family);
   font-size: var(--cn-font-size-h3);
-  font-weight: var(--cn-heading-3-font-weight);
+  font-weight: var(--cn-font-weight-h3);
   line-height: var(--cn-line-height-h3);
-  letter-spacing: var(--cn-heading-3-letter-spacing);
+  letter-spacing: var(--cn-letter-spacing-h3);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-2);
@@ -36,8 +38,9 @@ h3 {
 h4 {
   font-family: var(--cn-font-family);
   font-size: var(--cn-font-size-h4);
-  font-weight: var(--cn-heading-4-font-weight);
+  font-weight: var(--cn-font-weight-h4);
   line-height: var(--cn-line-height-h4);
+  letter-spacing: var(--cn-letter-spacing-h4);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-2);
@@ -46,8 +49,9 @@ h4 {
 .text-h5 /* Note: we are omitting non-atomic h5 intentionally */ {
   font-family: var(--cn-font-family);
   font-size: var(--cn-font-size-h5);
-  font-weight: var(--cn-heading-5-font-weight);
+  font-weight: var(--cn-font-weight-h5);
   line-height: var(--cn-line-height-h5);
+  letter-spacing: var(--cn-letter-spacing-h5);
   margin: 0;
   margin-bottom: var(--cn-line);
   color: var(--color-heading-2);
@@ -64,36 +68,40 @@ article h4:first-of-type {
   h1,
   .text-h1 {
     font-size: var(--cn-font-size-h2);
-    font-weight: var(--cn-heading-2-font-weight);
+    font-weight: var(--cn-font-weight-h2);
     line-height: var(--cn-line-height-h2);
+    letter-spacing: var(--cn-letter-spacing-h2);
     font-family: var(--cn-font-family);
   }
   h2,
   .text-h2 {
     font-size: var(--cn-font-size-h3);
-    font-weight: var(--cn-heading-3-font-weight);
+    font-weight: var(--cn-font-weight-h3);
     line-height: var(--cn-line-height-h3);
     font-family: var(--cn-font-family);
-    letter-spacing: var(--cn-heading-3-letter-spacing);
+    letter-spacing: var(--cn-letter-spacing-h3);
   }
   h3,
   .text-h3 {
     font-size: var(--cn-font-size-h4);
-    font-weight: var(--cn-heading-4-font-weight);
+    font-weight: var(--cn-font-weight-h4);
     line-height: var(--cn-line-height-h4);
+    letter-spacing: var(--cn-letter-spacing-h4);
     font-family: var(--cn-font-family);
   }
   h4,
   .text-h4 {
     font-size: var(--cn-font-size-h5);
-    font-weight: var(--cn-heading-5-font-weight);
+    font-weight: var(--cn-font-weight-h5);
     line-height: var(--cn-line-height-h5);
+    letter-spacing: var(--cn-letter-spacing-h5);
     font-family: var(--cn-font-family);
   }
   .text-h5 {
     font-size: var(--cn-font-size-h5);
-    font-weight: var(--cn-heading-5-font-weight);
+    font-weight: var(--cn-font-weight-h5);
     line-height: var(--cn-line-height-h5);
+    letter-spacing: var(--cn-letter-spacing-h5);
     font-family: var(--cn-font-family);
   }
 }
