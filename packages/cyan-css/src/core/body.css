@@ -1,7 +1,7 @@
 body {
   color: var(--color-on-background);
   background: var(--color-background);
-  
+
   /* Font loading performance optimizations (PBI-007 Phase 1) */
   /* Ensure consistent font rendering during load */
   -webkit-font-smoothing: antialiased;
