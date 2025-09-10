@@ -74,7 +74,9 @@ test('CnNavigationIcon - should react to label attribute changes (reactivity bug
   await element.updateComplete;
 
   // Initially no label should be rendered
-  let labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+  let labelElement = element.shadowRoot?.querySelector(
+    '.navigation-icon-label',
+  );
   expect(labelElement).toBeFalsy();
 
   // Set label to empty string - should still not render label
@@ -83,7 +85,7 @@ test('CnNavigationIcon - should react to label attribute changes (reactivity bug
   labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
   expect(labelElement).toBeFalsy();
 
-  // Set label to whitespace only - should still not render label  
+  // Set label to whitespace only - should still not render label
   element.label = '   ';
   await element.updateComplete;
   labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
@@ -123,7 +125,9 @@ test('CnNavigationIcon - should handle null/undefined label values (Svelte scena
   // Simulate initial null value from Svelte store
   element.label = null as unknown as string;
   await element.updateComplete;
-  let labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+  let labelElement = element.shadowRoot?.querySelector(
+    '.navigation-icon-label',
+  );
   expect(labelElement).toBeFalsy();
 
   // Simulate undefined value

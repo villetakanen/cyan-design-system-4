@@ -183,9 +183,11 @@ describe('CnNavigationIcon - Browser Tests', () => {
     // Initially should not have label attribute since default is empty string
     // But Lit reflects properties, so empty string creates empty attribute
     expect(element.getAttribute('label')).toBe('');
-    
+
     // Verify initial state - no label element should exist
-    let labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    let labelElement = element.shadowRoot?.querySelector(
+      '.navigation-icon-label',
+    );
     expect(labelElement).toBeFalsy();
 
     // Set to empty string - should still not show label
@@ -235,7 +237,9 @@ describe('CnNavigationIcon - Browser Tests', () => {
     await element.updateComplete;
 
     // Initially no label
-    let labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    let labelElement = element.shadowRoot?.querySelector(
+      '.navigation-icon-label',
+    );
     expect(labelElement).toBeFalsy();
 
     // Set via setAttribute (simulates external frameworks)
