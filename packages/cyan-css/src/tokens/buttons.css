@@ -4,7 +4,6 @@
   --cn-button-size: calc(var(--cn-grid) * 4.75);
   --cn-navigation-button-size: calc(var(--cn-grid) * 7); /* 56px */
   --cn-navigation-icon-size: calc(var(--cn-grid) * 6); /* 48px */
-  --cn-line-height-button: calc(38 / 16 * 1rem);
 
   /* Button typography tokens */
   --cn-font-family-ui: var(--cn-font-family);

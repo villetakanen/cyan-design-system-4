@@ -7,3 +7,9 @@
     "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }
+
+/* Font loading performance optimizations (PBI-007 Phase 1) */
+/* Prevent invisible text during font swap (FOIT prevention) */
+.font-loading {
+  font-display: swap;
+}

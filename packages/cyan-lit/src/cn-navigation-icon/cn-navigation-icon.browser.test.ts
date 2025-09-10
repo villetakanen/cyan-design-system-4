@@ -169,4 +169,99 @@ describe('CnNavigationIcon - Browser Tests', () => {
     document.body.removeChild(elementWithoutLabel);
     document.body.removeChild(elementWithLabel);
   });
+
+  it('should properly update visual state when label changes from empty to filled (reactivity fix)', async () => {
+    const element = document.createElement(
+      'cn-navigation-icon',
+    ) as CnNavigationIcon;
+    element.noun = 'settings';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-navigation-icon');
+    await element.updateComplete;
+
+    // Initially should not have label attribute since default is empty string
+    // But Lit reflects properties, so empty string creates empty attribute
+    expect(element.getAttribute('label')).toBe('');
+
+    // Verify initial state - no label element should exist
+    let labelElement = element.shadowRoot?.querySelector(
+      '.navigation-icon-label',
+    );
+    expect(labelElement).toBeFalsy();
+
+    // Set to empty string - should still not show label
+    element.label = '';
+    await element.updateComplete;
+    expect(element.getAttribute('label')).toBe('');
+    labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    expect(labelElement).toBeFalsy();
+
+    // Set to whitespace - should still not show label visually
+    element.label = '   ';
+    await element.updateComplete;
+    expect(element.getAttribute('label')).toBe('   ');
+    labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    expect(labelElement).toBeFalsy();
+
+    // Set to actual value - should now show label
+    element.label = 'Settings';
+    await element.updateComplete;
+    expect(element.getAttribute('label')).toBe('Settings');
+    labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    expect(labelElement).toBeTruthy();
+    expect(labelElement?.textContent).toBe('Settings');
+
+    // Verify the CSS styling changes based on [label] attribute
+    const icon = element.shadowRoot?.querySelector('cn-icon');
+    expect(icon).toBeTruthy();
+    expect(icon?.hasAttribute('small')).toBe(true);
+
+    // Change back to empty - should hide label again
+    element.label = '';
+    await element.updateComplete;
+    labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    expect(labelElement).toBeFalsy();
+
+    document.body.removeChild(element);
+  });
+
+  it('should handle attribute changes via setAttribute (DOM manipulation scenario)', async () => {
+    const element = document.createElement(
+      'cn-navigation-icon',
+    ) as CnNavigationIcon;
+    element.noun = 'home';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-navigation-icon');
+    await element.updateComplete;
+
+    // Initially no label
+    let labelElement = element.shadowRoot?.querySelector(
+      '.navigation-icon-label',
+    );
+    expect(labelElement).toBeFalsy();
+
+    // Set via setAttribute (simulates external frameworks)
+    element.setAttribute('label', 'Home Page');
+    await element.updateComplete;
+    labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    expect(labelElement).toBeTruthy();
+    expect(labelElement?.textContent).toBe('Home Page');
+
+    // Change via setAttribute
+    element.setAttribute('label', 'Updated Label');
+    await element.updateComplete;
+    labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    expect(labelElement).toBeTruthy();
+    expect(labelElement?.textContent).toBe('Updated Label');
+
+    // Remove attribute entirely
+    element.removeAttribute('label');
+    await element.updateComplete;
+    labelElement = element.shadowRoot?.querySelector('.navigation-icon-label');
+    expect(labelElement).toBeFalsy();
+
+    document.body.removeChild(element);
+  });
 });
