@@ -77,3 +77,9 @@
     flex-grow: 1;
   }
 }
+
+/* FIX: Patch for long urls in profile bios, etc. */
+.content-columns > section,
+.content-columns > article {
+  word-break: break-word;
+}

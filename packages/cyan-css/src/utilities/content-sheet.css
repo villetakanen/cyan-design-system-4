@@ -1,0 +1,78 @@
+/*
+Copyright 2024 11thdeg
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/**
+ * Content Sheet Utility
+ * 
+ * Container for character sheets and similar structured views
+ * Provides responsive grid layout with named areas
+ */
+
+.content-sheet {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "blocks"
+    "meta"
+    "aside"
+    "footer";
+  gap: var(--cn-grid);
+  margin: 0 auto;
+  max-width: 1024px;
+  width: 100cqw;
+}
+
+.content-sheet > header {
+  grid-area: header;
+  padding-bottom: calc(var(--cn-grid) - 1pt);
+  border-bottom: 1pt solid var(--color-border);
+}
+
+.content-sheet > aside {
+  grid-area: aside;
+}
+
+.content-sheet > footer {
+  grid-area: footer;
+}
+
+.content-sheet > .blocks {
+  grid-area: blocks;
+  display: flex;
+  flex-direction: column;
+  gap: var(--cn-grid);
+}
+
+.content-sheet > .meta {
+  grid-area: meta;
+}
+
+@container main-app-content (width > 880px) {
+  .content-sheet > .blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--cn-grid);
+  }
+}
+
+@container main-app-content (width > 1381px) {
+  .content-sheet:has(> aside) {
+    max-width: 1481px;
+    grid-template-areas:
+      "header ."
+      "blocks aside"
+      "meta aside"
+      "footer .";
+    grid-template-columns: 3.236fr 1fr;
+  }
+}

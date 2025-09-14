@@ -1,0 +1,60 @@
+<div class="stat-inputs-demo">
+  <h4>Character Sheet Style</h4>
+  <div class="stat-examples">
+    <label>
+      <span>Strength</span>
+      <input type="number" class="stat" value="15" />
+    </label>
+    <label>
+      <span>Dexterity</span>
+      <input type="number" class="stat" value="12" />
+    </label>
+    <label>
+      <span>Constitution</span>
+      <input type="number" class="stat" value="14" />
+    </label>
+    <label>
+      <span>Intelligence</span>
+      <input type="number" class="stat" value="10" />
+    </label>
+    <label>
+      <span>Wisdom</span>
+      <input type="number" class="stat" value="13" />
+    </label>
+    <label>
+      <span>Charisma</span>
+      <input type="number" class="stat" value="16" />
+    </label>
+  </div>
+  
+  <h4>With Error State</h4>
+  <div class="stat-examples">
+    <label>
+      <span>Invalid Stat</span>
+      <input type="number" class="stat" value="99" data-error="true" />
+    </label>
+  </div>
+</div>
+
+<style>
+  .stat-inputs-demo {
+    padding: 1rem;
+  }
+  
+  .stat-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .stat-inputs-demo h4 {
+    margin: 1rem 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--color-on-surface-muted);
+  }
+  
+  .stat-inputs-demo h4:first-child {
+    margin-top: 0;
+  }
+</style>

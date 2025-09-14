@@ -55,6 +55,76 @@ Renders as:
 
 
 
+## Stat Inputs (Character Sheet Style)
+
+The `.stat` utility class provides horizontal label layout with rounded borders, perfect for character sheet statistics display. When applied to an input, the label automatically switches to a horizontal layout with the label text positioned to the left of the input field.
+
+### Features
+
+- **Horizontal Layout**: Label text appears to the left of the input field
+- **Strong Label Styling**: Label text uses paragraph size with strong font weight
+- **Rounded Borders**: Input has fully rounded corners with top and bottom borders
+- **Compact Size**: Input is sized appropriately for numeric values
+- **Center Alignment**: Text is centered within the input field
+
+### Example
+
+import StatInputsDemo from 'src/components/demo/StatInputsDemo.astro';
+
+```html
+<label>
+  <span>Strength</span>
+  <input type="number" class="stat" value="15" />
+</label>
+<label>
+  <span>Dexterity</span>
+  <input type="number" class="stat" value="12" />
+</label>
+<label>
+  <span>Constitution</span>
+  <input type="number" class="stat" value="14" />
+</label>
+```
+
+### Usage with Character Sheets
+
+The stat inputs work particularly well with the `.content-sheet` utility for creating character sheet layouts:
+
+```html
+<div class="content-sheet">
+  <header>
+    <h1>Character Name</h1>
+  </header>
+  <div class="blocks">
+    <section>
+      <h2>Ability Scores</h2>
+      <label>
+        <span>Strength</span>
+        <input type="number" class="stat" value="15" />
+      </label>
+      <label>
+        <span>Dexterity</span>
+        <input type="number" class="stat" value="12" />
+      </label>
+      <!-- More stats... -->
+    </section>
+  </div>
+</div>
+```
+
+Renders as:
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <StatInputsDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <StatInputsDemo />
+  </div>
+</div>
+
 ## Textarea
 
 We also support the native HTML textarea element.

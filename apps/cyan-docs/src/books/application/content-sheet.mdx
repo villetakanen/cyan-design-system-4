@@ -1,0 +1,109 @@
+---
+title: 'Content: Sheet'
+noun: 'sheet'
+description: 'A layout container for character sheets and similar structured views with responsive grid areas.'
+containerClass: 'content-sheet'
+---
+
+<header>
+  <h1 class="m-0 text-h4">Character Sheet Demo</h1>
+  <p>This page demonstrates the `.content-sheet` layout. The container is intended for displaying 
+    character sheets, profiles, and other structured data views with named grid areas.</p>
+</header>
+
+<div class="blocks">
+  <section class="surface card">
+    <h3>Ability Scores</h3>
+    <label>
+      <span>Strength</span>
+      <input type="number" class="stat" value="15" readonly />
+    </label>
+    <label>
+      <span>Dexterity</span>
+      <input type="number" class="stat" value="12" readonly />
+    </label>
+    <label>
+      <span>Constitution</span>
+      <input type="number" class="stat" value="14" readonly />
+    </label>
+    <label>
+      <span>Intelligence</span>
+      <input type="number" class="stat" value="10" readonly />
+    </label>
+    <label>
+      <span>Wisdom</span>
+      <input type="number" class="stat" value="13" readonly />
+    </label>
+    <label>
+      <span>Charisma</span>
+      <input type="number" class="stat" value="16" readonly />
+    </label>
+  </section>
+  
+  <section class="surface card">
+    <h3>Skills</h3>
+    <label>
+      <span>Acrobatics (Dex)</span>
+      <input type="text" class="stat" value="+1" readonly />
+    </label>
+    <label>
+      <span>Athletics (Str)</span>
+      <input type="text" class="stat" value="+2" readonly />
+    </label>
+    <label>
+      <span>Perception (Wis)</span>
+      <input type="text" class="stat" value="+3" readonly />
+    </label>
+  </section>
+  
+  <section class="surface card">
+    <h3>Combat</h3>
+    <label>
+      <span>Armor Class</span>
+      <input type="number" class="stat" value="16" readonly />
+    </label>
+    <label>
+      <span>Hit Points</span>
+      <input type="number" class="stat" value="28" readonly />
+    </label>
+    <label>
+      <span>Speed</span>
+      <input type="text" class="stat" value="30 ft" readonly />
+    </label>
+  </section>
+</div>
+
+<div class="meta">
+  <div class="surface card">
+    <h4>Character Details</h4>
+    <ul class="list-none">
+      <li><strong>Race:</strong> Human</li>
+      <li><strong>Class:</strong> Fighter</li>
+      <li><strong>Level:</strong> 3</li>
+      <li><strong>Background:</strong> Soldier</li>
+    </ul>
+  </div>
+</div>
+
+<aside>
+  <div class="surface card">
+    <h4>Equipment</h4>
+    <ul>
+      <li>Longsword</li>
+      <li>Shield</li>
+      <li>Chain Mail</li>
+      <li>Backpack</li>
+      <li>50 gp</li>
+    </ul>
+  </div>
+  
+  <div class="surface card">
+    <h4>Features</h4>
+    <p><strong>Second Wind:</strong> Regain hit points as a bonus action.</p>
+    <p><strong>Action Surge:</strong> Take an additional action on your turn.</p>
+  </div>
+</aside>
+
+<footer>
+  <p>Character sheet layout powered by `.content-sheet` utility with responsive grid areas.</p>
+</footer>

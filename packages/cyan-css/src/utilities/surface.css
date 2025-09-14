@@ -2,6 +2,7 @@
   background: var(--color-surface);
   color: var(--color-on-surface);
   padding: var(--cn-gap);
+  container: surface-area / inline-size;
 }
 @media screen and (max-width: 620px) {
   .surface {

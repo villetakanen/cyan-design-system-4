@@ -1,0 +1,71 @@
+/*
+Copyright 2024 11thdeg
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/**
+ * Stat input utility styles for character sheet styling
+ * 
+ * Usage: <input type="number" class="stat" />
+ * 
+ * This provides horizontal label layout with rounded borders suitable for
+ * character sheet statistics display.
+ */
+
+/* Label styling when containing a stat input */
+label:has(input.stat) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--cn-grid);
+  width: 100%;
+  
+  /* Label text styling - paragraph size and strong weight */
+  font-family: var(--cn-font-family);
+  font-weight: var(--cn-font-weight-strong);
+  font-size: var(--cn-font-size-text);
+  line-height: var(--cn-line-height-text);
+  letter-spacing: var(--cn-letter-spacing-text);
+  margin-bottom: var(--cn-grid);
+}
+label:has(input.stat) span {
+  flex: 1;
+  text-align: left;
+  display: block;
+}
+
+/* Stat input field styling */
+input.stat {
+  /* Override default input styling for stat display */
+  border: 1px solid var(--color-border);
+  border-radius: var(--cn-border-radius-medium);
+  
+  /* Standard width for character sheet use */
+  width: calc(var(--cn-grid) * 8);
+  flex-shrink: 0;
+  flex-grow: 0;
+  text-align: center;
+}
+
+/* Stat input hover state */
+input.stat:hover {
+  border-color: var(--color-border-hover, var(--color-border));
+}
+
+/* Stat input focus state */
+input.stat:focus {
+  border-color: var(--color-border-hover, var(--color-border));
+}
+
+/* Stat input error state */
+input.stat[data-error="true"] {
+  border-color: var(--color-on-alert);
+}
