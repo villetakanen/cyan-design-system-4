@@ -13,9 +13,9 @@ limitations under the License.
 
 /**
  * Stat input utility styles for character sheet styling
- * 
+ *
  * Usage: <input type="number" class="stat" />
- * 
+ *
  * This provides horizontal label layout with rounded borders suitable for
  * character sheet statistics display.
  */
@@ -27,7 +27,7 @@ label:has(input.stat) {
   align-items: center;
   gap: var(--cn-grid);
   width: 100%;
-  
+
   /* Label text styling - paragraph size and strong weight */
   font-family: var(--cn-font-family);
   font-weight: var(--cn-font-weight-strong);
@@ -47,7 +47,7 @@ input.stat {
   /* Override default input styling for stat display */
   border: 1px solid var(--color-border);
   border-radius: var(--cn-border-radius-medium);
-  
+
   /* Standard width for character sheet use */
   width: calc(var(--cn-grid) * 8);
   flex-shrink: 0;
