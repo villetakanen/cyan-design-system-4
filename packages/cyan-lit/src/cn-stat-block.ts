@@ -53,29 +53,42 @@ export class CnStatBlock extends LitElement {
 
     .label {
       font-family: var(--cn-font-family);
-      font-weight: var(--cn-font-weight-h4);
-      font-size: var(--cn-font-size-h4);
-      line-height: var(--cn-line-height-h4);
+      font-weight: var(--cn-font-weight-h5);
+      font-size: var(--cn-font-size-h5);
+      line-height: var(--cn-line-height-h5);
       color: var(--color-heading-2);
       margin: 0;
+      text-align: center;
+    }
+    
+    :host([label-position="top"]) .label {
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--cn-grid);
+    }
+    
+    :host([label-position="bottom"]) .label {
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--cn-grid);
     }
 
     .content-wrapper {
       display: flex;
       flex-direction: column;
-      gap: calc(var(--cn-grid) / 2);
+      gap: var(--cn-grid);
     }
 
     .content-wrapper.layout--grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--cn-grid);
+      place-items: center;
     }
 
     .content-wrapper.layout--grid-3 {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: var(--cn-grid);
+      place-items: center;
     }
 
     /* Responsive behavior for grid layouts */

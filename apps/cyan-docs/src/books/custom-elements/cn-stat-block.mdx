@@ -98,6 +98,84 @@ Control where the label appears using the `label-position` attribute.
 </cn-stat-block>
 ```
 
+## Integration with D&D Components
+
+The stat block pairs perfectly with `<cn-d20-ability-score>` components for D&D character sheets:
+
+```html
+<cn-stat-block label="Ability Scores" layout="grid-3">
+  <cn-d20-ability-score base="18"></cn-d20-ability-score>
+  <cn-d20-ability-score base="14"></cn-d20-ability-score>
+  <cn-d20-ability-score base="16"></cn-d20-ability-score>
+  <cn-d20-ability-score base="12"></cn-d20-ability-score>
+  <cn-d20-ability-score base="13"></cn-d20-ability-score>
+  <cn-d20-ability-score base="10"></cn-d20-ability-score>
+</cn-stat-block>
+```
+
+import StatBlockD20Demo from 'src/components/demo/StatBlockD20Demo.astro';
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h4>LIGHT</h4>
+    <StatBlockD20Demo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h4>DARK</h4>
+    <StatBlockD20Demo />
+  </div>
+</div>
+
+For interactive character sheets, use the `interactive` attribute:
+
+```html
+<cn-stat-block label="Editable Stats" layout="grid-2">
+  <cn-d20-ability-score base="16" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="14" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="15" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="13" interactive></cn-d20-ability-score>
+</cn-stat-block>
+```
+
+### Extended Character Sheet Example
+
+For comprehensive character sheets, the 3-column grid layout can handle larger datasets with multiple rows:
+
+```html
+<cn-stat-block label="Complete Character Stats" layout="grid-3">
+  <!-- Core Abilities (Row 1-2) -->
+  <cn-d20-ability-score base="18" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="14" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="16" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="12" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="13" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="10" interactive></cn-d20-ability-score>
+  
+  <!-- Additional Stats (Row 3-4) -->
+  <cn-d20-ability-score base="15" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="11" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="17" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="9" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="14" interactive></cn-d20-ability-score>
+  <cn-d20-ability-score base="12" interactive></cn-d20-ability-score>
+</cn-stat-block>
+```
+
+This creates a flexible 3×N grid that adapts to any number of ability scores while maintaining proper responsive behavior.
+
+import StatBlockExtendedDemo from 'src/components/demo/StatBlockExtendedDemo.astro';
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h4>LIGHT</h4>
+    <StatBlockExtendedDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h4>DARK</h4>
+    <StatBlockExtendedDemo />
+  </div>
+</div>
+
 ## Integration with Form Elements
 
 The stat block works excellently with the `.stat` input utility from cyan-css:

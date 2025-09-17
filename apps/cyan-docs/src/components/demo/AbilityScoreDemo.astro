@@ -12,14 +12,26 @@
     </div>
     
     <div>
+        <h4>With Labels</h4>
+        <div class="ability-row">
+            <cn-d20-ability-score base="16" label="STR"></cn-d20-ability-score>
+            <cn-d20-ability-score base="14" label="DEX"></cn-d20-ability-score>
+            <cn-d20-ability-score base="15" label="CON"></cn-d20-ability-score>
+            <cn-d20-ability-score base="12" label="INT"></cn-d20-ability-score>
+            <cn-d20-ability-score base="13" label="WIS"></cn-d20-ability-score>
+            <cn-d20-ability-score base="10" label="CHA"></cn-d20-ability-score>
+        </div>
+    </div>
+    
+    <div>
         <h4>Interactive Mode</h4>
         <div class="ability-row">
-            <cn-d20-ability-score interactive base="8" min="3" max="18"></cn-d20-ability-score>
-            <cn-d20-ability-score interactive base="10" min="3" max="18"></cn-d20-ability-score>
-            <cn-d20-ability-score interactive base="12" min="3" max="18"></cn-d20-ability-score>
-            <cn-d20-ability-score interactive base="15" min="3" max="18"></cn-d20-ability-score>
-            <cn-d20-ability-score interactive base="18" min="3" max="18"></cn-d20-ability-score>
-            <cn-d20-ability-score interactive base="20" min="3" max="30"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="16" label="STR" min="3" max="20"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="14" label="DEX" min="3" max="20"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="15" label="CON" min="3" max="20"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="12" label="INT" min="3" max="20"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="13" label="WIS" min="3" max="20"></cn-d20-ability-score>
+            <cn-d20-ability-score interactive base="10" label="CHA" min="3" max="20"></cn-d20-ability-score>
         </div>
     </div>
 </section>
@@ -27,7 +39,7 @@
 <div class="event-demo">
     <h4>Event Demonstration</h4>
     <p>Change the values below to see the score-change event:</p>
-    <cn-d20-ability-score interactive base="13" id="event-demo"></cn-d20-ability-score>
+    <cn-d20-ability-score interactive base="13" label="TEST" id="event-demo"></cn-d20-ability-score>
     <pre id="event-output">No events yet</pre>
 </div>
 

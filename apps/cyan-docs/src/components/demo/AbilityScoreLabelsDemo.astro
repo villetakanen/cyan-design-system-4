@@ -1,0 +1,52 @@
+---
+// Demo showing cn-d20-ability-score components with labels
+---
+
+<div class="labels-demo">
+  <h4>Standard D&D Abilities</h4>
+  <div class="ability-row">
+    <cn-d20-ability-score base="16" label="STR"></cn-d20-ability-score>
+    <cn-d20-ability-score base="14" label="DEX"></cn-d20-ability-score>
+    <cn-d20-ability-score base="15" label="CON"></cn-d20-ability-score>
+    <cn-d20-ability-score base="12" label="INT"></cn-d20-ability-score>
+    <cn-d20-ability-score base="13" label="WIS"></cn-d20-ability-score>
+    <cn-d20-ability-score base="10" label="CHA"></cn-d20-ability-score>
+  </div>
+  
+  <h4>Custom Labels</h4>
+  <div class="ability-row">
+    <cn-d20-ability-score base="18" label="AC"></cn-d20-ability-score>
+    <cn-d20-ability-score base="34" label="HP"></cn-d20-ability-score>
+    <cn-d20-ability-score base="30" label="SPD"></cn-d20-ability-score>
+  </div>
+</div>
+
+<style>
+  .labels-demo {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--cn-border-radius-medium);
+    margin: 1rem 0;
+  }
+  
+  .labels-demo h4 {
+    margin: 0 0 1rem 0;
+    color: var(--color-heading-2);
+  }
+  
+  .labels-demo h4:not(:first-child) {
+    margin-top: 2rem;
+  }
+  
+  .ability-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+</style>
+
+<script>
+  // Import the component using alias
+  import 'cn-d20-ability-score';
+</script>

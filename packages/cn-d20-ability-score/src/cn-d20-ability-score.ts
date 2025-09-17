@@ -6,6 +6,7 @@ import { customElement, property } from 'lit/decorators.js';
  *
  * @element cn-d20-ability-score
  * @prop {number} base - The base ability score. Defaults to 10.
+ * @prop {string} label - Optional label text displayed above the ability score (e.g., "STR", "DEX"). Defaults to empty.
  * @prop {boolean} interactive - If true, renders as an input field. Defaults to false.
  * @prop {number} min - The minimum allowed score in interactive mode. Defaults to 1.
  * @prop {number} max - The maximum allowed score in interactive mode. Defaults to 30.
@@ -25,16 +26,34 @@ export class CnD20AbilityScore extends LitElement {
   @property({ type: Number })
   max = 30;
 
+  @property({ type: String })
+  label = '';
+
   static styles = css`
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: var(--_cn-d20-ability-score-size);
-      height: var(--_cn-d20-ability-score-size);
+      min-height: var(--_cn-d20-ability-score-size);
       flex-shrink: 0;
       flex-grow: 0;
       flex-basis: var(--_cn-d20-ability-score-size);
       position: relative;
       box-sizing: border-box;
+      padding-bottom: var(--cn-grid);
+    }
+
+    .label {
+      font-size: var(--cn-font-size-overline);
+      font-weight: var(--cn-font-weight-text-strong);
+      line-height: var(--cn-line-height-overline);
+      letter-spacing: var(--cn-letter-spacing-overline);
+      text-transform: uppercase;
+      color: var(--color-text-low-emphasis);
+      text-align: center;
+      margin-bottom: calc(var(--cn-grid) / 2);
+      width: 100%;
     }
     
     .modifier {
@@ -148,6 +167,7 @@ export class CnD20AbilityScore extends LitElement {
     const modifier = this._calculateModifier();
     const sign = modifier >= 0 ? '+' : '';
     return html`
+      ${this.label ? html`<div class="label">${this.label}</div>` : ''}
       <div class="modifier">${sign}${modifier}</div>
       <div class="base-score">${this.base}</div>
     `;
@@ -160,6 +180,7 @@ export class CnD20AbilityScore extends LitElement {
     const modifier = this._calculateModifier();
     const sign = modifier >= 0 ? '+' : '';
     return html`
+      ${this.label ? html`<div class="label">${this.label}</div>` : ''}
       <div class="modifier">${sign}${modifier}</div>
       <input
         class="base-score"

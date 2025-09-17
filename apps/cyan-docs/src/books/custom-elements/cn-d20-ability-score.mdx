@@ -19,17 +19,43 @@ A `cn-d20-ability-score` is a custom element designed for displaying D&D 5th Edi
 <!-- Display mode (default) -->
 <cn-d20-ability-score base="15"></cn-d20-ability-score>
 
+<!-- With ability label -->
+<cn-d20-ability-score base="16" label="STR"></cn-d20-ability-score>
+
 <!-- Interactive input mode -->
 <cn-d20-ability-score interactive base="12" min="8" max="20"></cn-d20-ability-score>
+
+<!-- Interactive with label -->
+<cn-d20-ability-score interactive base="14" label="DEX" min="3" max="20"></cn-d20-ability-score>
 ```
 
 ## Features
 
 - **Automatic modifier calculation**: Follows D&D 5e rules (modifier = floor((base - 10) / 2))
+- **Optional ability labels**: Display standard ability names (STR, DEX, CON, etc.) above scores
 - **Display mode**: Shows the ability score and modifier as read-only
 - **Interactive mode**: Allows user input with validation and clamping
 - **Event dispatching**: Emits `score-change` events when values change
 - **Accessible**: Proper ARIA labels and keyboard navigation support
+
+## Labels
+
+The `label` property allows you to display ability names or other identifiers above the score. Labels use the design system's overline typography with uppercase transformation:
+
+import AbilityScoreLabelsDemo from '../../components/demo/AbilityScoreLabelsDemo.astro';
+
+<AbilityScoreLabelsDemo />
+
+```html
+<!-- Standard D&D abilities -->
+<cn-d20-ability-score base="16" label="STR"></cn-d20-ability-score>
+<cn-d20-ability-score base="14" label="DEX"></cn-d20-ability-score>
+<cn-d20-ability-score base="15" label="CON"></cn-d20-ability-score>
+
+<!-- Custom labels for other stats -->
+<cn-d20-ability-score base="18" label="AC"></cn-d20-ability-score>
+<cn-d20-ability-score base="34" label="HP"></cn-d20-ability-score>
+```
 
 ## API
 
@@ -38,6 +64,7 @@ A `cn-d20-ability-score` is a custom element designed for displaying D&D 5th Edi
 | Property | Attribute | Type      | Default | Description |
 |----------|-----------|-----------|---------|-------------|
 | `base` | `base` | `Number` | `10` | The base ability score value. |
+| `label` | `label` | `String` | `''` | Optional label displayed above the score (e.g., "STR", "DEX"). |
 | `interactive` | `interactive` | `Boolean` | `false` | Whether the component is an input field or display-only. |
 | `min` | `min` | `Number` | `1` | Minimum allowed value in interactive mode. |
 | `max` | `max` | `Number` | `30` | Maximum allowed value in interactive mode. |
@@ -62,6 +89,7 @@ The component uses CSS custom properties (tokens) for styling:
 ## Visual Behavior
 
 The component displays:
+- **Optional label**: Ability name or identifier (when provided) in overline typography
 - **Top section**: The calculated modifier with appropriate sign (+/-)
 - **Bottom section**: The base ability score value
 
