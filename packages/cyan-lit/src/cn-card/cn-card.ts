@@ -102,9 +102,9 @@ export class CnCard extends LitElement {
       letter-spacing: var(--cn-letter-spacing-text);
       color: var(--color-text-low-emphasis);
       padding: var(--cn-grid) var(--cn-gap);
-      /* These are set with variables in the cyan-css package */
-      background: var(--cn-card-background);
-      box-shadow: var(--cn-card-box-shadow);
+      /* Default to elevation-1 styling */
+      background: var(--color-surface-1);
+      box-shadow: var(--shadow-elevation-1);
       min-height: calc(7 * var(--cn-line));
     }
     :host([cover]) .cardNoun {
@@ -189,8 +189,22 @@ export class CnCard extends LitElement {
     }
     
     :host([elevation="0"]) {
+      background: var(--color-surface);
+      box-shadow: none;
       padding: calc(var(--cn-grid) - 1px) calc(var(--cn-gap) - 1px);
       border: 1px solid var(--color-border);
+    }
+    :host([elevation="2"]) {
+      background: var(--color-surface-2);
+      box-shadow: var(--shadow-elevation-2);
+    }
+    :host([elevation="3"]) {
+      background: var(--color-surface-3);
+      box-shadow: var(--shadow-elevation-3);
+    }
+    :host([elevation="4"]) {
+      background: var(--color-surface-4);
+      box-shadow: var(--shadow-elevation-4);
     }
     :host .cardHeader {
       display: flex;

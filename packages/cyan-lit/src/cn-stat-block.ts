@@ -40,14 +40,15 @@ export class CnStatBlock extends LitElement {
     }
 
     .stat-block-container {
-      background: var(--cn-card-background);
+      background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: var(--cn-border-radius-medium);
-      box-shadow: var(--cn-card-box-shadow);
+      box-shadow: none;
       padding: var(--cn-grid);
       display: flex;
       flex-direction: column;
       gap: var(--cn-grid);
+      color: var(--color-on-surface);
     }
 
     .label {
