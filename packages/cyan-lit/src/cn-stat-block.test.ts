@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import './cn-stat-block';
 import type { CnStatBlock } from './cn-stat-block';
 
@@ -48,8 +48,11 @@ describe('CnStatBlock', () => {
 
   describe('Rendering', () => {
     it('should render basic structure', async () => {
-      const container = element.shadowRoot?.querySelector('.stat-block-container');
-      const contentWrapper = element.shadowRoot?.querySelector('.content-wrapper');
+      const container = element.shadowRoot?.querySelector(
+        '.stat-block-container',
+      );
+      const contentWrapper =
+        element.shadowRoot?.querySelector('.content-wrapper');
       const slot = element.shadowRoot?.querySelector('slot');
 
       expect(container).toBeTruthy();
@@ -78,7 +81,9 @@ describe('CnStatBlock', () => {
       element.label = 'Top Label';
       await element.updateComplete;
 
-      const container = element.shadowRoot?.querySelector('.stat-block-container');
+      const container = element.shadowRoot?.querySelector(
+        '.stat-block-container',
+      );
       const firstChild = container?.children[0];
       expect(firstChild?.classList.contains('label')).toBe(true);
     });
@@ -88,7 +93,9 @@ describe('CnStatBlock', () => {
       element.labelPosition = 'bottom';
       await element.updateComplete;
 
-      const container = element.shadowRoot?.querySelector('.stat-block-container');
+      const container = element.shadowRoot?.querySelector(
+        '.stat-block-container',
+      );
       const lastChild = container?.children[container.children.length - 1];
       expect(lastChild?.classList.contains('label')).toBe(true);
     });
@@ -97,7 +104,8 @@ describe('CnStatBlock', () => {
       element.layout = 'grid-2';
       await element.updateComplete;
 
-      const contentWrapper = element.shadowRoot?.querySelector('.content-wrapper');
+      const contentWrapper =
+        element.shadowRoot?.querySelector('.content-wrapper');
       expect(contentWrapper?.classList.contains('layout--grid-2')).toBe(true);
 
       element.layout = 'grid-3';
@@ -128,7 +136,7 @@ describe('CnStatBlock', () => {
       div1.textContent = 'Content 1';
       const div2 = document.createElement('div');
       div2.textContent = 'Content 2';
-      
+
       element.appendChild(div1);
       element.appendChild(div2);
       await element.updateComplete;

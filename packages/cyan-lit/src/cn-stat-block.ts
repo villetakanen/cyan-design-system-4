@@ -17,7 +17,7 @@ export class CnStatBlock extends LitElement {
 
   private renderLabel() {
     if (!this.label) return html``;
-    
+
     return html`<div class="label" part="label">${this.label}</div>`;
   }
 
