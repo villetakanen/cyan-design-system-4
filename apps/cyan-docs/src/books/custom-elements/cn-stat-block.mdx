@@ -1,0 +1,172 @@
+---
+title: '<cn-stat-block>'
+noun: 'layout'
+description: 'A flexible container for displaying RPG character statistics in a clean, card-like format with various layout options.'
+---
+
+<article class="column-l">
+
+# `<cn-stat-block>`
+
+A flexible container component for displaying RPG character statistics in a clean, card-like format with various layout options. Perfect for ability scores, combat stats, skills, and other grouped character data.
+
+## Basic Usage
+
+import StatBlockDemo from 'src/components/demo/StatBlockDemo.astro';
+
+```html
+<cn-stat-block label="Ability Scores">
+  <div>Strength: 18</div>
+  <div>Dexterity: 14</div>
+  <div>Constitution: 16</div>
+</cn-stat-block>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <StatBlockDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <StatBlockDemo />
+  </div>
+</div>
+
+## Properties / Attributes
+
+| Name | Attribute | Type | Default | Description |
+|------|-----------|------|---------|-------------|
+| `label` | `label` | `string` | `''` | The title/header text for the stat block |
+| `labelPosition` | `label-position` | `'top' \| 'bottom'` | `'top'` | Position of the label relative to content |
+| `layout` | `layout` | `'rows' \| 'grid-2' \| 'grid-3'` | `'rows'` | Layout arrangement of slotted content |
+
+## Layout Options
+
+### Rows Layout (Default)
+
+The default layout arranges all slotted content in a single vertical column.
+
+```html
+<cn-stat-block label="Combat Stats" layout="rows">
+  <div>Armor Class: 16</div>
+  <div>Hit Points: 34</div>
+  <div>Speed: 30 ft</div>
+  <div>Initiative: +2</div>
+</cn-stat-block>
+```
+
+### Grid Layouts
+
+Use `grid-2` or `grid-3` for multi-column arrangements that automatically adapt to smaller screens.
+
+```html
+<!-- 2-column grid -->
+<cn-stat-block label="Skills" layout="grid-2">
+  <div>Acrobatics: +1</div>
+  <div>Athletics: +2</div>
+  <div>Perception: +3</div>
+  <div>Stealth: +1</div>
+</cn-stat-block>
+
+<!-- 3-column grid -->
+<cn-stat-block label="Saves" layout="grid-3">
+  <div>STR: +2</div>
+  <div>DEX: +1</div>
+  <div>CON: +3</div>
+  <div>INT: +0</div>
+  <div>WIS: +1</div>
+  <div>CHA: +0</div>
+</cn-stat-block>
+```
+
+## Label Position
+
+Control where the label appears using the `label-position` attribute.
+
+```html
+<!-- Label at top (default) -->
+<cn-stat-block label="Attributes" label-position="top">
+  <div>Content here</div>
+</cn-stat-block>
+
+<!-- Label at bottom -->
+<cn-stat-block label="Total Score: 72" label-position="bottom">
+  <div>STR: 18</div>
+  <div>DEX: 14</div>
+  <div>CON: 16</div>
+</cn-stat-block>
+```
+
+## Integration with Form Elements
+
+The stat block works excellently with the `.stat` input utility from cyan-css:
+
+```html
+<cn-stat-block label="Character Stats" layout="grid-2">
+  <label>
+    <span>Strength</span>
+    <input type="number" class="stat" value="18" />
+  </label>
+  <label>
+    <span>Dexterity</span>
+    <input type="number" class="stat" value="14" />
+  </label>
+  <label>
+    <span>Constitution</span>
+    <input type="number" class="stat" value="16" />
+  </label>
+  <label>
+    <span>Intelligence</span>
+    <input type="number" class="stat" value="12" />
+  </label>
+</cn-stat-block>
+```
+
+## Responsive Behavior
+
+Grid layouts automatically adapt to smaller screens:
+
+- **`grid-3`**: Becomes 2 columns on tablets, 1 column on mobile
+- **`grid-2`**: Becomes 1 column on mobile
+- **`rows`**: Always remains single column
+
+## CSS Custom Properties
+
+The component uses standard Cyan Design System tokens:
+
+- `--cn-card-background`: Background color of the stat block
+- `--cn-card-box-shadow`: Box shadow for card appearance
+- `--cn-border-radius-medium`: Border radius
+- `--color-border`: Border color
+- `--cn-grid`: Base spacing unit
+- `--color-heading-2`: Label text color
+
+## CSS Parts
+
+| Part | Description |
+|------|-------------|
+| `container` | The main container element |
+| `label` | The label/title element (when present) |
+
+### Example Customization
+
+```css
+cn-stat-block::part(container) {
+  border-color: var(--color-primary);
+}
+
+cn-stat-block::part(label) {
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+```
+
+## Accessibility
+
+- The component uses semantic HTML structure
+- Labels are properly associated with content
+- Grid layouts maintain logical reading order
+- All content remains keyboard accessible
+
+</article>

@@ -14,23 +14,23 @@ This component will be part of the core `@cyan-design/core` package within the `
 
 1. **Component Scaffolding:**
     
-    - [ ] A new Lit-element named `cn-stat-block` is created within the `cyan-design-system-4` package.
+    - [x] A new Lit-element named `cn-stat-block` is created within the `cyan-design-system-4` package.
         
-    - [ ] The component is properly exported and available for use within the design system.
+    - [x] The component is properly exported and available for use within the design system.
         
 2. **Title/Label Functionality:**
     
-    - [ ] The component accepts a `label` attribute (e.g., `<cn-stat-block label="Ability Scores">`).
+    - [x] The component accepts a `label` attribute (e.g., `<cn-stat-block label="Ability Scores">`).
         
-    - [ ] The label is displayed as a title for the stat block.
+    - [x] The label is displayed as a title for the stat block.
         
-    - [ ] An attribute `label-position` can be set to either `"top"` (default) or `"bottom"` to control the title's placement.
+    - [x] An attribute `label-position` can be set to either `"top"` (default) or `"bottom"` to control the title's placement.
         
 3. **Content Slotting:**
     
-    - [ ] The component has a default `<slot>` that accepts child elements.
+    - [x] The component has a default `<slot>` that accepts child elements.
         
-    - [ ] The component can successfully render various slotted elements, including:
+    - [x] The component can successfully render various slotted elements, including:
         
         - Standard HTML elements (divs, inputs).
             
@@ -38,9 +38,9 @@ This component will be part of the core `@cyan-design/core` package within the `
             
 4. **Layout Control:**
     
-    - [ ] The component has a `layout` attribute that controls the arrangement of slotted items.
+    - [x] The component has a `layout` attribute that controls the arrangement of slotted items.
         
-    - [ ] The `layout` attribute supports the following values:
+    - [x] The `layout` attribute supports the following values:
         
         - `"rows"` (default): Slotted items are displayed in a single vertical column.
             
@@ -48,19 +48,19 @@ This component will be part of the core `@cyan-design/core` package within the `
             
         - `"grid-3"`: Slotted items are arranged in a grid with 3 columns.
             
-    - [ ] The grid layouts are responsive and adjust gracefully on smaller viewports.
+    - [x] The grid layouts are responsive and adjust gracefully on smaller viewports.
         
 5. **Styling:**
     
-    - [ ] The component has a distinct card-like appearance (e.g., border, box-shadow, padding) that aligns with the Cyan Design System's aesthetic.
+    - [x] The component has a distinct card-like appearance (e.g., border, box-shadow, padding) that aligns with the Cyan Design System's aesthetic.
         
-    - [ ] The spacing between slotted items is consistent and managed by the component's internal styles based on the chosen layout.
+    - [x] The spacing between slotted items is consistent and managed by the component's internal styles based on the chosen layout.
         
 6. **Documentation & Examples:**
     
-    - [ ] Storybook documentation is created for `cn-stat-block`.
+    - [x] Documentation is created for `cn-stat-block` in the cyan-docs app.
         
-    - [ ] The stories include examples for each `label-position` and `layout` option to clearly demonstrate its functionality.
+    - [x] The documentation includes examples for each `label-position` and `layout` option to clearly demonstrate its functionality.
         
 
 ### **Technical Considerations & Implementation Notes**

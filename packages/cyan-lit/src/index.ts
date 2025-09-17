@@ -13,5 +13,6 @@ export { CnShareButton } from './cn-share-button/cn-share-button.js';
 export { CnSnackbar } from './cn-snackbar/cn-snackbar.js';
 export type { CnListItem } from './cn-sortable-list/cn-sortable-list.js';
 export { CnSortableList } from './cn-sortable-list/cn-sortable-list.js';
+export { CnStatBlock } from './cn-stat-block.js';
 export { CnToggleButton } from './cn-toggle-button/cn-toggle-button.js';
 export { CnTrayButton } from './cn-tray-button/cn-tray-button.js';
