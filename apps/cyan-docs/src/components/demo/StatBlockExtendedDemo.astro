@@ -1,0 +1,38 @@
+---
+// Extended demo showing cn-stat-block with multiple rows of cn-d20-ability-score components
+---
+
+<cn-stat-block label="Extended Character Stats" layout="grid-3">
+  <!-- Core Abilities (STR, DEX, CON) -->
+  <cn-d20-ability-score base="18" label="STR"></cn-d20-ability-score>
+  <cn-d20-ability-score base="14" label="DEX"></cn-d20-ability-score>
+  <cn-d20-ability-score base="16" label="CON"></cn-d20-ability-score>
+  
+  <!-- Mental Abilities (INT, WIS, CHA) -->
+  <cn-d20-ability-score base="12" label="INT"></cn-d20-ability-score>
+  <cn-d20-ability-score base="13" label="WIS"></cn-d20-ability-score>
+  <cn-d20-ability-score base="10" label="CHA"></cn-d20-ability-score>
+  
+  <!-- Secondary Stats -->
+  <cn-d20-ability-score base="15" label="AC"></cn-d20-ability-score>
+  <cn-d20-ability-score base="11" label="INIT"></cn-d20-ability-score>
+  <cn-d20-ability-score base="17" label="SPD"></cn-d20-ability-score>
+  
+  <!-- Additional Stats -->
+  <cn-d20-ability-score base="9" label="HP"></cn-d20-ability-score>
+  <cn-d20-ability-score base="14" label="PROF"></cn-d20-ability-score>
+  <cn-d20-ability-score base="12" label="PASS"></cn-d20-ability-score>
+</cn-stat-block>
+
+<style>
+  cn-stat-block {
+    max-width: 450px;
+    margin: 1rem 0;
+  }
+</style>
+
+<script>
+  // Import the components
+  import 'cn-d20-ability-score';
+  import 'cyan-lit';
+</script>

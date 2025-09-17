@@ -1,35 +1,7 @@
 /* Card component tokens */
 :root {
-  /* Card background colors */
-  --cn-card-background: light-dark(
-    var(--chroma-primary-99),
-    var(--chroma-primary-10)
-  );
-
-  /* Card box shadows for elevation */
-  --cn-card-box-shadow:
-    0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-
   /* Card border radius */
   --cn-border-radius-card: var(--cn-border-radius-large, 16px);
-}
-
-/* Card elevation variations */
-:root {
-  --cn-card-elevation-0-background: transparent;
-  --cn-card-elevation-0-box-shadow: none;
-
-  --cn-card-elevation-1-background: var(--color-surface-1);
-  --cn-card-elevation-1-box-shadow: var(--shadow-elevation-1);
-
-  --cn-card-elevation-2-background: var(--color-surface-2);
-  --cn-card-elevation-2-box-shadow: var(--shadow-elevation-2);
-
-  --cn-card-elevation-3-background: var(--color-surface-3);
-  --cn-card-elevation-3-box-shadow: var(--shadow-elevation-3);
-
-  --cn-card-elevation-4-background: var(--color-surface-4);
-  --cn-card-elevation-4-box-shadow: var(--shadow-elevation-4);
 }
 
 /* Card light-dom styles - applied to the cn-card element itself */
@@ -38,26 +10,6 @@ cn-card {
     var(--chroma-surface-60),
     var(--chroma-surface-40)
   );
-}
-
-cn-card[elevation="1"] {
-  --cn-card-background: var(--color-surface-1);
-  --cn-card-box-shadow: var(--shadow-elevation-1);
-}
-
-cn-card[elevation="2"] {
-  --cn-card-background: var(--color-surface-2);
-  --cn-card-box-shadow: var(--shadow-elevation-2);
-}
-
-cn-card[elevation="3"] {
-  --cn-card-background: var(--color-surface-3);
-  --cn-card-box-shadow: var(--shadow-elevation-3);
-}
-
-cn-card[elevation="4"] {
-  --cn-card-background: var(--color-surface-4);
-  --cn-card-box-shadow: var(--shadow-elevation-4);
 }
 
 cn-card > *:first-child {

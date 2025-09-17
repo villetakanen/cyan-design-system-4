@@ -1,0 +1,53 @@
+<div class="stat-block-demos">
+  <cn-stat-block label="Ability Scores">
+    <div class="stat-item">Strength: 18 (+4)</div>
+    <div class="stat-item">Dexterity: 14 (+2)</div>
+    <div class="stat-item">Constitution: 16 (+3)</div>
+    <div class="stat-item">Intelligence: 12 (+1)</div>
+    <div class="stat-item">Wisdom: 13 (+1)</div>
+    <div class="stat-item">Charisma: 10 (+0)</div>
+  </cn-stat-block>
+  
+  <cn-stat-block label="Combat Stats" layout="grid-2">
+    <div class="stat-item">AC: 16</div>
+    <div class="stat-item">HP: 34/34</div>
+    <div class="stat-item">Speed: 30 ft</div>
+    <div class="stat-item">Initiative: +2</div>
+  </cn-stat-block>
+
+  <cn-stat-block label="Saving Throws" layout="grid-3">
+    <div class="stat-item">STR: +6</div>
+    <div class="stat-item">DEX: +2</div>
+    <div class="stat-item">CON: +5</div>
+    <div class="stat-item">INT: +1</div>
+    <div class="stat-item">WIS: +3</div>
+    <div class="stat-item">CHA: +2</div>
+  </cn-stat-block>
+
+  <cn-stat-block label="Total Score: 87" label-position="bottom" layout="grid-2">
+    <div class="stat-item">Proficiency: +2</div>
+    <div class="stat-item">Level: 3</div>
+    <div class="stat-item">Experience: 1,200</div>
+    <div class="stat-item">Next Level: 2,700</div>
+  </cn-stat-block>
+</div>
+
+<style>
+  .stat-block-demos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .stat-item {
+    padding: 0.25rem 0.5rem;
+    background: var(--color-surface-variant);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--cn-border-radius-small);
+    font-family: var(--cn-font-family);
+    font-size: var(--cn-font-size-text);
+    color: var(--color-on-surface);
+    text-align: center;
+  }
+</style>

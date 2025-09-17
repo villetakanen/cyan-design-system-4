@@ -1,0 +1,25 @@
+---
+// Demo showing cn-stat-block with cn-d20-ability-score components
+---
+
+<cn-stat-block label="Character Abilities" layout="grid-3">
+  <cn-d20-ability-score base="18" label="STR"></cn-d20-ability-score>
+  <cn-d20-ability-score base="14" label="DEX"></cn-d20-ability-score>
+  <cn-d20-ability-score base="16" label="CON"></cn-d20-ability-score>
+  <cn-d20-ability-score base="12" label="INT"></cn-d20-ability-score>
+  <cn-d20-ability-score base="13" label="WIS"></cn-d20-ability-score>
+  <cn-d20-ability-score base="10" label="CHA"></cn-d20-ability-score>
+</cn-stat-block>
+
+<style>
+  cn-stat-block {
+    max-width: 400px;
+    margin: 1rem 0;
+  }
+</style>
+
+<script>
+  // Import the components
+  import 'cn-d20-ability-score';
+  import 'cyan-lit';
+</script>
