@@ -79,3 +79,10 @@ fieldset > .toolbar:last-child {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+/* cn-toggle-button inside a toolbar (a flex row) */
+.toolbar cn-toggle-button {
+  flex-grow: 0;
+  flex-shrink: 1;
+  display: inline-flex;
+}
