@@ -11,7 +11,7 @@ main {
   main {
     padding: calc(var(--cn-grid) * 2);
   }
-  body:has(cn-tray-button[aria-expanded="true"]):has(nav.rail) main {
+  body:has(cn-tray-button[aria-expanded="true"]):has(nav#rail) main {
     margin-left: calc(var(--cn-width-tray) + var(--cn-gap));
   }
 }
