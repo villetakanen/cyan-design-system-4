@@ -41,7 +41,7 @@ textarea:focus::placeholder {
 
 textarea:disabled {
   opacity: 0.5;
-  background: var(--cn-color-disabled);
+  background: var(--color-input-disabled);
 }
 
 textarea[data-error="true"] {
