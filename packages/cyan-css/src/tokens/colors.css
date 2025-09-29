@@ -169,7 +169,6 @@
   --cn-color-hover: var(--color-hover);
   --cn-color-focus: var(--color-on-focus);
   --cn-color-active: var(--chroma-primary-80);
- 
 
   /* Elevation/Shadow colors */
   --color-shadow: light-dark(var(--chroma-surface-70), var(--chroma-surface-99));

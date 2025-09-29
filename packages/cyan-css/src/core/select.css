@@ -69,9 +69,8 @@ label:has(select) {
   display: block; /* Make sure the label takes up full width */
 }
 
-
 label:has(select):after {
-  content: ''; /* Required for pseudo-elements */
+  content: ""; /* Required for pseudo-elements */
   position: absolute;
   top: calc(var(--cn-grid) * 4.5); /* Vertically center relative to the select */
   right: calc(var(--cn-grid) * 1.5); /* Position on the right */
@@ -82,7 +81,7 @@ label:has(select):after {
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 8px solid var(--color-on-input); /* This creates the downward-pointing triangle */
-  
+
   /* Vertically center and prevent clicks */
   transform: translateY(-50%);
   pointer-events: none; /* Allows clicks to pass through to the select element */
