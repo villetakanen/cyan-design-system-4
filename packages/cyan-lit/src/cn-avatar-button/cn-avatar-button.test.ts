@@ -38,6 +38,7 @@ describe('CnAvatarButton', () => {
     expect(img).toBeTruthy();
     expect(img?.getAttribute('src')).toBe('/test/avatar.jpg');
     expect(img?.getAttribute('alt')).toBe('Avatar');
+    expect(img?.getAttribute('loading')).toBe('lazy');
 
     document.body.removeChild(element);
   });

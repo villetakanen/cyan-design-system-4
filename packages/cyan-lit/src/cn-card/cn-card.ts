@@ -34,7 +34,7 @@ export class CnCard extends LitElement {
 
     if (!this.href)
       return html`<div class="cardContent" aria-hidden="true">
-        <img src=${coverUrl} alt="" />
+        <img src=${coverUrl} alt="" loading="lazy" />
         <div class="tint"></div>
       </div>`;
 
@@ -42,7 +42,7 @@ export class CnCard extends LitElement {
 
     return html`<div class="cardContent" aria-hidden="true">
       <a href=${linkUrl} class="cardContent">
-        <img src=${coverUrl} alt="" class="coverImage"/>
+        <img src=${coverUrl} alt="" class="coverImage" loading="lazy"/>
         <div class="tint"></div>
       </a>
     </div>`;
