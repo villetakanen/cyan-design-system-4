@@ -5,13 +5,35 @@
   --chroma-S-K: hsl(204deg, 100%, 11%);
   --chroma-S-K-hsl: 204, 100%, 11%;
 
-  /* Standard palette */
-  --chroma-C: hsl(170deg, 100%, 20%);
-  --chroma-C-hsl: 170, 100%, 20%;
-  --chroma-N: hsl(65deg, 100%, 63%);
-  --chroma-N-hsl: 65, 100%, 63%;
-  --chroma-A: hsl(318, 83%, 40%);
-  --chroma-A-hsl: 318, 83%, 40%;
+  /* ============================================
+   * CHROMA MASTER COLORS
+   * ============================================
+   * These are the semantic accent colors that can be overridden
+   * to create custom themes. They map to functional UI states:
+   * - info: Informational messages, accents (default: teal)
+   * - warning: Warning states, caution (default: yellow)
+   * - error: Error states, destructive actions (default: magenta)
+   * 
+   * Note: -hsl variants removed as they're no longer needed with color-mix()
+   */
+
+  /* Info/Accent Color */
+  --chroma-info: hsl(170deg, 100%, 20%);
+
+  /* Warning Color */
+  --chroma-warning: hsl(65deg, 100%, 63%);
+
+  /* Error/Alert Color */
+  --chroma-error: hsl(318, 83%, 40%);
+
+  /* Derived tints for subtle backgrounds (10% opacity) */
+  --chroma-info-tint: color-mix(in hsl, var(--chroma-info), transparent 90%);
+  --chroma-warning-tint: color-mix(
+    in hsl,
+    var(--chroma-warning),
+    transparent 90%
+  );
+  --chroma-error-tint: color-mix(in hsl, var(--chroma-error), transparent 90%);
 
   /* primary palette, in material 3 style notation */
   --chroma-primary-99: hsl(185deg, 100%, 14%);

@@ -39,6 +39,39 @@ The color scale is themeable by replacing the "chroma" with a custom set of colo
 
 Color tokens are defined with a `--color-` prefix and are located in the `src/tokens/colors` directory. Tokens are available for both light and dark modes and include `--color-on-` tokens for accessible text colors on specific backgrounds. Surface tokens prefixed with `--surface-` define background colors for various app surfaces.
 
+## Chroma Master Colors
+
+The Cyan Design System uses three semantic accent colors for functional UI states. These are **master/theme-level tokens** that can be overridden to match your brand:
+
+| Token | Purpose | Default Color | Usage |
+|-------|---------|---------------|-------|
+| `--chroma-info` | Informational messages, accents | Teal `hsl(170deg, 100%, 20%)` | Info badges, accent elements |
+| `--chroma-warning` | Warning states | Yellow `hsl(65deg, 100%, 63%)` | Warning messages, caution states |
+| `--chroma-error` | Error states, destructive actions | Magenta `hsl(318, 83%, 40%)` | Error messages, delete buttons |
+
+### Tint Variants
+
+Each chroma color has a `-tint` variant for subtle background usage (10% opacity):
+
+- `--chroma-info-tint`
+- `--chroma-warning-tint`
+- `--chroma-error-tint`
+
+### Custom Theming Example
+
+Override the chroma master colors to create custom themes:
+
+```css
+:root {
+  /* Override with your brand colors */
+  --chroma-info: hsl(210, 100%, 50%);      /* Blue */
+  --chroma-warning: hsl(30, 100%, 50%);    /* Orange */
+  --chroma-error: hsl(0, 85%, 50%);        /* Red */
+}
+```
+
+These master colors are then used throughout the system via semantic tokens like `--cn-color-info`, `--cn-color-warning`, and `--cn-color-error`.
+
 ## Base theme
 
 ### Surfaces and text colors

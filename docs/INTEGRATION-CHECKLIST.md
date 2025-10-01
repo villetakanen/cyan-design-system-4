@@ -147,3 +147,89 @@ pnpm dev              # Test development workflow
 ## 🚀 Ready to Execute
 
 All packages are already in the monorepo. This checklist focuses on polishing the integration rather than migrating code. The heavy lifting is done!
+
+---
+
+## Breaking Changes in v4.0.0
+
+### Chroma Token Renaming (v4.0.0-beta.6)
+
+The abstract chroma color tokens have been renamed to semantic names for better developer experience and clarity.
+
+#### Token Migration Table
+
+| Old Token | New Token | Migration Action |
+|-----------|-----------|------------------|
+| `--chroma-C` | `--chroma-info` | Find and replace in your overrides |
+| `--chroma-C-hsl` | ~~Removed~~ | Use `color-mix()` instead |
+| `--chroma-N` | `--chroma-warning` | Find and replace in your overrides |
+| `--chroma-N-hsl` | ~~Removed~~ | Use `color-mix()` instead |
+| `--chroma-A` | `--chroma-error` | Find and replace in your overrides |
+| `--chroma-A-hsl` | ~~Removed~~ | Use `color-mix()` instead |
+
+#### Example: Before and After
+
+**Before (v4.0.0-beta.5 and earlier):**
+```css
+:root {
+  /* Override chroma colors */
+  --chroma-C: hsl(210, 100%, 50%);      /* What does C mean? */
+  --chroma-N: hsl(30, 100%, 50%);       /* What does N mean? */
+  --chroma-A: hsl(0, 85%, 50%);         /* What does A mean? */
+}
+```
+
+**After (v4.0.0-beta.6+):**
+```css
+:root {
+  /* Override chroma colors - now self-documenting! */
+  --chroma-info: hsl(210, 100%, 50%);      /* Info/accent blue */
+  --chroma-warning: hsl(30, 100%, 50%);    /* Warning orange */
+  --chroma-error: hsl(0, 85%, 50%);        /* Error red */
+}
+```
+
+#### New Tokens Available
+
+The following tint variants are now available for subtle backgrounds:
+- `--chroma-info-tint` (10% opacity of info color)
+- `--chroma-warning-tint` (10% opacity of warning color)
+- `--chroma-error-tint` (10% opacity of error color)
+- `--background-alert-tint` (semantic level - replaces incorrect `--chroma-alert-field-tint`)
+
+#### Removed Legacy Tokens
+
+The following `-hsl` variants have been removed as they're no longer needed with modern `color-mix()`:
+- `--chroma-C-hsl`
+- `--chroma-N-hsl`
+- `--chroma-A-hsl`
+
+**If you were using `-hsl` variants**, migrate to `color-mix()` for color manipulation:
+
+```css
+/* Old way with -hsl */
+background: hsl(var(--chroma-C-hsl), 0.5);
+
+/* New way with color-mix() */
+background: color-mix(in hsl, var(--chroma-info), transparent 50%);
+```
+
+#### Action Required
+
+1. **Search your codebase** for any direct usage of the old tokens:
+   ```bash
+   grep -r "--chroma-C" .
+   grep -r "--chroma-N" .
+   grep -r "--chroma-A" .
+   ```
+
+2. **Replace with semantic names** using find-and-replace
+
+3. **Test your theme overrides** to ensure colors still display correctly
+
+#### Impact
+
+- **Low impact** for most users - only affects custom theme overrides
+- Internal packages already updated
+- No functional changes, only naming improvements
+
