@@ -88,7 +88,7 @@ describe('CnCard', () => {
     const coverImg = element.shadowRoot?.querySelector('.cardContent img');
     expect(coverImg?.getAttribute('src')).toBe('/test-image.jpg');
     expect(coverImg?.getAttribute('loading')).toBe('lazy');
-    
+
     document.body.removeChild(element);
   });
 
