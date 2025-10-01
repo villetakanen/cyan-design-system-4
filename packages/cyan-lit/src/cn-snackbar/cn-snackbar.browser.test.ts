@@ -4,14 +4,21 @@ import type { CnSnackbar } from './cn-snackbar.ts';
 
 describe('CnSnackbar - Browser Tests', () => {
   let element: CnSnackbar;
+  let styleElement: HTMLStyleElement;
 
   beforeEach(() => {
+    // Add z-index token to the test environment
+    styleElement = document.createElement('style');
+    styleElement.textContent = ':root { --z-index-snackbar: 60000; }';
+    document.head.appendChild(styleElement);
+
     element = document.createElement('cn-snackbar') as CnSnackbar;
     document.body.appendChild(element);
   });
 
   afterEach(() => {
     document.body.removeChild(element);
+    document.head.removeChild(styleElement);
   });
 
   it('should have proper default styling', async () => {
@@ -24,6 +31,15 @@ describe('CnSnackbar - Browser Tests', () => {
     expect(styles.left).toBe('8px');
     expect(styles.opacity).toBe('0');
     expect(styles.transition).toContain('opacity 0.3s');
+  });
+
+  it('should have high z-index to appear above other elements', async () => {
+    await customElements.whenDefined('cn-snackbar');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const styles = getComputedStyle(element);
+    // z-index should be 60000 (--z-index-snackbar token)
+    expect(styles.zIndex).toBe('60000');
   });
 
   it('should become visible when `visible` property is true', async () => {

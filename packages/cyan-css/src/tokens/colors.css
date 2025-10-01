@@ -169,7 +169,6 @@
   --cn-color-hover: var(--color-hover);
   --cn-color-focus: var(--color-on-focus);
   --cn-color-active: var(--chroma-primary-80);
-  --cn-color-disabled: var(--chroma-surface-40);
 
   /* Elevation/Shadow colors */
   --color-shadow: light-dark(var(--chroma-surface-70), var(--chroma-surface-99));
@@ -190,6 +189,11 @@
   --color-input-focus: light-dark(
     var(--chroma-surface-30),
     var(--chroma-surface-99)
+  );
+
+  --color-input-disabled: light-dark(
+    var(--chroma-surface-20),
+    var(--chroma-surface-80)
   );
 
   /* Dialog/backdrop specific token */

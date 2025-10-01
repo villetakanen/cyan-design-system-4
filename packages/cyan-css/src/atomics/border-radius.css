@@ -13,3 +13,6 @@
 .radius-round {
   border-radius: 50%;
 }
+.border-radius {
+  border-radius: var(--cn-border-radius-large);
+}

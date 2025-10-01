@@ -15,6 +15,31 @@ The App Rail is a html `nav` element, containing anchor links, with a `cn-naviga
 >
 > Items available only on mobile or desktop can be conditionally rendered based on the viewport size by using the atomic CSS classes `.sm-hidden`, `.md-hidden`, and `.lg-hidden`.
 
+## Modal Screen Integration
+
+For fullscreen modal experiences (like editor views), the rail should be hidden on small screens to maximize content area. Apply the `sm-hidden` class to `nav#rail` when opening modal screens:
+
+```javascript
+// Hide rail on mobile when opening modal
+document.querySelector('nav#rail')?.classList.add('sm-hidden');
+
+// Restore rail when closing modal  
+document.querySelector('nav#rail')?.classList.remove('sm-hidden');
+```
+
+This ensures the rail is hidden on mobile (≤620px) but remains visible on desktop as a sidebar. See **[Modal Screens](/application/modal-screens)** for complete implementation guidelines.
+
+## Component Interactions
+
+### FAB Tray Integration
+
+The rail automatically interacts with the FAB tray (`nav#fab-tray`) to prevent overlap:
+
+- **Desktop (>620px):** Rail as left sidebar - no FAB tray adjustment needed
+- **Mobile (≤620px):** Rail as bottom bar - FAB tray moves up by `--cn-height-rail` (72px)
+
+This ensures floating action buttons remain accessible above the bottom navigation rail on mobile devices.
+
 ## Layout and Spacing
 
 The following CSS variables are available for customizing the layout and spacing of the app rail.

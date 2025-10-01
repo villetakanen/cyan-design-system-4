@@ -5,3 +5,15 @@
 .light {
   color-scheme: light;
 }
+
+/* Theme visibility utilities */
+@media screen and (prefers-color-scheme: light) {
+  .dark-only {
+    display: none;
+  }
+}
+@media screen and (prefers-color-scheme: dark) {
+  .light-only {
+    display: none;
+  }
+}
