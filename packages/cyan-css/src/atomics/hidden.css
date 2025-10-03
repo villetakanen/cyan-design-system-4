@@ -37,6 +37,14 @@
   }
 }
 
+/* wide screen utilities */
+@media screen and (min-width: 1380px) {
+  .wide-flex-col {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}
+
 /* screen reader only */
 .screen-reader-only {
   position: absolute;

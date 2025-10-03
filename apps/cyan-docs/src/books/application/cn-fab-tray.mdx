@@ -26,6 +26,16 @@ import FabTrayDemo from '@components/demo/FabTrayDemo.astro';
 </nav>
 ```
 
+<h2>Responsive Behavior</h2>
+
+<h3>Rail Integration</h3>
+<p>The FAB tray automatically adjusts its position when the rail navigation is present:</p>
+
+- **Desktop (>620px):** Rail appears as left sidebar - FAB tray position unchanged
+- **Mobile (≤620px):** Rail appears as bottom bar - FAB tray moves up by rail height (72px)
+
+This ensures the FAB tray is always accessible and not covered by the bottom navigation rail on mobile devices.
+
 <h2>CSS Custom Properties</h2>
 <p>You can customize the position of the FAB tray using the following CSS custom properties:</p>
 <table>
@@ -46,6 +56,11 @@ import FabTrayDemo from '@components/demo/FabTrayDemo.astro';
       <td><code>--cyan-fab-tray-right</code></td>
       <td>The distance from the right of the viewport.</td>
       <td><code>24px</code></td>
+    </tr>
+    <tr>
+      <td><code>--cn-height-rail</code></td>
+      <td>Height of the rail (used for mobile positioning).</td>
+      <td><code>72px</code></td>
     </tr>
   </tbody>
 </table>

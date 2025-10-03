@@ -28,16 +28,19 @@
   flex-wrap: nowrap;
 }
 
-/* Flex item utilities */
-.flex-none {
+/* Flex item utilities - increased specificity to override parent rules */
+.flex-none,
+.flex > .flex-none {
   flex: none;
 }
 
-.grow {
+.grow,
+.flex > .grow {
   flex-grow: 1;
 }
 
-.shrink {
+.shrink,
+.flex > .shrink {
   flex-shrink: 1;
 }
 

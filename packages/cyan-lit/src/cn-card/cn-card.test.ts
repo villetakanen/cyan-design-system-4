@@ -79,14 +79,15 @@ describe('CnCard', () => {
 
   it('should render cover image when cover is provided', async () => {
     const element = document.createElement('cn-card') as CnCard;
-    element.cover = '/test-image.jpg';
     document.body.appendChild(element);
+    element.cover = '/test-image.jpg';
 
+    await element.updateComplete;
     await customElements.whenDefined('cn-card');
-    await new Promise((resolve) => setTimeout(resolve, 0));
 
     const coverImg = element.shadowRoot?.querySelector('.cardContent img');
     expect(coverImg?.getAttribute('src')).toBe('/test-image.jpg');
+    expect(coverImg?.getAttribute('loading')).toBe('lazy');
 
     document.body.removeChild(element);
   });

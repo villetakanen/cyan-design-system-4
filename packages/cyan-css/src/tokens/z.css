@@ -1,6 +1,17 @@
+/*
+ * Z-index hierarchy for Cyan Design System components
+ * 
+ * Lower values appear behind higher values:
+ * - Tray (20000): Side navigation tray
+ * - Rail (30000): Bottom navigation rail and app icons
+ * - Tray Button (40000): Button that opens/closes tray
+ * - Modal (50000): Modal dialogs and overlays
+ * - Snackbar (60000): Toast notifications - should always be topmost
+ */
 :root {
   --z-index-tray: 20000;
   --z-index-rail: 30000;
   --z-index-tray-button: 40000;
   --z-index-modal: 50000;
+  --z-index-snackbar: 60000;
 }

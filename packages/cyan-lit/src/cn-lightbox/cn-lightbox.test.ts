@@ -32,6 +32,7 @@ describe('CnLightbox', () => {
     expect(figure).toBeTruthy();
     const img = element.shadowRoot?.querySelector('img');
     expect(img?.src).toContain('test.jpg');
+    expect(img?.getAttribute('loading')).toBe('lazy');
     const caption = element.shadowRoot?.querySelector('figcaption');
     expect(caption?.textContent).toBe('test caption');
 
@@ -55,7 +56,9 @@ describe('CnLightbox', () => {
     expect(figures?.length).toBe(2);
     const imgs = element.shadowRoot?.querySelectorAll('img');
     expect(imgs?.[0]?.src).toContain('test1.jpg');
+    expect(imgs?.[0]?.getAttribute('loading')).toBe('lazy');
     expect(imgs?.[1]?.src).toContain('test2.jpg');
+    expect(imgs?.[1]?.getAttribute('loading')).toBe('lazy');
     const captions = element.shadowRoot?.querySelectorAll('figcaption');
     expect(captions?.[0]?.textContent).toBe('caption 1');
     expect(captions?.[1]?.textContent).toBe('caption 2');
