@@ -1,0 +1,199 @@
+---
+title: <cn-accordion>
+noun: card
+description: A Material Design 3 style accordion component for expandable content.
+---
+
+<article class="column-l surface">
+
+# `<cn-accordion>`
+
+A Material Design 3 style accordion component for expandable and collapsible content sections. Perfect for FAQs, settings panels, and progressive disclosure patterns.
+
+## Examples
+
+### Basic Usage
+
+<div class="grid two-col">
+
+<div class="surface border radius-m light">
+  <h4>Light Mode - Collapsed</h4>
+  <cn-accordion label="Section 1" class="elevation-1 border">
+    <p>This is the expandable content that appears when you click the header.</p>
+  </cn-accordion>
+  </div>
+
+  <div class="surface border radius-m dark">
+    <h4>Dark Mode - Collapsed</h4>
+    <cn-accordion label="Section 2" class="border radius-m">
+      <p>This is the expandable content that appears when you click the header.</p>
+    </cn-accordion>
+  </div>
+</div>
+
+### Expanded State
+
+<div class="grid two-col">
+
+<div class="surface-container">
+<h4>Light Mode - Expanded</h4>
+<cn-accordion label="Section 2" expanded>
+  <p>This content is visible by default because the <code>expanded</code> attribute is set.</p>
+  <p>It can contain multiple elements and rich content.</p>
+</cn-accordion>
+</div>
+
+<div class="surface-container dark">
+<h4>Dark Mode - Expanded</h4>
+<cn-accordion label="Section 2" expanded>
+  <p>This content is visible by default because the <code>expanded</code> attribute is set.</p>
+  <p>It can contain multiple elements and rich content.</p>
+</cn-accordion>
+</div>
+
+</div>
+
+### Custom Header
+
+<cn-accordion>
+  <span slot="header">
+    <strong>Custom Header</strong> with <em>rich formatting</em>
+  </span>
+  <div>
+    <h3>Rich Content</h3>
+    <p>You can put any content here, including other components.</p>
+  </div>
+</cn-accordion>
+
+### With Icon (noun)
+
+<div class="grid two-col">
+
+<cn-accordion label="Character Stats" noun="dice" expanded>
+  <p>Display important character information with a visual indicator.</p>
+  <p>The small icon helps users quickly identify the content type.</p>
+</cn-accordion>
+
+<cn-accordion label="Equipment" noun="card">
+  <p>Organize related content with meaningful icons.</p>
+  <p>Icons are displayed small and before the label text.</p>
+</cn-accordion>
+
+</div>
+
+## Accessibility
+
+The `cn-accordion` component is fully accessible and keyboard-navigable:
+
+- **Keyboard Navigation**: 
+  - Press `Tab` to focus the accordion header
+  - Press `Enter` or `Space` to toggle expansion
+  - Content is properly announced by screen readers
+  
+- **ARIA Attributes**:
+  - `role="button"` on the header for proper semantic meaning
+  - `aria-expanded` indicates the current state to assistive technologies
+  - `aria-hidden` hides collapsed content from screen readers
+  - `aria-disabled` indicates when the accordion cannot be interacted with
+  - `tabindex="0"` makes the header keyboard focusable
+
+- **Visual Focus Indicators**: The component respects system focus styles for keyboard users.
+
+- **Screen Reader Support**: All state changes are properly announced, making the component fully usable with screen readers like NVDA, JAWS, and VoiceOver.
+
+## API
+
+### Properties
+
+| Name       | Attribute  | Type      | Default | Description                                  |
+|------------|------------|-----------|---------|----------------------------------------------|
+| `label`    | `label`    | `string`  | `''`    | The text to display in the accordion header. |
+| `noun`     | `noun`     | `string`  | `''`    | Icon name to display before the label (e.g., "card", "dice"). |
+| `expanded` | `expanded` | `boolean` | `false` | Whether the accordion is expanded or not.    |
+| `disabled` | `disabled` | `boolean` | `false` | Whether the accordion is disabled or not.    |
+
+### Slots
+
+| Name       | Description                                       |
+|------------|---------------------------------------------------|
+| `header`   | Custom content for the accordion header.          |
+| (default)  | The content to be shown when the accordion is expanded. |
+
+### Events
+
+| Name                  | Description                                   |
+|-----------------------|-----------------------------------------------|
+| `cn-accordion-toggle` | Fired when the accordion is expanded or collapsed. |
+
+### CSS Custom Properties
+
+| Name                                   | Description                               |
+|----------------------------------------|-------------------------------------------|
+| `--cn-accordion-background`              | Background color of the accordion.        |
+| `--cn-accordion-border`                  | Border of the accordion.                  |
+| `--cn-accordion-header-background`       | Background color of the accordion header. |
+| `--cn-accordion-header-background-hover` | Hover background color of the accordion header. |
+| `--cn-accordion-header-text`             | Text color of the accordion header.       |
+| `--cn-accordion-padding`                 | Padding of the accordion content.         |
+| `--cn-accordion-transition-duration`     | Transition duration for the animation.    |
+| `--cn-accordion-icon-size`               | Size of the icon.                         |
+
+### CSS Parts
+
+| Name      | Description                                       |
+|-----------|---------------------------------------------------|
+| `header`  | The header container, can be styled with `::part(header)`. |
+| `content` | The expandable content container, can be styled with `::part(content)`. |
+| `icon`    | The expand/collapse icon, can be styled with `::part(icon)`. |
+
+## Usage Examples
+
+### Multiple Accordions (FAQ Pattern)
+
+```html
+<div class="faq-section">
+  <cn-accordion class="elevation-1" label="What is Cyan Design System?">
+    <p>Cyan is a modern design system built with web components.</p>
+  </cn-accordion>
+  
+  <cn-accordion label="How do I install it?">
+    <p>Install via npm: <code>npm install @11thdeg/cyan-lit @11thdeg/cyan-css</code></p>
+  </cn-accordion>
+  
+  <cn-accordion label="Is it accessible?">
+    <p>Yes! All components follow WCAG 2.1 AA guidelines.</p>
+  </cn-accordion>
+</div>
+```
+
+### Listening to Events
+
+```javascript
+const accordion = document.querySelector('cn-accordion');
+accordion.addEventListener('cn-accordion-toggle', (e) => {
+  console.log('Accordion is now:', e.detail.expanded ? 'open' : 'closed');
+});
+```
+
+### Customizing Styles
+
+```css
+/* Custom styling using CSS parts */
+cn-accordion::part(header) {
+  font-weight: bold;
+  background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+cn-accordion::part(icon) {
+  color: #667eea;
+}
+
+/* Using CSS custom properties */
+cn-accordion {
+  --cn-accordion-background: #f0f0f0;
+  --cn-accordion-padding: 20px;
+  --cn-accordion-transition-duration: 0.5s;
+}
+```
+
+</article>

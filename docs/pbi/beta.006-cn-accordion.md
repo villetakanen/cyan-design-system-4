@@ -14,65 +14,65 @@ This component will be part of the core `cyan-lit` package within the `cyan-desi
 
 1. **Component Scaffolding:**
     
-    - [ ] A new Lit-element named `cn-accordion` is created within the `cyan-lit` package.
+    - [x] A new Lit-element named `cn-accordion` is created within the `cyan-lit` package.
         
-    - [ ] The component is properly exported from `packages/cyan-lit/src/index.ts`.
+    - [x] The component is properly exported from `packages/cyan-lit/src/index.ts`.
         
-    - [ ] Unit tests (`cn-accordion.test.ts`) are created for basic functionality.
+    - [x] Unit tests (`cn-accordion.test.ts`) are created for basic functionality.
         
-    - [ ] Browser tests (`cn-accordion.browser.test.ts`) are created for animations and interactions.
+    - [x] Browser tests (`cn-accordion.browser.test.ts`) are created for animations and interactions.
         
 2. **Basic Functionality:**
     
-    - [ ] The component accepts a `label` attribute for the header text.
+    - [x] The component accepts a `label` attribute for the header text.
         
-    - [ ] The component has an `expanded` boolean attribute/property to control open/closed state.
+    - [x] The component has an `expanded` boolean attribute/property to control open/closed state.
         
-    - [ ] Clicking the header toggles the expanded state.
+    - [x] Clicking the header toggles the expanded state.
         
-    - [ ] The component emits a `cn-accordion-toggle` custom event when the state changes.
+    - [x] The component emits a `cn-accordion-toggle` custom event when the state changes.
         
-    - [ ] The event detail includes the new `expanded` state.
+    - [x] The event detail includes the new `expanded` state.
         
 3. **Content Slotting:**
     
-    - [ ] The component has a named `header` slot for custom header content (optional).
+    - [x] The component has a named `header` slot for custom header content (optional).
         
-    - [ ] The component has a default slot for the expandable content.
+    - [x] The component has a default slot for the expandable content.
         
-    - [ ] If the `header` slot is used, it takes precedence over the `label` attribute.
+    - [x] If the `header` slot is used, it takes precedence over the `label` attribute.
         
 4. **Visual Design (Material 3 Style):**
     
-    - [ ] The header has a clear clickable appearance with appropriate hover states.
+    - [x] The header has a clear clickable appearance with appropriate hover states.
         
-    - [ ] An expand/collapse icon (chevron or similar) is displayed in the header.
+    - [x] An expand/collapse icon (chevron or similar) is displayed in the header.
         
-    - [ ] The icon rotates smoothly when toggling between expanded/collapsed states.
+    - [x] The icon rotates smoothly when toggling between expanded/collapsed states.
         
-    - [ ] Content area expands/collapses with a smooth height transition animation.
+    - [x] Content area expands/collapses with a smooth height transition animation.
         
-    - [ ] The component follows Material 3 spacing, elevation, and visual hierarchy.
+    - [x] The component follows Material 3 spacing, elevation, and visual hierarchy.
         
 5. **Accessibility:**
     
-    - [ ] The header has `role="button"` and appropriate ARIA attributes.
+    - [x] The header has `role="button"` and appropriate ARIA attributes.
         
-    - [ ] The component uses `aria-expanded` to indicate the current state.
+    - [x] The component uses `aria-expanded` to indicate the current state.
         
-    - [ ] The content area has `aria-hidden` when collapsed.
+    - [x] The content area has `aria-hidden` when collapsed.
         
     - [ ] Keyboard navigation is fully supported:
         
-        - `Enter` and `Space` toggle the accordion.
+        - [ ] `Enter` and `Space` toggle the accordion.
             
-        - `Tab` moves focus to/from the accordion header.
+        - [ ] `Tab` moves focus to/from the accordion header (needs `tabindex="0"`).
             
-    - [ ] Screen reader announcements are clear and informative.
+    - [~] Screen reader announcements are clear and informative.
         
 6. **Design Tokens (cyan-css):**
     
-    - [ ] CSS custom properties are added to `cyan-css` for:
+    - [x] CSS custom properties are added to `cyan-css` for:
         
         - `--cn-accordion-background`: Background color of the accordion.
             
@@ -92,19 +92,19 @@ This component will be part of the core `cyan-lit` package within the `cyan-desi
             
 7. **Documentation:**
     
-    - [ ] Documentation page created at `apps/cyan-docs/src/books/custom-elements/cn-accordion.mdx`.
+    - [x] Documentation page created at `apps/cyan-docs/src/books/custom-elements/cn-accordion.mdx`.
         
-    - [ ] Documentation includes:
+    - [x] Documentation includes:
         
-        - Component overview and use cases.
+        - [x] Component overview and use cases.
             
-        - Live examples (expanded, collapsed, custom header).
+        - [x] Live examples (expanded, collapsed, custom header).
             
-        - API reference table (properties, attributes, events, CSS custom properties).
+        - [x] API reference table (properties, attributes, events, CSS custom properties).
             
-        - Accessibility notes.
+        - [ ] Accessibility notes.
             
-        - Light and dark mode examples.
+        - [ ] Light and dark mode examples.
             
 
 ### **Technical Considerations & Implementation Notes**

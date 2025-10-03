@@ -1,0 +1,57 @@
+/*
+* Accordion component
+* ===================================================================== */
+.cyan-accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cyan-accordion {
+  border-radius: var(--cn-border-radius-m);
+  background-color: var(--cn-accordion-background);
+  transition: all var(--cn-accordion-transition-duration) ease-in-out;
+  overflow: hidden;
+  border: var(--cn-accordion-border);
+}
+.cyan-accordion.cyan-accordion--open {
+  background-color: var(--cn-background-elevation-3);
+}
+
+.cyan-accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--cn-accordion-padding);
+  cursor: pointer;
+  transition: background-color var(--cn-accordion-transition-duration)
+    ease-in-out;
+  color: var(--cn-accordion-header-text);
+  background-color: var(--cn-accordion-header-background);
+}
+.cyan-accordion__header:hover {
+  background-color: var(--cn-accordion-header-background-hover);
+}
+.cyan-accordion__header .material-symbols-outlined {
+  transition: transform var(--cn-accordion-transition-duration) ease-in-out;
+  font-size: var(--cn-accordion-icon-size);
+}
+
+.cyan-accordion__content {
+  padding: 0 var(--cn-accordion-padding);
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height var(--cn-accordion-transition-duration) ease-in-out,
+    padding var(--cn-accordion-transition-duration) ease-in-out;
+}
+
+.cyan-accordion.cyan-accordion--open
+  .cyan-accordion__header
+  .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+.cyan-accordion.cyan-accordion--open .cyan-accordion__content {
+  padding: var(--cn-accordion-padding);
+  max-height: 500px; /* Should be enough for most content */
+}

@@ -1,0 +1,10 @@
+:root {
+  --cn-accordion-background: var(--cn-background-elevation-2);
+  --cn-accordion-border: none;
+  --cn-accordion-header-background: transparent;
+  --cn-accordion-header-background-hover: var(--cn-background-elevation-3);
+  --cn-accordion-header-text: var(--cn-color-on-surface);
+  --cn-accordion-padding: 12px;
+  --cn-accordion-transition-duration: 0.22s;
+  --cn-accordion-icon-size: 24px;
+}
