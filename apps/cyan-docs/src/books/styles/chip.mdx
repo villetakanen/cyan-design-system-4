@@ -1,0 +1,166 @@
+---
+title: 'Chips'
+noun: 'components'
+topic: 'Utils'
+---
+
+<article class="column-l">
+
+# Chips
+
+Chips are compact, Material Design-inspired elements that represent attributes, tags, or actions. They work with `<a>`, `<span>`, and `<button>` elements to create clickable tags for navigation, filtering, and categorization.
+
+The `.cn-chip` utility class provides pill-shaped styling that's perfect for tags, filters, and other small interactive elements.
+
+## Demo
+
+<div class="grid two-col">
+  <div class="dark surface">
+    <h4>Dark Mode</h4>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem;">
+      <a href="#fiction" class="cn-chip">Fiction</a>
+      <a href="#adventure" class="cn-chip">Adventure</a>
+      <a href="#sci-fi" class="cn-chip">Sci-Fi</a>
+      <span class="cn-chip">Read-only</span>
+      <button class="cn-chip" type="button">Filter</button>
+    </div>
+  </div>
+  <div class="light surface">
+    <h4>Light Mode</h4>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem;">
+      <a href="#fiction" class="cn-chip">Fiction</a>
+      <a href="#adventure" class="cn-chip">Adventure</a>
+      <a href="#sci-fi" class="cn-chip">Sci-Fi</a>
+      <span class="cn-chip">Read-only</span>
+      <button class="cn-chip" type="button">Filter</button>
+    </div>
+  </div>
+</div>
+
+## Chip Types
+
+### Clickable Link Chips
+Use for navigation to tag pages or filtered views.
+
+```html
+<a href="/tag/fiction" class="cn-chip">Fiction</a>
+<a href="/tag/adventure" class="cn-chip">Adventure</a>
+<a href="/tag/sci-fi" class="cn-chip">Sci-Fi</a>
+```
+
+Example with links:
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 0;">
+  <a href="#rpg" class="cn-chip">RPG</a>
+  <a href="#fantasy" class="cn-chip">Fantasy</a>
+  <a href="#magic" class="cn-chip">Magic</a>
+  <a href="#dungeon" class="cn-chip">Dungeon</a>
+</div>
+
+### Read-only Chips
+Use `<span>` for non-interactive tags and labels.
+
+```html
+<span class="cn-chip">Status: Active</span>
+<span class="cn-chip">Category</span>
+<span class="cn-chip">Read-only Tag</span>
+```
+
+Example with spans:
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 0;">
+  <span class="cn-chip">Published</span>
+  <span class="cn-chip">Featured</span>
+  <span class="cn-chip">Popular</span>
+</div>
+
+### Filter Button Chips
+Use `<button>` for interactive filters and toggles.
+
+```html
+<button class="cn-chip" type="button">All</button>
+<button class="cn-chip" type="button">Recent</button>
+<button class="cn-chip" type="button">Popular</button>
+```
+
+Example with buttons:
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 0;">
+  <button class="cn-chip" type="button">All Items</button>
+  <button class="cn-chip" type="button">Active</button>
+  <button class="cn-chip" type="button">Archived</button>
+</div>
+
+### Disabled Chips
+Buttons support the disabled state.
+
+```html
+<button class="cn-chip" type="button" disabled>Disabled</button>
+```
+
+Example:
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 0;">
+  <button class="cn-chip" type="button">Enabled</button>
+  <button class="cn-chip" type="button" disabled>Disabled</button>
+</div>
+
+## Combining with Utility Classes
+
+Chips work seamlessly with existing utility classes like layout utilities and can be combined with other design system features.
+
+```html
+<div class="flex gap-xs">
+  <a href="/tag/rpg" class="cn-chip">RPG</a>
+  <a href="/tag/fantasy" class="cn-chip">Fantasy</a>
+  <a href="/tag/magic" class="cn-chip">Magic</a>
+</div>
+```
+
+Example with flex layout:
+<div class="flex gap-xs" style="padding: 1rem 0;">
+  <a href="#tag1" class="cn-chip">Tag 1</a>
+  <a href="#tag2" class="cn-chip">Tag 2</a>
+  <a href="#tag3" class="cn-chip">Tag 3</a>
+  <a href="#tag4" class="cn-chip">Tag 4</a>
+</div>
+
+## Design Tokens Used
+
+The chip utility class reuses existing design system tokens for consistency:
+
+- **Border Radius**: `--cn-border-radius-xl` (16px) for pill-shaped appearance
+- **Spacing**: `--cn-grid` based calculations for padding
+- **Colors**: 
+  - Background: `--color-button-text` with hover/active variants
+  - Text: `--color-on-surface`
+  - Disabled: `--background-button-disabled`, `--color-button-disabled`
+- **Typography**: 
+  - Font family: `--cn-font-family-ui`
+  - Font weight: `--cn-font-weight-ui`
+  - Font size: Slightly smaller than button text for compact appearance
+
+## Accessibility
+
+- **Keyboard Navigation**: Clickable chips (`<a>`, `<button>`) are fully keyboard accessible with visible focus indicators
+- **Focus Styles**: Clear outline visible on `:focus-visible` for keyboard navigation
+- **Screen Readers**: Native HTML semantics are preserved - links remain links, buttons remain buttons
+- **Reduced Motion**: Respects `prefers-reduced-motion` user preference
+
+## Guidelines
+
+- Use link chips (`<a>`) for navigation to new pages or filtered views
+- Use span chips for read-only labels and status indicators
+- Use button chips for inline filters and toggles
+- Keep chip text concise - chips are designed for short labels
+- Combine with layout utilities (flex, gap) for proper spacing
+- Use existing color utility classes if needed (e.g., `.primary`, `.call-to-action`)
+- Ensure sufficient contrast for accessibility
+- Consider grouping related chips together visually
+
+## Use Cases
+
+- **Tagging**: Display content tags with links to tag pages
+- **Filtering**: Create filter interfaces with button chips
+- **Status Indicators**: Show status with read-only span chips
+- **Categories**: Display content categories
+- **Metadata**: Show compact metadata like author, date, or type
+- **Multi-select**: Represent selected items in a compact way
+
+</article>

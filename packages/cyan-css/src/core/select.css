@@ -12,11 +12,11 @@ limitations under the License.
 */
 
 select {
-  font-family: var(--cn-font-family-ui);
-  font-weight: var(--cn-font-weight-ui);
-  font-size: var(--cn-font-size-ui);
-  line-height: var(--cn-line-height-ui);
-  letter-spacing: var(--cn-letter-spacing-ui);
+  font-family: var(--cn-font-family);
+  font-weight: var(--cn-font-weight-text);
+  font-size: var(--cn-font-size-text);
+  line-height: var(--cn-line-height-text);
+  letter-spacing: var(--cn-letter-spacing-text);
   color: var(--color-on-input);
   background: var(--color-input);
   border: 0;
@@ -24,20 +24,19 @@ select {
   border-radius: var(--cn-input-border-radius);
   display: block;
   width: 100%;
-  position: relative;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
   margin: 0;
   padding: var(--cn-grid);
   height: calc(var(--cn-grid) * 5);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 -960 960 960' width='24'%3E%3Cpath d='M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right var(--cn-grid) center;
   background-size: 1.5em;
   padding-right: calc(var(--cn-grid) + 1.5em);
   cursor: pointer;
+  flex-grow: 0; /* Prevent the select from growing in flex containers, to avoid layout issues */
 }
 
 select:hover {
@@ -49,16 +48,48 @@ select:hover {
 select:focus {
   outline: none;
   color: var(--cn-color-on-field-active);
-  background: var(--color-input-focus);
+  background: var(--color-field-hover, var(--color-field));
   border-bottom-color: var(--color-border-hover, var(--color-border));
 }
 
 select:disabled {
   opacity: 0.5;
-  background: var(--cn-color-disabled);
+  color: var(--color-text-low);
+  background: var(--color-input-disabled);
   cursor: not-allowed;
 }
 
 select:invalid {
-  border-bottom-color: var(--chroma-alert, blue);
+  color: var(--color-on-alert);
+  border-bottom-color: var(--color-on-alert);
+  background: var(--color-alert);
+}
+label:has(select) {
+  position: relative; /* Ensure the label is positioned relatively for the pseudo-element */
+  display: block; /* Make sure the label takes up full width */
+}
+
+label:has(select):after {
+  content: ""; /* Required for pseudo-elements */
+  position: absolute;
+  top: calc(var(--cn-grid) * 4.5); /* Vertically center relative to the select */
+  right: calc(var(--cn-grid) * 1.5); /* Position on the right */
+  z-index: 10;
+  /* Create the triangle using borders */
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--color-on-input); /* This creates the downward-pointing triangle */
+
+  /* Vertically center and prevent clicks */
+  transform: translateY(-50%);
+  pointer-events: none; /* Allows clicks to pass through to the select element */
+}
+label:has(select:disabled):after {
+  border-top-color: var(--color-text-low); /* Change color when select is disabled */
+}
+
+label:has(select:invalid):after {
+  border-top-color: var(--color-on-alert); /* Change color when select is invalid */
 }

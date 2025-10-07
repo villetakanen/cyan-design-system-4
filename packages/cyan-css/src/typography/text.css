@@ -61,6 +61,20 @@ code {
   padding-inline: calc(var(--cn-grid) / 2);
 }
 
+/* Keyboard input elements */
+kbd {
+  font-family: var(--cn-font-family-mono, monospace);
+  font-size: var(--cn-font-size-mono);
+  line-height: var(--cn-line-height-mono);
+  font-weight: var(--cn-font-weight-mono);
+  letter-spacing: var(--cn-letter-spacing-mono);
+  background-color: var(--color-code);
+  color: var(--color-text-high);
+  padding-inline: calc(var(--cn-grid) / 2);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--cn-grid) / 2);
+}
+
 pre {
   font-family: var(--cn-font-family-mono, monospace);
   font-size: var(--cn-font-size-mono);

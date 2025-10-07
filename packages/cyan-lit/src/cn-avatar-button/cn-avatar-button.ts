@@ -96,7 +96,7 @@ export class CnAvatarButton extends LitElement {
 
   public render() {
     const image = this.src
-      ? html`<img src="${this.src}" alt="Avatar" />`
+      ? html`<img src="${this.src}" alt="Avatar" loading="lazy" />`
       : html`<cn-icon noun="avatar" class="placeholder"></cn-icon>`;
 
     return html`

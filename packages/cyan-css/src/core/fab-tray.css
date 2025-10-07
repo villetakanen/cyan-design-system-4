@@ -12,3 +12,10 @@ nav#fab-tray {
   gap: 8px;
   align-items: flex-end;
 }
+
+/* When rail is present on mobile, move fab-tray up to avoid overlap */
+@media (max-width: 620px) {
+  body:has(nav#rail) nav#fab-tray {
+    bottom: calc(var(--cyan-fab-tray-bottom, 24px) + var(--cn-height-rail));
+  }
+}

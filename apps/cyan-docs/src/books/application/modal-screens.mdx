@@ -1,0 +1,213 @@
+---
+title: Modal Screens
+noun: modal
+description: Guidelines for implementing fullscreen modal experiences that properly hide navigation elements.
+---
+
+<article class="column-l surface">
+
+# Modal Screens
+
+Modal screens are fullscreen experiences that temporarily take over the interface, such as editor views, configuration panels, or immersive content. These screens should hide primary navigation elements on mobile devices to maximize content area and provide a focused experience.
+
+## Hiding Navigation with `sm-hidden`
+
+### The Problem
+
+On mobile devices (≤620px), the `nav.rail` element displays as a bottom navigation bar. When a modal screen is active, this navigation should be hidden to:
+
+- Maximize available screen real estate
+- Prevent accidental navigation while in focused mode
+- Provide a cleaner, distraction-free interface
+
+### The Solution
+
+Use the `sm-hidden` utility class to conditionally hide the rail on small screens:
+
+```javascript
+// When opening a modal screen
+document.querySelector('nav#rail')?.classList.add('sm-hidden');
+
+// When closing a modal screen  
+document.querySelector('nav#rail')?.classList.remove('sm-hidden');
+```
+
+### How `sm-hidden` Works
+
+The `sm-hidden` utility class applies `display: none` only on small screens:
+
+```css
+@media (max-width: 620px) {
+  .sm-hidden {
+    display: none;
+  }
+}
+```
+
+**Breakpoint Behavior:**
+- **≤620px (sm):** Element is hidden when `sm-hidden` class is present
+- **621px-1364px (md):** Class has no effect; element remains visible
+- **≥1365px (lg):** Class has no effect; element remains visible
+
+This ensures that on desktop, where the rail appears as a left sidebar, it remains visible even when `sm-hidden` is applied.
+
+### FAB Tray Interaction
+
+When the rail is hidden with `sm-hidden` on mobile, the FAB tray automatically returns to its normal position since the `:has(nav#rail)` selector no longer matches hidden elements. This means:
+
+- **Rail visible (mobile):** FAB tray positioned above rail
+- **Rail hidden (modal):** FAB tray returns to normal bottom position
+- **Desktop:** FAB tray position unaffected regardless of rail visibility
+
+## Implementation Examples
+
+### Basic Modal Pattern
+
+```html
+<!-- Normal page with rail navigation -->
+<nav id="rail">
+  <a href="/"><cn-navigation-icon noun="home"></cn-navigation-icon></a>
+  <a href="/tools"><cn-navigation-icon noun="tools"></cn-navigation-icon></a>
+</nav>
+
+<main>
+  <button onclick="openEditor()">Open Editor</button>
+</main>
+
+<script>
+function openEditor() {
+  // Hide rail on small screens
+  document.querySelector('nav#rail')?.classList.add('sm-hidden');
+  
+  // Show editor modal
+  showEditorModal();
+}
+
+function closeEditor() {
+  // Show rail again
+  document.querySelector('nav#rail')?.classList.remove('sm-hidden');
+  
+  // Hide editor modal
+  hideEditorModal();
+}
+</script>
+```
+
+### Editor Integration
+
+For editor components like `cn-editor`, apply the pattern when entering fullscreen mode:
+
+```javascript
+class EditorModal extends HTMLElement {
+  connectedCallback() {
+    // Hide navigation when editor modal is active
+    this.hideNavigation();
+  }
+  
+  disconnectedCallback() {
+    // Restore navigation when editor modal is removed
+    this.showNavigation();
+  }
+  
+  hideNavigation() {
+    document.querySelector('nav#rail')?.classList.add('sm-hidden');
+  }
+  
+  showNavigation() {
+    document.querySelector('nav#rail')?.classList.remove('sm-hidden');
+  }
+}
+```
+
+### Responsive Considerations
+
+The `sm-hidden` approach works well because:
+
+1. **Mobile (≤620px):** Rail shows as bottom bar - hiding improves UX
+2. **Tablet/Desktop (>620px):** Rail shows as sidebar - keeping visible maintains context
+
+```css
+/* Rail behavior at different breakpoints */
+
+/* Mobile: Bottom navigation bar */
+@media (max-width: 620px) {
+  nav#rail {
+    position: fixed;
+    bottom: 0;
+    width: 100dvw;
+    flex-direction: row;
+    /* Hidden when .sm-hidden is applied */
+  }
+}
+
+/* Desktop: Left sidebar */  
+@media (min-width: 621px) {
+  nav#rail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--cn-width-rail);
+    flex-direction: column;
+    /* Always visible, even with .sm-hidden */
+  }
+}
+```
+
+## Related Utilities
+
+### Other Responsive Visibility Classes
+
+The design system provides additional responsive utilities:
+
+- `.md-hidden` - Hidden on medium screens (621px-1364px)
+- `.lg-hidden` - Hidden on large screens (≥1365px)
+- `.sm-only` - Only visible on small screens (≤620px)
+- `.md-only` - Only visible on medium screens (621px-1364px)  
+- `.lg-only` - Only visible on large screens (≥1365px)
+
+### Modal-Specific Components
+
+For complete modal implementations, consider using:
+
+- **`cn-app-bar mode="modal"`** - App bar configured for modal screens
+- **`.content-editor`** - Layout utility for fullscreen editor experiences
+- **`<dialog>`** - Native HTML dialog with design system styles
+
+## Best Practices
+
+### Do ✅
+- Apply `sm-hidden` to `nav#rail` when opening modal screens
+- Remove `sm-hidden` when closing modal screens  
+- Test behavior at different viewport sizes
+- Ensure modal screens have their own navigation/close mechanisms
+
+### Don't ❌
+- Hide navigation on desktop unnecessarily
+- Forget to restore navigation when closing modals
+- Apply `sm-hidden` to other critical UI elements without testing
+- Rely on `sm-hidden` for non-navigation hiding patterns
+
+## Testing
+
+To verify the implementation works correctly:
+
+1. **Mobile Testing (≤620px):**
+   - Navigation should hide when modal opens
+   - Navigation should restore when modal closes
+
+2. **Desktop Testing (>620px):**
+   - Navigation should remain visible during modal states
+   - Modal should not interfere with sidebar navigation
+
+3. **Responsive Testing:**
+   - Resize browser window while modal is open
+   - Verify behavior is consistent across breakpoints
+
+## See Also
+
+- **[App Rail](/application/app-rail)** - Primary navigation component
+- **[Dialog](/application/dialog)** - Modal dialog patterns  
+- **[Editor Content](/application/editor-content)** - Fullscreen editor layouts
+- **[Responsive Utilities](/utilities/responsive)** - All responsive visibility classes
+
+</article>

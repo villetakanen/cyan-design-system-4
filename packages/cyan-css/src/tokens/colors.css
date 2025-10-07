@@ -88,10 +88,10 @@
   );
 
   --color-alert: light-dark(var(--chroma-primary-20), var(--chroma-primary-20));
-  --color-on-alert: light-dark(var(--chroma-A), var(--chroma-A));
+  --color-on-alert: light-dark(var(--chroma-error), var(--chroma-error));
 
   /* Notifications (updated from existing) */
-  --color-notify: light-dark(var(--chroma-primary-95), var(--chroma-N));
+  --color-notify: light-dark(var(--chroma-primary-95), var(--chroma-warning));
   --color-on-notify: light-dark(
     var(--chroma-primary-20),
     var(--chroma-surface-70)
@@ -122,7 +122,7 @@
     var(--chroma-primary-60),
     var(--chroma-primary-95)
   );
-  --color-button-cta: light-dark(var(--chroma-A), var(--chroma-A));
+  --color-button-cta: light-dark(var(--chroma-error), var(--chroma-error));
 
   /* Borders */
   --color-border: light-dark(var(--chroma-surface-40), var(--chroma-surface-70));
@@ -161,15 +161,14 @@
 
   /* Functional colors */
   --cn-color-success: var(--chroma-primary-60);
-  --cn-color-warning: var(--chroma-N);
-  --cn-color-error: var(--chroma-A);
-  --cn-color-info: var(--chroma-C);
+  --cn-color-warning: var(--chroma-warning);
+  --cn-color-error: var(--chroma-error);
+  --cn-color-info: var(--chroma-info);
 
   /* Interactive states */
   --cn-color-hover: var(--color-hover);
   --cn-color-focus: var(--color-on-focus);
   --cn-color-active: var(--chroma-primary-80);
-  --cn-color-disabled: var(--chroma-surface-40);
 
   /* Elevation/Shadow colors */
   --color-shadow: light-dark(var(--chroma-surface-70), var(--chroma-surface-99));
@@ -192,6 +191,11 @@
     var(--chroma-surface-99)
   );
 
+  --color-input-disabled: light-dark(
+    var(--chroma-surface-20),
+    var(--chroma-surface-80)
+  );
+
   /* Dialog/backdrop specific token */
   --background-dialog-backdrop: color-mix(
     in hsl,
@@ -212,7 +216,11 @@
   --color-field-focus: var(--color-input-focus);
   --cn-color-on-field-active: var(--color-on-focus);
 
-  --chroma-alert-field-tint: var(--chroma-alert-tint);
+  --background-alert-tint: color-mix(
+    in hsl,
+    var(--color-alert),
+    transparent 90%
+  );
 
   /* Avatar colors */
   --cn-color-avatar-1: light-dark(

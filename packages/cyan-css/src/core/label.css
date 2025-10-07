@@ -16,3 +16,13 @@ label:has(input),
 label:has(select) {
   background-color: transparent;
 }
+
+/* Allow labels with selects to size naturally */
+label:has(select) {
+  width: auto;
+  flex-grow: 0;
+}
+
+label select {
+  width: auto;
+}

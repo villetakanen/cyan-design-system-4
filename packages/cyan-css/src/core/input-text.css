@@ -78,7 +78,7 @@ input[type="search"]:disabled,
 input[type="tel"]:disabled,
 input[type="url"]:disabled {
   opacity: 0.5;
-  background: var(--cn-color-disabled);
+  background: var(--color-input-disabled);
 }
 
 input[data-error="true"] {

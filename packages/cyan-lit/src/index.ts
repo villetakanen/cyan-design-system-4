@@ -1,3 +1,4 @@
+export { CnAccordion } from './cn-accordion/cn-accordion.js';
 export { CnAppBar } from './cn-app-bar/cn-app-bar.js';
 export { CnAvatar } from './cn-avatar/cn-avatar.js';
 export { CnAvatarButton } from './cn-avatar-button/cn-avatar-button.js';

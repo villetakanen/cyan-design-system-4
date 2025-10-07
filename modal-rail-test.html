@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Rail Test</title>
+    <style>
+        /* Import the cyan-css styles for testing */
+        @import url('./packages/cyan-css/src/atomics/hidden.css');
+        @import url('./packages/cyan-css/src/core/rail.css');
+        @import url('./packages/cyan-css/src/tokens/units.css');
+        @import url('./packages/cyan-css/src/tokens/z.css');
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        /* Mock styling for navigation icons */
+        nav.rail a {
+            display: block;
+            padding: 8px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            margin: 4px;
+            border-radius: 4px;
+        }
+        
+        main {
+            padding: 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        
+        .test-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: yellow;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <div>Current viewport: <span id="viewport-size"></span></div>
+        <div>sm-hidden active: <span id="sm-hidden-active"></span></div>
+        <button onclick="toggleModal()">Toggle Modal</button>
+    </div>
+
+    <!-- Rail Navigation (should be hidden when sm-hidden class is applied) -->
+    <nav id="rail">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- FAB Tray (should adjust position based on rail presence) -->
+    <nav id="fab-tray">
+        <button style="width: 56px; height: 56px; border-radius: 50%; background: #2196f3; color: white; border: none; font-size: 24px;">+</button>
+    </nav>
+
+    <main>
+        <h1>Modal Rail Hiding Test</h1>
+        <p>This page tests whether the <code>sm-hidden</code> class properly hides the rail navigation.</p>
+        
+        <h2>Test Instructions:</h2>
+        <ol>
+            <li>Resize the browser window to see how the rail behaves at different sizes</li>
+            <li>At ≤620px: Rail should show as bottom bar</li>
+            <li>At >620px: Rail should show as left sidebar</li>
+            <li>Click "Toggle Modal" to apply/remove <code>sm-hidden</code> class to the rail</li>
+            <li>When <code>sm-hidden</code> is applied and viewport ≤620px: Rail should be hidden</li>
+            <li><strong>FAB Tray Testing:</strong> Notice how the blue FAB button moves up when rail is visible on mobile</li>
+        </ol>
+        
+        <p>Current rail classes: <span id="rail-classes"></span></p>
+        <p><strong>Expected FAB behavior:</strong></p>
+        <ul>
+            <li>≤620px + rail visible: FAB positioned 96px from bottom (24px + 72px rail height)</li>
+            <li>≤620px + rail hidden: FAB positioned 24px from bottom</li>
+            <li>>620px: FAB always positioned 24px from bottom (rail is sidebar)</li>
+        </ul>
+    </main>
+
+    <!-- Mock Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <h2>Modal Dialog</h2>
+            <p>This represents a modal screen like the editor view.</p>
+            <p>The rail should be hidden when this modal is active on small screens.</p>
+            <button onclick="toggleModal()">Close Modal</button>
+        </div>
+    </div>
+
+    <script>
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            document.getElementById('viewport-size').textContent = width + 'px';
+            
+            const rail = document.getElementById('rail');
+            const hasSmHidden = rail.classList.contains('sm-hidden');
+            document.getElementById('sm-hidden-active').textContent = hasSmHidden ? 'YES' : 'NO';
+            document.getElementById('rail-classes').textContent = rail.className || '#rail (no additional classes)';
+        }
+
+        function toggleModal() {
+            const modal = document.getElementById('modal');
+            const rail = document.getElementById('rail');
+            
+            if (modal.style.display === 'block') {
+                // Close modal - remove sm-hidden from rail
+                modal.style.display = 'none';
+                rail.classList.remove('sm-hidden');
+            } else {
+                // Open modal - add sm-hidden to rail
+                modal.style.display = 'block';
+                rail.classList.add('sm-hidden');
+            }
+            updateViewportInfo();
+        }
+
+        // Update info on resize
+        window.addEventListener('resize', updateViewportInfo);
+        updateViewportInfo();
+    </script>
+</body>
+</html>
