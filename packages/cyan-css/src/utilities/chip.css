@@ -1,0 +1,86 @@
+/* Chip utility class
+ * Material Design inspired compact tags for navigation and filtering
+ * Works with a, span, and button elements
+ */
+
+.cn-chip {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--cn-grid) * 0.5); /* 4px for potential icons */
+  vertical-align: middle;
+  
+  /* Spacing - compact sizing */
+  padding: calc(var(--cn-grid) * 0.5) calc(var(--cn-grid) * 2); /* 4px vertical, 16px horizontal */
+  margin: 0;
+  
+  /* Border and shape - pill shape */
+  border-radius: var(--cn-border-radius-xl); /* 16px for full pill */
+  border: none;
+  
+  /* Typography - compact but readable */
+  font-family: var(--cn-font-family-ui);
+  font-weight: var(--cn-font-weight-ui);
+  font-size: calc(var(--cn-font-size-ui) * 0.875); /* Slightly smaller than buttons */
+  line-height: 1.5;
+  letter-spacing: var(--cn-letter-spacing-ui);
+  text-decoration: none;
+  white-space: nowrap;
+  
+  /* Ensure compact height */
+  min-height: 0;
+  height: auto;
+  
+  /* Colors - reuse button text variant colors */
+  background: var(--color-button-text);
+  color: var(--color-on-surface);
+  
+  /* Behavior */
+  cursor: default;
+  user-select: none;
+  
+  /* Smooth transitions */
+  transition: all 0.22s ease-in-out;
+}
+
+/* Interactive states for clickable elements (a, button) */
+a.cn-chip,
+button.cn-chip {
+  cursor: pointer;
+}
+
+a.cn-chip:hover,
+button.cn-chip:hover {
+  background: var(--color-button-text-hover);
+  filter: brightness(1.05);
+}
+
+a.cn-chip:active,
+button.cn-chip:active {
+  background: var(--color-button-text-active);
+  filter: brightness(0.95);
+}
+
+/* Focus state for keyboard navigation */
+a.cn-chip:focus-visible,
+button.cn-chip:focus-visible {
+  outline: 2px solid var(--color-on-button);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+button.cn-chip:disabled {
+  background: var(--background-button-disabled);
+  color: var(--color-button-disabled);
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Support for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .cn-chip {
+    transition: none;
+  }
+}
