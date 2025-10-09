@@ -38,6 +38,9 @@ export class CnEditor extends LitElement {
   // Flag to prevent re-entrant focus calls
   protected _isDelegatingFocus = false;
 
+  // ✅ FIX 3: Store bound function references to prevent memory leaks
+  private _boundHandleFocusOut?: (event: FocusEvent) => void;
+
   // --- Form associated element ----------------------------------------------
   static formAssociated = true;
   protected _internals: ElementInternals;
@@ -80,11 +83,27 @@ export class CnEditor extends LitElement {
       return;
     }
 
-    // If CodeMirror's content DOM is not already the active element, delegate focus.
+    // ✅ FIX 1: Comprehensive readiness check before delegating focus
     if (
-      this._editorView &&
-      document.activeElement !== this._editorView.contentDOM
+      !this._editorView ||
+      !this._editorView.contentDOM ||
+      !this._editorView.contentDOM.isConnected
     ) {
+      console.warn(
+        '[CN-EDITOR] EditorView not ready for focus, deferring...',
+      );
+
+      // Retry after initialization completes
+      requestAnimationFrame(() => {
+        if (this._editorView?.contentDOM?.isConnected) {
+          this._editorView.focus();
+        }
+      });
+      return;
+    }
+
+    // If CodeMirror's content DOM is not already the active element, delegate focus.
+    if (document.activeElement !== this._editorView.contentDOM) {
       // console.log('[CN-EDITOR] Host focused, delegating to CodeMirror.');
       this._isDelegatingFocus = true;
       this._editorView.focus();
@@ -105,9 +124,11 @@ export class CnEditor extends LitElement {
 
   firstUpdated() {
     if (this._editorContainer) {
+      // ✅ FIX 3: Store bound reference for proper cleanup
+      this._boundHandleFocusOut = this._handleFocusOut.bind(this);
       this._editorContainer.addEventListener(
         'focusout',
-        this._handleFocusOut.bind(this),
+        this._boundHandleFocusOut,
       );
 
       const state = createEditorState(
@@ -141,6 +162,16 @@ export class CnEditor extends LitElement {
         state,
         parent: this._editorContainer,
       });
+
+      // ✅ FIX 2: Handle autofocus after initialization
+      // If component should be focused, ensure it happens AFTER initialization
+      if (this.hasAttribute('autofocus') || document.activeElement === this) {
+        requestAnimationFrame(() => {
+          if (this._editorView?.contentDOM?.isConnected) {
+            this._editorView.focus();
+          }
+        });
+      }
     } else {
       console.error(
         '[cn-editor]: CodeMirror container not found in firstUpdated!',
@@ -200,13 +231,15 @@ export class CnEditor extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('focus', this._handleHostFocus); // No need to bind again if bound in constructor or using arrow func
+    this.removeEventListener('focus', this._handleHostFocus);
     this._editorView?.destroy();
-    if (this._editorContainer) {
+
+    // ✅ FIX 3: Remove correct listener using stored reference
+    if (this._editorContainer && this._boundHandleFocusOut) {
       this._editorContainer.removeEventListener(
         'focusout',
-        this._handleFocusOut.bind(this),
-      ); // Or store bound ref
+        this._boundHandleFocusOut,
+      );
     }
   }
 
@@ -305,6 +338,43 @@ export class CnEditor extends LitElement {
       // this.value will be updated by the updateListener
       this._editorView.focus(); // Ensure editor is focused
     }
+  }
+
+  /**
+   * ✅ FIX 4: Diagnostic method for debugging focus issues
+   * Can be called from browser console:
+   * document.querySelector('cn-editor').checkEditorHealth()
+   */
+  public checkEditorHealth() {
+    const health = {
+      hasEditorView: !!this._editorView,
+      hasContentDOM: !!this._editorView?.contentDOM,
+      contentDOMConnected: this._editorView?.contentDOM?.isConnected || false,
+      contentDOMHasFocus:
+        document.activeElement === this._editorView?.contentDOM,
+      hostHasFocus: document.activeElement === this,
+      isDelegatingFocus: this._isDelegatingFocus,
+      value: this.value.substring(0, 50),
+    };
+
+    console.table(health);
+
+    // Auto-fix if possible
+    if (health.hasEditorView && !health.contentDOMHasFocus) {
+      console.warn(
+        '⚠️  ContentDOM does not have focus, attempting to fix...',
+      );
+      this._editorView?.focus();
+      setTimeout(() => {
+        if (document.activeElement === this._editorView?.contentDOM) {
+          console.log('✅ Focus restored successfully');
+        } else {
+          console.error('❌ Focus restoration failed');
+        }
+      }, 100);
+    }
+
+    return health;
   }
 
   static styles = css`

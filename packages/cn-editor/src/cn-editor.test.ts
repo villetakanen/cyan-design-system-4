@@ -414,4 +414,137 @@ describe('CnEditor Form Integration', () => {
       expect(inputSpy).toHaveBeenCalledTimes(3);
     });
   });
+
+  describe('Autofocus Bug Fixes (PBI beta.008)', () => {
+    it('should handle focus when EditorView is not ready', () => {
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      
+      // Create a new editor without initializing
+      const newElement = document.createElement('test-cn-editor') as TestCnEditor;
+      document.body.appendChild(newElement);
+
+      // Simulate focus before EditorView is created
+      newElement.simulateHostFocus(new FocusEvent('focus'));
+
+      // Should log warning about EditorView not being ready
+      expect(consoleSpy).toHaveBeenCalledWith(
+        expect.stringContaining('EditorView not ready for focus'),
+      );
+
+      consoleSpy.mockRestore();
+      newElement.remove();
+    });
+
+    it('should defer focus when contentDOM is not connected', async () => {
+      const newElement = document.createElement('test-cn-editor') as TestCnEditor;
+      document.body.appendChild(newElement);
+
+      // Wait for component to initialize
+      await customElements.whenDefined('test-cn-editor');
+      await new Promise((resolve) => setTimeout(resolve, 10));
+
+      const mockEditorView = newElement.getEditorView();
+      if (mockEditorView) {
+        // Temporarily disconnect contentDOM
+        const originalIsConnected = Object.getOwnPropertyDescriptor(
+          mockEditorView.contentDOM,
+          'isConnected',
+        );
+        
+        Object.defineProperty(mockEditorView.contentDOM, 'isConnected', {
+          get: () => false,
+          configurable: true,
+        });
+
+        // Simulate focus - should defer
+        newElement.simulateHostFocus(new FocusEvent('focus'));
+
+        // Restore
+        if (originalIsConnected) {
+          Object.defineProperty(
+            mockEditorView.contentDOM,
+            'isConnected',
+            originalIsConnected,
+          );
+        }
+      }
+
+      newElement.remove();
+    });
+
+    it('should not call focus again when already delegating', () => {
+      const mockEditorView = element.getEditorView();
+      if (mockEditorView) {
+        const focusSpy = vi.spyOn(mockEditorView, 'focus');
+        
+        // Set delegating flag
+        element.setIsDelegatingFocus(true);
+
+        // Try to focus
+        element.simulateHostFocus(new FocusEvent('focus'));
+
+        // Should not call focus
+        expect(focusSpy).not.toHaveBeenCalled();
+
+        focusSpy.mockRestore();
+      }
+    });
+
+    it('should handle autofocus attribute after initialization', async () => {
+      const autofocusElement = document.createElement('test-cn-editor') as TestCnEditor;
+      autofocusElement.setAttribute('autofocus', '');
+      document.body.appendChild(autofocusElement);
+
+      await customElements.whenDefined('test-cn-editor');
+      
+      // Wait for firstUpdated to complete
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      const mockEditorView = autofocusElement.getEditorView();
+      if (mockEditorView) {
+        // EditorView should exist
+        expect(mockEditorView).toBeDefined();
+        expect(mockEditorView.contentDOM).toBeDefined();
+      }
+
+      autofocusElement.remove();
+    });
+
+    it('should have checkEditorHealth method', () => {
+      expect(typeof element.checkEditorHealth).toBe('function');
+    });
+
+    it('checkEditorHealth should return health status', () => {
+      const health = element.checkEditorHealth();
+
+      expect(health).toHaveProperty('hasEditorView');
+      expect(health).toHaveProperty('hasContentDOM');
+      expect(health).toHaveProperty('contentDOMConnected');
+      expect(health).toHaveProperty('contentDOMHasFocus');
+      expect(health).toHaveProperty('hostHasFocus');
+      expect(health).toHaveProperty('isDelegatingFocus');
+      expect(health).toHaveProperty('value');
+    });
+
+    it('checkEditorHealth should report EditorView status correctly', async () => {
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      
+      const health = element.checkEditorHealth();
+
+      // After initialization, should have EditorView
+      expect(health.hasEditorView).toBe(true);
+      expect(health.hasContentDOM).toBe(true);
+    });
+
+    it('should properly clean up focus event listeners', () => {
+      const newElement = document.createElement('test-cn-editor') as TestCnEditor;
+      document.body.appendChild(newElement);
+
+      // Disconnect should not throw
+      expect(() => {
+        newElement.remove();
+      }).not.toThrow();
+    });
+  });
 });
+

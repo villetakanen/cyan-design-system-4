@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test: Autofocus Keystroke Bug</title>
+  <script type="module">
+    import './src/cn-editor.ts';
+  </script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 0.5rem;
+    }
+    
+    cn-editor {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1rem;
+      min-height: 150px;
+      margin: 1rem 0;
+    }
+    
+    .test-section {
+      background: #f8f9fa;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+      border-left: 4px solid #3498db;
+    }
+    
+    .test-section h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    
+    ol {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin: 0.5rem 0;
+    }
+    
+    code {
+      background: #e9ecef;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    
+    .success {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    
+    .failure {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    .diagnostic {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test: Autofocus Keystroke Bug Fix</h1>
+  
+  <div class="test-section">
+    <h3>🎯 Test 1: Autofocus on Page Load</h3>
+    <p><strong>Expected:</strong> You should be able to type immediately when page loads</p>
+    <cn-editor autofocus placeholder="Try typing immediately when page loads..."></cn-editor>
+    <ol>
+      <li>Refresh this page (⌘+R or Ctrl+R)</li>
+      <li>Immediately try typing (within 100-200ms of load)</li>
+      <li><span class="success">✅ SUCCESS:</span> Text appears without clicking</li>
+      <li><span class="failure">❌ FAILURE:</span> Cursor blinks but no text appears</li>
+    </ol>
+  </div>
+
+  <div class="test-section">
+    <h3>🔍 Test 2: Multiple Editors</h3>
+    <p><strong>Expected:</strong> Tab navigation works correctly between editors</p>
+    <cn-editor placeholder="First editor"></cn-editor>
+    <cn-editor placeholder="Second editor"></cn-editor>
+    <cn-editor placeholder="Third editor"></cn-editor>
+    <ol>
+      <li>Click in the first editor</li>
+      <li>Press Tab to move to next editor</li>
+      <li>Try typing immediately after Tab</li>
+      <li><span class="success">✅ SUCCESS:</span> Text appears in the focused editor</li>
+    </ol>
+  </div>
+
+  <div class="test-section">
+    <h3>⚡ Test 3: Programmatic Focus</h3>
+    <cn-editor id="programmatic-editor" placeholder="This editor will be focused by button click"></cn-editor>
+    <button onclick="focusEditor()">Focus Editor Programmatically</button>
+    <ol>
+      <li>Click the button above</li>
+      <li>Immediately try typing</li>
+      <li><span class="success">✅ SUCCESS:</span> Text appears without clicking editor</li>
+    </ol>
+  </div>
+
+  <div class="diagnostic">
+    <h3>🔬 Diagnostic Tool</h3>
+    <p>Open browser console and run:</p>
+    <code>document.querySelector('cn-editor').checkEditorHealth()</code>
+    <br><br>
+    <button onclick="runDiagnostic()">Run Diagnostic</button>
+    <p>This will show you the internal state of the editor and attempt auto-fix if needed.</p>
+  </div>
+
+  <div class="test-section">
+    <h3>📋 Expected Health Report</h3>
+    <p>When editor is working correctly, <code>checkEditorHealth()</code> should show:</p>
+    <ul>
+      <li><code>hasEditorView</code>: true</li>
+      <li><code>hasContentDOM</code>: true</li>
+      <li><code>contentDOMConnected</code>: true</li>
+      <li><code>contentDOMHasFocus</code>: true (when focused)</li>
+      <li><code>isDelegatingFocus</code>: false (when idle)</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h3>🧪 Test 4: Paste vs Type Comparison</h3>
+    <cn-editor id="paste-test" placeholder="Try both paste and typing"></cn-editor>
+    <ol>
+      <li>Focus the editor above</li>
+      <li>Try pasting content (Ctrl+V / ⌘+V)</li>
+      <li>Try typing new content</li>
+      <li><span class="success">✅ SUCCESS:</span> Both paste AND typing work</li>
+      <li><span class="failure">❌ FAILURE:</span> Only paste works, typing doesn't</li>
+    </ol>
+  </div>
+
+  <script>
+    function focusEditor() {
+      const editor = document.getElementById('programmatic-editor');
+      if (editor) {
+        editor.focus();
+        console.log('[TEST] Programmatic focus called');
+      }
+    }
+
+    function runDiagnostic() {
+      const editor = document.querySelector('cn-editor');
+      if (editor && typeof editor.checkEditorHealth === 'function') {
+        const health = editor.checkEditorHealth();
+        console.log('[TEST] Health check result:', health);
+      } else {
+        console.error('[TEST] checkEditorHealth method not found');
+      }
+    }
+
+    // Log when page loads
+    window.addEventListener('load', () => {
+      console.log('[TEST] Page loaded. Focus should be on autofocus editor.');
+      console.log('[TEST] Active element:', document.activeElement);
+      
+      // Check health after a short delay
+      setTimeout(() => {
+        const editor = document.querySelector('cn-editor[autofocus]');
+        if (editor && typeof editor.checkEditorHealth === 'function') {
+          console.log('[TEST] Auto-checking autofocus editor health:');
+          editor.checkEditorHealth();
+        }
+      }, 500);
+    });
+
+    // Monitor focus changes
+    let focusTimeout;
+    document.addEventListener('focusin', (e) => {
+      clearTimeout(focusTimeout);
+      focusTimeout = setTimeout(() => {
+        console.log('[TEST] Focus changed to:', e.target);
+        if (e.target.tagName === 'CN-EDITOR') {
+          console.log('[TEST] cn-editor focused, checking health in 100ms...');
+          setTimeout(() => {
+            if (typeof e.target.checkEditorHealth === 'function') {
+              e.target.checkEditorHealth();
+            }
+          }, 100);
+        }
+      }, 50);
+    });
+  </script>
+</body>
+</html>
