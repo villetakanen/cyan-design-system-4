@@ -89,9 +89,7 @@ export class CnEditor extends LitElement {
       !this._editorView.contentDOM ||
       !this._editorView.contentDOM.isConnected
     ) {
-      console.warn(
-        '[CN-EDITOR] EditorView not ready for focus, deferring...',
-      );
+      console.warn('[CN-EDITOR] EditorView not ready for focus, deferring...');
 
       // Retry after initialization completes
       requestAnimationFrame(() => {
@@ -361,9 +359,7 @@ export class CnEditor extends LitElement {
 
     // Auto-fix if possible
     if (health.hasEditorView && !health.contentDOMHasFocus) {
-      console.warn(
-        '⚠️  ContentDOM does not have focus, attempting to fix...',
-      );
+      console.warn('⚠️  ContentDOM does not have focus, attempting to fix...');
       this._editorView?.focus();
       setTimeout(() => {
         if (document.activeElement === this._editorView?.contentDOM) {

@@ -418,9 +418,11 @@ describe('CnEditor Form Integration', () => {
   describe('Autofocus Bug Fixes (PBI beta.008)', () => {
     it('should handle focus when EditorView is not ready', () => {
       const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-      
+
       // Create a new editor without initializing
-      const newElement = document.createElement('test-cn-editor') as TestCnEditor;
+      const newElement = document.createElement(
+        'test-cn-editor',
+      ) as TestCnEditor;
       document.body.appendChild(newElement);
 
       // Simulate focus before EditorView is created
@@ -436,7 +438,9 @@ describe('CnEditor Form Integration', () => {
     });
 
     it('should defer focus when contentDOM is not connected', async () => {
-      const newElement = document.createElement('test-cn-editor') as TestCnEditor;
+      const newElement = document.createElement(
+        'test-cn-editor',
+      ) as TestCnEditor;
       document.body.appendChild(newElement);
 
       // Wait for component to initialize
@@ -450,7 +454,7 @@ describe('CnEditor Form Integration', () => {
           mockEditorView.contentDOM,
           'isConnected',
         );
-        
+
         Object.defineProperty(mockEditorView.contentDOM, 'isConnected', {
           get: () => false,
           configurable: true,
@@ -476,7 +480,7 @@ describe('CnEditor Form Integration', () => {
       const mockEditorView = element.getEditorView();
       if (mockEditorView) {
         const focusSpy = vi.spyOn(mockEditorView, 'focus');
-        
+
         // Set delegating flag
         element.setIsDelegatingFocus(true);
 
@@ -491,12 +495,14 @@ describe('CnEditor Form Integration', () => {
     });
 
     it('should handle autofocus attribute after initialization', async () => {
-      const autofocusElement = document.createElement('test-cn-editor') as TestCnEditor;
+      const autofocusElement = document.createElement(
+        'test-cn-editor',
+      ) as TestCnEditor;
       autofocusElement.setAttribute('autofocus', '');
       document.body.appendChild(autofocusElement);
 
       await customElements.whenDefined('test-cn-editor');
-      
+
       // Wait for firstUpdated to complete
       await new Promise((resolve) => setTimeout(resolve, 50));
 
@@ -528,7 +534,7 @@ describe('CnEditor Form Integration', () => {
 
     it('checkEditorHealth should report EditorView status correctly', async () => {
       await new Promise((resolve) => setTimeout(resolve, 10));
-      
+
       const health = element.checkEditorHealth();
 
       // After initialization, should have EditorView
@@ -537,7 +543,9 @@ describe('CnEditor Form Integration', () => {
     });
 
     it('should properly clean up focus event listeners', () => {
-      const newElement = document.createElement('test-cn-editor') as TestCnEditor;
+      const newElement = document.createElement(
+        'test-cn-editor',
+      ) as TestCnEditor;
       document.body.appendChild(newElement);
 
       // Disconnect should not throw
@@ -547,4 +555,3 @@ describe('CnEditor Form Integration', () => {
     });
   });
 });
-

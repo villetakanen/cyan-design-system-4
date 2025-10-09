@@ -1,4 +1,4 @@
-import { describe, expect, it, beforeEach, afterEach, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import './cn-editor.js';
 import type { CnEditor } from './cn-editor.js';
 
@@ -73,9 +73,7 @@ describe('CnEditor - Browser Tests (PBI beta.008)', () => {
     it('should focus editor when autofocus attribute is set', async () => {
       document.body.innerHTML = '';
 
-      const autofocusElement = document.createElement(
-        'cn-editor',
-      ) as CnEditor;
+      const autofocusElement = document.createElement('cn-editor') as CnEditor;
       autofocusElement.setAttribute('autofocus', '');
       document.body.appendChild(autofocusElement);
 
@@ -119,9 +117,7 @@ describe('CnEditor - Browser Tests (PBI beta.008)', () => {
     it('should capture keystrokes after autofocus', async () => {
       document.body.innerHTML = '';
 
-      const autofocusElement = document.createElement(
-        'cn-editor',
-      ) as CnEditor;
+      const autofocusElement = document.createElement('cn-editor') as CnEditor;
       autofocusElement.setAttribute('autofocus', '');
       document.body.appendChild(autofocusElement);
 
