@@ -1,9 +1,11 @@
 import { css, html, LitElement } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 
 /**
  * Avatar component that displays a user's avatar. It can show an image,
  * initials from a nickname, or a default placeholder icon.
+ *
+ * Images are loaded lazily and will fall back to initials or icon if loading fails.
  */
 @customElement('cn-avatar')
 export class CnAvatar extends LitElement {
@@ -61,9 +63,24 @@ export class CnAvatar extends LitElement {
   @property({ type: Number, reflect: true })
   public elevation = 0;
 
+  @state()
+  private imageError = false;
+
   connectedCallback(): void {
     super.connectedCallback();
     this.setAttribute('aria-label', 'Avatar');
+  }
+
+  updated(changedProperties: Map<string, unknown>): void {
+    super.updated(changedProperties);
+    // Reset error state when src changes
+    if (changedProperties.has('src')) {
+      this.imageError = false;
+    }
+  }
+
+  private handleImageError(): void {
+    this.imageError = true;
   }
 
   /**
@@ -84,11 +101,17 @@ export class CnAvatar extends LitElement {
   }
 
   public render() {
-    const image = this.src
-      ? html`<img src="${this.src}" alt="Avatar" />`
-      : this.nick
-        ? html`<div class="placeholder">${this.nick.substring(0, 2)}</div>`
-        : html`<cn-icon noun="avatar"></cn-icon>`;
+    const image =
+      this.src && !this.imageError
+        ? html`<img 
+          src="${this.src}" 
+          alt="Avatar" 
+          loading="lazy"
+          @error=${this.handleImageError}
+        />`
+        : this.nick
+          ? html`<div class="placeholder">${this.nick.substring(0, 2)}</div>`
+          : html`<cn-icon noun="avatar"></cn-icon>`;
 
     return html`
       <div class="avatarFrame" style="${this.renderBackgroundStyle()}">

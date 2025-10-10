@@ -143,4 +143,70 @@ describe('CnAvatar Browser Tests', () => {
 
     document.body.removeChild(element);
   });
+
+  it('should fall back to initials when image fails to load', async () => {
+    const element = document.createElement('cn-avatar') as CnAvatar;
+    element.src = 'https://invalid-url-that-does-not-exist-12345.com/image.jpg';
+    element.nick = 'Test User';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-avatar');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    // Initially should try to show image
+    let img = element.shadowRoot?.querySelector('img');
+    expect(img).toBeTruthy();
+
+    // Simulate image load error
+    img?.dispatchEvent(new Event('error'));
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    // Should now show initials instead
+    const placeholder = element.shadowRoot?.querySelector('div.placeholder');
+    expect(placeholder).toBeTruthy();
+    expect(placeholder?.textContent).toBe('Te');
+
+    // Image should no longer be present
+    img = element.shadowRoot?.querySelector('img');
+    expect(img).toBeFalsy();
+
+    document.body.removeChild(element);
+  });
+
+  it('should fall back to icon when image fails and no nick is provided', async () => {
+    const element = document.createElement('cn-avatar') as CnAvatar;
+    element.src = 'https://invalid-url-that-does-not-exist-12345.com/image.jpg';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-avatar');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    // Simulate image load error
+    const img = element.shadowRoot?.querySelector('img');
+    img?.dispatchEvent(new Event('error'));
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    // Should show default icon
+    const icon = element.shadowRoot?.querySelector('cn-icon');
+    expect(icon).toBeTruthy();
+    expect(icon?.getAttribute('noun')).toBe('avatar');
+
+    document.body.removeChild(element);
+  });
+
+  it('should use lazy loading for images', async () => {
+    const element = document.createElement('cn-avatar') as CnAvatar;
+    element.src =
+      'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRkYwMDAwIi8+Cjwvc3ZnPgo=';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-avatar');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const img = element.shadowRoot?.querySelector('img');
+    expect(img).toBeTruthy();
+    expect(img?.getAttribute('loading')).toBe('lazy');
+
+    document.body.removeChild(element);
+  });
 });
