@@ -142,4 +142,48 @@ describe('CnAvatar', () => {
 
     document.body.removeChild(element);
   });
+
+  it('should add loading="lazy" attribute to images', async () => {
+    const element = document.createElement('cn-avatar') as CnAvatar;
+    element.src = '/test/avatar.jpg';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-avatar');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const img = element.shadowRoot?.querySelector('img');
+    expect(img).toBeTruthy();
+    expect(img?.getAttribute('loading')).toBe('lazy');
+
+    document.body.removeChild(element);
+  });
+
+  it('should reset image error state when src changes', async () => {
+    const element = document.createElement('cn-avatar') as CnAvatar;
+    element.src = '/invalid/image.jpg';
+    element.nick = 'Test User';
+    document.body.appendChild(element);
+
+    await customElements.whenDefined('cn-avatar');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    // Trigger error
+    const img = element.shadowRoot?.querySelector('img');
+    img?.dispatchEvent(new Event('error'));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    // Should show fallback
+    const placeholder = element.shadowRoot?.querySelector('div.placeholder');
+    expect(placeholder).toBeTruthy();
+
+    // Change src - should try to load image again
+    element.src = '/new/image.jpg';
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    const newImg = element.shadowRoot?.querySelector('img');
+    expect(newImg).toBeTruthy();
+    expect(newImg?.getAttribute('src')).toBe('/new/image.jpg');
+
+    document.body.removeChild(element);
+  });
 });
