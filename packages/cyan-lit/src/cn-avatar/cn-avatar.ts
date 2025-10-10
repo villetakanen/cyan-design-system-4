@@ -4,7 +4,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 /**
  * Avatar component that displays a user's avatar. It can show an image,
  * initials from a nickname, or a default placeholder icon.
- * 
+ *
  * Images are loaded lazily and will fall back to initials or icon if loading fails.
  */
 @customElement('cn-avatar')
@@ -101,16 +101,17 @@ export class CnAvatar extends LitElement {
   }
 
   public render() {
-    const image = this.src && !this.imageError
-      ? html`<img 
+    const image =
+      this.src && !this.imageError
+        ? html`<img 
           src="${this.src}" 
           alt="Avatar" 
           loading="lazy"
           @error=${this.handleImageError}
         />`
-      : this.nick
-        ? html`<div class="placeholder">${this.nick.substring(0, 2)}</div>`
-        : html`<cn-icon noun="avatar"></cn-icon>`;
+        : this.nick
+          ? html`<div class="placeholder">${this.nick.substring(0, 2)}</div>`
+          : html`<cn-icon noun="avatar"></cn-icon>`;
 
     return html`
       <div class="avatarFrame" style="${this.renderBackgroundStyle()}">

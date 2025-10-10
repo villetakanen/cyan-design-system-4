@@ -196,7 +196,8 @@ describe('CnAvatar Browser Tests', () => {
 
   it('should use lazy loading for images', async () => {
     const element = document.createElement('cn-avatar') as CnAvatar;
-    element.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRkYwMDAwIi8+Cjwvc3ZnPgo=';
+    element.src =
+      'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxMCAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjRkYwMDAwIi8+Cjwvc3ZnPgo=';
     document.body.appendChild(element);
 
     await customElements.whenDefined('cn-avatar');
