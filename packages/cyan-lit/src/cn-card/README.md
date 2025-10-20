@@ -86,7 +86,6 @@ The card component uses CSS custom properties for theming:
 - `--cn-card-background`: Card background color
 - `--cn-card-box-shadow`: Card shadow
 - `--cn-border-radius-card`: Card border radius
-- `--_cn-card-title-color`: Override for title color
 
 ## Accessibility
 

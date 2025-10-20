@@ -88,7 +88,7 @@ a.button:disabled {
 button.text,
 a.button.text {
   background: var(--color-button-text);
-  color: var(--color-on-button-text);
+  color: var(--color-on-surface);
 }
 
 /* CTA button variant */
@@ -107,8 +107,12 @@ button.secondary,
 a.button.secondary {
   background: linear-gradient(
     in lab 137deg,
-    var(--color-surface-3),
-    var(--color-button)
+    light-dark(var(--chroma-primary-40), var(--chroma-primary-80)),
+    light-dark(var(--chroma-primary-60), var(--chroma-primary-95))
   );
-  color: var(--color-on-button-secondary);
+  color: var(--color-on-button);
+}
+.secondary button.call-to-action,
+.secondary a.button.call-to-action {
+  background: light-dark(var(--chroma-primary-30), var(--chroma-primary-70));
 }

@@ -4,6 +4,11 @@ import CollectionTraySection from '@components/base/CollectionTraySection.astro'
 import Page from '@layouts/Page.astro';
 
 const posts = await getCollection('customElements');
+posts.sort((a, b) => {
+  const titleA = a.data?.title?.toLowerCase() || '';
+  const titleB = b.data?.title?.toLowerCase() || '';
+  return titleA.localeCompare(titleB);
+});
 ---
 <Page tray>
   <div class="content-columns">
@@ -11,12 +16,17 @@ const posts = await getCollection('customElements');
       <h1>Custom Elements</h1>
       <p>Here you can find all the custom elements available in the Cyan Design System.</p>
 
-  <ul>
-    {posts.map(post => (
-      <li><a href={`/custom-elements/${post.id}`}>{post.data.title}</a></li>
-    ))}
-  </ul>
-  </article>
+      <section class="flex flex-col">
+        {posts.map(post => (
+          
+            <a href={`/custom-elements/${post.id}`} class="flex flex-row items-start">
+              <cn-icon noun={post.data.noun} small />
+              <span>{post.data.title}</span>
+            </a>
+  
+        ))}
+      </section>
+    </article>
   </div>
   
   <CollectionTraySection slot="tray"/>

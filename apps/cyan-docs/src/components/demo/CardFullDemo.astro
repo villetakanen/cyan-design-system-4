@@ -1,0 +1,56 @@
+---
+// Demo component for cn-card with elevation selector
+---
+
+<div class="flex flex-col gap-1">
+  <div class="flex items-center gap-1">
+    <label for="card-elevation-select">Elevation:</label>
+    <select id="card-elevation-select">
+      <option value="0">0 - Flat</option>
+      <option value="1" selected>1 - Default</option>
+      <option value="2">2 - Raised</option>
+      <option value="3">3 - Floating</option>
+      <option value="4">4 - Top</option>
+    </select>
+    <cn-toggle-button id="card-secondary-toggle" pressed label="Secondary"></cn-toggle-button>
+  </div>
+
+  <cn-card
+    id="demo-card"
+    class="secondary"
+    noun="d12"
+    cover="https://picsum.photos/400/225"
+    title="A title, which can be up to 2 lines long. A longer title is cut with an ellipsis. Obviously, the width of the card might affect your mileage"
+    href="/"
+    notify
+    elevation="1"
+  >
+    <p class="small">This is a card. It can be used to display a small amount of information, or to highlight a piece of content.</p>
+    <p class="small">Using more than 1-3 short paragraphs of text is not recommended. The text in these paragraphs should be concise.</p>
+    <div slot="actions" class="toolbar">
+      <cn-icon noun="mekanismi" class="flex-none"></cn-icon>
+      <div class="grow"></div>
+      <button class="flex-none">Click me</button>
+      <button class="text flex-none">Click me</button>
+    </div>
+  </cn-card>
+</div>
+
+<script is:inline>
+  const selectElement = document.getElementById('card-elevation-select');
+  const toggleButton = document.getElementById('card-secondary-toggle');
+  const cardElement = document.getElementById('demo-card');
+
+  selectElement?.addEventListener('change', (e) => {
+    const elevation = e.target.value;
+    cardElement?.setAttribute('elevation', elevation);
+  });
+
+  toggleButton?.addEventListener('change', () => {
+    if (toggleButton.pressed) {
+      cardElement?.classList.add('secondary');
+    } else {
+      cardElement?.classList.remove('secondary');
+    }
+  });
+</script>

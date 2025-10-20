@@ -42,12 +42,29 @@ export class CnShareButton extends LitElement {
   }
 
   static styles = css`
+    :host {
+      display: inline-block;
+    }
     :host button {
-      background: none;
+      background: var(--color-button-text);
+      color: var(--color-on-surface);
       border: none;
+      cursor: pointer;
+      border-radius: 50%;
+      width: var(--cn-navigation-button-size);
+      height: var(--cn-navigation-button-size);
       padding: 0;
       margin: 0;
-      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.2s ease;
+    }
+    :host button:hover {
+      background: var(--color-button-text-hover);
+    }
+    :host button:active {
+      background: var(--color-button-text-active);
     }
   `;
 }
