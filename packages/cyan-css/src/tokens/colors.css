@@ -161,9 +161,14 @@
 
   /* Functional colors */
   --cn-color-success: var(--chroma-primary-60);
-  --cn-color-warning: var(--chroma-warning);
   --cn-color-error: var(--chroma-error);
   --cn-color-info: var(--chroma-info);
+
+  /* Semantic color aliases (recommended) */
+  --color-success: var(--cn-color-success);
+  --color-warning: var(--chroma-warning);
+  --color-error: var(--cn-color-error);
+  --color-info: var(--cn-color-info);
 
   /* Interactive states */
   --cn-color-hover: var(--color-hover);
