@@ -44,19 +44,55 @@ Control how flex items wrap in a flex container.
   </div>
 </div>
 
-### Alignment
-- `.flex.items-center`: Centers items both vertically and horizontally (`align-items: center; justify-content: center`).
-- `.flex.items-center > *`: Prevents children from growing (`flex-grow: 0`).
+### Alignment (Cross-Axis)
+
+Control how flex items align perpendicular to the main axis. In row layouts, this affects vertical alignment; in column layouts, horizontal alignment.
+
+| Class Name | Description |
+| --- | --- |
+| `.align-start` | Aligns items to flex-start (`align-items: flex-start`). |
+| `.align-center` | Centers items on the cross-axis (`align-items: center`). |
+| `.align-end` | Aligns items to flex-end (`align-items: flex-end`). |
+
+### Justification (Main-Axis)
+
+Control how flex items are distributed along the main axis. In row layouts, this affects horizontal alignment; in column layouts, vertical alignment.
+
+| Class Name | Description |
+| --- | --- |
+| `.justify-start` | Aligns items to the start (`justify-content: flex-start`). |
+| `.justify-center` | Centers items on the main axis (`justify-content: center`). |
+| `.justify-end` | Aligns items to the end (`justify-content: flex-end`). |
+| `.justify-between` | Distributes items with space between (`justify-content: space-between`). |
+
+### Composite Alignment Utilities
+
+For common patterns, use these composite utilities that set both alignment and justification:
+
+| Class Name | Description |
+| --- | --- |
+| `.flex.items-center` | Centers items both ways (`align-items: center; justify-content: center`). Children don't grow. |
+| `.flex.items-start` | Aligns items to flex-start on cross-axis (`align-items: flex-start`). |
 
 ---
 
 ### Example Usage
 
 ```html
+<!-- Atomic utilities for precise control -->
+<div class="flex justify-between align-center">
+  <div>Left</div>
+  <div>Right</div>
+</div>
+
+<!-- Composite utility for common centering pattern -->
 <div class="flex items-center">
-  <div class="flex-none">Fixed</div>
-  <div class="grow">Flexible</div>
-  <div class="shrink">Shrinkable</div>
+  <cn-icon noun="check"></cn-icon>
+</div>
+
+<!-- Combine atomic utilities -->
+<div class="flex flex-col justify-start align-end">
+  <div>Top-right in column</div>
 </div>
 ```
 
