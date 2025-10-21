@@ -1,0 +1,26 @@
+/*
+  Atomic: hover-underline
+  Purpose: Provide an atomic class to show an underline only on hover for inline text or links.
+  Usage: Add the `hover-underline` class to inline text elements (span, a, etc.) to show
+  an underline on hover while keeping the normal text decoration off.
+*/
+
+.hover-underline {
+  /* Keep underline off by default */
+  text-decoration: none;
+  /* Ensure the element is treated as inline to preserve flow */
+  display: inline;
+}
+
+.hover-underline:hover,
+.hover-underline:focus {
+  /* Use underline on hover and focus for accessibility */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.hover-underline--no-offset:hover,
+.hover-underline--no-offset:focus {
+  text-underline-offset: 0;
+}
