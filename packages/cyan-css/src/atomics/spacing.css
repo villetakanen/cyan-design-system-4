@@ -140,6 +140,54 @@
   margin-bottom: calc(var(--cn-grid) * 2);
 }
 
+/* Negative margin shorthands */
+.m--1 {
+  margin: calc(-1 * var(--cn-grid));
+}
+.m--2 {
+  margin: calc(-2 * var(--cn-grid));
+}
+.mx--1 {
+  margin-left: calc(-1 * var(--cn-grid));
+  margin-right: calc(-1 * var(--cn-grid));
+}
+.mx--2 {
+  margin-left: calc(-2 * var(--cn-grid));
+  margin-right: calc(-2 * var(--cn-grid));
+}
+.my--1 {
+  margin-top: calc(-1 * var(--cn-grid));
+  margin-bottom: calc(-1 * var(--cn-grid));
+}
+.my--2 {
+  margin-top: calc(-2 * var(--cn-grid));
+  margin-bottom: calc(-2 * var(--cn-grid));
+}
+.mt--1 {
+  margin-top: calc(-1 * var(--cn-grid));
+}
+.mt--2 {
+  margin-top: calc(-2 * var(--cn-grid));
+}
+.ml--1 {
+  margin-left: calc(-1 * var(--cn-grid));
+}
+.ml--2 {
+  margin-left: calc(-2 * var(--cn-grid));
+}
+.mr--1 {
+  margin-right: calc(-1 * var(--cn-grid));
+}
+.mr--2 {
+  margin-right: calc(-2 * var(--cn-grid));
+}
+.mb--1 {
+  margin-bottom: calc(-1 * var(--cn-grid));
+}
+.mb--2 {
+  margin-bottom: calc(-2 * var(--cn-grid));
+}
+
 /* Full width and height atomics */
 .full-w {
   width: 100cqw;
