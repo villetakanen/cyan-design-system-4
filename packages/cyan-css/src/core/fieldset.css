@@ -1,0 +1,31 @@
+/**
+ * Fieldset styles for grouping related form controls.
+ *
+ * Provides consistent border-radius and border styling to match
+ * the design system's visual language.
+ *
+ * Design tokens used:
+ * - --cn-border-radius-medium: rounded corners
+ * - --color-border: border color (theme-aware)
+ * - --cn-grid: spacing unit
+ * - --color-on-label: legend text color
+ */
+
+fieldset {
+  /* Reset browser defaults */
+  min-inline-size: auto; /* Override Chrome's min-width: min-content */
+
+  /* Design system styling */
+  border: 1px solid var(--color-border);
+  border-radius: var(--cn-border-radius-medium);
+  padding: var(--cn-grid);
+  margin: 0;
+  margin-bottom: var(--cn-grid);
+}
+
+legend {
+  padding: 0 calc(var(--cn-grid) * 0.5);
+  font-weight: var(--cn-font-weight-heading, bold);
+  font-size: var(--cn-font-size-caption);
+  color: var(--color-on-label);
+}
