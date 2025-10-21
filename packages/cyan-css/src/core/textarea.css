@@ -2,7 +2,7 @@ textarea {
   font-family: var(--cn-font-family-ui);
   font-weight: var(--cn-font-weight-ui);
   font-size: var(--cn-font-size-ui);
-  line-height: var(--cn-line-height-ui);
+  line-height: var(--cn-line-height-text);
   letter-spacing: var(--cn-letter-spacing-ui);
   color: var(--color-on-input);
   background: var(--color-input);

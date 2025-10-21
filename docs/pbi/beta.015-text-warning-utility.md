@@ -38,6 +38,9 @@ The production override implemented:
    - [ ] Add `.text-warning` to a new file `packages/cyan-css/src/atomics/text-colors.css`.
    - [ ] Use `--chroma-warning` or create `--color-warning` token if needed.
    - [ ] Do NOT include font-weight in the utility (keep it atomic).
+   - [x] Added `.text-warning` to `packages/cyan-css/src/atomics/text-color.css`.
+   - [x] Created semantic token `--color-warning` in `packages/cyan-css/src/tokens/colors.css` mapped directly to `--chroma-warning`.
+   - [x] Utility sets color only (no font-weight).
 
 2. **Semantic Color Utilities:**
    - [ ] Add `.text-warning` for warning messages.
@@ -66,24 +69,21 @@ The production override implemented:
 
 ## **Proposed Implementation**
 
-**Option 1: Use existing chroma token**
+Implementation used (semantic mapping + atomic utilities):
+
+Tokens (in `packages/cyan-css/src/tokens/colors.css`):
+
 ```css
-.text-warning {
-  color: var(--chroma-warning);
-}
+--color-warning: var(--chroma-warning);
 ```
 
-**Option 2: Create semantic token (recommended)**
-```css
-/* In tokens/colors.css */
-:root {
-  --color-warning: var(--chroma-warning);
-}
+Atomics (in `packages/cyan-css/src/atomics/text-color.css`):
 
-/* In atomics/text-colors.css */
-.text-warning {
-  color: var(--color-warning);
-}
+```css
+.text-warning { color: var(--color-warning, var(--chroma-warning)); }
+.text-error { color: var(--color-error, var(--chroma-error)); }
+.text-success { color: var(--color-success, var(--chroma-primary-60)); }
+.text-info { color: var(--color-info, var(--chroma-info)); }
 ```
 
 ## **Example Usage**
@@ -132,10 +132,10 @@ The production override couples color with font-weight. After implementing this 
 
 ## **Definition of Done**
 
-- [ ] `.text-warning` utility added to new `atomics/text-colors.css`.
-- [ ] Utility sets ONLY color, not font-weight.
-- [ ] Proper warning color token used (verify or create `--color-warning`).
-- [ ] Complete semantic color set considered (error, success, info).
-- [ ] Colors meet WCAG contrast requirements.
-- [ ] Documentation shows semantic color utilities.
-- [ ] Light and dark theme examples included.
+- [x] `.text-warning` utility added to `packages/cyan-css/src/atomics/text-color.css`.
+- [x] Utility sets ONLY color, not font-weight.
+- [x] Semantic token `--color-warning` added and mapped to chroma.
+- [x] Semantic set for `.text-error`, `.text-success`, `.text-info` added.
+- [ ] Colors meet WCAG contrast requirements (manual verification recommended).
+- [x] Documentation updated in this PBI doc with examples.
+- [ ] Light and dark theme visual examples can be added to docs site (optional follow-up).

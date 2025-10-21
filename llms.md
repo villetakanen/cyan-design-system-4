@@ -119,6 +119,7 @@ Here is a list of the available atomic CSS classes and their descriptions.
 | `.items-start` | Aligns flex items to the start. |
 | `.italic` | Sets font-style to italic. |
 | `.no-underline` | Removes text-decoration. |
+| `.no-decoration` | Alias for `.no-underline`; removes text-decoration (underline, overline, strikethrough). |
 | `.grid` | Sets display to grid. |
 | `.two-col` | Creates a two-column grid. |
 | `.four-col` | Creates a four-column grid. |

@@ -11,3 +11,19 @@
 .text-default {
   color: var(--color-text);
 }
+
+.text-warning {
+  color: var(--color-warning, var(--chroma-warning));
+}
+
+.text-error {
+  color: var(--color-error, var(--chroma-error));
+}
+
+.text-success {
+  color: var(--color-success, var(--chroma-primary-60));
+}
+
+.text-info {
+  color: var(--color-info, var(--chroma-info));
+}

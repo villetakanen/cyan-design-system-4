@@ -6,6 +6,7 @@
 main {
   padding: var(--cn-grid);
   container: main-app-content / inline-size;
+  overflow-x: hidden;
 }
 @media (min-width: 621px) {
   main {

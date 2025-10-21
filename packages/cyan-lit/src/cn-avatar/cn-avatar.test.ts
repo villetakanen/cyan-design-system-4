@@ -149,7 +149,7 @@ describe('CnAvatar', () => {
     document.body.appendChild(element);
 
     await customElements.whenDefined('cn-avatar');
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await element.updateComplete;
 
     const img = element.shadowRoot?.querySelector('img');
     expect(img).toBeTruthy();

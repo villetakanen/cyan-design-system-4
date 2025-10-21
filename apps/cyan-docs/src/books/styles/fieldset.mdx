@@ -1,0 +1,394 @@
+---
+title: 'Fieldset'
+noun: layout
+description: Styled fieldset element for grouping related form controls.
+---
+
+<article class="surface column-l">
+
+# `<fieldset>`
+
+The `<fieldset>` element groups related form controls with consistent border-radius and border styling that matches the design system's visual language. The `<legend>` element provides a caption for the fieldset group.
+
+## Basic Fieldset
+
+Fieldsets receive design system styling with rounded corners, themed borders, and proper spacing. The legend element is styled to integrate seamlessly with the fieldset border.
+
+### Example
+
+import FieldsetDemo from 'src/components/demo/FieldsetDemo.astro';
+
+```html
+<fieldset>
+  <legend>Contact Information</legend>
+  <label>
+    Email
+    <input type="email" name="email">
+  </label>
+  <label>
+    Phone
+    <input type="tel" name="phone">
+  </label>
+</fieldset>
+```
+
+Renders as:
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <FieldsetDemo />
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <FieldsetDemo />
+  </div>
+</div>
+
+## Radio Button Groups
+
+Fieldsets are particularly useful for grouping radio buttons, providing both semantic meaning and visual structure.
+
+### Example
+
+```html
+<fieldset>
+  <legend>Subscription Type</legend>
+  <label>
+    <input type="radio" name="subscription" value="free" checked>
+    Free
+  </label>
+  <label>
+    <input type="radio" name="subscription" value="premium">
+    Premium
+  </label>
+  <label>
+    <input type="radio" name="subscription" value="enterprise">
+    Enterprise
+  </label>
+</fieldset>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <fieldset>
+      <legend>Subscription Type</legend>
+      <label>
+        <input type="radio" name="subscription-light" value="free" checked />
+        Free
+      </label>
+      <label>
+        <input type="radio" name="subscription-light" value="premium" />
+        Premium
+      </label>
+      <label>
+        <input type="radio" name="subscription-light" value="enterprise" />
+        Enterprise
+      </label>
+    </fieldset>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <fieldset>
+      <legend>Subscription Type</legend>
+      <label>
+        <input type="radio" name="subscription-dark" value="free" checked />
+        Free
+      </label>
+      <label>
+        <input type="radio" name="subscription-dark" value="premium" />
+        Premium
+      </label>
+      <label>
+        <input type="radio" name="subscription-dark" value="enterprise" />
+        Enterprise
+      </label>
+    </fieldset>
+  </div>
+</div>
+
+## Checkbox Groups
+
+Fieldsets also work well for grouping related checkboxes.
+
+### Example
+
+```html
+<fieldset>
+  <legend>Preferences</legend>
+  <label>
+    <input type="checkbox" name="newsletter" checked>
+    Subscribe to newsletter
+  </label>
+  <label>
+    <input type="checkbox" name="notifications">
+    Enable notifications
+  </label>
+  <label>
+    <input type="checkbox" name="marketing">
+    Receive marketing emails
+  </label>
+</fieldset>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <fieldset>
+      <legend>Preferences</legend>
+      <label>
+        <input type="checkbox" name="newsletter-light" checked />
+        Subscribe to newsletter
+      </label>
+      <label>
+        <input type="checkbox" name="notifications-light" />
+        Enable notifications
+      </label>
+      <label>
+        <input type="checkbox" name="marketing-light" />
+        Receive marketing emails
+      </label>
+    </fieldset>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <fieldset>
+      <legend>Preferences</legend>
+      <label>
+        <input type="checkbox" name="newsletter-dark" checked />
+        Subscribe to newsletter
+      </label>
+      <label>
+        <input type="checkbox" name="notifications-dark" />
+        Enable notifications
+      </label>
+      <label>
+        <input type="checkbox" name="marketing-dark" />
+        Receive marketing emails
+      </label>
+    </fieldset>
+  </div>
+</div>
+
+## Address Forms
+
+Fieldsets are ideal for grouping related address or contact information fields.
+
+### Example
+
+```html
+<form>
+  <fieldset>
+    <legend>Billing Address</legend>
+    <label>
+      Street
+      <input type="text" name="street">
+    </label>
+    <label>
+      City
+      <input type="text" name="city">
+    </label>
+    <label>
+      ZIP Code
+      <input type="text" name="zip">
+    </label>
+  </fieldset>
+  <button type="submit">Submit</button>
+</form>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <form>
+      <fieldset>
+        <legend>Billing Address</legend>
+        <label>
+          Street
+          <input type="text" name="street-light" />
+        </label>
+        <label>
+          City
+          <input type="text" name="city-light" />
+        </label>
+        <label>
+          ZIP Code
+          <input type="text" name="zip-light" />
+        </label>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <form>
+      <fieldset>
+        <legend>Billing Address</legend>
+        <label>
+          Street
+          <input type="text" name="street-dark" />
+        </label>
+        <label>
+          City
+          <input type="text" name="city-dark" />
+        </label>
+        <label>
+          ZIP Code
+          <input type="text" name="zip-dark" />
+        </label>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+## Multiple Fieldsets
+
+You can use multiple fieldsets in a single form to organize complex forms into logical sections.
+
+### Example
+
+```html
+<form>
+  <fieldset>
+    <legend>Personal Information</legend>
+    <label>
+      Name
+      <input type="text" name="name">
+    </label>
+    <label>
+      Email
+      <input type="email" name="email">
+    </label>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Account Settings</legend>
+    <label>
+      Username
+      <input type="text" name="username">
+    </label>
+    <label>
+      Password
+      <input type="password" name="password">
+    </label>
+  </fieldset>
+  
+  <button type="submit">Create Account</button>
+</form>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <form>
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label>
+          Name
+          <input type="text" name="name-light" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email-light" />
+        </label>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Account Settings</legend>
+        <label>
+          Username
+          <input type="text" name="username-light" />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password-light" />
+        </label>
+      </fieldset>
+      
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <form>
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label>
+          Name
+          <input type="text" name="name-dark" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email-dark" />
+        </label>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Account Settings</legend>
+        <label>
+          Username
+          <input type="text" name="username-dark" />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password-dark" />
+        </label>
+      </fieldset>
+      
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+## Design Tokens
+
+The fieldset element uses the following design tokens:
+
+```css
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--cn-border-radius-medium);
+  padding: var(--cn-grid);
+  margin: 0;
+  margin-bottom: var(--cn-grid);
+}
+
+legend {
+  padding: 0 calc(var(--cn-grid) * 0.5);
+  font-weight: var(--cn-font-weight-heading, bold);
+  font-size: var(--cn-font-size-caption);
+  color: var(--color-on-label);
+}
+```
+
+**Key tokens:**
+- `--color-border`: Border color (supports light/dark themes)
+- `--cn-border-radius-medium`: Rounded corners (8px by default)
+- `--cn-grid`: Spacing unit for padding and margins
+- `--color-on-label`: Legend text color
+- `--cn-font-weight-heading`: Legend font weight
+- `--cn-font-size-caption`: Legend font size
+
+## Accessibility
+
+Fieldsets provide important semantic and accessibility benefits:
+
+- **Semantic Grouping**: The `<fieldset>` element clearly identifies a group of related form controls
+- **Legend**: The `<legend>` element provides a label for the entire group, which screen readers announce
+- **Context**: Screen readers announce the legend when users navigate to any control within the fieldset
+- **Best Practice**: Always use a `<legend>` when using a `<fieldset>` for accessibility
+
+### Example with Good Accessibility
+
+```html
+<!-- Good: Clear legend for screen readers -->
+<fieldset>
+  <legend>Payment Method</legend>
+  <label>
+    <input type="radio" name="payment" value="card">
+    Credit Card
+  </label>
+  <label>
+    <input type="radio" name="payment" value="paypal">
+    PayPal
+  </label>
+</fieldset>
+```
+
+Screen readers will announce: "Payment Method, group" when entering the fieldset, and "Credit Card, radio button, Payment Method group" for each control.
+
+</article>

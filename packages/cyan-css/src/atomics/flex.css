@@ -44,7 +44,37 @@
   flex-shrink: 1;
 }
 
-/* Flex alignment utilities */
+/* Flex alignment utilities (cross-axis) */
+.align-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+/* Flex justification utilities (main-axis) */
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+/* Composite alignment utilities - common patterns */
 .flex.items-center {
   align-items: center;
   justify-content: center;
@@ -71,4 +101,9 @@
 
 .flex.items-start > cn-icon {
   flex-grow: 0;
+}
+
+/* Prevent chips from growing in flex containers */
+.flex > .cn-chip {
+  flex: none;
 }

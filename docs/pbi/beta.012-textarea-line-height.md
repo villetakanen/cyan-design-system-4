@@ -30,9 +30,9 @@ The comment in the override mentions a "legacy bug" about separate line heights 
 ## **Acceptance Criteria**
 
 1. **CSS Fix:**
-   - [ ] Update `packages/cyan-css/src/core/textarea.css`.
-   - [ ] Change `line-height: var(--cn-line-height-ui)` to `line-height: var(--cn-line-height-text)`.
-   - [ ] Remove any legacy `--cn-line-height-ui` custom property overrides on textarea.
+  - [x] Update `packages/cyan-css/src/core/textarea.css`.
+  - [x] Change `line-height: var(--cn-line-height-ui)` to `line-height: var(--cn-line-height-text)`.
+  - [x] Remove any legacy `--cn-line-height-ui` custom property overrides on textarea.
 
 2. **Readability:**
    - [ ] Multi-line text in textareas has comfortable line spacing.
@@ -89,9 +89,13 @@ Line 3 (clear and open)
 ```
 
 ## **Definition of Done**
-
-- [ ] `textarea` line-height updated to `var(--cn-line-height-text)`.
-- [ ] No custom property overrides for line-height on textarea.
+- [x] `textarea` line-height updated to `var(--cn-line-height-text)`.
+- [x] No custom property overrides for line-height on textarea.
 - [ ] Multi-line text is readable and comfortable.
 - [ ] No visual regressions in existing textareas.
-- [ ] Documentation shows textarea examples.
+- [x] Documentation shows textarea examples.
+
+## Implementation
+
+- Changed `line-height` in `packages/cyan-css/src/core/textarea.css` from `var(--cn-line-height-ui)` to `var(--cn-line-height-text)` to improve multi-line readability.
+

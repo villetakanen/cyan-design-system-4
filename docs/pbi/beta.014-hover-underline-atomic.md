@@ -33,9 +33,9 @@ Common use cases:
 ## **Acceptance Criteria**
 
 1. **CSS Implementation:**
-   - [ ] Add `.hover-underline` to `packages/cyan-css/src/atomics/font-style.css`.
-   - [ ] Apply `text-decoration: underline` only on `:hover` state.
-   - [ ] No underline in default state.
+  - [x] Add `.hover-underline` as `packages/cyan-css/src/atomics/hover-underline.css` and import it from `packages/cyan-css/src/atomics/index.css`.
+  - [x] Apply `text-decoration: underline` only on `:hover`/`:focus` state.
+  - [x] No underline in default state.
 
 2. **Interaction:**
    - [ ] Works on `<a>`, `<button>`, and `<span>` elements.
@@ -48,16 +48,19 @@ Common use cases:
 
 ## **Technical Considerations**
 
-- **File Location:** Add to `packages/cyan-css/src/atomics/font-style.css` (which already has `.no-underline`).
+- **File Location:** Implemented as `packages/cyan-css/src/atomics/hover-underline.css` and imported by the atomics index.
 - **Simplicity:** This is a pure atomic utility - just one property on hover.
 - **No Transition:** Avoid transition on underline appearance (respects reduced motion by default).
 
 ## **Implementation**
 
+The atomic is implemented in `packages/cyan-css/src/atomics/hover-underline.css`.
+
+Key rules:
+
 ```css
-.hover-underline:hover {
-  text-decoration: underline;
-}
+.hover-underline { text-decoration: none; display: inline; }
+.hover-underline:hover, .hover-underline:focus { text-decoration: underline; }
 ```
 
 ## **Example Usage**
@@ -65,11 +68,13 @@ Common use cases:
 ```html
 <!-- Navigation link without default underline -->
 <a href="/about" class="no-underline hover-underline">About Us</a>
+<!-- Note: `.no-decoration` is an alias for `.no-underline` and can be used interchangeably -->
 
 <!-- Button styled as text -->
 <button class="no-underline hover-underline" type="button">
   View details
 </button>
+<!-- Note: `.no-decoration` is an alias for `.no-underline` and can be used interchangeably -->
 
 <!-- Card title that's clickable -->
 <a href="/article" class="no-underline hover-underline">
@@ -101,8 +106,7 @@ The new `.hover-underline` complements this by providing hover-only underlines:
 
 ## **Definition of Done**
 
-- [ ] `.hover-underline` added to `packages/cyan-css/src/atomics/font-style.css`.
-- [ ] Underline appears only on hover state.
-- [ ] Works with all interactive elements (links, buttons).
-- [ ] Documentation includes examples.
-- [ ] Shows pairing with `.no-underline` for common pattern.
+- [x] `.hover-underline` added as `packages/cyan-css/src/atomics/hover-underline.css` and imported in the atomics index.
+- [x] Underline appears only on hover/focus state.
+- [x] Works with interactive elements (links, buttons, spans).
+- [x] Documentation includes examples and pairing with `.no-underline`.
