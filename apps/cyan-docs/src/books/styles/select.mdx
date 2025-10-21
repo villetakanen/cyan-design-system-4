@@ -1,18 +1,18 @@
 ---
 title: 'Inputs: Select'
 noun: edit
-description: Styled select element.
+description: Styled select element with support for various layout contexts.
 ---
 
 <article class="surface column-l">
 
 # `<select>`
 
-Cyan provides styling for the native `<select>` element.
+Cyan provides styling for the native `<select>` element, designed to work seamlessly across different layout contexts including standalone labels, flex containers, toolbars, and fieldsets.
 
-## Select States
+## Basic Select
 
-Select elements can be disabled or have validation states to indicate errors. This provides visual feedback to users.
+Select elements support standard states including disabled and invalid for validation feedback.
 
 ### Example
 
@@ -55,5 +55,283 @@ Renders as:
     <SelectDemo />
   </div>
 </div>
+
+## Layout Behavior
+
+Select elements inside labels are designed to fill their container width by default (`width: 100%`), ensuring consistent behavior across different layout contexts.
+
+### Standalone Labels
+
+In standalone labels, the label container itself sizes to `width: auto` while the select fills the available space:
+
+```html
+<label>
+  Choose a category
+  <select>
+    <option>Books</option>
+    <option>Games</option>
+    <option>Movies</option>
+  </select>
+</label>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <label>
+      Choose a category
+      <select>
+        <option>Books</option>
+        <option>Games</option>
+        <option>Movies</option>
+      </select>
+    </label>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <label>
+      Choose a category
+      <select>
+        <option>Books</option>
+        <option>Games</option>
+        <option>Movies</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+### Flex Containers
+
+Select elements work correctly in flex layouts, filling their label container without shrinking. The label container sizes naturally (`width: auto; flex-grow: 0`):
+
+```html
+<div class="flex gap-1">
+  <label>
+    Filter by
+    <select>
+      <option>All</option>
+      <option>Active</option>
+      <option>Archived</option>
+    </select>
+  </label>
+  <label>
+    Sort by
+    <select>
+      <option>Name</option>
+      <option>Date</option>
+      <option>Size</option>
+    </select>
+  </label>
+</div>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius p-1 surface">
+    <div class="flex gap-1">
+      <label>
+        Filter by
+        <select>
+          <option>All</option>
+          <option>Active</option>
+          <option>Archived</option>
+        </select>
+      </label>
+      <label>
+        Sort by
+        <select>
+          <option>Name</option>
+          <option>Date</option>
+          <option>Size</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <div class="flex gap-1">
+      <label>
+        Filter by
+        <select>
+          <option>All</option>
+          <option>Active</option>
+          <option>Archived</option>
+        </select>
+      </label>
+      <label>
+        Sort by
+        <select>
+          <option>Name</option>
+          <option>Date</option>
+          <option>Size</option>
+        </select>
+      </label>
+    </div>
+  </div>
+</div>
+
+### Toolbars
+
+In toolbars (flex containers with `space-between` alignment), selects work alongside buttons and headings:
+
+```html
+<div class="toolbar border border-radius">
+  <h3>Settings</h3>
+  <label>
+    Theme
+    <select>
+      <option>Light</option>
+      <option>Dark</option>
+      <option>Auto</option>
+    </select>
+  </label>
+  <button>Save</button>
+</div>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius surface">
+    <div class="toolbar">
+      <h3>Settings</h3>
+      <label>
+        Theme
+        <select>
+          <option>Light</option>
+          <option>Dark</option>
+          <option>Auto</option>
+        </select>
+      </label>
+      <button>Save</button>
+    </div>
+  </div>
+  <div class="dark border border-radius surface">
+    <div class="toolbar">
+      <h3>Settings</h3>
+      <label>
+        Theme
+        <select>
+          <option>Light</option>
+          <option>Dark</option>
+          <option>Auto</option>
+        </select>
+      </label>
+      <button>Save</button>
+    </div>
+  </div>
+</div>
+
+### Multiple Selects in Toolbars
+
+When using multiple selects in a toolbar, each label sizes naturally to its content:
+
+```html
+<div class="toolbar border border-radius">
+  <label>
+    Status
+    <select>
+      <option>All</option>
+      <option>Draft</option>
+      <option>Published</option>
+    </select>
+  </label>
+  <label>
+    Category
+    <select>
+      <option>All Categories</option>
+      <option>News</option>
+      <option>Updates</option>
+    </select>
+  </label>
+  <label>
+    Year
+    <select>
+      <option>2025</option>
+      <option>2024</option>
+      <option>2023</option>
+    </select>
+  </label>
+</div>
+```
+
+<div class="grid two-col">
+  <div class="light border border-radius surface">
+    <div class="toolbar">
+      <label>
+        Status
+        <select>
+          <option>All</option>
+          <option>Draft</option>
+          <option>Published</option>
+        </select>
+      </label>
+      <label>
+        Category
+        <select>
+          <option>All Categories</option>
+          <option>News</option>
+          <option>Updates</option>
+        </select>
+      </label>
+      <label>
+        Year
+        <select>
+          <option>2025</option>
+          <option>2024</option>
+          <option>2023</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="dark border border-radius surface">
+    <div class="toolbar">
+      <label>
+        Status
+        <select>
+          <option>All</option>
+          <option>Draft</option>
+          <option>Published</option>
+        </select>
+      </label>
+      <label>
+        Category
+        <select>
+          <option>All Categories</option>
+          <option>News</option>
+          <option>Updates</option>
+        </select>
+      </label>
+      <label>
+        Year
+        <select>
+          <option>2025</option>
+          <option>2024</option>
+          <option>2023</option>
+        </select>
+      </label>
+    </div>
+  </div>
+</div>
+
+## Technical Details
+
+The select element behavior is controlled by these CSS rules:
+
+**Label container sizing:**
+```css
+label:has(select) {
+  width: auto;        /* Label sizes to content */
+  flex-grow: 0;       /* Doesn't grow in flex containers */
+}
+```
+
+**Select element sizing:**
+```css
+label select {
+  min-width: auto;    /* Override browser defaults */
+  width: 100%;        /* Fill label container */
+}
+```
+
+This ensures:
+- Labels with selects size naturally to their content (`width: auto`)
+- Labels don't grow to fill flex containers (`flex-grow: 0`)
+- Selects fill their label container (`width: 100%`)
+- Browser minimum widths are overridden (`min-width: auto`)
 
 </article>

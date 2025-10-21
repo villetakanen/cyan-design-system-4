@@ -24,5 +24,12 @@ label:has(select) {
 }
 
 label select {
-  width: auto;
+  min-width: auto;
+  width: 100%;
+}
+
+label p {
+  margin: 0;
+  padding: 0;
+  display: block;
 }

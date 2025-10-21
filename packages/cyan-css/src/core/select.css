@@ -72,7 +72,7 @@ label:has(select) {
 label:has(select):after {
   content: ""; /* Required for pseudo-elements */
   position: absolute;
-  top: calc(var(--cn-grid) * 4.5); /* Vertically center relative to the select */
+  bottom: calc(var(--cn-grid) * 1.5); /* Vertically center relative to the select */
   right: calc(var(--cn-grid) * 1.5); /* Position on the right */
   z-index: 10;
   /* Create the triangle using borders */
