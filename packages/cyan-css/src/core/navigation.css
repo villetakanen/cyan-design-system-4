@@ -23,6 +23,6 @@ cn-tray-button {
     z-index: var(--z-index-tray-button, 3000);
   }
   body:has(cn-tray-button) cn-app-bar {
-    padding-right: calc(var(--cn-width-rail) - var(--cn-gap));
+    margin-right: calc(var(--cn-width-rail) - var(--cn-gap));
   }
 }
