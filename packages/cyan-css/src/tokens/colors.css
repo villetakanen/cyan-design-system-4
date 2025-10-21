@@ -122,6 +122,10 @@
     var(--chroma-primary-60),
     var(--chroma-primary-95)
   );
+  --color-button-accent: light-dark(
+    var(--chroma-primary-20),
+    var(--chroma-primary-70)
+  );
   --color-button-cta: light-dark(var(--chroma-error), var(--chroma-error));
 
   /* Borders */

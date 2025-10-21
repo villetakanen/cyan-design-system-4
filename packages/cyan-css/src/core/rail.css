@@ -10,6 +10,8 @@ nav#rail {
   flex-wrap: nowrap;
   background: color-mix(in hsl, var(--color-background), transparent 11%);
   padding-top: calc(var(--cn-grid) / 2);
+  padding-left: var(--cn-gap);
+  padding-right: var(--cn-gap);
   z-index: var(--z-index-rail, 2000);
   box-shadow: 0 0 var(--cn-line) var(--color-shadow);
 }

@@ -4,6 +4,7 @@
 
 /* packages/cyan-css/src/utilities/cn-fab.css */
 a.fab,
+a.fab.button,
 button.fab {
   position: relative;
   min-width: var(--fab-size);
@@ -21,10 +22,27 @@ button.fab {
   transition: all 0.3s ease;
   text-decoration: none;
   z-index: 1;
+  background: linear-gradient(137deg in lch, var(--color-button-accent),
+    color-mix(in lch, var(--color-button-accent), var(--color-surface) 44%));
+  color: light-dark(black, white);
 }
-.fab:hover {
-  background-color: var(--color-accent-hover);
+
+a.fab.cta,
+a.fab.button.cta,
+button.fab.cta,
+a.fab.call-to-action,
+a.fab.button.call-to-action,
+button.fab.call-to-action {
+  background: linear-gradient(137deg in lch, var(--color-button-cta),
+    color-mix(in lch, var(--color-button-cta), var(--color-surface) 44%));
 }
+a.fab.secondary,
+a.fab.button.secondary,
+button.fab.secondary{
+  background: linear-gradient(-37deg in lch, var(--color-button),
+    color-mix(in lch, var(--color-button), var(--color-on-surface) 22%));
+}
+
 
 .flex > .fab {
   /* Keep for backward compatibility but ensure element-specific selectors below override other generic flex rules */
