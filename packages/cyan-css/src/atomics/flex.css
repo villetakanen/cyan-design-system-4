@@ -68,3 +68,7 @@
 .toolbar.items-start {
   align-items: flex-start;
 }
+
+.flex.items-start > cn-icon {
+  flex-grow: 0;
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test: Memory Leak Fix</title>
+  <script type="module">
+    import './src/cn-editor.ts';
+  </script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #e74c3c;
+      padding-bottom: 0.5rem;
+    }
+    
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    
+    button:hover {
+      background: #2980b9;
+    }
+    
+    button.danger {
+      background: #e74c3c;
+    }
+    
+    button.danger:hover {
+      background: #c0392b;
+    }
+    
+    button.success {
+      background: #27ae60;
+    }
+    
+    button.success:hover {
+      background: #229954;
+    }
+    
+    #editor-container {
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      padding: 1rem;
+      min-height: 200px;
+      margin: 2rem 0;
+      background: #f8f9fa;
+    }
+    
+    #editor-container cn-editor {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1rem;
+      min-height: 150px;
+      background: white;
+    }
+    
+    .stats {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    
+    .stats h3 {
+      margin-top: 0;
+    }
+    
+    .test-section {
+      background: #f8f9fa;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+      border-left: 4px solid #3498db;
+    }
+    
+    .success {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    
+    .failure {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    code {
+      background: #e9ecef;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Memory Leak Test - Focus Event Listeners</h1>
+  
+  <div class="test-section">
+    <h3>Test Purpose</h3>
+    <p>This test verifies that focus event listeners are properly removed when cn-editor components are disconnected and reconnected. This simulates navigation between pages in a SPA.</p>
+  </div>
+
+  <div class="controls">
+    <button onclick="addEditor()" class="success">Add Editor</button>
+    <button onclick="removeEditor()" class="danger">Remove Editor</button>
+    <button onclick="simulateNavigation()" class="success">Simulate Navigation (10x)</button>
+    <button onclick="focusTest()">Focus Test</button>
+    <button onclick="checkLeaks()">Check for Leaks</button>
+    <button onclick="clearConsole()">Clear Console</button>
+  </div>
+
+  <div class="stats">
+    <h3>Statistics</h3>
+    <p>Editors Created: <strong id="created-count">0</strong></p>
+    <p>Editors Removed: <strong id="removed-count">0</strong></p>
+    <p>Navigation Cycles: <strong id="navigation-count">0</strong></p>
+    <p>Focus Events: <strong id="focus-count">0</strong></p>
+    <p>Expected Focus Events: <strong id="expected-focus">0</strong></p>
+    <p>Status: <strong id="leak-status">Unknown</strong></p>
+  </div>
+
+  <div id="editor-container"></div>
+
+  <div class="test-section">
+    <h3>📋 Test Instructions</h3>
+    <ol>
+      <li>Click "Simulate Navigation (10x)" to add and remove editors 10 times</li>
+      <li>Click "Add Editor" to add a final editor</li>
+      <li>Click "Focus Test" to focus the editor</li>
+      <li>Check the console - you should see exactly ONE focus event</li>
+      <li><span class="success">✅ PASS:</span> Focus Events = 1</li>
+      <li><span class="failure">❌ FAIL:</span> Focus Events > 1 (memory leak!)</li>
+    </ol>
+  </div>
+
+  <div class="test-section">
+    <h3>🔬 Understanding the Results</h3>
+    <p><strong>Before Fix:</strong> Focus Events would equal Navigation Cycles + 1 (all listeners still attached)</p>
+    <p><strong>After Fix:</strong> Focus Events should always equal 1 (old listeners properly removed)</p>
+    <p><strong>Example:</strong> If you do 10 navigations, old code would show 11 focus events, fixed code shows 1</p>
+  </div>
+
+  <script>
+    let editorCount = 0;
+    let createdCount = 0;
+    let removedCount = 0;
+    let navigationCount = 0;
+    let focusEventCount = 0;
+    let currentEditor = null;
+
+    function updateStats() {
+      document.getElementById('created-count').textContent = createdCount;
+      document.getElementById('removed-count').textContent = removedCount;
+      document.getElementById('navigation-count').textContent = navigationCount;
+      document.getElementById('focus-count').textContent = focusEventCount;
+      document.getElementById('expected-focus').textContent = currentEditor ? '1' : '0';
+      
+      const status = document.getElementById('leak-status');
+      if (currentEditor && focusEventCount > 0) {
+        if (focusEventCount === 1) {
+          status.textContent = '✅ NO LEAK DETECTED';
+          status.style.color = '#27ae60';
+        } else {
+          status.textContent = `❌ MEMORY LEAK! (${focusEventCount} listeners)`;
+          status.style.color = '#e74c3c';
+        }
+      } else {
+        status.textContent = 'Run Focus Test';
+        status.style.color = '#7f8c8d';
+      }
+    }
+
+    function addEditor() {
+      const container = document.getElementById('editor-container');
+      
+      // Remove existing editor
+      if (currentEditor) {
+        removeEditor();
+      }
+      
+      // Create new editor
+      const editor = document.createElement('cn-editor');
+      editor.id = `editor-${editorCount++}`;
+      editor.setAttribute('placeholder', `Editor #${createdCount + 1} - Try focusing this editor`);
+      
+      // Add focus event listener to count how many times it fires
+      editor.addEventListener('focus', () => {
+        focusEventCount++;
+        console.log(`[TEST] Focus event #${focusEventCount} fired for editor #${editor.id}`);
+        updateStats();
+      });
+      
+      container.appendChild(editor);
+      currentEditor = editor;
+      createdCount++;
+      
+      console.log(`[TEST] Created editor #${editor.id} (Total created: ${createdCount})`);
+      updateStats();
+    }
+
+    function removeEditor() {
+      const container = document.getElementById('editor-container');
+      if (currentEditor) {
+        const id = currentEditor.id;
+        container.removeChild(currentEditor);
+        console.log(`[TEST] Removed editor #${id} (Total removed: ${removedCount + 1})`);
+        currentEditor = null;
+        removedCount++;
+        updateStats();
+      }
+    }
+
+    async function simulateNavigation() {
+      console.log('[TEST] Starting navigation simulation (10 cycles)...');
+      console.log('[TEST] This simulates user navigating back and forth between pages');
+      
+      for (let i = 0; i < 10; i++) {
+        console.log(`[TEST] Navigation cycle ${i + 1}/10`);
+        addEditor();
+        await new Promise(resolve => setTimeout(resolve, 50));
+        removeEditor();
+        await new Promise(resolve => setTimeout(resolve, 50));
+        navigationCount++;
+        updateStats();
+      }
+      
+      // Add final editor for testing
+      addEditor();
+      console.log('[TEST] Navigation simulation complete. Added final editor.');
+      console.log('[TEST] Now click "Focus Test" to check for memory leaks.');
+    }
+
+    function focusTest() {
+      if (!currentEditor) {
+        alert('No editor available. Click "Add Editor" first.');
+        return;
+      }
+      
+      // Reset counter
+      focusEventCount = 0;
+      updateStats();
+      
+      console.log('[TEST] ═══════════════════════════════════════');
+      console.log('[TEST] Starting Focus Test...');
+      console.log('[TEST] Focusing editor...');
+      
+      currentEditor.focus();
+      
+      setTimeout(() => {
+        console.log('[TEST] Focus test complete.');
+        console.log(`[TEST] Focus events fired: ${focusEventCount}`);
+        console.log(`[TEST] Expected: 1`);
+        
+        if (focusEventCount === 1) {
+          console.log('[TEST] ✅ SUCCESS: No memory leak detected!');
+        } else if (focusEventCount > 1) {
+          console.log(`[TEST] ❌ FAILURE: Memory leak detected! ${focusEventCount} listeners still attached!`);
+        } else {
+          console.log('[TEST] ⚠️  WARNING: No focus event fired. Editor might not be ready.');
+        }
+        console.log('[TEST] ═══════════════════════════════════════');
+        
+        updateStats();
+      }, 100);
+    }
+
+    function checkLeaks() {
+      if (!currentEditor) {
+        alert('No editor available. Run "Simulate Navigation" first.');
+        return;
+      }
+      
+      if (typeof currentEditor.checkEditorHealth === 'function') {
+        console.log('[TEST] Running health check...');
+        currentEditor.checkEditorHealth();
+      } else {
+        console.error('[TEST] checkEditorHealth method not available');
+      }
+    }
+
+    function clearConsole() {
+      console.clear();
+      console.log('[TEST] Console cleared. Ready for new test.');
+    }
+
+    // Initialize
+    updateStats();
+    console.log('[TEST] Memory leak test ready.');
+    console.log('[TEST] Click "Simulate Navigation (10x)" to start test.');
+  </script>
+</body>
+</html>

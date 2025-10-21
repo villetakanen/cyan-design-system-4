@@ -36,4 +36,21 @@ The `.secondary` class can be used to create a secondary-colored surface. This i
   <h4 class="m-0">.secondary</h4>
 </div>
 
+### Buttons on Secondary Surface
+
+Buttons and other interactive elements should work correctly on secondary surfaces, inheriting the appropriate color tokens:
+
+<div class="surface secondary p-2">
+  <div class="flex flex-wrap gap-1">
+    <button>Default Button</button>
+    <button class="text">Text Button</button>
+    <button class="call-to-action">Call to Action</button>
+    <button class="downvote">Downvote</button>
+  </div>
+  <div class="flex flex-wrap gap-1 mt-1">
+    <button disabled>Disabled</button>
+    <button class="text" disabled>Disabled Text</button>
+  </div>
+</div>
+
 </article>

@@ -4,14 +4,6 @@
   --cn-border-radius-card: var(--cn-border-radius-large, 16px);
 }
 
-/* Card light-dom styles - applied to the cn-card element itself */
-cn-card {
-  --_cn-card-title-color: light-dark(
-    var(--chroma-surface-60),
-    var(--chroma-surface-40)
-  );
-}
-
 cn-card > *:first-child {
   margin-top: 0;
 }

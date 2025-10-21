@@ -1,0 +1,132 @@
+---
+title: '<cn-share-button>'
+noun: 'share'
+---
+
+<article class="surface column-l">
+
+# `<cn-share-button>`
+
+The `<cn-share-button>` component is a button that enables users to share content using the Web Share API. It provides a native sharing experience on supported devices and browsers.
+
+## Examples
+
+<div class="grid two-col mb-1">
+  <div class="light border border-radius p-1 surface">
+    <h3>LIGHT</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-share-button></cn-share-button>
+      <cn-share-button noun="send"></cn-share-button>
+      <cn-share-button noun="link"></cn-share-button>
+    </div>
+  </div>
+  <div class="dark border border-radius p-1 surface">
+    <h3>DARK</h3>
+    <div class="flex items-center gap-1 my-1">
+      <cn-share-button></cn-share-button>
+      <cn-share-button noun="send"></cn-share-button>
+      <cn-share-button noun="link"></cn-share-button>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Properties / Attributes
+
+| Name    | Attribute | Type   | Default                  | Description                                                    |
+|---------|-----------|--------|--------------------------|----------------------------------------------------------------|
+| `url`   | `url`     | String | `window.location.href`   | The URL to share.                                              |
+| `title` | `title`   | String | `document.title`         | The title of the content being shared.                         |
+| `text`  | `text`    | String | `'Check this out!'`      | Additional text to include in the share.                       |
+| `noun`  | `noun`    | String | `'share'`                | The icon to display in the button.                             |
+
+### HTML
+
+```html
+<!-- Basic share button with defaults -->
+<cn-share-button></cn-share-button>
+
+<!-- Custom share content -->
+<cn-share-button 
+  url="https://example.com" 
+  title="Amazing Article" 
+  text="You have to read this!">
+</cn-share-button>
+
+<!-- Different icon -->
+<cn-share-button noun="send"></cn-share-button>
+```
+
+## Features
+
+- **Web Share API**: Uses native sharing capabilities when available
+- **Customizable Content**: Set custom URL, title, and text for sharing
+- **Icon Flexibility**: Choose any icon from the design system
+- **Text Button Style**: Styled as a subtle text button with hover effects
+- **Circular Design**: Round button perfect for app bars and toolbars
+- **Fallback Handling**: Logs to console when Web Share API is not supported
+
+## Visual Behavior
+
+### Button States
+1. **Default**: Subtle background with icon visible
+2. **Hover**: Slightly darker background for feedback
+3. **Active**: Pressed state with distinct background color
+
+### Styling
+- Styled as a circular text button (56px diameter)
+- Uses text button color tokens for subtle appearance
+- Icon-only design for compact footprint
+- Smooth transition effects on state changes
+
+## Web Share API
+
+When clicked, the button calls `navigator.share()` with the specified content:
+
+```javascript
+await navigator.share({
+  title: this.title,
+  text: this.text,
+  url: this.url,
+});
+```
+
+### Browser Support
+
+The Web Share API is supported in:
+- Chrome/Edge 89+ (desktop and mobile)
+- Safari 12.1+ (iOS and macOS)
+- Firefox (Android only)
+
+On unsupported browsers, the button will log a message to the console. You may want to implement a custom fallback (e.g., copy to clipboard) for broader compatibility.
+
+## Dependencies
+
+This component requires:
+- `cn-icon` component for displaying the share icon
+- **Button color tokens** from the design system
+- Proper icon SVG file: `share.svg` (or your chosen icon)
+- Web Share API support for full functionality
+
+## CSS Custom Properties
+
+The component uses these design system tokens:
+
+- `--color-button-text`: Button background color (default state)
+- `--color-button-text-hover`: Button background on hover
+- `--color-button-text-active`: Button background when pressed
+- `--color-on-surface`: Icon color (inherits from surface text color)
+- `--cn-navigation-button-size`: Size of the button (56px)
+
+## Integration Example
+
+The share button is commonly used in app bars:
+
+```html
+<cn-app-bar title="My Page" noun="document">
+  <cn-share-button></cn-share-button>
+</cn-app-bar>
+```
+
+</article>

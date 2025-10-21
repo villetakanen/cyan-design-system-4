@@ -191,8 +191,6 @@ export class CnCard extends LitElement {
     :host([elevation="0"]) {
       background: var(--color-surface);
       box-shadow: none;
-      padding: calc(var(--cn-grid) - 1px) calc(var(--cn-gap) - 1px);
-      border: 1px solid var(--color-border);
     }
     :host([elevation="2"]) {
       background: var(--color-surface-2);
@@ -247,7 +245,7 @@ export class CnCard extends LitElement {
     }
     :host h4.cardTitle,
     :host h4.cardTitle a {
-      color: var(--_cn-card-title-color, var(--color-heading-2));
+      color: var(--color-heading-2);
       text-decoration: none;
     }
     :host .cardInfo {

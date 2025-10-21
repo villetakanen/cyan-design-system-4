@@ -37,9 +37,11 @@ export class CnEditor extends LitElement {
   protected _valueOnFocus = '';
   // Flag to prevent re-entrant focus calls
   protected _isDelegatingFocus = false;
+  private _focusDelegationTimeout?: number;
 
   // ✅ FIX 3: Store bound function references to prevent memory leaks
   private _boundHandleFocusOut?: (event: FocusEvent) => void;
+  private _boundHandleHostFocus?: (event: FocusEvent) => void;
 
   // --- Form associated element ----------------------------------------------
   static formAssociated = true;
@@ -48,7 +50,9 @@ export class CnEditor extends LitElement {
   constructor() {
     super();
     this._internals = this.attachInternals();
-    this.addEventListener('focus', this._handleHostFocus.bind(this)); // Bind here for consistency
+    // ✅ FIX: Store bound reference for proper cleanup
+    this._boundHandleHostFocus = this._handleHostFocus.bind(this);
+    this.addEventListener('focus', this._boundHandleHostFocus);
   }
 
   connectedCallback(): void {
@@ -104,10 +108,39 @@ export class CnEditor extends LitElement {
     if (document.activeElement !== this._editorView.contentDOM) {
       // console.log('[CN-EDITOR] Host focused, delegating to CodeMirror.');
       this._isDelegatingFocus = true;
-      this._editorView.focus();
+
+      // ✅ Safety: Clear any existing timeout
+      if (this._focusDelegationTimeout) {
+        window.clearTimeout(this._focusDelegationTimeout);
+      }
+
+      // ✅ Safety: Force-reset flag after 500ms to prevent permanent lock
+      this._focusDelegationTimeout = window.setTimeout(() => {
+        if (this._isDelegatingFocus) {
+          console.warn('[CN-EDITOR] Focus delegation timeout - forcing reset');
+          this._isDelegatingFocus = false;
+        }
+        this._focusDelegationTimeout = undefined;
+      }, 500);
+
+      try {
+        this._editorView.focus();
+      } catch (error) {
+        console.error('[CN-EDITOR] Error during focus delegation:', error);
+        this._isDelegatingFocus = false;
+        if (this._focusDelegationTimeout) {
+          window.clearTimeout(this._focusDelegationTimeout);
+          this._focusDelegationTimeout = undefined;
+        }
+        return;
+      }
 
       requestAnimationFrame(() => {
         this._isDelegatingFocus = false;
+        if (this._focusDelegationTimeout) {
+          window.clearTimeout(this._focusDelegationTimeout);
+          this._focusDelegationTimeout = undefined;
+        }
       });
     }
     // DO NOT dispatch a new CustomEvent('focus') here. The native event is sufficient.
@@ -229,7 +262,18 @@ export class CnEditor extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('focus', this._handleHostFocus);
+
+    // ✅ Cleanup: Clear any pending timeouts
+    if (this._focusDelegationTimeout) {
+      window.clearTimeout(this._focusDelegationTimeout);
+      this._focusDelegationTimeout = undefined;
+    }
+
+    // ✅ FIX: Remove correct listener using stored reference
+    if (this._boundHandleHostFocus) {
+      this.removeEventListener('focus', this._boundHandleHostFocus);
+    }
+
     this._editorView?.destroy();
 
     // ✅ FIX 3: Remove correct listener using stored reference
@@ -344,6 +388,11 @@ export class CnEditor extends LitElement {
    * document.querySelector('cn-editor').checkEditorHealth()
    */
   public checkEditorHealth() {
+    const hasFocus =
+      document.activeElement === this._editorView?.contentDOM ||
+      document.activeElement === this;
+    const editorHasFocus = this._editorView?.hasFocus || false;
+
     const health = {
       hasEditorView: !!this._editorView,
       hasContentDOM: !!this._editorView?.contentDOM,
@@ -351,23 +400,39 @@ export class CnEditor extends LitElement {
       contentDOMHasFocus:
         document.activeElement === this._editorView?.contentDOM,
       hostHasFocus: document.activeElement === this,
+      cmHasFocus: editorHasFocus, // CodeMirror's internal focus state
+      isTypeable: hasFocus && editorHasFocus,
       isDelegatingFocus: this._isDelegatingFocus,
       value: this.value.substring(0, 50),
     };
 
     console.table(health);
 
-    // Auto-fix if possible
-    if (health.hasEditorView && !health.contentDOMHasFocus) {
-      console.warn('⚠️  ContentDOM does not have focus, attempting to fix...');
+    // Only warn if editor is not typeable at all
+    if (health.hasEditorView && !health.isTypeable) {
+      console.warn(
+        '⚠️  Editor is not in a typeable state, attempting to fix...',
+      );
+
+      // Try CodeMirror's focus method
       this._editorView?.focus();
+
       setTimeout(() => {
-        if (document.activeElement === this._editorView?.contentDOM) {
-          console.log('✅ Focus restored successfully');
+        const stillBroken =
+          !this._editorView?.hasFocus &&
+          document.activeElement !== this._editorView?.contentDOM &&
+          document.activeElement !== this;
+
+        if (stillBroken) {
+          console.error('❌ Focus restoration failed - editor not typeable');
+          console.log('Active element:', document.activeElement);
+          console.log('CM hasFocus:', this._editorView?.hasFocus);
         } else {
-          console.error('❌ Focus restoration failed');
+          console.log('✅ Editor is typeable (CodeMirror has focus)');
         }
       }, 100);
+    } else if (health.isTypeable) {
+      console.log('✅ Editor health is good - editor is typeable');
     }
 
     return health;
