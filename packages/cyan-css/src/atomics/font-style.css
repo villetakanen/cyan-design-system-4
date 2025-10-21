@@ -1,6 +1,7 @@
 .italic {
   font-style: italic;
 }
+.no-decoration,
 .no-underline {
   text-decoration: none;
 }

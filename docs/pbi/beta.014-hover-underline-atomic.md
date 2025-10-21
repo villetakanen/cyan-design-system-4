@@ -68,11 +68,13 @@ Key rules:
 ```html
 <!-- Navigation link without default underline -->
 <a href="/about" class="no-underline hover-underline">About Us</a>
+<!-- Note: `.no-decoration` is an alias for `.no-underline` and can be used interchangeably -->
 
 <!-- Button styled as text -->
 <button class="no-underline hover-underline" type="button">
   View details
 </button>
+<!-- Note: `.no-decoration` is an alias for `.no-underline` and can be used interchangeably -->
 
 <!-- Card title that's clickable -->
 <a href="/article" class="no-underline hover-underline">
