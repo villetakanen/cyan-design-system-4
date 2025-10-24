@@ -1,0 +1,30 @@
+---
+// Demo showing responsive images with srcset support
+---
+
+<section class="flex flex-col gap-m">
+  <h3>Responsive Images with srcset</h3>
+  
+  <div class="grid two-col">
+    <cn-card 
+      title="Standard Image"
+      noun="camera"
+      cover="https://picsum.photos/800/450">
+      <p>Single image source (no srcset)</p>
+    </cn-card>
+
+    <cn-card 
+      title="Responsive Image"
+      noun="camera"
+      cover="https://picsum.photos/800/450"
+      srcset="https://picsum.photos/400/225 400w, https://picsum.photos/800/450 800w, https://picsum.photos/1600/900 1600w"
+      sizes="(max-width: 768px) 100vw, 800px">
+      <p>With srcset for optimal loading</p>
+    </cn-card>
+  </div>
+
+  <div class="callout info">
+    <p><strong>Tip:</strong> Open DevTools and check the Network tab while resizing your browser window. 
+    The card with srcset will load different image sizes based on viewport width.</p>
+  </div>
+</section>

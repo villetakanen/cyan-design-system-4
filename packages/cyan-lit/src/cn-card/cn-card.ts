@@ -10,6 +10,12 @@ export class CnCard extends LitElement {
   cover: string | undefined = undefined;
 
   @property({ type: String, reflect: true })
+  srcset: string | undefined = undefined;
+
+  @property({ type: String, reflect: true })
+  sizes: string | undefined = undefined;
+
+  @property({ type: String, reflect: true })
   noun = '';
 
   @property({ type: String, reflect: true })
@@ -34,7 +40,12 @@ export class CnCard extends LitElement {
 
     if (!this.href)
       return html`<div class="cardContent" aria-hidden="true">
-        <img src=${coverUrl} alt="" loading="lazy" />
+        <img 
+          src=${coverUrl} 
+          srcset=${this.srcset || ''}
+          sizes=${this.sizes || ''}
+          alt="" 
+          loading="lazy" />
         <div class="tint"></div>
       </div>`;
 
@@ -42,7 +53,13 @@ export class CnCard extends LitElement {
 
     return html`<div class="cardContent" aria-hidden="true">
       <a href=${linkUrl} class="cardContent">
-        <img src=${coverUrl} alt="" class="coverImage" loading="lazy"/>
+        <img 
+          src=${coverUrl} 
+          srcset=${this.srcset || ''}
+          sizes=${this.sizes || ''}
+          alt="" 
+          class="coverImage" 
+          loading="lazy"/>
         <div class="tint"></div>
       </a>
     </div>`;
