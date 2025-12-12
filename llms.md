@@ -39,6 +39,7 @@ When asked to create or modify UI, you should use these components.
 -   `<cn-menu>`: A list of options or actions presented in a dropdown.
 -   `<cn-navigation-icon>`: An icon specifically for use in navigation contexts.
 -   `<cn-reaction-button>`: A button that allows users to react to content (e.g., with an emoji).
+-   `<cn-reply-dialog>`: A responsive dialog for reply interfaces (docked on desktop, fullscreen on mobile).
 -   `<cn-share-button>`: A button for sharing content to other platforms.
 -   `<cn-snackbar>`: A temporary message displayed at the bottom of the screen.
 -   `<cn-sortable-list>`: A list whose items can be reordered via drag-and-drop.

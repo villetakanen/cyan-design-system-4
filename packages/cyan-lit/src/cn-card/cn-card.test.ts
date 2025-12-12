@@ -176,4 +176,60 @@ describe('CnCard', () => {
 
     document.body.removeChild(element);
   });
+
+  it('should render srcset when provided', async () => {
+    const element = document.createElement('cn-card') as CnCard;
+    element.cover = '/test-image.jpg';
+    element.srcset = '/test-400.jpg 400w, /test-800.jpg 800w';
+    document.body.appendChild(element);
+
+    await element.updateComplete;
+    await customElements.whenDefined('cn-card');
+
+    const coverImg = element.shadowRoot?.querySelector('.cardContent img');
+    expect(coverImg?.getAttribute('srcset')).toBe(
+      '/test-400.jpg 400w, /test-800.jpg 800w',
+    );
+
+    document.body.removeChild(element);
+  });
+
+  it('should render sizes when provided', async () => {
+    const element = document.createElement('cn-card') as CnCard;
+    element.cover = '/test-image.jpg';
+    element.sizes = '(max-width: 768px) 100vw, 800px';
+    document.body.appendChild(element);
+
+    await element.updateComplete;
+    await customElements.whenDefined('cn-card');
+
+    const coverImg = element.shadowRoot?.querySelector('.cardContent img');
+    expect(coverImg?.getAttribute('sizes')).toBe(
+      '(max-width: 768px) 100vw, 800px',
+    );
+
+    document.body.removeChild(element);
+  });
+
+  it('should render both srcset and sizes when provided', async () => {
+    const element = document.createElement('cn-card') as CnCard;
+    element.cover = '/test-image.jpg';
+    element.srcset =
+      '/test-400.jpg 400w, /test-800.jpg 800w, /test-1600.jpg 1600w';
+    element.sizes = '(max-width: 768px) 100vw, 800px';
+    document.body.appendChild(element);
+
+    await element.updateComplete;
+    await customElements.whenDefined('cn-card');
+
+    const coverImg = element.shadowRoot?.querySelector('.cardContent img');
+    expect(coverImg?.getAttribute('srcset')).toBe(
+      '/test-400.jpg 400w, /test-800.jpg 800w, /test-1600.jpg 1600w',
+    );
+    expect(coverImg?.getAttribute('sizes')).toBe(
+      '(max-width: 768px) 100vw, 800px',
+    );
+
+    document.body.removeChild(element);
+  });
 });

@@ -4,6 +4,7 @@ noun: 'card'
 ---
 import CardFlexDemo from '../../components/demo/CardFlexDemo.astro'
 import CardFullDemo from '../../components/demo/CardFullDemo.astro'
+import CardSrcsetDemo from '../../components/demo/CardSrcsetDemo.astro'
 
 <article class="column-l">
 
@@ -27,6 +28,8 @@ A `cn-card` is a fixed container for a piece of content. It can be used to displ
 |----------|------|---------|-------------|
 | `elevation` | `number` | `1` | Card elevation level (0-4) |
 | `cover` | `string` | `undefined` | URL for the cover image |
+| `srcset` | `string` | `undefined` | Responsive image sources for the cover image |
+| `sizes` | `string` | `undefined` | Media conditions for selecting the appropriate image from srcset |
 | `noun` | `string` | `''` | Icon name to display |
 | `title` | `string` | `''` | Card title |
 | `href` | `string` | `''` | Link URL for the card or title |
@@ -109,6 +112,48 @@ The component uses CSS custom properties (tokens) for styling:
   cover="https://picsum.photos/400/225"
   noun="camera">
   A stunning view captured during the golden hour.
+</cn-card>
+```
+
+### Card with Responsive Images (srcset)
+```html
+<cn-card 
+  title="Optimized Image" 
+  cover="https://example.com/image-800.webp"
+  srcset="https://example.com/image-400.webp 400w, https://example.com/image-800.webp 800w, https://example.com/image-1600.webp 1600w"
+  sizes="(max-width: 768px) 100vw, 800px"
+  noun="camera">
+  This card uses responsive images for optimal performance.
+</cn-card>
+```
+
+<CardSrcsetDemo />
+
+When using CDN-optimized images (like Netlify Image CDN), you can generate the srcset programmatically:
+
+```javascript
+import { netlifyImage, generateSrcset } from '@utils/images/netlifyImage';
+
+const firebaseUrl = 'https://example.com/original-image.jpg';
+const optimized = netlifyImage(firebaseUrl, { 
+  width: 800, 
+  format: 'webp', 
+  quality: 85 
+});
+const srcset = generateSrcset(firebaseUrl, [400, 800, 1600], { 
+  format: 'webp' 
+});
+```
+
+Then use in your component:
+
+```html
+<cn-card 
+  title="CDN Optimized" 
+  cover={optimized}
+  srcset={srcset}
+  sizes="(max-width: 768px) 100vw, 800px">
+  Content here.
 </cn-card>
 ```
 
