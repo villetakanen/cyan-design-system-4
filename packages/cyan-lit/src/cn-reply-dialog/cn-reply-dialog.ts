@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 @customElement('cn-reply-dialog')
 export class CnReplyDialog extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       --cn-reply-dialog-height: calc(40 * var(--cn-grid));
       --cn-reply-dialog-width: calc(88 * var(--cn-grid));
@@ -115,126 +115,126 @@ export class CnReplyDialog extends LitElement {
     /* High contrast / Dark mode handling depends on CSS vars */
   `;
 
-    @property({ type: Boolean, reflect: true })
-    open = false;
+  @property({ type: Boolean, reflect: true })
+  open = false;
 
-    @property({ type: Boolean, reflect: true })
-    mobile = false;
+  @property({ type: Boolean, reflect: true })
+  mobile = false;
 
-    private _resizeObserver: ResizeObserver | null = null;
-    private _lastFocusedElement: HTMLElement | null = null;
+  private _resizeObserver: ResizeObserver | null = null;
+  private _lastFocusedElement: HTMLElement | null = null;
 
-    connectedCallback() {
-        super.connectedCallback();
-        this._setupResizeObserver();
-        window.addEventListener('keydown', this._handleKeyDown);
-    }
+  connectedCallback() {
+    super.connectedCallback();
+    this._setupResizeObserver();
+    window.addEventListener('keydown', this._handleKeyDown);
+  }
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this._resizeObserver?.disconnect();
-        window.removeEventListener('keydown', this._handleKeyDown);
-    }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this._resizeObserver?.disconnect();
+    window.removeEventListener('keydown', this._handleKeyDown);
+  }
 
-    updated(changedProperties: PropertyValues) {
-        if (changedProperties.has('open')) {
-            if (this.open) {
-                if (this.mobile) {
-                    this._trapFocus();
-                }
-            } else {
-                this._releaseFocus();
-                this.dispatchEvent(new Event('close')); // Native-like close event
-            }
-        }
-
-        // If we switch to mobile while open, ensure focus works
-        if (changedProperties.has('mobile') && this.open) {
-            if (this.mobile) {
-                this._trapFocus();
-            } else {
-                // dock mode doesn't trap focus
-            }
-        }
-    }
-
-    private _setupResizeObserver() {
-        if (typeof ResizeObserver === 'undefined') return;
-
-        // We observe the document.body to switch modes based on viewport width
-        // Or we can just use window resize event.
-        // Spec mentions: "Trigger: Automatically switches to mobile mode based on viewport width"
-        // Let's use a standard breakpoint logic.
-        // Assuming 'mobile' is < 768px or similar.
-        // Design tokens might have a breakpoint.
-        // For now, I'll use 600px as a generic mobile breakpoint or check if a CSS var exists.
-
-        this._resizeObserver = new ResizeObserver((entries) => {
-            for (const entry of entries) {
-                // Check width
-                const width = entry.contentRect.width;
-                const isMobile = width < 768; // IPad mini portrait often considered tablet/desktop-lite, phones < 600.
-                // Let's stick to a reasonable default.
-                if (this.mobile !== isMobile) {
-                    this.mobile = isMobile;
-                }
-            }
-        });
-        this._resizeObserver.observe(document.body);
-    }
-
-    private _handleKeyDown = (e: KeyboardEvent) => {
-        if (!this.open) return;
-
-        if (e.key === 'Escape') {
-            this.close();
-            return;
-        }
-
+  updated(changedProperties: PropertyValues) {
+    if (changedProperties.has('open')) {
+      if (this.open) {
         if (this.mobile) {
-            this._handleFocusTrap(e);
+          this._trapFocus();
         }
-    };
+      } else {
+        this._releaseFocus();
+        this.dispatchEvent(new Event('close')); // Native-like close event
+      }
+    }
 
-    private _trapFocus() {
-        this._lastFocusedElement = document.activeElement as HTMLElement;
-        // Focus the first interactive element or the dialog itself
-        const focusable = this.shadowRoot?.querySelector(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-        ) as HTMLElement;
-        if (focusable) {
-            focusable.focus();
-        } else {
-            this.focus();
+    // If we switch to mobile while open, ensure focus works
+    if (changedProperties.has('mobile') && this.open) {
+      if (this.mobile) {
+        this._trapFocus();
+      } else {
+        // dock mode doesn't trap focus
+      }
+    }
+  }
+
+  private _setupResizeObserver() {
+    if (typeof ResizeObserver === 'undefined') return;
+
+    // We observe the document.body to switch modes based on viewport width
+    // Or we can just use window resize event.
+    // Spec mentions: "Trigger: Automatically switches to mobile mode based on viewport width"
+    // Let's use a standard breakpoint logic.
+    // Assuming 'mobile' is < 768px or similar.
+    // Design tokens might have a breakpoint.
+    // For now, I'll use 600px as a generic mobile breakpoint or check if a CSS var exists.
+
+    this._resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        // Check width
+        const width = entry.contentRect.width;
+        const isMobile = width < 768; // IPad mini portrait often considered tablet/desktop-lite, phones < 600.
+        // Let's stick to a reasonable default.
+        if (this.mobile !== isMobile) {
+          this.mobile = isMobile;
         }
+      }
+    });
+    this._resizeObserver.observe(document.body);
+  }
+
+  private _handleKeyDown = (e: KeyboardEvent) => {
+    if (!this.open) return;
+
+    if (e.key === 'Escape') {
+      this.close();
+      return;
     }
 
-    private _releaseFocus() {
-        if (this._lastFocusedElement) {
-            this._lastFocusedElement.focus();
-            this._lastFocusedElement = null;
-        }
+    if (this.mobile) {
+      this._handleFocusTrap(e);
     }
+  };
 
-    private _handleFocusTrap(e: KeyboardEvent) {
-        if (e.key !== 'Tab') return;
-
-        const _focusableElements = this.shadowRoot?.querySelectorAll(
-            'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select',
-        );
-        // Note: This querySelectorAll inside shadowRoot only finds elements defined in template.
-        // Slotted elements are not fully accessible this way for sequential navigation without advanced logic.
-        // For a robust implementation, we might need a library or a more complex traverser.
-        // However, for this Phase 1, we will rely on basic behaviors.
+  private _trapFocus() {
+    this._lastFocusedElement = document.activeElement as HTMLElement;
+    // Focus the first interactive element or the dialog itself
+    const focusable = this.shadowRoot?.querySelector(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    ) as HTMLElement;
+    if (focusable) {
+      focusable.focus();
+    } else {
+      this.focus();
     }
+  }
 
-    close() {
-        this.open = false;
-        this.dispatchEvent(new Event('close'));
+  private _releaseFocus() {
+    if (this._lastFocusedElement) {
+      this._lastFocusedElement.focus();
+      this._lastFocusedElement = null;
     }
+  }
 
-    render() {
-        return html`
+  private _handleFocusTrap(e: KeyboardEvent) {
+    if (e.key !== 'Tab') return;
+
+    const _focusableElements = this.shadowRoot?.querySelectorAll(
+      'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select',
+    );
+    // Note: This querySelectorAll inside shadowRoot only finds elements defined in template.
+    // Slotted elements are not fully accessible this way for sequential navigation without advanced logic.
+    // For a robust implementation, we might need a library or a more complex traverser.
+    // However, for this Phase 1, we will rely on basic behaviors.
+  }
+
+  close() {
+    this.open = false;
+    this.dispatchEvent(new Event('close'));
+  }
+
+  render() {
+    return html`
       <div 
         class="dialog" 
         role="dialog" 
@@ -243,12 +243,13 @@ export class CnReplyDialog extends LitElement {
       >
         <header>
              <slot name="header"></slot>
-             ${this.mobile
-                ? html`
+             ${
+               this.mobile
+                 ? html`
                  <cn-icon noun="close" @click=${this.close} style="cursor: pointer"></cn-icon>
              `
-                : ''
-            }
+                 : ''
+             }
         </header>
         <div class="content">
             <slot></slot>
@@ -260,11 +261,11 @@ export class CnReplyDialog extends LitElement {
         </div>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'cn-reply-dialog': CnReplyDialog;
-    }
+  interface HTMLElementTagNameMap {
+    'cn-reply-dialog': CnReplyDialog;
+  }
 }
