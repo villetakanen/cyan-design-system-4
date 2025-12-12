@@ -13,41 +13,41 @@ It must implement a "Docked" experience on Desktop (non-blocking) and a "Full & 
 ## **Acceptance Criteria**
 
 ### 1. Component Scaffolding & API
-- [ ] Create `cn-reply-dialog` as a LitElement component.
-- [ ] **Properties**:
+- [x] Create `cn-reply-dialog` as a LitElement component.
+- [x] **Properties**:
     - `open` (boolean, reflect): Controls visibility.
     - `mobile` (boolean, internal/reflect): Reflects the current viewport mode.
-- [ ] **Slots**:
+- [x] **Slots**:
     - `(default)`: For form content.
     - `header`: Optional title/context.
     - `actions`: Submit/Cancel buttons.
-- [ ] **Events**:
+- [x] **Events**:
     - Dispatches a `close` event when dismissed.
 
 ### 2. Desktop Layout (Docked)
-- [ ] **Position**: Fixed at the bottom of the viewport, horizontally centered.
-- [ ] **Dimensions**:
+- [x] **Position**: Fixed at the bottom of the viewport, horizontally centered.
+- [x] **Dimensions**:
     - Width matches `column-l` (`calc(88 * var(--cn-grid))`).
     - Height defaults to approx 7 rows (`--cn-reply-dialog-height`).
-- [ ] **Interaction**: Non-blocking (modeless). Users can interact with the page behind the dialog.
-- [ ] **Animation**: Slide Up entrance (`transform: translateY(100%)` -> `0`).
+- [x] **Interaction**: Non-blocking (modeless). Users can interact with the page behind the dialog.
+- [x] **Animation**: Slide Up entrance (`transform: translateY(100%)` -> `0`).
 
 ### 3. Mobile Layout (Fullscreen)
-- [ ] **Trigger**: Automatically switches to mobile mode based on viewport width (media query or resize observer).
-- [ ] **Position**: Fullscreen overlay (`fixed`, `inset: 0`).
-- [ ] **Interaction**: Modal (blocking). Focus is trapped within the dialog.
-- [ ] **Backdrop**: Uses `backdrop-filter: blur(2px)` and `var(--background-dialog-backdrop)`.
-- [ ] **Animation**: Fade + Scale entrance.
+- [x] **Trigger**: Automatically switches to mobile mode based on viewport width (media query or resize observer).
+- [x] **Position**: Fullscreen overlay (`fixed`, `inset: 0`).
+- [x] **Interaction**: Modal (blocking). Focus is trapped within the dialog.
+- [x] **Backdrop**: Uses `backdrop-filter: blur(2px)` and `var(--background-dialog-backdrop)`.
+- [x] **Animation**: Fade + Scale entrance.
 
 ### 4. Keyboard Handling (Mobile)
 - [ ] Ensures form controls remain visible when the virtual keyboard opens.
 - [ ] Uses `interactive-widget=resizes-content` or `visualViewport` API listeners to adjust layout.
 
 ### 5. Styling & Accessibility
-- [ ] **Surface**: `var(--color-surface-1)`.
-- [ ] **Elevation**: `var(--shadow-elevation-2)` for the docked state.
-- [ ] **Shape**: `var(--cn-border-radius-large)`.
-- [ ] **A11y**:
+- [x] **Surface**: `var(--color-surface-1)`.
+- [x] **Elevation**: `var(--shadow-elevation-2)` for the docked state.
+- [x] **Shape**: `var(--cn-border-radius-large)`.
+- [x] **A11y**:
     - Mobile: Focus trap active, `Escape` key closes.
     - Desktop: No focus trap, allows tab-out.
     - Role: `dialog` (or compatible structure).
@@ -62,7 +62,7 @@ It must implement a "Docked" experience on Desktop (non-blocking) and a "Full & 
 - **Dependencies**: Reactivity to screen size changes.
 
 ## **Definition of Done**
-- [ ] Component is implemented in the design system package.
-- [ ] Documentation and interactive examples added to the Docs App.
+- [x] Component is implemented in the design system package.
+- [x] Documentation and interactive examples added to the Docs App.
 - [ ] Verified on Desktop (Chrome/Safari/Firefox).
 - [ ] Verified on Mobile Simulator (iOS/Android) for keyboard behavior.

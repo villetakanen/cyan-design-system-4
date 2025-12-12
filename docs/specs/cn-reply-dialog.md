@@ -45,7 +45,7 @@ The `cn-reply-dialog` is a layout container component designed to host conversat
     *   *Recommendation:* Use a custom `div` with `role="dialog"` (and `aria-modal="false"` desktop / `aria-modal="true"` mobile) for maximum layout control, explicitly managing focus trap on mobile.
 
 *   **CSS Variables (Theming):**
-    *   `--cn-reply-dialog-height`: Default `14rem` (approx 7 rows @ 2rem).
+    *   `--cn-reply-dialog-height`: Default `calc(40 * var(--cn-grid))` (approx 10 rows).
     *   `--cn-reply-dialog-width`: Default `calc(88 * var(--cn-grid))` (Matches `column-l`).
     *   `--cn-reply-dialog-z-index`: Default `1000`.
 

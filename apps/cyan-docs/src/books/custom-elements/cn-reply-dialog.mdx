@@ -1,0 +1,68 @@
+---
+title: <cn-reply-dialog>
+noun: chat
+description: A generic reply dialog component that adapts to mobile (fullscreen) and desktop (docked).
+---
+
+<article class="column-l surface">
+
+# `<cn-reply-dialog>`
+
+A generic layout container component designed to host conversation reply forms. It manages the presentation of the reply interface across different viewports, implementing a "Docked" experience on Desktop and a "Full & Focused" experience on Mobile.
+
+## Examples
+
+### Basic Usage
+
+Click the button below to open the dialog.
+
+<div class="surface border radius-m p-4">
+  <button onclick="document.getElementById('demo-dialog').open = true">Open Reply Dialog</button>
+  
+  <cn-reply-dialog id="demo-dialog">
+    <span slot="header">Reply to Thread</span>
+    <textarea style="width: 100%; height: 100px; resize: none; border: none; padding: 0.5rem; background: transparent;" placeholder="Type your reply..."></textarea>
+    <div slot="actions" class="toolbar">
+       <button onclick="document.getElementById('demo-dialog').open = false">Cancel</button>
+       <button class="call-to-action" onclick="document.getElementById('demo-dialog').open = false">Reply</button>
+    </div>
+  </cn-reply-dialog>
+</div>
+
+### Mobile Simulation
+
+To test the mobile view, resize your browser window to a mobile width (< 768px). The dialog will switch to a fullscreen modal with a focus trap.
+
+## API
+
+### Properties
+
+| Name     | Attribute | Type      | Default | Description |
+|----------|-----------|-----------|---------|-------------|
+| `open`   | `open`    | `boolean` | `false` | Controls visibility. |
+| `mobile` | `mobile`  | `boolean` | `false` | Reflects current viewport mode (read-only/internal). |
+
+### Slots
+
+| Name      | Description |
+|-----------|-------------|
+| `header`  | Optional title or context area. |
+| (default) | The main content (form, textarea). |
+| `actions` | Action buttons (Submit, Cancel). |
+
+### Events
+
+| Name    | Description |
+|---------|-------------|
+| `close` | Fired when the dialog is dismissed or closed. |
+
+### CSS Custom Properties
+
+| Name | Description | Default |
+|------|-------------|---------|
+| `--cn-reply-dialog-height` | Height in docked (desktop) mode. | `calc(40 * var(--cn-grid))` |
+| `--cn-reply-dialog-width` | Width in docked (desktop) mode. | `calc(88 * var(--cn-grid))` |
+| `--cn-reply-dialog-z-index` | Z-index of the component. | `41000` |
+| `--background-dialog-backdrop` | Backdrop color in mobile mode. | `rgba(0,0,0,0.5)` |
+
+</article>
