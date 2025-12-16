@@ -97,6 +97,7 @@ export class CnReplyDialog extends LitElement {
         /* Slot for form content */
         display: flex;
         flex-direction: column;
+        min-height: 0; /* Critical for scrolling in flex containers */
     }
     
     ::slotted(*) {
@@ -106,10 +107,12 @@ export class CnReplyDialog extends LitElement {
 
     .actions {
         padding: var(--cn-grid, 8px);
+        padding-bottom: calc(var(--cn-grid, 8px) + env(safe-area-inset-bottom));
         display: flex;
         gap: var(--cn-grid, 8px);
         justify-content: flex-end;
         border-top: 1px solid var(--color-border-subtle, #eee);
+        background: var(--color-surface-1, #fff); /* Ensure opaque background */
     }
 
     /* High contrast / Dark mode handling depends on CSS vars */
