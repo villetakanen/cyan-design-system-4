@@ -5,7 +5,7 @@
 
 .cn-nick {
   /* Typography */
-  font-weight: var(--cn-font-weight-text-strong);  /* 700 - bold */
+  font-weight: var(--cn-font-weight-text-strong); /* 700 - bold */
   font-size: inherit;
   line-height: inherit;
 
