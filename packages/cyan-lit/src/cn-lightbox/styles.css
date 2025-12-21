@@ -4,5 +4,4 @@ cn-lightbox {
   --cn-lightbox-border-radius: var(--cn-border-radius-medium);
   --cn-lightbox-image-border-radius: var(--cn-border-radius-small);
   --cn-lightbox-inner-spacing: var(--cn-grid);
-  --cn-lightbox-scrollbar-color: var(--color-secondary);
 }
