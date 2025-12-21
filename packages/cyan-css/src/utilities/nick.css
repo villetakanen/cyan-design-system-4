@@ -1,0 +1,44 @@
+/* Nick (User Identity) utility class
+ * Provides consistent styling for user nicknames/identity elements
+ * Works with both <a> (interactive) and <span> (static) elements
+ */
+
+.cn-nick {
+  /* Typography */
+  font-weight: var(--cn-font-weight-text-strong);  /* 700 - bold */
+  font-size: inherit;
+  line-height: inherit;
+
+  /* Remove link defaults */
+  text-decoration: none;
+
+  /* Color - subtle, heading-like */
+  color: var(--color-text-high);
+
+  /* Inline behavior */
+  display: inline;
+}
+
+/* Interactive states for anchor elements */
+a.cn-nick:hover,
+a.cn-nick:focus {
+  color: var(--color-link-hover);
+}
+
+a.cn-nick:active {
+  color: var(--color-link-active);
+}
+
+/* Focus visible for keyboard navigation */
+a.cn-nick:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cn-nick {
+    transition: none;
+  }
+}
