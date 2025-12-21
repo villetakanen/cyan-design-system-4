@@ -8,7 +8,7 @@ export class CnReplyDialog extends LitElement {
       --cn-reply-dialog-height: calc(40 * var(--cn-grid));
       --cn-reply-dialog-width: calc(88 * var(--cn-grid));
       --cn-reply-dialog-z-index: var(--z-index-reply-dialog, 41000);
-      
+
       display: block;
       z-index: var(--cn-reply-dialog-z-index);
       box-sizing: border-box;
@@ -17,99 +17,133 @@ export class CnReplyDialog extends LitElement {
 
     /* Desktop / Docked State */
     :host(:not([mobile])) {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        width: var(--cn-reply-dialog-width);
-        max-width: 100vw;
-        height: var(--cn-reply-dialog-height);
-        
-        transform: translate(-50%, 100%); /* Start hidden */
-        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        pointer-events: none;
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      width: var(--cn-reply-dialog-width);
+      max-width: 100vw;
+      height: var(--cn-reply-dialog-height);
+
+      transform: translate(-50%, 100%); /* Start hidden */
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      pointer-events: none;
     }
 
     :host([open]:not([mobile])) {
-        transform: translate(-50%, 0);
-        pointer-events: auto;
-        /* Elevation */
-        filter: drop-shadow(var(--shadow-elevation-2)); 
+      transform: translate(-50%, 0);
+      pointer-events: auto;
+      /* Elevation */
+      filter: drop-shadow(var(--shadow-elevation-2));
     }
 
     /* Mobile / Fullscreen State */
     :host([mobile]) {
-        position: fixed;
-        inset: 0;
-        background: var(--background-dialog-backdrop, rgba(0,0,0,0.5));
-        backdrop-filter: blur(2px);
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease-in-out;
+      position: fixed;
+      inset: 0;
+      background: var(--background-dialog-backdrop, rgba(0, 0, 0, 0.5));
+      backdrop-filter: blur(2px);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-in-out;
     }
-    
+
     :host([mobile][open]) {
-        opacity: 1;
-        pointer-events: auto;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .dialog {
-        background: var(--color-surface-1, #fff);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
+      background: var(--color-surface-1, #fff);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
     }
 
     :host(:not([mobile])) .dialog {
-        border-radius: var(--cn-border-radius-large, 12px) var(--cn-border-radius-large, 12px) 0 0;
-        border: 1px solid var(--color-border, #ccc);
+      border-radius: var(--cn-border-radius-large, 12px)
+        var(--cn-border-radius-large, 12px) 0 0;
+      border: 1px solid var(--color-border, #ccc);
     }
 
     :host([mobile]) .dialog {
-        /* Fullscreen on mobile */
-        border-radius: 0;
-        transform: scale(0.95);
-        transition: transform 0.2s ease-in-out;
+      /* Fullscreen on mobile */
+      border-radius: 0;
+      transform: scale(0.95);
+      transition: transform 0.2s ease-in-out;
     }
 
     :host([mobile][open]) .dialog {
-        transform: scale(1);
+      transform: scale(1);
     }
 
     header {
-         padding: var(--cn-grid, 8px);
-         display: flex; 
-         justify-content: space-between;
-         align-items: center;
-         border-bottom: 1px solid var(--color-border-subtle, #eee);
-         min-height: 48px;
+      padding: var(--cn-grid, 8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--color-border-subtle, #eee);
+      min-height: 48px;
+    }
+
+    .close-button {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--cn-grid, 8px) / 2);
+      border: none;
+      background: transparent;
+      color: var(--color-text-secondary, #666);
+    }
+
+    .close-button:hover {
+      color: var(--color-text-primary, #000);
+    }
+
+    .scrollable-area {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      min-height: 0; /* Critical for scrolling in flex containers */
+      display: flex;
+      flex-direction: column;
     }
 
     .content {
-        flex: 1;
-        overflow-y: auto;
-        /* Slot for form content */
-        display: flex;
-        flex-direction: column;
+      /* Slot for form content */
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 auto; /* Don't grow, don't shrink, auto size */
     }
-    
-    ::slotted(*) {
-        width: 100%;
-        box-sizing: border-box;
+
+    .content ::slotted(*) {
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .actions {
-        padding: var(--cn-grid, 8px);
-        display: flex;
-        gap: var(--cn-grid, 8px);
-        justify-content: flex-end;
-        border-top: 1px solid var(--color-border-subtle, #eee);
+      padding: var(--cn-grid, 8px);
+      padding-bottom: calc(var(--cn-grid, 8px) + env(safe-area-inset-bottom));
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--cn-grid, 8px);
+      justify-content: flex-end;
+      align-items: center;
+      border-top: 1px solid var(--color-border-subtle, #eee);
+      background: var(--color-surface-1, #fff); /* Ensure opaque background */
+      flex-shrink: 0; /* Prevent actions from being compressed */
+    }
+
+    .actions ::slotted(*) {
+      width: auto;
+      flex-shrink: 0;
     }
 
     /* High contrast / Dark mode handling depends on CSS vars */
@@ -235,29 +269,36 @@ export class CnReplyDialog extends LitElement {
 
   render() {
     return html`
-      <div 
-        class="dialog" 
-        role="dialog" 
+      <div
+        class="dialog"
+        role="dialog"
         aria-modal="${this.mobile ? 'true' : 'false'}"
         aria-label="Reply"
       >
         <header>
-             <slot name="header"></slot>
-             ${
-               this.mobile
-                 ? html`
-                 <cn-icon noun="close" @click=${this.close} style="cursor: pointer"></cn-icon>
-             `
-                 : ''
-             }
+          <slot name="header"></slot>
+          ${
+            this.mobile
+              ? html`
+                <button
+                  class="close-button"
+                  @click=${this.close}
+                  aria-label="Close"
+                  type="button"
+                >
+                  <cn-icon noun="close"></cn-icon>
+                </button>
+              `
+              : ''
+          }
         </header>
-        <div class="content">
+        <div class="scrollable-area">
+          <div class="content">
             <slot></slot>
-        </div>
-        <div class="actions">
-            <slot name="actions">
-                <button @click=${this.close}>Cancel</button>
-            </slot>
+          </div>
+          <div class="actions">
+            <slot name="actions"></slot>
+          </div>
         </div>
       </div>
     `;

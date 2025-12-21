@@ -67,7 +67,6 @@ export class CnLightbox extends LitElement {
       flex-wrap: nowrap;
       overflow-x: scroll;
       position: relative;
-      scrollbar-color: var(--cn-lightbox-scrollbar-color) transparent;
       padding: var(--cn-lightbox-inner-spacing);
       height: 100%;
       box-sizing: border-box;
@@ -92,7 +91,11 @@ export class CnLightbox extends LitElement {
       bottom: 0;
       left: 0;
       right: 0;
-      background: color-mix(in srgb, var(--color-shadow, black) 80%, transparent);
+      background: color-mix(
+        in srgb,
+        var(--color-shadow, black) 80%,
+        transparent
+      );
       color: var(--cn-color-on-primary, white);
       padding: var(--cn-grid);
       text-align: center;
@@ -138,8 +141,15 @@ export class CnLightbox extends LitElement {
     let content: TemplateResult | null;
     if (this.images.length === 1) {
       content = html`
-        <figure class="single-figure" @click="${() => this._openModal(this.images[0])}">
-          <img src="${this.images[0].src}" alt="${this.images[0].caption}" loading="lazy" />
+        <figure
+          class="single-figure"
+          @click="${() => this._openModal(this.images[0])}"
+        >
+          <img
+            src="${this.images[0].src}"
+            alt="${this.images[0].caption}"
+            loading="lazy"
+          />
           <figcaption class="caption">${this.images[0].caption}</figcaption>
         </figure>
       `;
@@ -148,7 +158,10 @@ export class CnLightbox extends LitElement {
         <div class="flex-container">
           ${this.images.map(
             (image) => html`
-              <figure class="square-figure" @click="${() => this._openModal(image)}">
+              <figure
+                class="square-figure"
+                @click="${() => this._openModal(image)}"
+              >
                 <img src="${image.src}" alt="${image.caption}" loading="lazy" />
                 <figcaption class="caption">${image.caption}</figcaption>
               </figure>
@@ -160,10 +173,7 @@ export class CnLightbox extends LitElement {
       content = html``;
     }
 
-    return html`
-      ${content}
-      ${this._selectedImage ? this._renderModal() : ''}
-    `;
+    return html` ${content} ${this._selectedImage ? this._renderModal() : ''} `;
   }
 
   _renderModal() {
@@ -172,7 +182,11 @@ export class CnLightbox extends LitElement {
         <button class="close-button" @click="${this._closeModal}">
           <cn-icon noun="close"></cn-icon>
         </button>
-        <img src="${this._selectedImage?.src}" alt="${this._selectedImage?.caption}" loading="lazy" />
+        <img
+          src="${this._selectedImage?.src}"
+          alt="${this._selectedImage?.caption}"
+          loading="lazy"
+        />
       </div>
     `;
   }

@@ -1,0 +1,24 @@
+/* Scrollbar design tokens
+ * Semi-transparent scrollbar with transparent track
+ */
+
+:root {
+  /* Scrollbar dimensions */
+  --cn-scrollbar-width: 8px;
+  --cn-scrollbar-border-radius: 4px;
+
+  /* Track (background) - transparent */
+  --color-scrollbar-track: transparent;
+
+  /* Thumb (scroller) - semi-transparent, adapts to theme */
+  --color-scrollbar-thumb: light-dark(
+    color-mix(in hsl, var(--chroma-surface-70), transparent 50%),
+    color-mix(in hsl, var(--chroma-surface-40), transparent 50%)
+  );
+
+  /* Thumb hover - slightly more opaque */
+  --color-scrollbar-thumb-hover: light-dark(
+    color-mix(in hsl, var(--chroma-surface-70), transparent 30%),
+    color-mix(in hsl, var(--chroma-surface-40), transparent 30%)
+  );
+}

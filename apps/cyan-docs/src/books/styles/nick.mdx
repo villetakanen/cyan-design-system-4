@@ -1,0 +1,133 @@
+---
+title: Nick (User Identity)
+noun: utilities
+topic: 'Utils'
+---
+
+<article class="column-l">
+
+# Nick (User Identity)
+
+The `.cn-nick` utility class provides consistent styling for user nicknames and identity elements throughout the application. It renders text in bold without underlines, creating a subtle, premium feel suitable for user attribution in comments, replies, and activity feeds.
+
+This is a CSS-only utility that works with both interactive (`<a>`) and static (`<span>`) elements.
+
+## Demo
+
+<div class="grid two-col">
+  <div class="dark surface">
+    <h4>Dark</h4>
+    <div style="padding: var(--cn-gap);">
+      <p>
+        <a href="#" class="cn-nick">ActiveUser</a> commented on this post
+      </p>
+      <p>
+        <span class="cn-nick">DeletedUser</span> is no longer active
+      </p>
+      <cn-bubble>
+        <div class="toolbar">
+          <a href="#" class="cn-nick">CommentAuthor</a>
+          <span class="secondary">2 hours ago</span>
+        </div>
+        <p>This is a comment with nickname attribution.</p>
+      </cn-bubble>
+      <br />
+      <cn-bubble reply>
+        <div class="toolbar">
+          <a href="#" class="cn-nick">ReplyAuthor</a>
+          <span class="secondary">1 hour ago</span>
+        </div>
+        <p>This is a reply with nickname attribution.</p>
+      </cn-bubble>
+    </div>
+  </div>
+  <div class="light surface">
+    <h4>Light</h4>
+    <div style="padding: var(--cn-gap);">
+      <p>
+        <a href="#" class="cn-nick">ActiveUser</a> commented on this post
+      </p>
+      <p>
+        <span class="cn-nick">DeletedUser</span> is no longer active
+      </p>
+      <cn-bubble>
+        <div class="toolbar">
+          <a href="#" class="cn-nick">CommentAuthor</a>
+          <span class="secondary">2 hours ago</span>
+        </div>
+        <p>This is a comment with nickname attribution.</p>
+      </cn-bubble>
+      <br />
+      <cn-bubble reply>
+        <div class="toolbar">
+          <a href="#" class="cn-nick">ReplyAuthor</a>
+          <span class="secondary">1 hour ago</span>
+        </div>
+        <p>This is a reply with nickname attribution.</p>
+      </cn-bubble>
+    </div>
+  </div>
+</div>
+
+## Usage
+
+### Interactive Nickname (Link)
+
+Use with `<a>` elements when the nickname should link to a profile or user page.
+
+```html
+<a href="/profile/username" class="cn-nick">Username</a>
+```
+
+### Static Nickname (Non-interactive)
+
+Use with `<span>` or other inline elements when the nickname should not be interactive (e.g., deleted users, system messages).
+
+```html
+<span class="cn-nick">DeletedUser</span>
+```
+
+### Inside Reply Bubbles
+
+The `.cn-nick` class integrates seamlessly with `cn-bubble` components in toolbar areas.
+
+```html
+<cn-bubble reply>
+  <div class="toolbar">
+    <a href="/profile/user123" class="cn-nick">Username</a>
+    <span class="secondary">replied 2 hours ago</span>
+  </div>
+  <p>Reply content here...</p>
+</cn-bubble>
+```
+
+## Styling Details
+
+- **Font weight**: Bold (700) using `--cn-font-weight-text-strong`
+- **Color**: High-emphasis text using `--color-text-high`
+- **Text decoration**: None (no underlines)
+- **Hover state**: Color shifts to `--color-link-hover` (links only)
+- **Focus state**: Visible outline for keyboard navigation
+- **Display**: Inline (flows naturally with surrounding text)
+
+## When to Use
+
+Use `.cn-nick` for:
+- User attribution in comments and replies
+- Author names in activity feeds
+- User identity in lists or tables
+- Any context where a nickname needs subtle emphasis without looking like a traditional link
+
+Don't use `.cn-nick` for:
+- Primary navigation links (use standard link styles)
+- Call-to-action buttons (use button classes)
+- Long text content (only for short identity labels)
+
+## Accessibility
+
+- Keyboard navigable with visible focus outlines
+- Maintains sufficient color contrast in both light and dark themes
+- Respects `prefers-reduced-motion` user preferences
+- Works with screen readers as standard links/text
+
+</article>

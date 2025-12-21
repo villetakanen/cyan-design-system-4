@@ -1,0 +1,85 @@
+---
+title: Scrollbar
+noun: utilities
+topic: 'Utils'
+---
+
+<article class="column-l">
+
+# Scrollbar
+
+The design system provides a semi-transparent scrollbar style applied globally to all scrollable elements. The scrollbar features a transparent track with a visible, semi-transparent thumb that becomes more prominent on hover.
+
+## Demo
+
+<div class="grid two-col">
+  <div class="dark surface">
+    <h4>Dark</h4>
+    <div style="height: 150px; overflow-y: auto; padding: var(--cn-gap);">
+      <p>Scroll down to see the scrollbar.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate.</p>
+      <p>Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+  <div class="light surface">
+    <h4>Light</h4>
+    <div style="height: 150px; overflow-y: auto; padding: var(--cn-gap);">
+      <p>Scroll down to see the scrollbar.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate.</p>
+      <p>Excepteur sint occaecat cupidatat non proident.</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+</div>
+
+## Design
+
+The scrollbar is designed to be:
+- **Subtle**: Semi-transparent thumb (~50% opacity) on a transparent track
+- **Discoverable**: Thumb becomes more visible on hover (~70% opacity)
+- **Consistent**: Same styling across all scrollable elements
+- **Theme-aware**: Adapts to light and dark modes
+
+## Tokens
+
+The following design tokens control the scrollbar appearance:
+
+| Token | Default | Description |
+|-------|---------|-------------|
+| `--cn-scrollbar-width` | `8px` | Width of the scrollbar |
+| `--cn-scrollbar-border-radius` | `4px` | Border radius of track and thumb |
+| `--color-scrollbar-track` | `transparent` | Track background color |
+| `--color-scrollbar-thumb` | semi-transparent | Thumb color (theme-aware) |
+| `--color-scrollbar-thumb-hover` | semi-transparent | Thumb hover color (theme-aware) |
+
+## Customization
+
+Override the tokens to customize the scrollbar appearance:
+
+```css
+/* Make the scrollbar more visible */
+:root {
+  --color-scrollbar-thumb: rgba(128, 128, 128, 0.7);
+  --color-scrollbar-thumb-hover: rgba(128, 128, 128, 0.9);
+}
+
+/* Wider scrollbar */
+:root {
+  --cn-scrollbar-width: 12px;
+}
+```
+
+## Browser Support
+
+The scrollbar styling works across modern browsers:
+- **Chrome, Edge, Safari**: Uses `::-webkit-scrollbar` pseudo-elements
+- **Firefox**: Uses `scrollbar-width` and `scrollbar-color` properties
+
+</article>

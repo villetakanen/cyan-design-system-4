@@ -28,9 +28,38 @@ ul {
   padding: 0;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
 :root {
   color-scheme: dark light;
+}
+
+/* Global scrollbar styling */
+
+/* Standard property (Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: var(--cn-scrollbar-width);
+  height: var(--cn-scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-scrollbar-track);
+  border-radius: var(--cn-scrollbar-border-radius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar-thumb);
+  border-radius: var(--cn-scrollbar-border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-scrollbar-track);
 }

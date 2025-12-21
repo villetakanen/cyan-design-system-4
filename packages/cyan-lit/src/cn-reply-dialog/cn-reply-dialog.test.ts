@@ -31,4 +31,38 @@ describe('CnReplyDialog', () => {
     expect(spy).toHaveBeenCalled();
     expect(element.open).toBe(false);
   });
+
+  it('should render actions slot in desktop mode', async () => {
+    const element = document.createElement('cn-reply-dialog') as CnReplyDialog;
+    const button = document.createElement('button');
+    button.textContent = 'Submit';
+    button.slot = 'actions';
+    element.appendChild(button);
+    element.mobile = false;
+    element.open = true;
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const actionsDiv = element.shadowRoot?.querySelector('.actions');
+    expect(actionsDiv).toBeTruthy();
+
+    element.remove();
+  });
+
+  it('should render actions slot in mobile mode', async () => {
+    const element = document.createElement('cn-reply-dialog') as CnReplyDialog;
+    const button = document.createElement('button');
+    button.textContent = 'Submit';
+    button.slot = 'actions';
+    element.appendChild(button);
+    element.mobile = true;
+    element.open = true;
+    document.body.appendChild(element);
+    await element.updateComplete;
+
+    const actionsDiv = element.shadowRoot?.querySelector('.actions');
+    expect(actionsDiv).toBeTruthy();
+
+    element.remove();
+  });
 });
