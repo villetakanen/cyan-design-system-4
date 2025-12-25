@@ -1,5 +1,29 @@
 # AGENTS.md - Context & Rules for AI Agents
 
+## 0. Project Overview
+
+**Cyan Design System 4.0.0** is a modern, standards-based design system for building user interfaces for Pelilauta 2 and related applications. The project provides a comprehensive component library, design tokens, and interactive documentation.
+
+**Core Mission:** Deliver a robust, accessible, and performant design system using web standards and cutting-edge tooling.
+
+**Key Characteristics:**
+*   **Web Components:** Standards-compliant components built with Lit (not framework-specific)
+*   **TypeScript-First:** Strict type safety across the entire codebase
+*   **Test-Driven:** Dual testing strategy (unit + browser) for every component
+*   **Monorepo Architecture:** pnpm workspace with packages linked via Vite/Astro aliases (NOT workspace dependencies)
+*   **Unified Versioning:** All packages share version 4.0.0-beta.x for guaranteed compatibility
+
+**Target Consumers:**
+*   Pelilauta 2 (primary application)
+*   Internal tools and utilities
+*   Any web application requiring framework-agnostic components
+
+**Quality Standards:**
+*   WCAG 2.1 AA accessibility compliance
+*   Zero runtime dependencies for components
+*   Modern CSS with design tokens (no framework dependencies)
+*   Conventional commits and automated quality gates
+
 ## 1. Identity & Persona
 
 ### 1.1. System Architect (@Architect)
@@ -55,15 +79,84 @@
 *   **Linting/Formatting:** `Biome` (`biome.json`)
 *   **Hooks:** `Lefthook` & `Commitlint`
 
-## 3. Operational Boundaries (CRITICAL)
+## 3. Constraint Tiers (CRITICAL)
 
-*   **NEVER** modify `package.json` files. Dependencies are managed by the project owner.
-*   **NEVER** install new packages (e.g., `pnpm install <new-pkg>`).
-*   **NEVER** alter build configurations (`vite.config.ts`, `astro.config.mjs`, `tsconfig.json`).
-*   **ALWAYS** use the provided aliases (e.g., `import 'cyan-lit'`, `import 'cyan-css'`) instead of relative paths for packages.
-*   **Communication:** Do not use polite or formal language. Keep to facts. Do not praise or give credit.
+### Tier 1: Constitutive Rules (Non-Negotiable)
+These are architectural foundations that define the system's integrity:
 
-## 4. Command Registry
+*   **Package Linking:** All packages MUST be linked via Vite/Astro aliases (e.g., `import 'cyan-lit'`), NOT workspace dependencies or relative paths.
+*   **Test Coverage:** Each component MUST have both unit tests (`*.test.ts` with jsdom) and browser tests (`*.browser.test.ts` with Playwright).
+*   **Type Safety:** Strict TypeScript mode with NO `any` types. All component props and public APIs must be explicitly typed.
+*   **Single H1 Rule:** Documentation pages must have exactly one H1 heading.
+*   **Communication Style:** Do not use polite or formal language. Keep to facts. Do not praise or give credit.
+
+### Tier 2: Procedural Rules (Requires Approval)
+These actions require explicit user permission before proceeding:
+
+*   **ASK BEFORE** installing new packages (e.g., `pnpm install <new-pkg>`).
+*   **ASK BEFORE** modifying `package.json` files. Dependencies are managed by the project owner.
+*   **ASK BEFORE** altering build configurations (`vite.config.ts`, `astro.config.mjs`, `tsconfig.json`).
+*   **ASK BEFORE** modifying design tokens in `packages/cyan-css/tokens/`.
+*   **ASK BEFORE** deleting existing components or documentation content.
+
+### Tier 3: Hard Constraints (Absolute Prohibitions)
+These are never allowed under any circumstances:
+
+*   **NEVER** use workspace dependencies for package linking. Use aliases only.
+*   **NEVER** use hydration directives (e.g., `client:load`) on Astro components. Use inline scripts instead.
+*   **NEVER** bypass Biome linting. All code must pass `pnpm check`.
+*   **NEVER** commit code with broken imports or type errors.
+*   **NEVER** use legacy patterns that violate the current architecture.
+
+## 4. Commit Standards
+
+All commits MUST follow Conventional Commits format for machine-readable history:
+
+**Format:** `type(scope): description`
+
+**Required Types:**
+*   `feat`: New feature or component
+*   `fix`: Bug fix
+*   `docs`: Documentation changes
+*   `style`: Code style/formatting (no logic changes)
+*   `refactor`: Code restructuring (no behavior changes)
+*   `test`: Test additions or modifications
+*   `chore`: Build process, tooling, dependencies
+
+**Examples:**
+*   `feat(cn-card): add elevation property`
+*   `fix(cn-button): correct focus ring color`
+*   `docs(getting-started): update installation steps`
+*   `test(cn-input): add browser tests for validation`
+
+**Enforcement:** Commitlint pre-commit hook validates all commit messages.
+
+## 5. Schema-First Development
+
+Component development follows a schema-first approach where types define behavior:
+
+**Principles:**
+*   **Types as Contracts:** All component properties and public APIs must be explicitly typed before implementation.
+*   **Validation First:** TypeScript strict mode validates all interfaces at compile time.
+*   **No Runtime Surprises:** Type definitions prevent invalid states and prop combinations.
+*   **Test Against Schema:** Unit and browser tests validate adherence to type contracts.
+
+**In Practice:**
+*   Define component props with `@property()` decorators and explicit types
+*   Export TypeScript interfaces for complex prop objects
+*   Use type guards for runtime validation at system boundaries
+*   Document type constraints in JSDoc comments
+
+**Example:**
+```typescript
+export class CnCard extends LitElement {
+  @property({ type: String }) variant: 'elevated' | 'outlined' | 'filled' = 'elevated';
+  @property({ type: Number }) elevation: 0 | 1 | 2 | 3 = 1;
+  @property({ type: Boolean }) disabled = false;
+}
+```
+
+## 6. Command Registry
 
 | Action | Command | Description |
 | :--- | :--- | :--- |
@@ -72,7 +165,7 @@
 | **Test All** | `pnpm test` | Runs all Vitest tests (unit + browser) in `cyan-lit`. |
 | **Lint/Format** | `pnpm check` | Runs Biome on the workspace. |
 
-## 5. Coding Standards
+## 7. Coding Standards
 
 ```xml
 <rule_set name="Testing Structure">
@@ -125,34 +218,40 @@
 </rule_set>
 ```
 
-## 6. Context References
+## 8. Knowledge Assets
 
-*   **Project Overview:** [README.md](README.md)
-*   **Scaffolding:** [docs/SCAFFOLDING.md](docs/SCAFFOLDING.md)
-*   **Copilot Instructions:** [.github/copilot-instructions.md](.github/copilot-instructions.md)
+Critical files and their semantic purposes:
 
-## 7. Project Structure
+*   **README.md** - Project overview, installation guide, and quick start
+*   **docs/SCAFFOLDING.md** - Architectural decisions and workspace structure rationale
+*   **.github/copilot-instructions.md** - GitHub Copilot-specific agent instructions
+*   **biome.json** - Linting and formatting rules (single source of truth for code style)
+*   **packages/cyan-lit/src/** - Component implementations with co-located tests
+*   **packages/cyan-css/tokens/** - Design token definitions (colors, spacing, typography)
+*   **apps/cyan-docs/src/books/** - MDX documentation content organized by topic
+
+## 9. Project Structure
 
 ```yaml
 root:
   - apps:
-      - cyan-docs:           # Documentation site (Astro)
+      - cyan-docs:                # SEMANTIC: Interactive documentation site showcasing components
           - src:
-              - books:       # MDX Documentation content
-              - components:  # Astro components & demos
-              - pages:       # Routes
-  -packages:
-      - cyan-lit:            # Core Component Library (Lit)
-          - src:             # Web Components source
-      - cyan-css:            # Design System Styling
-          - tokens:          # Design Tokens (CSS Variables)
-      - cn-d20-ability-score: # Addon Package
-      - cn-dice:              # Addon Package
-      - cn-editor:            # Addon Package
-      - cn-story-clock:       # Addon Package
-  - docs:                    # Project Documentation
-      - pbi:                 # Product Backlog Items
-      - specs:               # Project Specifications
-  - scripts:                 # Utility scripts
-  - workflows:               # Agent workflows
+              - books:            # SEMANTIC: MDX content organized as documentation chapters
+              - components:       # SEMANTIC: Astro presentation components and live demos
+              - pages:            # SEMANTIC: Route definitions and page layouts
+  - packages:
+      - cyan-lit:                 # SEMANTIC: Single source of truth for component behavior
+          - src:                  # SEMANTIC: Lit web component implementations with co-located tests
+      - cyan-css:                 # SEMANTIC: Design system styling with no framework dependencies
+          - tokens:               # SEMANTIC: CSS custom properties defining the design language
+      - cn-d20-ability-score:     # SEMANTIC: Specialized addon for RPG ability score tracking
+      - cn-dice:                  # SEMANTIC: Dice rolling widget addon
+      - cn-editor:                # SEMANTIC: Rich text editor addon
+      - cn-story-clock:           # SEMANTIC: Story progression clock addon
+  - docs:                         # SEMANTIC: Project-level documentation and planning artifacts
+      - pbi:                      # SEMANTIC: Product Backlog Items (work units)
+      - specs:                    # SEMANTIC: Technical specifications and design docs
+  - scripts:                      # SEMANTIC: Build automation and development utilities
+  - workflows:                    # SEMANTIC: Agent task definitions and automation sequences
 ```
